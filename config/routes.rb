@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  devise_for :students
+  devise_for :students, controllers: { 
+    sessions: "students/sessions",
+    registrations: "students/registrations"
+  }
   root "students#index"
 
   resources :students
