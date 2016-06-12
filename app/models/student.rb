@@ -5,6 +5,6 @@ class Student < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :follow_up_list
-  has_many :projects
+  has_many :projects, dependent: :destroy
 
 end
