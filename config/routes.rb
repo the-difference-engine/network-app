@@ -9,7 +9,8 @@ Rails.application.routes.draw do
     registrations: "students/registrations"
   }
   root "students#index"
-
+  
+  resources :admins
   resources :students
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
