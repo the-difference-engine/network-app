@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'employers/index'
+
+  get 'employers/show'
+
   devise_for :employers
   devise_for :admins, controllers: { 
     sessions: "admins/sessions",
