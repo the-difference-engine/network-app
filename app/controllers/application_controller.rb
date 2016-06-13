@@ -12,8 +12,8 @@ class ApplicationController < ActionController::Base
       :authenticate_admin!
     elsif current_student
       :authenticate_student!
-    # elsif current_employer
-    #   :authenticate_employer!
+    elsif current_employer
+      :authenticate_employer!
     else 
       redirect_to "/sign_in"
     end

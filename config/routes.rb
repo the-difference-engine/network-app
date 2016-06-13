@@ -8,10 +8,15 @@ Rails.application.routes.draw do
     sessions: "students/sessions",
     registrations: "students/registrations"
   }
+  devise_for :employers, controllers: { 
+    sessions: "employers/sessions",
+    registrations: "employers/registrations"
+  }
   root "pages#sign_in"
   
   resources :admins
   resources :students
+  resources :employers
 
   get "/sign_in" => "pages#sign_in"
   # The priority is based upon order of creation: first created -> highest priority.
