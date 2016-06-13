@@ -3,4 +3,20 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  def set_current_user
+    @current_user = current_admin || current_student || current_employer
+  end
+
+  def authenticate_user!
+    if current_admin
+      :authenticate_admin!
+    elsif current_student
+      :authenticate_student!
+    # elsif current_employer
+    #   :authenticate_employer!
+    else 
+      redirect_to "/sign_in"
+    end
+  end
+
 end

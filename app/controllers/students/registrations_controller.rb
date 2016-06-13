@@ -3,14 +3,14 @@ class Students::RegistrationsController < Devise::RegistrationsController
 before_filter :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-    super
-  end
+  # def new
+  #   super
+  # end
 
-  # POST /resource
-  def create
-    super
-  end
+  # # POST /resource
+  # def create
+  #   super
+  # end
 
   # GET /resource/edit
   def edit
@@ -44,31 +44,31 @@ before_filter :configure_account_update_params, only: [:update]
   # end
 
   # If you have extra params to permit, append them to the sanitizer.
-  def configure_account_update_params
-    devise_parameter_sanitizer.for(:account_update) << 
-      [:first_name, 
-        :last_name,
-        :avatar,
-        :city,
-        :industry,
-        :grad_date,
-        :skill_1,
-        :skill_2,
-        :skill_3,
-        :interest_1,
-        :interest_2,
-        :interest_3,
-        :interview_1,
-        :interview_2,
-        :interview_3,
-        :github,
-        :blog,
-        :quote,
-        :seeking_employment,
-        :resume,
-        :follow_up_list_id
-      ]
-  end
+def configure_account_update_params
+  devise_parameter_sanitizer.for(:account_update) << 
+    [:first_name, 
+      :last_name,
+      :avatar,
+      :city,
+      :industry,
+      :grad_date,
+      :skill_1,
+      :skill_2,
+      :skill_3,
+      :interest_1,
+      :interest_2,
+      :interest_3,
+      :interview_1,
+      :interview_2,
+      :interview_3,
+      :github,
+      :blog,
+      :quote,
+      :seeking_employment,
+      :resume,
+      :follow_up_list_id
+    ]
+end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)

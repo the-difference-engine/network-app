@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
 
+  devise_for :admins, controllers: { 
+    sessions: "admins/sessions",
+    registrations: "admins/registrations"
+  }
   devise_for :students, controllers: { 
     sessions: "students/sessions",
     registrations: "students/registrations"
   }
-  root "students#index"
-
+  root "pages#sign_in"
+  
+  resources :admins
   resources :students
+
+  get "/sign_in" => "pages#sign_in"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
