@@ -1,8 +1,8 @@
-15.times do 
-  Student.create!(
+ 2.times do 
+  student = Student.create!(
     email: Faker::Internet.email,
     password: "password",
-    avatar: Faker::Company.logo,
+    avatar: Faker::Avatar.image,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     city: Faker::Address.city,
@@ -23,5 +23,11 @@
     seeking_employment: random_boolean = [true, false].sample,
     resume: Faker::Internet.url,
     )
-end
 
+    rand(1..3).times do
+        student.projects.create(name: Faker::App.name, description: Faker::Hacker.say_something_smart, capstone: false, client_work: random_boolean = [true, false].sample, github: Faker::Internet.url, website: Faker::Internet.url, screencast: Faker::Placeholdit.image)
+    end
+
+    student.projects.create(name: Faker::App.name, description: Faker::Hacker.say_something_smart, capstone: true, client_work: random_boolean = [true, false].sample, github: Faker::Internet.url, website: Faker::Internet.url, screencast: Faker::Placeholdit.image)
+
+end
