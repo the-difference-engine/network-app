@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     sessions: "employers/sessions",
     registrations: "employers/registrations"
   }
-  root "pages#sign_in"
+  root "students#index"
   
   resources :admins
   resources :students
