@@ -17,15 +17,14 @@ Rails.application.routes.draw do
 
   get '/sign_in' => 'pages#sign_in'
   post '/employers' => 'employers#create'
-  get '/new_employer' => 'employers#new'
-  
-  resources :admins
-  resources :students
-  resources :employers
 
   namespace :admin do
     resources :employers
   end
+
+  resources :admins
+  resources :students
+  resources :employers
 
 
   # The priority is based upon order of creation: first created -> highest priority.
