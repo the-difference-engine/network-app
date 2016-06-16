@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   root 'students#index'
 
   get '/sign_in' => 'pages#sign_in'
-  post '/employers' => 'employers#create'
 
   namespace :admin do
     resources :employers
