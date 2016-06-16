@@ -1,6 +1,9 @@
 class EmployersController < ApplicationController
   before_action :authenticate_user!
-  
+  before_action :authenticate_admin!, :only => [:new, :create]
+  # skip_before_action :require_no_authentication
+
+
   def index
     @employers = Employer.all
   end
@@ -10,12 +13,15 @@ class EmployersController < ApplicationController
   end
 
   def create
-    @employer = Employer.new
+    @employer = Employer.new(employer_params)
 
     if @employer.save
-      redirect_to :show
+      flash[:success] = "Employer account successfully created!"
+      redirect_to employer_path(@employer)
     else
+      flash[:warning] = "Unable to add new employer"
       render :new
+      Rails.logger.info @employer.params
     end
   end
 
@@ -46,7 +52,14 @@ class EmployersController < ApplicationController
         :rep_email,
         :website,
         :city,
-        :state
+        :state,
+        :password,
+        :password_confirmation,
+        :email
       )
+    end
+
+    def sign_up(resource_name, resource)
+      true
     end
 end
