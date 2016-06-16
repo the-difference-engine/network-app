@@ -3,7 +3,6 @@ class EmployersController < ApplicationController
   before_action :authenticate_admin!, :only => [:new, :create]
   # skip_before_action :require_no_authentication
 
-
   def index
     @employers = Employer.all
   end
@@ -21,7 +20,7 @@ class EmployersController < ApplicationController
     else
       flash[:warning] = "Unable to add new employer"
       render :new
-      Rails.logger.info @employer.params
+      Rails.logger.info @employer.errors.messages
     end
   end
 
@@ -59,7 +58,7 @@ class EmployersController < ApplicationController
       )
     end
 
-    def sign_up(resource_name, resource)
-      true
-    end
+    # def sign_up(resource_name, resource)
+    #   true
+    # end
 end
