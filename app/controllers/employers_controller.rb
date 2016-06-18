@@ -8,11 +8,7 @@ class EmployersController < ApplicationController
   end
 
   def new
-    if current_admin
-      @employer = Employer.new
-    else 
-      flash[:warning] = "Access Denied. Admin Only!"
-    end
+    @employer = Employer.new
   end
 
   def create
