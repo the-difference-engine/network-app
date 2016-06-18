@@ -1,9 +1,17 @@
 <div class="container-fluid">
-  <h1>Employers#index</h1>
+  <!-- <h1>Employers</h1> -->
 
   <div class="row">
-
-  
-  
+    <div class="employer-info-list">
+      <ul>
+      <% @employers.each do |employer| %>
+        <li>
+          <img src="<%= employer.image %>" >
+          <h3><%= employer.name %></h3>
+          <p><%= employer.description %></p>
+        </li>
+      <% end %>
+      </ul>
+    </div> 
   </div>
 </div>
