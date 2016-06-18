@@ -9,5 +9,9 @@ class Employer < ActiveRecord::Base
   def rep_full_name
     "#{rep_first_name} #{rep_last_name}"
   end
+
+  def normalized_webpage
+    website && PostRank::URI.normalize(website).to_s
+  end
   
 end
