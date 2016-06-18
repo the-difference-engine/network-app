@@ -8,6 +8,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="nav-bar">
+    <nav>
+      <ul>
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/employers">Employers</a></li>
+        <li><a href="/students">Students</a></li>
+      </ul>
+    </nav>
+  </div>
 
   <% flash.each do |name, message| %>
     <% if name == "notice" %>
@@ -22,4 +31,19 @@
   <%= yield %>
 
 </body>
+<script>
+  $(function(){
+    var current_page_URL = location.href;
+    $( "a" ).each(function() {
+       if ($(this).attr("href") !== "#") {
+         var target_URL = $(this).prop("href");
+         if (target_URL == current_page_URL) {
+            $('nav a').parents('li, ul').removeClass('active');
+            $(this).parent('li').addClass('active');
+            return false;
+         }
+       }
+    });
+  });
+</script>
 </html>
