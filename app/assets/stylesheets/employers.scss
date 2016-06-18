@@ -2,11 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.employer-info-list {
-  * {margin: 0; padding: 0;}
+#employer-index {
 
-  div {
-    margin: 20px;
+  .indiv-employer {
+    margin: 10px;
   }
 
   ul {
@@ -39,5 +38,27 @@
 
   img {
     max-width: 100px;
+    border: 2px solid #bbb;
+  }
+}
+
+#employer-show {
+  #employer-show-img {
+    width: 300px;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 30px;
+
+    img {
+      max-width: 300px;
+      border: 2px solid #bbb;
+    }
+  }
+  #employer-details {
+    width: 500px;
+    margin: auto;
+    // margin-top: 30px;
+    text-align: center;
+  
   }
 }

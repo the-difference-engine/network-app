@@ -1,17 +1,15 @@
-<div class="container-fluid">
-  <!-- <h1>Employers</h1> -->
-
+<div class="container-fluid" id="employer-index">
   <div class="row">
-    <div class="employer-info-list">
-      <ul>
-      <% @employers.each do |employer| %>
+    <ul>
+    <% @employers.each do |employer| %>
+      <div class="indiv-employer">
         <li>
           <img src="<%= employer.image %>" >
-          <h3><%= employer.name %></h3>
+          <h3><%= link_to employer.name, "/employers/#{employer.id}" %></h3>
           <p><%= employer.description %></p>
         </li>
-      <% end %>
-      </ul>
-    </div> 
-  </div>
+      </div>
+    <% end %>
+    </ul>
+  </div> 
 </div>

@@ -5,5 +5,9 @@ class Employer < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :follow_up_list, dependent: :destroy
+
+  def rep_full_name
+    "#{rep_first_name} #{rep_last_name}"
+  end
   
 end
