@@ -1,2 +1,23 @@
-<h1>Employers#show</h1>
-<p>Find me in app/views/employers/show.html.erb</p>
+<div class="container" id="employer-show">
+  <div class="row">
+    <div id="employer-show-img" class="col-md-6">
+      <img src="<%= @employer.image %>">
+      <h1><%= @employer.name %></h1>
+      <p><%= @employer.city %>, <%= @employer.state %> </p>
+    </div>
+
+    <div id="employer-details" class="col-md-6">
+      <h3>About Us</h3>
+      <p><%= @employer.description %></p>
+      <br>
+      <h3>Contact</h3>
+      <div id="rep-contact">
+        <p><em><%= @employer.rep_full_name %></em><br>
+        <em><%= @employer.rep_email %></em><br>
+        <em><%= @employer.rep_phone %></em></p>
+        <p><%= link_to 'Visit Our Website', @employer.normalized_webpage, target: "_blank" %></p>
+      </div>
+    </div>
+  </div> 
+</div>
+

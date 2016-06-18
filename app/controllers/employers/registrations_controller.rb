@@ -1,28 +1,29 @@
 class Employers::RegistrationsController < Devise::RegistrationsController
-# before_filter :configure_sign_up_params, only: [:create]
+before_filter :configure_sign_up_params, only: [:create]
 before_filter :configure_account_update_params, only: [:update]
+skip_before_action :require_no_authentication
 
   # GET /resource/sign_up
   # def new
   #   super
   # end
 
-  # POST /resource
+  # # POST /resource
   # def create
   #   super
   # end
 
-  # GET /resource/edit
-  def edit
-    super
-  end
+  # # GET /resource/edit
+  # def edit
+  #   super
+  # end
 
-  # PUT /resource
-  def update
-    super
-  end
+  # # PUT /resource
+  # def update
+  #   super
+  # end
 
-  # DELETE /resource
+  # # DELETE /resource
   # def destroy
   #   super
   # end
@@ -39,25 +40,50 @@ before_filter :configure_account_update_params, only: [:update]
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.for(:sign_up) << :attribute
-  # end
+    def configure_sign_up_params
+      devise_parameter_sanitizer.for(:sign_up) <<
+        [ :name, 
+          :image,
+          :description,
+          :rep_first_name,
+          :rep_last_name,
+          :rep_phone,
+          :rep_email,
+          :website,
+          :city,
+          :state,
+          :password,
+          :password_confirmation,
+          :email
+        ]
+    end
 
-  # If you have extra params to permit, append them to the sanitizer.
-  def configure_account_update_params
-    devise_parameter_sanitizer.for(:account_update) << 
-      [ :name, 
-        :image,
-        :description,
-        :rep_first_name,
-        :rep_last_name,
-        :rep_phone,
-        :rep_email,
-        :website,
-        :city,
-        :state
-      ]
-  end
+    # If you have extra params to permit, append them to the sanitizer.
+    def configure_account_update_params
+      devise_parameter_sanitizer.for(:account_update) << 
+        [ :name, 
+          :image,
+          :description,
+          :rep_first_name,
+          :rep_last_name,
+          :rep_phone,
+          :rep_email,
+          :website,
+          :city,
+          :state,
+          :password,
+          :password_confirmation,
+          :current_password,
+          :email
+        ]
+    end
+
+  private
+
+    def sign_up(resource_name, resource)
+      true
+    end
+
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)

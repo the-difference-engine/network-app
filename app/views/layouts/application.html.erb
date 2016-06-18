@@ -2,16 +2,57 @@
 <html>
 <head>
   <title>NetworkApp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="nav-bar">
+    <nav>
+      <ul>
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/employers">Employers</a></li>
+        <li><a href="/students">Students</a></li>
+        <% if admin_signed_in? %>
+          <li><a href="/admins/sign_out">Sign Out</a></li>
+        <% elsif student_signed_in? %>
+          <li><a href="/admins/sign_out">Sign Out</a></li>
+        <% elsif employer_signed_in? %>
+          <li><a href="/employers/sign_out">Sign Out</a></li>
+        <% else %>
+          <li><a href="/sign_in">Sign Out</a></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <% flash.each do |name, message| %>
+    <% if name == "notice" %>
+      <% name = "info" %>
+    <% end %>
+    <div class="alert alert-<%= name %> alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <%= message %>
+    </div>
+  <% end %>
 
   <%= yield %>
 
 </body>
+<script>
+  $(function(){
+    var current_page_URL = location.href;
+    $( "a" ).each(function() {
+       if ($(this).attr("href") !== "#") {
+         var target_URL = $(this).prop("href");
+         if (target_URL == current_page_URL) {
+            $('nav a').parents('li, ul').removeClass('active');
+            $(this).parent('li').addClass('active');
+            return false;
+         }
+       }
+    });
+  });
+</script>
 </html>
