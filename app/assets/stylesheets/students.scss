@@ -1,5 +1,20 @@
-#student-box {
+.student-card {
+  padding-top: 10px;
   padding-bottom: 10px;
-  height: 350px;
-  border-bottom: yellow;
+  background-color: #A4E9EB;
+  border: solid;
+  border-width: 1px;
+  margin-top: 20px;
+  
+  img {
+      max-width: 300px;
+      max-height: 300px;
+    }
+
+  p {
+    padding-top: 5px;
+    text-align: center;
+  }
 }
+
+// align images, what about different sizes, no break between columns on rows

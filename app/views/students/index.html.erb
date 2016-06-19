@@ -1,31 +1,26 @@
-<h1>Students#index</h1>
-profile with picture, full name, capstone image/link, capstone name
-
+<h2>Students Index</h2>
 <div class="container-fluid">
   <div class="row">
-
+    
     <% @students.each do |student| %>
-      <div class="col-md-6 col-sm-6 list-view" id="student-box">
+      <div class="col-md-6 col-sm-6 col-xs-12 student-card">
         
-          
-            <div class="col-sm-6">
-              <%= image_tag student.avatar, class: "img-responsive" %>
-              Name: <%= student.full_name %>
+            <div class="col-md-6 col-sm-6">
+              <img src="<%= student.avatar %>" class="img-responsive" >
+              <p>Name: <%= student.full_name %></p>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-md-6 col-sm-6">
               <% student.projects.each do |project| %>
                 <% if project.capstone? %>
-                <%= image_tag project.screencast, class: "img-responsive" %>
-                  Capstone name: <%= project.name %>
+                <img src="<%= project.screencast %>" class="img-responsive">
+                <p>Capstone name: <%= project.name %></p>
                 <% end %>
               <% end %>
             </div>
-
+            
       </div>
     <% end %>
 
   </div>
 </div>
-
-
