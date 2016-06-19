@@ -3,6 +3,7 @@ profile with picture, full name, capstone image/link, capstone name
 
 <div class="container-fluid">
   <div class="row">
+
     <% @students.each do |student| %>
       <div class="col-md-6 col-sm-6 list-view" id="student-box">
         
@@ -11,20 +12,19 @@ profile with picture, full name, capstone image/link, capstone name
               <%= image_tag student.avatar, class: "img-responsive" %>
               Name: <%= student.full_name %>
             </div>
+
             <div class="col-sm-6">
-              
-              
-            
               <% student.projects.each do |project| %>
                 <% if project.capstone? %>
                 <%= image_tag project.screencast, class: "img-responsive" %>
                   Capstone name: <%= project.name %>
                 <% end %>
               <% end %>
-          
+            </div>
 
       </div>
     <% end %>
+
   </div>
 </div>
 
