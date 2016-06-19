@@ -1,6 +1,7 @@
 class EmployersController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admin!, :only => [:new, :create]
+  before_action :authenticate_admin_employer!, :only => [:edit, :update]
   # skip_before_action :require_no_authentication
 
   def index
@@ -26,12 +27,24 @@ class EmployersController < ApplicationController
 
   def show
     @employer = Employer.find(params[:id])
+    @follow_up_list = @employer.follow_up_list
   end
 
   def edit
+    @employer = Employer.find(params[:id])
   end
 
   def update
+    @employer = Employer.find(params[:id])
+
+    if @employer.update(employer_params)
+      flash[:success] = "Employer account successfully updated!"
+      redirect_to employer_path(@employer)
+    else
+      flash[:warning] = "Unable to update employer account!"
+      render :edit
+      Rails.logger.info @employer.errors.messages
+    end
   end
 
   def destroy  
@@ -62,6 +75,7 @@ class EmployersController < ApplicationController
         :state,
         :password,
         :password_confirmation,
+        :current_password,
         :email
       )
     end
