@@ -35,7 +35,15 @@ class EmployersController < ApplicationController
   end
 
   def destroy  
-    @employer = Employer.find(params[:id])  
+    @employer = Employer.find(params[:id]) 
+
+    if @employer.destroy
+      flash[:success] = "Employer account successfully deleted!"
+      redirect_to employers_path
+    else
+      flash[:warning] = "Unable to delete the employer"
+      Rails.logger.info @employer.errors.messages
+    end 
   end
 
   private
