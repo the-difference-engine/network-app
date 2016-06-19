@@ -1,7 +1,7 @@
 class EmployersController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admin!, :only => [:new, :create]
-  before_action :authenticate_admin_employer!, :only => [:edit, :update]
+  before_action :authenticate_admin_employer!, :only => [:edit, :update, :destroy]
   # skip_before_action :require_no_authentication
 
   def index
@@ -32,6 +32,10 @@ class EmployersController < ApplicationController
 
   def edit
     @employer = Employer.find(params[:id])
+    unless @employer.id == current_employer.id || current_admin
+      redirect_to employers_path
+      flash[:warning] = "You do not have access to that page!"
+    end
   end
 
   def update

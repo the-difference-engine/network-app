@@ -8,8 +8,10 @@
           <h3><%= link_to employer.name, employer_path(employer) %></h3>
           <p><%= employer.description %></p>
           <br>
-          <%= link_to 'Edit', edit_employer_path(employer), class: "btn btn-default btn-xs" %>
-          <%= link_to 'Delete', employer_path(employer), method: :delete, data: { confirm: "Are you sure you want to delete '#{employer.name}'"}, class: "btn btn-default btn-xs" %>
+          <% if current_admin || current_employer.id == employer.id %>
+            <%= link_to 'Edit Profile', edit_employer_path(employer), class: "btn btn-default btn-xs" %>
+            <%= link_to 'Delete', employer_path(employer), method: :delete, data: { confirm: "Are you sure you want to delete '#{employer.name}'"}, class: "btn btn-default btn-xs" %>
+          <% end %>
         </li>
       </div>
     <% end %>
