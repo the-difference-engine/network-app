@@ -16,7 +16,7 @@ class Employer < ActiveRecord::Base
   end
 
   def create_list
-    FollowUpList.create(name: self.name + "List", employer_id: self.id)
+    FollowUpList.create(name: self.name + "-List", employer_id: self.id)
   end
   
 end
