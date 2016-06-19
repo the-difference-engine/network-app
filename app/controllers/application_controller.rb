@@ -20,4 +20,26 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate_admin_employer!
+    if current_admin
+      :authenticate_admin!
+    elsif current_employer
+      :authenticate_employer!
+    else 
+      redirect_to "/sign_in"
+      flash[:warning] = "You do not have access! Please sign in or sign up"
+    end
+  end
+
+  def authenticate_admin_student!
+    if current_admin
+      :authenticate_admin!
+    elsif current_student
+      :authenticate_student!
+    else 
+      redirect_to "/sign_in"
+      flash[:warning] = "You do not have access! Please sign in or sign up"
+    end
+  end
+
 end

@@ -1,8 +1,7 @@
 class Employers::RegistrationsController < Devise::RegistrationsController
 before_filter :configure_sign_up_params, only: [:create]
 before_filter :configure_account_update_params, only: [:update]
-skip_before_action :require_no_authentication
-
+before_filter :authenticate_admin_employer!, only: [:new]
   # GET /resource/sign_up
   # def new
   #   super
