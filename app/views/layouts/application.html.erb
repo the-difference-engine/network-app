@@ -15,6 +15,7 @@
         <li><a href="/employers">Employers</a></li>
         <li><a href="/students">Students</a></li>
         <% if admin_signed_in? %>
+          <li><a href="/admin_center">Admin Center</a></li>
           <li><a href="/admins/sign_out">Sign Out</a></li>
         <% elsif student_signed_in? %>
           <li><a href="/admins/sign_out">Sign Out</a></li>
