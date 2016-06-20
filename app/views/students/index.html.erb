@@ -3,18 +3,21 @@
   <div class="row">
     
     <% @students.each do |student| %>
-      <div class="col-md-6 col-sm-6 col-xs-12 student-card">
+      <div class="col-md-6 col-sm-6 col-xs-12 student-index-card" >
         
             <div class="col-md-6 col-sm-6">
               <img src="<%= student.avatar %>" class="img-responsive" >
-              <p>Name: <%= student.full_name %></p>
+              <p><%= link_to student.full_name, "/students/#{student.id}" %></p>
+              <!-- fix student model methods so code below works
+              student.capstone_project.name -->
+
             </div>
 
             <div class="col-md-6 col-sm-6">
               <% student.projects.each do |project| %>
                 <% if project.capstone? %>
                 <img src="<%= project.screencast %>" class="img-responsive">
-                <p>Capstone name: <%= project.name %></p>
+                <p>My Capstone: <%= link_to project.name, "/students/#{student.id}" %> </p>
                 <% end %>
               <% end %>
             </div>

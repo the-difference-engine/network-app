@@ -11,17 +11,12 @@ class Student < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
-# Does this need to be first?  Is there another way?
-
   def capstone_project
-    projects.each do |project|
-      if project.capstone
-        return "true"
-      else
-        return "false"
-      end
-    end
+    Project.all.find_by(:student_id => id, :capstone => true)
+    # projects.where(capstone: true).last
   end
+
+ 
 
 end
 

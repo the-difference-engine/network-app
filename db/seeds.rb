@@ -1,4 +1,4 @@
- 2.times do 
+ 20.times do 
   student = Student.create!(
     email: Faker::Internet.email,
     password: "password",

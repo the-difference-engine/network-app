@@ -1,5 +1,5 @@
-.student-card {
-  padding-top: 10px;
+.student-index-card {
+  padding-top: 20px;
   padding-bottom: 10px;
   background-color: #A4E9EB;
   border: solid;
@@ -17,4 +17,10 @@
   }
 }
 
-// align images, what about different sizes, no break between columns on rows
+.student-profile {
+  background-color: #A4E9EB;
+  border: solid;
+  border-width: 1px;
+}
+
+// what about different sizes?, align images, no break between columns on rows
