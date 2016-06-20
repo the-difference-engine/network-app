@@ -32,7 +32,7 @@ class EmployersController < ApplicationController
 
   def edit
     @employer = Employer.find(params[:id])
-    unless @employer.id == current_employer.id || current_admin
+    unless admin_signed_in? || employer_signed_in? && @employer.id == current_employer.id
       redirect_to employers_path
       flash[:warning] = "You do not have access to that page!"
     end
@@ -79,7 +79,7 @@ class EmployersController < ApplicationController
         :state,
         :password,
         :password_confirmation,
-        :current_password,
+        # :current_password,
         :email
       )
     end
