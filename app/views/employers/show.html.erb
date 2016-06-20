@@ -1,7 +1,11 @@
 <div class="container" id="employer-show">
   <div class="row">
     <div id="employer-show-img" class="col-md-6">
-      <img src="<%= @employer.image %>">
+      <% if @employer.image != "" %>
+         <%= image_tag(@employer.image) %>
+      <% else %>
+         <%= image_tag('no_photos.png') %>
+      <% end %>
       <h1><%= @employer.name %></h1>
       <p><%= @employer.city %>, <%= @employer.state %> </p>
     </div>

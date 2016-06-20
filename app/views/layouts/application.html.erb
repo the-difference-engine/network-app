@@ -7,17 +7,20 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
   <div id="nav-bar">
     <nav>
       <ul>
         <li class="active"><a href="/">Home</a></li>
+        <% if admin_signed_in? %>
+          <li><a href="/admin_center">Admin Center</a></li>
+        <% end %>
         <li><a href="/employers">Employers</a></li>
         <li><a href="/students">Students</a></li>
         <% if admin_signed_in? %>
-          <li><a href="/admin_center">Admin Center</a></li>
-          <li><a href="/admins/sign_out">Sign Out</a></li>
           <li><%= link_to current_user.email, admin_path(current_user) %></li>
+          <li><a href="/admins/sign_out">Sign Out</a></li>
         <% elsif student_signed_in? %>
           <li><%= link_to current_user.email, student_path(current_user) %></li>
           <li><a href="/admins/sign_out">Sign Out</a></li>

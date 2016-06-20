@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
       :authenticate_employer!
     else 
       redirect_to "/sign_in"
-      flash[:warning] = "You do not have access!"
+      flash[:warning] = "Access restricted! Please sign in or sign up."
     end
   end
 

@@ -8,10 +8,9 @@ before_filter :authenticate_admin_employer!, except: [:new, :create]
   # end
 
   # # POST /resource
-  def create
-    super
-    flash[:success] = "Employer account created! Please sign in."
-  end
+  # def create
+  #   super
+  # end
 
   # # GET /resource/edit
   # def edit

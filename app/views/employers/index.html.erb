@@ -4,7 +4,11 @@
     <% @employers.each do |employer| %>
       <div class="indiv-employer">
         <li>
-          <img src="<%= employer.image %>" >
+          <% if employer.image != "" %>
+             <%= image_tag(employer.image) %>
+          <% else %>
+             <%= image_tag('no_photos.png') %>
+          <% end %>
           <h3><%= link_to employer.name, employer_path(employer) %></h3>
           <p><%= employer.description %></p>
           <br>
