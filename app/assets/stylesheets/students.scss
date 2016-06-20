@@ -1,3 +1,26 @@
-// Place all the styles related to the students controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.student-index-card {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  background-color: #A4E9EB;
+  border: solid;
+  border-width: 1px;
+  margin-top: 20px;
+  
+  img {
+      max-width: 300px;
+      max-height: 300px;
+    }
+
+  p {
+    padding-top: 5px;
+    text-align: center;
+  }
+}
+
+.student-profile {
+  background-color: #A4E9EB;
+  border: solid;
+  border-width: 1px;
+}
+
+// what about different sizes?, align images, no break between columns on rows

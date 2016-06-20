@@ -1,2 +1,29 @@
-<h1>Students#index</h1>
-<p>Find me in app/views/students/index.html.erb</p>
+<h2>Students Index</h2>
+<div class="container-fluid">
+  <div class="row">
+    
+    <% @students.each do |student| %>
+      <div class="col-md-6 col-sm-6 col-xs-12 student-index-card" >
+        
+            <div class="col-md-6 col-sm-6">
+              <img src="<%= student.avatar %>" class="img-responsive" >
+              <p><%= link_to student.full_name, "/students/#{student.id}" %></p>
+              <!-- fix student model methods so code below works
+              student.capstone_project.name -->
+
+            </div>
+
+            <div class="col-md-6 col-sm-6">
+              <% student.projects.each do |project| %>
+                <% if project.capstone? %>
+                <img src="<%= project.screencast %>" class="img-responsive">
+                <p>My Capstone: <%= link_to project.name, "/students/#{student.id}" %> </p>
+                <% end %>
+              <% end %>
+            </div>
+            
+      </div>
+    <% end %>
+
+  </div>
+</div>

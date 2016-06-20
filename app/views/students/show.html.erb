@@ -1,2 +1,63 @@
-<h1>Students#show</h1>
-<p>Find me in app/views/students/show.html.erb</p>
+<h1>Students Show</h1>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="student-profile">
+    
+    <div class="col-xs-5 col-sm-6 col-lg-4">
+      <img src="<%= @student.avatar %>" class="img-responsive" >
+    </div>
+
+    <div class="col-xs-7 col-sm-6 col-lg-8">
+      <h3><%= @student.full_name %></h3>
+      <ul><%= link_to "Resume", @student.resume %></ul>
+      <ul>Email: <%= @student.email%></ul>
+      <ul>City: <%= @student.city %></ul>
+      <ul>Inudstry: <%= @student.industry %></ul>
+      <ul>ACLTC Graduation date: <%= @student.grad_date %></ul>
+      <ul>Strengths: <li><%= @student.skill_1 %></li>
+        <li><%= @student.skill_2 %></li>
+        <li><%= @student.skill_3 %></li>
+      </ul>
+
+      <ul>Areas of Interest: <li><%= @student.interest_1 %></li>
+        <li><%= @student.interest_2 %></li>
+        <li><%= @student.interest_3 %></li>
+      </ul>
+      <ul>Inteview Question One</ul>
+      <ul>Answer: <%= @student.interview_1 %></ul>
+      <ul>Inteview Question Two</ul>
+      <ul>Answer: <%= @student.interview_2 %></ul>
+      <ul>Inteview Question Three</ul>
+      <ul>Answer: <%= @student.interview_3 %></ul>
+      <ul>Github<%= @student.github %></ul>
+      <ul>Blog<%= @student.blog %></ul>
+      <ul>Why I learned to code: <%= @student.quote %></ul>
+      <ul>Seeking Employment: <%= @student.seeking_employment %></ul>
+    </div>
+
+    <h4>Exmples of my work</h4>
+    <div class="row">
+      <% @student.projects.all.each do |project| %>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <p>Project:</ul>
+            <ul>Name: <%= project.name %></ul>
+            <ul>Description: <%= project.description %></ul>
+            <ul>Work type:  
+            <% if project.capstone %>
+              Capstone
+            <% end %>
+            <% if project.client_work %>
+              Client work
+            <% end %></ul>
+            <ul>Code: <%= project.github %></ul>
+            <ul>Screencast: <img src="<%= project.screencast %>" class="img-responsive"</ul>
+            <ul>Url: <%= project.website %></ul>
+            
+        </div>
+      <% end %>
+    </div>
+
+    </div>
+  </div>
+</div>
