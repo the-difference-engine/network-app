@@ -19,7 +19,9 @@
         <p><em><%= @employer.rep_full_name %></em><br>
         <em><%= @employer.rep_email %></em><br>
         <em><%= @employer.rep_phone %></em></p>
-        <p><%= link_to 'Visit Our Website', @employer.normalized_webpage, target: "_blank" %></p>
+        <% if @employer.website != "" %>
+          <p><%= link_to 'Visit Our Website', @employer.normalized_webpage, target: "_blank" %></p>
+        <% end %>
       </div>
     </div>
   </div> 
