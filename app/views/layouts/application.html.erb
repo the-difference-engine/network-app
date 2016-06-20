@@ -17,12 +17,15 @@
         <% if admin_signed_in? %>
           <li><a href="/admin_center">Admin Center</a></li>
           <li><a href="/admins/sign_out">Sign Out</a></li>
+          <li><%= link_to current_user.email, admin_path(current_user) %></li>
         <% elsif student_signed_in? %>
+          <li><%= link_to current_user.email, student_path(current_user) %></li>
           <li><a href="/admins/sign_out">Sign Out</a></li>
         <% elsif employer_signed_in? %>
+          <li><%= link_to current_user.email, employer_path(current_user) %></li>
           <li><a href="/employers/sign_out">Sign Out</a></li>
         <% else %>
-          <li><a href="/sign_in">Sign Out</a></li>
+          <li><a href="/sign_in">Sign In</a></li>
         <% end %>
       </ul>
     </nav>
