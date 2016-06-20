@@ -17,7 +17,7 @@
     rep_email: Faker::Internet.email,
     website: Faker::Internet.url,
     city: Faker::Address.city,
-    state: Faker::Address.state,
+    state: Faker::Address.state_abbr,
     email: Faker::Internet.email,
     password: Faker::Internet.password
   )
