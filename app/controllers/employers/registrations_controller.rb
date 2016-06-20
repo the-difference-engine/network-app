@@ -1,16 +1,17 @@
 class Employers::RegistrationsController < Devise::RegistrationsController
 before_filter :configure_sign_up_params, only: [:create]
 before_filter :configure_account_update_params, only: [:update]
-before_filter :authenticate_admin_employer!, only: [:new]
+before_filter :authenticate_admin_employer!, except: [:new, :create]
   # GET /resource/sign_up
   # def new
   #   super
   # end
 
   # # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    flash[:success] = "Employer account created! Please sign in."
+  end
 
   # # GET /resource/edit
   # def edit

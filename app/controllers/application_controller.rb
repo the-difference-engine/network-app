@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def set_current_user
-    @current_user = current_admin || current_student || current_employer
+    if admin_signed_in? || student_signed_in? || employer_signed_in?
+     @current_user = current_admin || current_student || current_employer
+    end
   end
 
   def authenticate_user!
@@ -16,7 +18,7 @@ class ApplicationController < ActionController::Base
       :authenticate_employer!
     else 
       redirect_to "/sign_in"
-      flash[:warning] = "You do not have access! Please sign in or sign up"
+      flash[:warning] = "You do not have access!"
     end
   end
 
@@ -27,7 +29,7 @@ class ApplicationController < ActionController::Base
       :authenticate_employer!
     else 
       redirect_to "/sign_in"
-      flash[:warning] = "You do not have access! Please sign in or sign up"
+      flash[:warning] = "You do not have access!"
     end
   end
 
@@ -38,7 +40,7 @@ class ApplicationController < ActionController::Base
       :authenticate_student!
     else 
       redirect_to "/sign_in"
-      flash[:warning] = "You do not have access! Please sign in or sign up"
+      flash[:warning] = "You do not have access!"
     end
   end
 

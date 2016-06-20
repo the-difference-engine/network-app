@@ -8,10 +8,6 @@ class EmployersController < ApplicationController
     @employers = Employer.all
   end
 
-  def new
-    @employer = Employer.new
-  end
-
   def create
     @employer = Employer.new(employer_params)
 
