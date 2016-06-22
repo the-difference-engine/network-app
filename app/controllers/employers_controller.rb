@@ -35,6 +35,8 @@ class EmployersController < ApplicationController
 
   def update
     @employer = Employer.find(params[:id])
+
+    # Allow employer account update without password
     if admin_signed_in? || employer_signed_in? && @employer.id == current_employer.id
       if employer_params[:password].blank?
         employer_params.delete(:password)
@@ -49,7 +51,8 @@ class EmployersController < ApplicationController
 
       respond_to do |format|
         if successfully_updated
-          format.html { redirect_to @employer, notice: 'Your account was successfully updated!' }
+          format.html { redirect_to @employer }
+          flash[:success] = "Your account was successfully updated!"
           format.json { head :no_content }
         else
           format.html { render action: 'edit' }
