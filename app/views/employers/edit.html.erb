@@ -14,7 +14,6 @@
   <h2>Edit <%= @employer.name %> Profile</h2>
 
   <%= form_for(@employer, url: employer_path(@employer), html: { method: :patch }) do |f| %>
-    <h3>Edit Account Details</h3>
 
     <div class="field">
       <%= f.label :name %><br />
