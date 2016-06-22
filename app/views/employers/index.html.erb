@@ -5,9 +5,9 @@
       <div class="indiv-employer">
         <li>
           <% if employer.image != "" %>
-             <%= image_tag(employer.image) %>
+             <%= image_tag(employer.image, class: "img-responsive") %>
           <% else %>
-             <%= image_tag('no_photos.png') %>
+             <%= image_tag('no_photos.png', class: "img-responsive") %>
           <% end %>
           <h3><%= link_to employer.name, employer_path(employer) %></h3>
           <p><%= employer.description %></p>

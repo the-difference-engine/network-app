@@ -5,7 +5,11 @@
     <div class="student-profile">
     
     <div class="col-xs-5 col-sm-6 col-lg-4">
-      <img src="<%= @student.avatar %>" class="img-responsive" >
+      <% if @student.avatar != "" %>
+             <%= image_tag(@student.avatar, class: "img-responsive") %>
+          <% else %>
+             <%= image_tag('no_photos.png', class: "img-responsive") %>
+          <% end %>
     </div>
 
     <div class="col-xs-7 col-sm-6 col-lg-8">

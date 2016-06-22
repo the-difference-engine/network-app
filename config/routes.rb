@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   }
 
   root 'students#index'
-
+  
   get '/sign_in' => 'pages#sign_in'
 
   namespace :admin do
