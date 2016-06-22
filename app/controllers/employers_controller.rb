@@ -17,7 +17,6 @@ class EmployersController < ApplicationController
     else
       flash[:warning] = "Unable to add new employer"
       render :new
-      Rails.logger.info @employer.errors.messages
     end
   end
 
@@ -37,13 +36,25 @@ class EmployersController < ApplicationController
   def update
     @employer = Employer.find(params[:id])
 
-    if @employer.update(employer_params)
-      flash[:success] = "Employer account successfully updated!"
-      redirect_to employer_path(@employer)
-    else
-      flash[:warning] = "Unable to update employer account!"
-      render :edit
-      Rails.logger.info @employer.errors.messages
+    if employer_params[:password].blank?
+      employer_params.delete(:password)
+      employer_params.delete(:password_confirmation)
+    end
+
+    successfully_updated = if needs_password?(@employer, employer_params)
+                             @employer.update(employer_params)
+                           else
+                             @employer.update_without_password(employer_params)
+                           end
+
+    respond_to do |format|
+      if successfully_updated
+        format.html { redirect_to @employer, notice: 'Your account was successfully updated!' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @employer.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -80,7 +91,7 @@ class EmployersController < ApplicationController
       )
     end
 
-    # def sign_up(resource_name, resource)
-    #   true
-    # end
+    def needs_password?(user, params)
+      params[:password].present?
+    end
 end
