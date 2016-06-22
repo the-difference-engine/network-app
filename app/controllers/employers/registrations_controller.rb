@@ -13,9 +13,13 @@ before_filter :authenticate_admin_employer!, except: [:new, :create]
   # end
 
   # # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    @employer = Employer.find(params[:id])
+    unless admin_signed_in? || employer_signed_in? && @employer.id == current_employer.id
+      redirect_to employers_path
+      flash[:warning] = "You do not have access to that page!"
+    end
+  end
 
   # # PUT /resource
   # def update

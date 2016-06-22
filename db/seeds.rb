@@ -45,6 +45,5 @@ end
     state: Faker::Address.state_abbr,
     email: Faker::Internet.email,
     password: "password"
-  )
-  
+  ) 
 end
