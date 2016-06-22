@@ -35,25 +35,26 @@ class EmployersController < ApplicationController
 
   def update
     @employer = Employer.find(params[:id])
+    if admin_signed_in? || employer_signed_in? && @employer.id == current_employer.id
+      if employer_params[:password].blank?
+        employer_params.delete(:password)
+        employer_params.delete(:password_confirmation)
+      end
 
-    if employer_params[:password].blank?
-      employer_params.delete(:password)
-      employer_params.delete(:password_confirmation)
-    end
+      successfully_updated = if needs_password?(@employer, employer_params)
+                               @employer.update(employer_params)
+                             else
+                               @employer.update_without_password(employer_params)
+                             end
 
-    successfully_updated = if needs_password?(@employer, employer_params)
-                             @employer.update(employer_params)
-                           else
-                             @employer.update_without_password(employer_params)
-                           end
-
-    respond_to do |format|
-      if successfully_updated
-        format.html { redirect_to @employer, notice: 'Your account was successfully updated!' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @employer.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if successfully_updated
+          format.html { redirect_to @employer, notice: 'Your account was successfully updated!' }
+          format.json { head :no_content }
+        else
+          format.html { render action: 'edit' }
+          format.json { render json: @employer.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
