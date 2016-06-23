@@ -45,7 +45,7 @@ class UserFileUploader < CarrierWave::Uploader::Base
     process resize_to_limit: [500,500]
   end
 
-  version :medium do
+  version :medium_square do
     process resize_to_fill: [500,500]
   end
 
@@ -67,6 +67,9 @@ class UserFileUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png pdf)
   end
 
+  def default_url
+    'no_avatar.png'
+  end
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename

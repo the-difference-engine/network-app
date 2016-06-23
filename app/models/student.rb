@@ -5,6 +5,8 @@ class Student < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   mount_uploader :avatar, UserFileUploader
+  # mount_uploader :resume, UserFileUploader
+  
   belongs_to :follow_up_list
   has_many :projects, dependent: :destroy
 

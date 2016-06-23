@@ -5,11 +5,11 @@
     <div class="student-profile">
     
     <div class="col-xs-5 col-sm-6 col-lg-4">
-      <% if @student.avatar != "" %>
-             <%= image_tag(@student.avatar.standard_square.url, class: "img-responsive") %>
-          <% else %>
-             <%= image_tag('no_photos.png', class: "img-responsive") %>
-          <% end %>
+      <% if @student.avatar.model["avatar"] =~ /robo/ %>
+        <%= image_tag(@student.avatar.model["avatar"]) %>
+      <% else %>
+        <%= image_tag(@student.avatar.standard.url) %>
+      <% end %>
     </div>
 
     <div class="col-xs-7 col-sm-6 col-lg-8">
