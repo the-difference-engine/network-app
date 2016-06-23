@@ -10,10 +10,7 @@
     </div>
   <% end %>
 
-  <h2>Edit <%= @student.first_name %> Profile</h2>
-
-
-  <%= form_for(@student, url: student_path(@student), html: { :multipart => true }) do |f| %>
+  <%= form_for(@student, url: admin_students_path, html: { :multipart => true }) do |f| %>
 
     <div class="field">
       <%= f.label :first_name %><br />
@@ -134,14 +131,8 @@
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off" %>
     </div>
-
     <br>
     <div class="actions">
-      <%= f.submit "Update", class: "btn btn-default" %>
+      <%= f.submit "Submit", class: "btn btn-default" %>
     </div>
-
-  <% end %>
-
-</div>
-
   <% end %>

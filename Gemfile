@@ -28,6 +28,11 @@ gem 'devise'
 gem 'faker'
 gem 'postrank-uri'
 
+gem 'figaro'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

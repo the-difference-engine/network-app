@@ -4,6 +4,8 @@ class Employer < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  mount_uploader :image, UserFileUploader
+
   before_save :capitalize_params
   after_create :create_list
   has_one :follow_up_list, dependent: :destroy
