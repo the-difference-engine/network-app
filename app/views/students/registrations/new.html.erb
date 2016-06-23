@@ -4,15 +4,117 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :avatar %><br />
+    <%= f.file_field :avatar, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :grad_date %><br />
+    <%= f.date_select :grad_date, discard_day: true, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :industry %><br />
+    <%= f.text_field :industry, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :seeking_employment %><br />
+    <%= f.text_field :seeking_employment, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :resume %><br />
+    <%= f.text_field :resume, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :github %><br />
+    <%= f.text_field :github, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :blog %><br />
+    <%= f.text_field :blog, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :quote %><br />
+    <%= f.text_field :quote, autofocus: true %>
+  </div>
+
+  <h3>Top 3 Skills</h3>
+  <div class="field">
+    <%= f.label :skill_1 %><br />
+    <%= f.text_field :skill_1, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skill_2 %><br />
+    <%= f.text_field :skill_2, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skill_3 %><br />
+    <%= f.text_field :skill_3, autofocus: true %>
+  </div>
+
+  <h3>Interests</h3>
+  <div class="field">
+    <%= f.label :interest_1 %><br />
+    <%= f.text_field :interest_1, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :interest_2 %><br />
+    <%= f.text_field :interest_2, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :interest_3 %><br />
+    <%= f.text_field :interest_3, autofocus: true %>
+  </div>
+
+  <h3>Interview Questions</h3>
+  <div class="field">
+    <%= f.label :interview_1 %><br />
+    <%= f.text_field :interview_1, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :interview_2 %><br />
+    <%= f.text_field :interview_2, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :interview_3 %><br />
+    <%= f.text_field :interview_3, autofocus: true %>
+  </div>
+  
+  <h3>Log In Information</h3>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 

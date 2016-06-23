@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+  get 'students/new'
+  end
+
   devise_for :admins, controllers: { 
     sessions: 'admins/sessions',
     registrations: 'admins/registrations'
@@ -19,6 +23,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :employers
+    resources :students
   end
 
   resources :admins
