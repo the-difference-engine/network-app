@@ -4,6 +4,7 @@ class Student < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  mount_uploader :avatar, UserFileUploader
   belongs_to :follow_up_list
   has_many :projects, dependent: :destroy
 
