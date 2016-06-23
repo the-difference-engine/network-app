@@ -1,10 +1,10 @@
 <div class="container" id="employer-show">
   <div class="row">
     <div id="employer-show-img" class="col-md-6">
-      <% if @employer.image != "" %>
-         <%= image_tag(@employer.image) %>
+      <% if @employer.image.model["image"] =~ /robo/ %>
+        <%= image_tag(@employer.image.model["image"]) %>
       <% else %>
-         <%= image_tag('no_photos.png') %>
+        <%= image_tag(@employer.image.standard.url) %>
       <% end %>
       <h1><%= @employer.name %></h1>
       <p><%= @employer.city %>, <%= @employer.state %> </p>

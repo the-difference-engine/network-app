@@ -5,26 +5,26 @@
     <% @students.each do |student| %>
       <div class="col-md-6 col-sm-6 col-xs-12 student-index-card" >
         
-            <div class="col-md-6 col-sm-6">
-              <% if student.avatar != "" %>
-                 <%= image_tag(student.avatar, class: "img-responsive") %>
-              <% else %>
-                 <%= image_tag('no_photos.png', class: "img-responsive") %>
-              <% end %>
-              <p><%= link_to student.full_name, "/students/#{student.id}" %></p>
-              <!-- fix student model methods so code below works
-              student.capstone_project.name -->
+        <div class="col-md-6 col-sm-6">
+          <% if student.avatar.model["avatar"] =~ /robo/ %>
+            <%= image_tag(student.avatar.model["avatar"]) %>
+          <% else %>
+            <%= image_tag(student.avatar.standard.url) %>
+          <% end %>
+          <p><%= link_to student.full_name, "/students/#{student.id}" %></p>
+          <!-- fix student model methods so code below works
+          student.capstone_project.name -->
 
-            </div>
+        </div>
 
-            <div class="col-md-6 col-sm-6">
-              <% student.projects.each do |project| %>
-                <% if project.capstone? %>
-                <img src="<%= project.screencast %>" class="img-responsive">
-                <p>My Capstone: <%= link_to project.name, "/students/#{student.id}" %> </p>
-                <% end %>
-              <% end %>
-            </div>
+        <div class="col-md-6 col-sm-6">
+          <% student.projects.each do |project| %>
+            <% if project.capstone? %>
+            <img src="<%= project.screencast %>" class="img-responsive">
+            <p>My Capstone: <%= link_to project.name, "/students/#{student.id}" %> </p>
+            <% end %>
+          <% end %>
+        </div>
             
       </div>
     <% end %>

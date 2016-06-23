@@ -5,16 +5,16 @@
     <div class="student-profile">
     
     <div class="col-xs-5 col-sm-6 col-lg-4">
-      <% if @student.avatar != "" %>
-             <%= image_tag(@student.avatar, class: "img-responsive") %>
-          <% else %>
-             <%= image_tag('no_photos.png', class: "img-responsive") %>
-          <% end %>
+      <% if @student.avatar.model["avatar"] =~ /robo/ %>
+        <%= image_tag(@student.avatar.model["avatar"]) %>
+      <% else %>
+        <%= image_tag(@student.avatar.standard.url) %>
+      <% end %>
     </div>
 
     <div class="col-xs-7 col-sm-6 col-lg-8">
       <h3><%= @student.full_name %></h3>
-      <h3><%= @capstone.name %></h3>
+      <h3><%= @capstone.name if @capstone %></h3>
       <ul><%= link_to "Resume", @student.resume %></ul>
       <ul>Email: <%= @student.email%></ul>
       <ul>City: <%= @student.city %></ul>
@@ -41,7 +41,7 @@
       <ul>Seeking Employment: <%= @student.seeking_employment %></ul>
     </div>
 
-    <h4>Exmples of my work</h4>
+    <h4>Examples of my work</h4>
     <div class="row">
       <% @student.projects.all.each do |project| %>
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
