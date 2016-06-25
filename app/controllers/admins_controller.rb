@@ -46,7 +46,7 @@ class AdminsController < ApplicationController
 
     respond_to do |format|
       if successfully_updated
-        format.html { redirect_to @admin }
+        format.html { redirect_to admins_path }
         flash[:success] = "Your account was successfully updated!"
         format.json { head :no_content }
       else
