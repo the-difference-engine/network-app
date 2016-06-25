@@ -33,7 +33,6 @@ class AdminsController < ApplicationController
     @admin = Admin.find(params[:id])
 
     # Allow admin account update without password
-
     if admin_params[:password].blank?
       admin_params.delete(:password)
       admin_params.delete(:password_confirmation)
