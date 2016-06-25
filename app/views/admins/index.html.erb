@@ -1,2 +1,18 @@
-<h1>Admins#index</h1>
-<p>Find me in app/views/admins/index.html.erb</p>
+<div class="container-fluid" id="admin-index">
+  <div class="row">
+    <ul>
+    <% @admins.each do |admin| %>
+      <div class="indiv-admin">
+        <li>
+          <%= image_tag(admin.avatar.thumb.url) %>
+          <h3><%= link_to admin.full_name, admin_path(admin) %></h3>
+          <p><%= admin.email %></p>
+          <br>
+          <%= link_to 'Edit Profile', edit_admin_path(admin), class: "btn btn-default btn-xs" %>
+          <%= link_to 'Delete', admin_path(admin), method: :delete, data: { confirm: "Are you sure you want to delete '#{admin.full_name}'"}, class: "btn btn-default btn-xs" %>
+        </li>
+      </div>
+    <% end %>
+    </ul>
+  </div> 
+</div>

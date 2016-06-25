@@ -19,7 +19,13 @@ class Student < ActiveRecord::Base
     # projects.where(capstone: true).last
   end
 
- 
+  def normalized_github
+    github && PostRank::URI.normalize(github).to_s
+  end
 
+  def normalized_blog
+    blog && PostRank::URI.normalize(blog).to_s
+  end
+  
 end
 

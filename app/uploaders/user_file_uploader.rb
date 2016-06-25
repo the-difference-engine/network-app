@@ -41,25 +41,39 @@ class UserFileUploader < CarrierWave::Uploader::Base
   #   process resize_to_limit: [800,800]
   # end
 
-  version :medium do
+  version :large do
     process resize_to_limit: [500,500]
   end
 
-  version :medium_square do
-    process resize_to_fill: [500,500]
+  # version :medium_square do
+  #   process resize_to_fill: [500,500]
+  # end
+
+  # version :standard, :from_version => :medium do
+  #   process resize_to_limit: [300,300]
+  # end
+
+  # version :standard_square, :from_version => :medium do
+  #   process resize_to_fill: [300,300]
+  # end
+
+  version :show_tall, :from_version => :large do
+    process resize_to_limit: [300,400]
   end
 
-  version :standard, :from_version => :medium do
-    process resize_to_limit: [300,300]
+  version :show_tall_crop do
+    process resize_to_fill: [300,400]
   end
 
-  version :standard_square, :from_version => :medium do
+  version :index_square, :from_version => :large do
     process resize_to_fill: [300,300]
   end
 
-  version :thumb, :from_version => :standard do
+  version :thumb, :from_version => :large do
     process resize_to_fill: [100,100]
   end
+
+
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

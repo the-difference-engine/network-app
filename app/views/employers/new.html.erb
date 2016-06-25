@@ -10,10 +10,9 @@
 <% end %>
 
 <div class="container">
-  <h2>Edit <%= @employer.name %> Profile</h2>
+  <%= form_for(@employer, url: admin_employers_path, html: { :multipart => true }) do |f| %>
 
-  <%= form_for(@employer, url: employer_path(@employer), html: { method: :patch }) do |f| %>
-
+    <h3>Employer Details</h3>
     <div class="field">
       <%= f.label :name %><br />
       <%= f.text_field :name, autofocus: true %>
@@ -56,7 +55,7 @@
 
     <div class="field">
       <%= f.label :state %><br />
-      <%= f.select(:state, options_for_select(us_states, @employer.state)) %>
+      <%= f.select(:state, options_for_select(us_states)) %>
     </div>
 
     <div class="field">
@@ -72,19 +71,17 @@
     </div>
 
     <div class="field">
-      <%= f.label 'Change password' %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.label :password %><br />
       <%= f.password_field :password, autocomplete: "off" %>
     </div>
 
     <div class="field">
-      <%= f.label 'Confirm new password' %><br />
+      <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off" %>
     </div>
-
     <br>
     <div class="actions">
-      <%= f.submit "Update", class: "btn btn-default" %>
+      <%= f.submit "Submit", class: "btn btn-default" %>
     </div>
   <% end %>
 </div>
-
