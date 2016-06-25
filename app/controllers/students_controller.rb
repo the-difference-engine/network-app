@@ -69,26 +69,17 @@ class StudentsController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-  def destroy
-    @student = Student.find(params[:id])
-=======
   def destroy  
     @student = Student.find(params[:id]) 
     @student.remove_avatar!
     # @student.remove_resume!
     @student.save
->>>>>>> 97a53f4ac500e39cb8430c7fd74c6d4aada2b531
 
     if @student.destroy
       flash[:success] = "Student account successfully deleted!"
       redirect_to students_path
     else
-<<<<<<< HEAD
-      flash[:warning] = "Unable to delete the student"
-=======
       flash[:warning] = "Unable to delete the student account."
->>>>>>> 97a53f4ac500e39cb8430c7fd74c6d4aada2b531
       Rails.logger.info @student.errors.messages
     end 
   end
