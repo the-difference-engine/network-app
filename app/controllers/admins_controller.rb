@@ -57,6 +57,20 @@ class AdminsController < ApplicationController
 
   end
 
+  def destroy
+    @admin = Admin.find(params[:id])
+    @admin.remove_avatar!
+    @admin.save
+
+    if @admin.destroy
+      flash[:success] = "Admin account successfully deleted!"
+      redirect_to admins_path
+    else
+      flash[:warning] = "Unable to delete the admin account."
+      Rails.logger.info @admin.errors.messages
+    end 
+  end
+
   def admin_center
     @employers = Employer.all
     @students = Student.all

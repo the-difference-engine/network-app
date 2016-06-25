@@ -5,4 +5,8 @@ class Admin < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   mount_uploader :avatar, UserFileUploader
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
