@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-  get 'students/new'
+  get 'students/new' => 'students#new'
   end
 
   devise_for :admins, controllers: { 
