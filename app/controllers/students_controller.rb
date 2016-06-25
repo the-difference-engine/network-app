@@ -2,6 +2,7 @@ class StudentsController < ApplicationController
   
   before_action :authenticate_user!
   before_action :authenticate_admin!, :only => [:new, :create, :destroy]
+  before_action :authenticate_admin_student!, :only => [:edit, :update]
 
   def index
     @students = Student.all
