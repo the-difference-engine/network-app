@@ -1,16 +1,15 @@
+<% if @employer.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@employer.errors.count, "error") %></h2>
+    <ul>
+    <% @employer.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="container">
-
-  <% if @employer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@employer.errors.count, "error") %></h2>
-      <ul>
-      <% @employer.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <h2>Edit <%= @employer.name %> Profile</h2>
 
   <%= form_for(@employer, url: employer_path(@employer), html: { method: :patch }) do |f| %>
@@ -87,6 +86,5 @@
       <%= f.submit "Update", class: "btn btn-default" %>
     </div>
   <% end %>
-
 </div>
 

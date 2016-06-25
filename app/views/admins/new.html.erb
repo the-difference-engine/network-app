@@ -1,15 +1,15 @@
-<div class="container">
-  <% if @admin.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@admin.errors.count, "error") %></h2>
-      <ul>
-      <% @admin.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<% if @admin.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@admin.errors.count, "error") %></h2>
+    <ul>
+    <% @admin.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
+<div class="container">
   <%= form_for(@admin, url: admins_path, html: { :multipart => true }) do |f| %>
 
     <div class="field">
@@ -35,7 +35,7 @@
     </div>
 
     <div class="field">
-      <%= f.label :password %> 
+      <%= f.label :password %><br />
       <%= f.password_field :password, autocomplete: "off" %>
     </div>
 
@@ -48,3 +48,4 @@
       <%= f.submit "Submit", class: "btn btn-default" %>
     </div>
   <% end %>
+</div>
