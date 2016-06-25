@@ -15,21 +15,22 @@
       <ul>
         <li class="active"><a href="/">Home</a></li>
         <% if admin_signed_in? %>
-          <li><a href="/admin_center">Admin Center</a></li>
+          <li><%= link_to 'Admin Center', admin_center_path %></li>
+          <li><%= link_to 'Admins', admins_path %></li>
         <% end %>
-        <li><a href="/employers">Employers</a></li>
-        <li><a href="/students">Students</a></li>
+        <li><%= link_to 'Employers', employers_path %></li>
+        <li><%= link_to 'Students', students_path %></li>
         <% if admin_signed_in? %>
           <li><%= link_to current_user.email, admin_path(current_user) %></li>
-          <li><a href="/admins/sign_out">Sign Out</a></li>
+          <li><%= link_to 'Sign Out', destroy_admin_session_path %></li>
         <% elsif student_signed_in? %>
           <li><%= link_to current_user.email, student_path(current_user) %></li>
-          <li><a href="/admins/sign_out">Sign Out</a></li>
+          <li><%= link_to 'Sign Out', destroy_student_session_path %></li>
         <% elsif employer_signed_in? %>
           <li><%= link_to current_user.email, employer_path(current_user) %></li>
-          <li><a href="/employers/sign_out">Sign Out</a></li>
+          <li><%= link_to 'Sign Out', destroy_employer_session_path %></li>
         <% else %>
-          <li><a href="/sign_in">Sign In</a></li>
+          <li><%= link_to 'Sign Out', home_sign_in_path %></li>
         <% end %>
       </ul>
     </nav>

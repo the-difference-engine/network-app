@@ -1,11 +1,5 @@
 <div class="container" id="admin-center">
   <%= link_to 'Add Employer', new_admin_employer_path, class: "btn btn-default" %>
+  <%= link_to 'Add Student', new_admin_student_path, class: "btn btn-default" %>
+  <%= link_to 'Add Admin', new_admin_admin_path, class: "btn btn-default" %>
 </div>
-
-
-<% @students.each do |student| %>
-  <ul><%= student.full_name %>
-
-<%= link_to 'Delete Student', "/student/#{student.id}", class: "btn btn-default" %></ul>
-
-<% end %>

@@ -77,11 +77,11 @@ class Employers::RegistrationsController < Devise::RegistrationsController
         ]
     end
 
-  private
+  # private
 
-    def sign_up(resource_name, resource)
-      true
-    end
+  #   def sign_up(resource_name, resource)
+  #     true
+  #   end
 
 
   # The path used after sign up.

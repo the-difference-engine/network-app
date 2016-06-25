@@ -1,18 +1,15 @@
+<% if @student.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@student.errors.count, "error") %></h2>
+    <ul>
+    <% @student.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="container">
-  <% if @student.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@student.errors.count, "error") %></h2>
-      <ul>
-      <% @student.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <h2>Edit <%= @student.first_name %> Profile</h2>
-
-
   <%= form_for(@student, url: student_path(@student), html: { :multipart => true }) do |f| %>
 
     <div class="field">
@@ -126,22 +123,17 @@
     </div>
 
     <div class="field">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.label 'Change password' %> <i>(leave blank if you don't want to change it)</i><br />
       <%= f.password_field :password, autocomplete: "off" %>
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation %><br />
+      <%= f.label 'Confirm new password' %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off" %>
     </div>
-
     <br>
     <div class="actions">
       <%= f.submit "Update", class: "btn btn-default" %>
     </div>
-
   <% end %>
-
 </div>
-
-  <% end %>

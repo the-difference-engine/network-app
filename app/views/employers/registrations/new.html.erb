@@ -6,6 +6,11 @@
     <h3>Log In Information</h3>
 
     <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true %>
+    </div>
+
+    <div class="field">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true %>
     </div>
@@ -23,18 +28,13 @@
     <h3>Employer Details</h3>
 
     <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true %>
+      <%= f.label :description %><br />
+      <%= f.text_field :description, autofocus: true %>
     </div>
 
     <div class="field">
       <%= f.label :image %><br />
-      <%= f.text_field :image, autofocus: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label :description %><br />
-      <%= f.text_field :description, autofocus: true %>
+      <%= f.file_field :image, autofocus: true %>
     </div>
 
     <div class="field">

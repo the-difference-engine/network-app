@@ -4,7 +4,7 @@
       <% if @employer.image.model["image"] =~ /robo/ %>
         <%= image_tag(@employer.image.model["image"]) %>
       <% else %>
-        <%= image_tag(@employer.image.standard.url) %>
+        <%= image_tag(@employer.image.index_square.url) %>
       <% end %>
       <h1><%= @employer.name %></h1>
       <p><%= @employer.city %>, <%= @employer.state %> </p>

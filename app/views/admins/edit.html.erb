@@ -1,0 +1,53 @@
+<% if @admin.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@admin.errors.count, "error") %></h2>
+    <ul>
+    <% @admin.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="container">
+  <h2>Edit <%= @admin.full_name %> Profile</h2>
+  
+  <%= form_for(@admin, url: admin_path(@admin), html: { :multipart => true }) do |f| %>
+
+    <div class="field">
+      <%= f.label :first_name %><br />
+      <%= f.text_field :first_name, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :avatar %><br />
+      <%= f.file_field :avatar, autofocus: true %>
+    </div>
+
+    <h3>Log In Information</h3>
+
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label 'Change password' %><i>(leave blank if you don't want to change it)</i><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+
+    <div class="field">
+      <%= f.label 'Confirm new password' %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
+    <br>
+    <div class="actions">
+      <%= f.submit "Update", class: "btn btn-default" %>
+    </div>
+  <% end %>
+</div>

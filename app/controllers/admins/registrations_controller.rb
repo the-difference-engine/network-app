@@ -1,6 +1,7 @@
 class Admins::RegistrationsController < Devise::RegistrationsController
 # before_filter :configure_sign_up_params, only: [:create]
 before_filter :configure_account_update_params, only: [:update]
+skip_before_filter :require_no_authentication, only: [:new, :create]
 
   # GET /resource/sign_up
   # def new

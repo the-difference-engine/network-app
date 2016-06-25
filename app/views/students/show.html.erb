@@ -8,7 +8,14 @@
       <% if @student.avatar.model["avatar"] =~ /robo/ %>
         <%= image_tag(@student.avatar.model["avatar"]) %>
       <% else %>
-        <%= image_tag(@student.avatar.standard.url) %>
+        <%= image_tag(@student.avatar.show_tall_crop.url) %>
+      <% end %>
+      <br><br>
+      <% if admin_signed_in? %>
+        <%= link_to 'Edit', edit_student_path(@student), class: "btn btn-default" %>
+        <%= link_to 'Delete', student_path(@student), method: :delete, data: { confirm: "Are you sure you want to delete '#{@student.full_name}'"}, class: "btn btn-default" %>
+      <% elsif student_signed_in? && current_student.id == @student.id %>
+        <%= link_to 'Edit', edit_student_path(@student), class: "btn btn-default" %>
       <% end %>
     </div>
 
@@ -40,8 +47,8 @@
       <ul>Answer: <%= @student.interview_2 %></ul>
       <ul>Inteview Question Three</ul>
       <ul>Answer: <%= @student.interview_3 %></ul>
-      <ul>Github<%= @student.github %></ul>
-      <ul>Blog<%= @student.blog %></ul>
+      <ul><%= link_to 'GitHub', @student.normalized_github, target: "_blank"%></ul>
+      <ul><%= link_to 'My Blog', @student.normalized_blog, target: "_blank" %></ul>
       <ul>Why I learned to code: <%= @student.quote %></ul>
       <ul>Seeking Employment: <%= @student.seeking_employment %></ul>
     </div>
