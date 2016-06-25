@@ -24,7 +24,8 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
-gem 'devise' 
+gem 'devise',           '~> 3.5.2'
+gem 'devise_invitable', '~> 1.5.2'
 gem 'faker'
 gem 'postrank-uri'
 
