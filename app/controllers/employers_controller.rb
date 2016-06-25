@@ -66,7 +66,9 @@ class EmployersController < ApplicationController
   end
 
   def destroy  
-    @employer = Employer.find(params[:id]) 
+    @employer = Employer.find(params[:id])
+    @employer.remove_image!
+    @employer.save
 
     if @employer.destroy
       flash[:success] = "Employer account successfully deleted!"

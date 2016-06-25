@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
   
   before_action :authenticate_user!
-  before_action :authenticate_admin!, :only => [:new, :create]
+  before_action :authenticate_admin!, :only => [:new, :create, :destroy]
 
   def index
     @students = Student.all
@@ -70,6 +70,9 @@ class StudentsController < ApplicationController
 
   def destroy  
     @student = Student.find(params[:id]) 
+    @student.remove_avatar!
+    # @student.remove_resume!
+    @student.save
 
     if @student.destroy
       flash[:success] = "Student account successfully deleted!"
