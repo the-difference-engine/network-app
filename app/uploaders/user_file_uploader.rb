@@ -58,11 +58,11 @@ class UserFileUploader < CarrierWave::Uploader::Base
   # end
 
   version :show_tall, :from_version => :large do
-    process resize_to_limit: [400,300]
+    process resize_to_limit: [300,400]
   end
 
-  version :show_tall_crop, :from_version => :large do
-    process resize_to_fill: [400,300]
+  version :show_tall_crop do
+    process resize_to_fill: [300,400]
   end
 
   version :index_square, :from_version => :large do

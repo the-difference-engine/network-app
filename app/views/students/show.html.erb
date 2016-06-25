@@ -8,7 +8,7 @@
       <% if @student.avatar.model["avatar"] =~ /robo/ %>
         <%= image_tag(@student.avatar.model["avatar"]) %>
       <% else %>
-        <%= image_tag(@student.avatar.standard.url) %>
+        <%= image_tag(@student.avatar.show_tall_crop.url) %>
       <% end %>
     </div>
 
@@ -35,8 +35,8 @@
       <ul>Answer: <%= @student.interview_2 %></ul>
       <ul>Inteview Question Three</ul>
       <ul>Answer: <%= @student.interview_3 %></ul>
-      <ul>Github<%= @student.github %></ul>
-      <ul>Blog<%= @student.blog %></ul>
+      <ul><%= link_to 'GitHub', @student.normalized_github, target: "_blank"%></ul>
+      <ul><%= link_to 'My Blog', @student.normalized_blog, target: "_blank" %></ul>
       <ul>Why I learned to code: <%= @student.quote %></ul>
       <ul>Seeking Employment: <%= @student.seeking_employment %></ul>
     </div>
