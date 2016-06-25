@@ -1,6 +1,7 @@
 class StudentsController < ApplicationController
   
   before_action :authenticate_user!
+  before_action :authenticate_admin!, :only => [:destroy]
 
   def index
     @students = Student.all
@@ -65,6 +66,18 @@ class StudentsController < ApplicationController
         end
       end
     end
+  end
+
+  def destroy
+    @student = Student.find(params[:id])
+
+    if @student.destroy
+      flash[:success] = "Student account successfully deleted!"
+      redirect_to students_path
+    else
+      flash[:warning] = "Unable to delete the student"
+      Rails.logger.info @student.errors.messages
+    end 
   end
 
   private
