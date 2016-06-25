@@ -29,8 +29,8 @@ Rails.application.routes.draw do
     post '/admin/admins/new' => 'admins#create', as: :admin_admins
     get '/admin/students/new' => 'students#new', as: :new_admin_student
     post '/admin/students' => 'students#create', as: :admin_students
-    get '/admin/employers/new' => 'students#new', as: :new_admin_employer
-    post '/admin/employers' => 'students#create', as: :admin_employers
+    get '/admin/employers/new' => 'employers#new', as: :new_admin_employer
+    post '/admin/employers' => 'employers#create', as: :admin_employers
   resources :students
   resources :employers
 

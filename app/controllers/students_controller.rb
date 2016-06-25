@@ -1,6 +1,7 @@
 class StudentsController < ApplicationController
   
   before_action :authenticate_user!
+  before_action :authenticate_admin!, :only => [:new, :create]
 
   def index
     @students = Student.all
@@ -18,7 +19,7 @@ class StudentsController < ApplicationController
       flash[:success] = "Student account successfully created!"
       redirect_to student_path(@student)
     else
-      flash[:warning] = "Unable to add new student"
+      flash[:warning] = "Unable to add new student."
       render :new
     end
   end
@@ -65,6 +66,18 @@ class StudentsController < ApplicationController
         end
       end
     end
+  end
+
+  def destroy  
+    @student = Student.find(params[:id]) 
+
+    if @student.destroy
+      flash[:success] = "Student account successfully deleted!"
+      redirect_to students_path
+    else
+      flash[:warning] = "Unable to delete the student account."
+      Rails.logger.info @student.errors.messages
+    end 
   end
 
   private

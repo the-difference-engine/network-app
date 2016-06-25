@@ -2,12 +2,15 @@ class EmployersController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admin!, :only => [:new, :create]
   before_action :authenticate_admin_employer!, :only => [:edit, :update, :destroy]
-  # skip_before_action :require_no_authentication
-
+  
   def index
     @employers = Employer.all
   end
 
+  def new
+    @employer = Employer.new
+  end
+    
   def create
     @employer = Employer.new(employer_params)
 
@@ -15,7 +18,7 @@ class EmployersController < ApplicationController
       flash[:success] = "Employer account successfully created!"
       redirect_to employer_path(@employer)
     else
-      flash[:warning] = "Unable to add new employer"
+      flash[:warning] = "Unable to add new employer."
       render :new
     end
   end
@@ -69,7 +72,7 @@ class EmployersController < ApplicationController
       flash[:success] = "Employer account successfully deleted!"
       redirect_to employers_path
     else
-      flash[:warning] = "Unable to delete the employer"
+      flash[:warning] = "Unable to delete the employer account."
       Rails.logger.info @employer.errors.messages
     end 
   end
