@@ -44,10 +44,16 @@
 
 #admin-center {
   #user-lists {
-    div {
+    ul.hoverlist {
       width: 500px;
       height: 500px;
       overflow-y: auto;
+    }
+
+    div.list-container {
+      width: 500px;
+      height: 560px;
+      margin: 10px;
     }
      
     h2 {

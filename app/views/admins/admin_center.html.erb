@@ -6,34 +6,34 @@
   </div>
   
   <div id="user-lists">
-    <div class="container" id="list-employers">
-      <div>
+    <div class="container">
+      <div class="list-container">
         <h2>Employers</h2>
-        <ul>
+        <ul class="hoverlist">
           <% @employers.each do |employer| %>
-            <li id="employer-info"><%= link_to employer.name, employer_path(employer) %></li>
+            <li class="employer-info"><%= link_to employer.name, employer_path(employer) %></li>
           <% end %>
         </ul>
       </div>
     </div>
 
-    <div class="container" id="list-students">
-      <div>
+    <div class="container">
+      <div class="list-container">
         <h2>Students</h2>
-        <ul>
+        <ul class="hoverlist">
           <% @students.each do |student| %>
-            <li id="student-info"><%= link_to student.full_name, student_path(student) %></li>
+            <li class="student-info"><%= link_to student.full_name, student_path(student) %></li>
           <% end %>
         </ul>
       </div>
     </div>
 
-    <div class="container" id="list-admins">
-      <div>
+    <div class="container">
+      <div class="list-container">
         <h2>Admins</h2>
-        <ul>
+        <ul class="hoverlist">
           <% @admins.each do |admin| %>
-            <li id="admin-info"><%= link_to admin.full_name, admin_path(admin) %></li>
+            <li class="admin-info"><%= link_to admin.full_name, admin_path(admin) %></li>
           <% end %>
         </ul>
       </div>
