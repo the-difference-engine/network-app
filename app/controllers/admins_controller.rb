@@ -44,17 +44,12 @@ class AdminsController < ApplicationController
                              @admin.update_without_password(admin_params)
                            end
 
-    respond_to do |format|
-      if successfully_updated
-        format.html { redirect_to admins_path }
-        flash[:success] = "Your account was successfully updated!"
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @admin.errors, status: :unprocessable_entity }
-      end
+    if successfully_updated
+      format.html { redirect_to admins_path }
+      flash[:success] = "Your account was successfully updated!"
+    else
+      format.html { render action: 'edit' }
     end
-
   end
 
   def destroy
@@ -68,11 +63,11 @@ class AdminsController < ApplicationController
     else
       flash[:warning] = "Unable to delete the admin account."
       Rails.logger.info @admin.errors.messages
-    end 
+    end
   end
 
   def admin_center
-    @employers = Employer.all
+    @employers = Employer.all.order(:name)
     @students = Student.all
   end
 
@@ -80,7 +75,7 @@ class AdminsController < ApplicationController
 
     def admin_params
       params.require(:admin).permit(
-        :first_name, 
+        :first_name,
         :last_name,
         :avatar,
         :email,
