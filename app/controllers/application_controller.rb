@@ -56,7 +56,7 @@ protected
 
   def configure_permitted_parameters
     # Only add some parameters
-    devise_parameter_sanitizer.for(:accept_invitation).concat [:first_name, :last_name, :description]
+    devise_parameter_sanitizer.for(:accept_invitation).concat [:first_name, :last_name, :description, :name, :rep_first_name, :rep_last_name, :rep_phone, :rep_email, :city, :state, :description]
     # Override accepted parameters
     # devise_parameter_sanitizer.for(:accept_invitation) do |u|
     #   u.permit(:first_name, :last_name, :phone, :password, :password_confirmation,
