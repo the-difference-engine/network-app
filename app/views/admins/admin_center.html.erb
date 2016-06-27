@@ -4,15 +4,39 @@
     <%= link_to 'Add Student', new_admin_student_path, class: "btn btn-default" %>
     <%= link_to 'Add Admin', new_admin_admin_path, class: "btn btn-default" %>
   </div>
+  
+  <div id="user-lists">
+    <div class="container" id="list-employers">
+      <div>
+        <h2>Employers</h2>
+        <ul>
+          <% @employers.each do |employer| %>
+            <li id="employer-info"><%= link_to employer.name, employer_path(employer) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
 
-  <div class="container" id="list-employers">
-    <div>
-      <h2>Current Employers</h2>
-      <ul>
-        <% @employers.each do |employer| %>
-          <li><%= link_to employer.name, employer_path(employer) %></li>
-        <% end %>
-      </ul>
+    <div class="container" id="list-students">
+      <div>
+        <h2>Students</h2>
+        <ul>
+          <% @students.each do |student| %>
+            <li id="student-info"><%= link_to student.full_name, student_path(student) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container" id="list-admins">
+      <div>
+        <h2>Admins</h2>
+        <ul>
+          <% @admins.each do |admin| %>
+            <li id="admin-info"><%= link_to admin.full_name, admin_path(admin) %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

@@ -68,7 +68,8 @@ class AdminsController < ApplicationController
 
   def admin_center
     @employers = Employer.all.order(:name)
-    @students = Student.all
+    @students = Student.all.order(:first_name)
+    @admins = Admin.all.order(:first_name)
   end
 
   private
