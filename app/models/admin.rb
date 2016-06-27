@@ -3,10 +3,12 @@ class Admin < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  include DeviseInvitable::Inviter
 
   mount_uploader :avatar, UserFileUploader
   validates :first_name, :last_name, presence: true
 
+  has_many :employers
   def full_name
     "#{first_name} #{last_name}"
   end

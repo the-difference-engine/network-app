@@ -1,5 +1,8 @@
 class AdminsController < ApplicationController
+  include DeviseInvitable::Inviter
+  
   before_action :authenticate_admin!
+
   
   def index
     @admins = Admin.all
