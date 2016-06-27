@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #admin-index {
-
   .indiv-admin {
     margin: 10px;
   }
@@ -42,61 +41,106 @@
   }
 }
 
-#admin-center {
-  #user-lists {
-    ul.hoverlist {
-      width: 500px;
-      height: 500px;
-      overflow-y: auto;
-    }
 
-    div.list-container {
-      width: 500px;
-      height: 560px;
-      margin: 10px;
-    }
-     
-    h2 {
-      font: 400 40px/1.5 Helvetica, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-     
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-    }
-     
-    li {
-      font: 400 20px/1.5 Helvetica, Verdana, sans-serif;
-      border-bottom: 1px solid #ccc;
-    }
-     
-    li:last-child {
-      border: none;
-    }
-     
-    li a {
-      text-decoration: none;
-      color: #000;
-      display: block;
-      width: 500px;
-      text-align: center;
-     
-      -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
-      -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
-      -o-transition: font-size 0.3s ease, background-color 0.3s ease;
-      -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
-      transition: font-size 0.3s ease, background-color 0.3s ease;
-    }
-     
-    li a:hover {
-      font-size: 30px;
-      background: #f6f6f6;
-      text-decoration: none;
-      text-align: center;
-    }
+.list-container {
+  ul.hoverlist {
+    width: 490px;
+    height: 500px;
+    overflow-y: auto;
+  }
+
+  div.list-container {
+    width: 500px;
+    height: 560px;
+    margin: 10px;
+  }
+   
+  h2 {
+    font: 400 40px/1.5 Helvetica, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+   
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+  }
+   
+  li {
+    font: 400 20px/1.5 Helvetica, Verdana, sans-serif;
+    border-bottom: 1px solid #ccc;
+    width: 476px;
+  }
+   
+  li:last-child {
+    border: none;
+  }
+   
+  li a {
+    text-decoration: none;
+    color: #000;
+    display: block;
+    width: 476px;
+    text-align: left;
+    padding: 10px;
+    border-radius: 5px;
+   
+    -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+    -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+    -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+    -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+    transition: font-size 0.3s ease, background-color 0.3s ease;
+  }
+   
+  li a:hover {
+    font-size: 30px;
+    background: #f6f6f6;
+    text-decoration: none;
+    text-align: left;
+  }
+}
+
+#admin-center {
+  #tab-nav {
+    margin: 20px 0;
+  }
+
+  .tab-content {
+    background: #eee;
+    width: 500px;
+    border: 2px solid #eee;
+    border-radius: 0 5px 5px 5px;
+  }
+
+  .nav {
+    width: 500px;
+    border: none;
+  }
+
+  .nav li a:hover {
+    color: #000; 
+    background: #f6f6f6;  
+  }
+
+  .nav a {
+    color: #fff;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-family: Helvetica, Verdana, sans-serif;
+  }
+
+  .nav li a {
+    background: #000;  
+  }
+
+  .nav li.active a {
+    color: #000;
+    background: #eee;  
+  }
+
+  .nav-tabs a {
+    border: none;
   }
 }
