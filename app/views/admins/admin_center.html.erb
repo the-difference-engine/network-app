@@ -1,18 +1,18 @@
 <div id="admin-center">
-<div class="container" id="admin-new-buttons">
-  <%= link_to 'Add Employer', new_admin_employer_path, class: "btn btn-default" %>
-  <%= link_to 'Add Student', new_admin_student_path, class: "btn btn-default" %>
-  <%= link_to 'Add Admin', new_admin_admin_path, class: "btn btn-default" %>
-</div>
-
-<div class="container" id="list-employers">
-  <div>
-    <h2>Current Employers</h2>
-    <ul>
-      <% @employers.each do |employer| %>
-        <li><%= link_to employer.name, employer_path(employer) %></li>
-      <% end %>
-    </ul>
+  <div class="container" id="admin-new-buttons">
+    <%= link_to 'Add Employer', new_admin_employer_path, class: "btn btn-default" %>
+    <%= link_to 'Add Student', new_admin_student_path, class: "btn btn-default" %>
+    <%= link_to 'Add Admin', new_admin_admin_path, class: "btn btn-default" %>
   </div>
-</div>
+
+  <div class="container" id="list-employers">
+    <div>
+      <h2>Current Employers</h2>
+      <ul>
+        <% @employers.each do |employer| %>
+          <li><%= link_to employer.name, employer_path(employer) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>

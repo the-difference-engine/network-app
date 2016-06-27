@@ -45,13 +45,16 @@
 #admin-center {
   #list-employers {
     div {
-      width: 200px;
+      width: 500px;
+      height: 500px;
+      overflow-y: auto;
     }
      
     h2 {
       font: 400 40px/1.5 Helvetica, Verdana, sans-serif;
       margin: 0;
       padding: 0;
+      text-align: center;
     }
      
     ul {
@@ -61,7 +64,7 @@
     }
      
     li {
-      font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+      font: 400 20px/1.5 Helvetica, Verdana, sans-serif;
       border-bottom: 1px solid #ccc;
     }
      
@@ -73,7 +76,8 @@
       text-decoration: none;
       color: #000;
       display: block;
-      width: 200px;
+      width: 500px;
+      text-align: center;
      
       -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
       -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
@@ -86,6 +90,7 @@
       font-size: 30px;
       background: #f6f6f6;
       text-decoration: none;
+      text-align: center;
     }
   }
 }
