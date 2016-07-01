@@ -84,6 +84,28 @@ class StudentsController < ApplicationController
     end 
   end
 
+  def batch
+    render 'students/invitations/batch'
+  end
+
+  def batch_invite
+    @student_array = []
+    #Validate the user_emails field isn't blank and emails are valid
+    params[:student_emails].split(",").each do |email|
+
+      #remove mail gem from gemfile and gemlock
+
+      processed_email = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,8}\b/i.match(email)
+        if processed_email
+      Student.create(:email => processed_email, :invited_by_id => current_user.id, :invited_by_type => current_user.class).invite!
+      @student_array << processed_email
+    end
+    flash[:success] = "Invitations sent to #{@student_array.to_sentence}!"
+end
+    redirect_to "/"
+
+  end
+
   private
 
     def student_params

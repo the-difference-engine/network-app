@@ -26,6 +26,10 @@ class Student < ActiveRecord::Base
   def normalized_blog
     blog && PostRank::URI.normalize(blog).to_s
   end
+
+  def processed_email
+    return /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,8}\b/i.match(self)
+  end
   
 end
 
