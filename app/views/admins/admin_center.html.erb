@@ -1,7 +1,59 @@
-<div class="container" id="admin-center">
-  <%= link_to 'Add Employer', new_employer_invitation_path, class: "btn btn-default" %>
-  <%= link_to 'Add Student', new_student_invitation_path, class: "btn btn-default" %>
-  <%= link_to 'Batch Add Studets', '/students/invitations/batch', class: "btn btn-default" %>
-  <%= link_to 'Add Admin', new_admin_invitation_path, class: "btn btn-default" %>
+<div id="admin-center">
+  <div class="container" id="admin-new-buttons">
+    <%= link_to 'Add Employer', new_admin_employer_path, class: "btn btn-default" %>
+    <%= link_to 'Add Student', new_admin_student_path, class: "btn btn-default" %>
+      <%= link_to 'Batch Add Studets', '/students/invitations/batch', class: "btn btn-default" %>
+
+    <%= link_to 'Add Admin', new_admin_admin_path, class: "btn btn-default" %>
+  </div>
+  
+  <div id='tab-nav'>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#employers" aria-controls="employers" role="tab" data-toggle="tab">Employers</a></li>
+      <li role="presentation"><a href="#students" aria-controls="students" role="tab" data-toggle="tab">Students</a></li>
+      <li role="presentation"><a href="#admins" aria-controls="admins" role="tab" data-toggle="tab">Admins</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="employers">
+        <div class="list-container">
+          <ul class="hoverlist">
+            <% @employers.each do |employer| %>
+              <li class="employer-info"><%= link_to employer.name, employer_path(employer) %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <div role="tabpanel" class="tab-pane" id="students">
+        <div class="list-container">
+          <ul class="hoverlist">
+            <% @students.each do |student| %>
+              <li class="student-info"><%= link_to student.full_name, student_path(student) %></li>
+            <% end %>
+          </ul>
+        </div> 
+      </div>
+
+      <div role="tabpanel" class="tab-pane" id="admins">
+        <div class="list-container">
+          <ul class="hoverlist">
+            <% @admins.each do |admin| %>
+              <li class="admin-info"><%= link_to admin.full_name, admin_path(admin) %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
+<script type="text/javascript">
+  $('#userTabs a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  })
+</script>
