@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class UserFileUploader < CarrierWave::Uploader::Base
+class ResumeUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -36,53 +36,16 @@ class UserFileUploader < CarrierWave::Uploader::Base
   #   process :resize_to_fit => [50, 50]
   # end
 
-  # version :large do
-  #   process resize_to_limit: [800,800]
+  # version :preview do
+  #   process resize_to_limit: [300,10000]
   # end
-
-  version :large do
-    process resize_to_limit: [500,500]
-  end
-
-  # version :medium_square do
-  #   process resize_to_fill: [500,500]
-  # end
-
-  # version :standard, :from_version => :medium do
-  #   process resize_to_limit: [300,300]
-  # end
-
-  # version :standard_square, :from_version => :medium do
-  #   process resize_to_fill: [300,300]
-  # end
-
-  version :show_tall, :from_version => :large do
-    process resize_to_limit: [300,400]
-  end
-
-  version :show_tall_crop do
-    process resize_to_fill: [300,400]
-  end
-
-  version :index_square, :from_version => :large do
-    process resize_to_fill: [300,300]
-  end
-
-  version :thumb, :from_version => :large do
-    process resize_to_fill: [100,100]
-  end
-
-
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
-    %w(jpg jpeg gif png)
+    %w(jpg jpeg gif png pdf)
   end
 
-  def default_url
-    'no_avatar.png'
-  end
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename
