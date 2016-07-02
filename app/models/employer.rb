@@ -1,12 +1,12 @@
 class Employer < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   mount_uploader :image, UserFileUploader
 
-  before_save :capitalize_params
+  before_update :capitalize_params
   after_create :create_list
   has_one :follow_up_list, dependent: :destroy
 
@@ -14,7 +14,7 @@ class Employer < ActiveRecord::Base
   validates :rep_email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :city, :state, presence: true
 
-
+  belongs_to :admin
   def rep_full_name
     "#{rep_first_name} #{rep_last_name}"
   end

@@ -4,6 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
 
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+
   def current_user
     if admin_signed_in?
       current_admin
@@ -47,6 +50,21 @@ class ApplicationController < ActionController::Base
       redirect_to "/sign_in"
       flash[:warning] = "You do not have access!"
     end
+  end
+
+protected
+
+  def configure_permitted_parameters
+    # Only add some parameters
+    devise_parameter_sanitizer.for(:accept_invitation).concat [:first_name, :last_name, :description, :name, :rep_first_name, :rep_last_name, :rep_phone, :rep_email, :city, :state, :description, :invited_by_id, :invited_by_type]
+    # Override accepted parameters
+    # devise_parameter_sanitizer.for(:accept_invitation) do |u|
+    #   u.permit(:first_name, :last_name, :phone, :password, :password_confirmation,
+    #            :invitation_token)
+  end
+
+  def authenticate_inviter!
+    authenticate_admin!(:force => true)
   end
 
 end

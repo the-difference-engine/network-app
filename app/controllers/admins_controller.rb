@@ -1,5 +1,8 @@
 class AdminsController < ApplicationController
+  include DeviseInvitable::Inviter
+  
   before_action :authenticate_admin!
+
   
   def index
     @admins = Admin.all
@@ -91,4 +94,5 @@ class AdminsController < ApplicationController
     def needs_password?(user, params)
       params[:password].present?
     end
+
 end

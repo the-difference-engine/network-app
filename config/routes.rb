@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   #   resources :employers
   #   resources :students
   # end
+    get '/students/invitations/batch' => 'students#batch'
 
 
   resources :admins
@@ -31,7 +32,11 @@ Rails.application.routes.draw do
     post '/admin/students' => 'students#create', as: :admin_students
     get '/admin/employers/new' => 'employers#new', as: :new_admin_employer
     post '/admin/employers' => 'employers#create', as: :admin_employers
-  resources :students
+  resources :students do
+    collection do
+      post 'batch_invite'
+    end
+  end
   resources :employers
 
 

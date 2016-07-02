@@ -1,7 +1,7 @@
 class Student < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   mount_uploader :avatar, UserFileUploader
@@ -26,6 +26,6 @@ class Student < ActiveRecord::Base
   def normalized_blog
     blog && PostRank::URI.normalize(blog).to_s
   end
-  
+
 end
 
