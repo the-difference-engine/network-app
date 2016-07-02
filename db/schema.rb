@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160619044732) do
+ActiveRecord::Schema.define(version: 20160627164059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,9 +32,20 @@ ActiveRecord::Schema.define(version: 20160619044732) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "avatar"
+    t.string   "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer  "invitation_limit"
+    t.integer  "invited_by_id"
+    t.string   "invited_by_type"
+    t.integer  "invitations_count",      default: 0
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
+  add_index "admins", ["invitation_token"], name: "index_admins_on_invitation_token", unique: true, using: :btree
+  add_index "admins", ["invitations_count"], name: "index_admins_on_invitations_count", using: :btree
+  add_index "admins", ["invited_by_id"], name: "index_admins_on_invited_by_id", using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "employers", force: :cascade do |t|
@@ -60,9 +71,20 @@ ActiveRecord::Schema.define(version: 20160619044732) do
     t.string   "website"
     t.string   "city"
     t.string   "state"
+    t.string   "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer  "invitation_limit",       default: 0
+    t.integer  "invited_by_id"
+    t.string   "invited_by_type"
+    t.integer  "invitations_count",      default: 0
   end
 
   add_index "employers", ["email"], name: "index_employers_on_email", unique: true, using: :btree
+  add_index "employers", ["invitation_token"], name: "index_employers_on_invitation_token", unique: true, using: :btree
+  add_index "employers", ["invitations_count"], name: "index_employers_on_invitations_count", using: :btree
+  add_index "employers", ["invited_by_id"], name: "index_employers_on_invited_by_id", using: :btree
   add_index "employers", ["reset_password_token"], name: "index_employers_on_reset_password_token", unique: true, using: :btree
 
   create_table "follow_up_lists", force: :cascade do |t|
@@ -117,9 +139,20 @@ ActiveRecord::Schema.define(version: 20160619044732) do
     t.string   "quote"
     t.boolean  "seeking_employment",     default: false
     t.string   "resume"
+    t.string   "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer  "invitation_limit",       default: 0
+    t.integer  "invited_by_id"
+    t.string   "invited_by_type"
+    t.integer  "invitations_count",      default: 0
   end
 
   add_index "students", ["email"], name: "index_students_on_email", unique: true, using: :btree
+  add_index "students", ["invitation_token"], name: "index_students_on_invitation_token", unique: true, using: :btree
+  add_index "students", ["invitations_count"], name: "index_students_on_invitations_count", using: :btree
+  add_index "students", ["invited_by_id"], name: "index_students_on_invited_by_id", using: :btree
   add_index "students", ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true, using: :btree
 
 end
