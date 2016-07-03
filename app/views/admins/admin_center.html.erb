@@ -25,7 +25,7 @@
                         <input type="text" ng-model="searchEmployerName" class="form-control admin-center-search" placeholder="Search">
                     </div>
                   </li>       
-                  <li class="user-entries" ng-repeat="employer in employers|filter: { name: searchEmployerName }">
+                  <li class="user-entries" ng-repeat="employer in employers | filter: { name: searchEmployerName }">
                     <a href="/employers/{{ employer.id }}" class="user-name">{{ employer.name }}</a>
                     <a href="/employers/{{ employer.id }}" class="btn btn-default btn-sm user-btn" data-method="delete" data-confirm="Are you sure you want to delete '{{ employer.name }}'">Delete</a>
                     <a href="/employers/{{ employer.id }}/edit" class="btn btn-default btn-sm user-btn">Edit</a>
@@ -36,8 +36,13 @@
 
             <div role="tabpanel" class="tab-pane" id="students">
               <div class="list-container">
-                <ul class="hoverlist">     
-                  <li class="user-entries" ng-repeat="student in students">
+                <ul class="hoverlist">  
+                  <li>
+                    <div class="form-group">
+                        <input type="text" ng-model="searchStudentName" class="form-control admin-center-search" placeholder="Search">
+                    </div>
+                  </li>     
+                  <li class="user-entries" ng-repeat="student in students | filter: { full_name: searchStudentName }">
                     <a href="/students/{{ student.id }}" class="user-name">{{ student.full_name }}</a>
                     <a href="/students/{{ student.id }}" class="btn btn-default btn-sm user-btn" data-method="delete" data-confirm="Are you sure you want to delete '{{ student.full_name }}'">Delete</a>
                     <a href="/students/{{ student.id }}/edit" class="btn btn-default btn-sm user-btn">Edit</a>
@@ -48,8 +53,13 @@
 
             <div role="tabpanel" class="tab-pane" id="admins">
               <div class="list-container">
-                <ul class="hoverlist">     
-                  <li class="user-entries" ng-repeat="admin in admins">
+                <ul class="hoverlist"> 
+                  <li>
+                    <div class="form-group">
+                        <input type="text" ng-model="searchAdminName" class="form-control admin-center-search" placeholder="Search">
+                    </div>
+                  </li>    
+                  <li class="user-entries" ng-repeat="admin in admins | filter: { full_name: searchAdminName }">
                     <a href="/admins/{{ admin.id }}" class="user-name">{{ admin.full_name }}</a>
                     <a href="/admins/{{ admin.id }}" class="btn btn-default btn-sm user-btn" data-method="delete" data-confirm="Are you sure you want to delete '{{ admin.full_name }}'">Delete</a>
                     <a href="/admins/{{ admin.id }}/edit" class="btn btn-default btn-sm user-btn">Edit</a>
