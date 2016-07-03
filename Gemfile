@@ -34,6 +34,9 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
 
+gem 'rails-assets-angular', source: 'https://rails-assets.org'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -196,5 +196,17 @@
       text-decoration: none;
     }
   }
+
+  .admin-center-search-bar {
+    width: 475px;
+    height: 50px;
+    margin: 12px 0 10px 5px;
+  }
+
+  .admin-center-search-li {
+    border-bottom: 1px solid #ccc;
+    width: 485px;
+    margin-left: -35px;
+  }
 }
 
