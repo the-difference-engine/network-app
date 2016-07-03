@@ -16,13 +16,15 @@ Rails.application.routes.draw do
   root 'students#index'
   
   get '/sign_in' => 'pages#sign_in', as: :home_sign_in
+  get '/students/invitations/batch' => 'students#batch'
 
-  # namespace :admin do
-  #   resources :employers
-  #   resources :students
-  # end
-    get '/students/invitations/batch' => 'students#batch'
-
+  namespace :api do
+    namespace :v1 do
+      resources :admins
+      resources :students
+      resources :employers
+    end
+  end
 
   resources :admins
     get '/admin_center' => 'admins#admin_center', as: :admin_center
@@ -32,11 +34,13 @@ Rails.application.routes.draw do
     post '/admin/students' => 'students#create', as: :admin_students
     get '/admin/employers/new' => 'employers#new', as: :new_admin_employer
     post '/admin/employers' => 'employers#create', as: :admin_employers
+  
   resources :students do
     collection do
       post 'batch_invite'
     end
   end
+  
   resources :employers
 
 
