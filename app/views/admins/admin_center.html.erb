@@ -19,14 +19,12 @@
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="employers">
               <div class="list-container">
-                <ul class="hoverlist">     
-                  <% @employers.each do |employer| %>
-                    <li class="user-entries">
-                      <%= link_to employer.name, employer_path(employer), class: "user-name" %>   
-                      <%= link_to 'Delete', employer_path(employer), method: :delete, data: { confirm: "Are you sure you want to delete '#{employer.name}'"}, class: "btn btn-default btn-sm user-btn" %>
-                       <%= link_to 'Edit', edit_employer_path(employer), class: "btn btn-default btn-sm user-btn" %>
-                    </li>
-                  <% end %>
+                <ul class="hoverlist">         
+                  <li class="user-entries" ng-repeat="employer in employers">
+                    <a href="/employers/{{ employer.id }}" class="user-name">{{ employer.name }}</a>
+                    <a href="/employers/{{ employer.id }}" class="btn btn-default btn-sm user-btn" data-method="delete" data-confirm="Are you sure you want to delete '{{ employer.name }}'">Delete</a>
+                    <a href="/employers/{{ employer.id }}/edit" class="btn btn-default btn-sm user-btn">Edit</a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -34,13 +32,11 @@
             <div role="tabpanel" class="tab-pane" id="students">
               <div class="list-container">
                 <ul class="hoverlist">     
-                  <% @students.each do |student| %>
-                    <li class="user-entries">
-                      <%= link_to student.full_name, student_path(student), class: "user-name" %>   
-                      <%= link_to 'Delete', student_path(student), method: :delete, data: { confirm: "Are you sure you want to delete '#{student.full_name}'"}, class: "btn btn-default btn-sm user-btn" %>
-                       <%= link_to 'Edit', edit_student_path(student), class: "btn btn-default btn-sm user-btn" %>
-                    </li>
-                  <% end %>
+                  <li class="user-entries" ng-repeat="student in students">
+                    <a href="/students/{{ student.id }}" class="user-name">{{ student.full_name }}</a>
+                    <a href="/students/{{ student.id }}" class="btn btn-default btn-sm user-btn" data-method="delete" data-confirm="Are you sure you want to delete '{{ student.full_name }}'">Delete</a>
+                    <a href="/students/{{ student.id }}/edit" class="btn btn-default btn-sm user-btn">Edit</a>
+                  </li>
                 </ul>
               </div> 
             </div>
@@ -48,13 +44,11 @@
             <div role="tabpanel" class="tab-pane" id="admins">
               <div class="list-container">
                 <ul class="hoverlist">     
-                  <% @admins.each do |admin| %>
-                    <li class="user-entries">
-                      <%= link_to admin.full_name, admin_path(admin), class: "user-name" %>   
-                      <%= link_to 'Delete', admin_path(admin), method: :delete, data: { confirm: "Are you sure you want to delete '#{admin.full_name}'"}, class: "btn btn-default btn-sm user-btn" %>
-                       <%= link_to 'Edit', edit_admin_path(admin), class: "btn btn-default btn-sm user-btn" %>
-                    </li>
-                  <% end %>
+                  <li class="user-entries" ng-repeat="admin in admins">
+                    <a href="/admins/{{ admin.id }}" class="user-name">{{ admin.full_name }}</a>
+                    <a href="/admins/{{ admin.id }}" class="btn btn-default btn-sm user-btn" data-method="delete" data-confirm="Are you sure you want to delete '{{ admin.full_name }}'">Delete</a>
+                    <a href="/admins/{{ admin.id }}/edit" class="btn btn-default btn-sm user-btn">Edit</a>
+                  </li>
                 </ul>
               </div>
             </div>
