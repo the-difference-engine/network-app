@@ -27,5 +27,13 @@ class Student < ActiveRecord::Base
     blog && PostRank::URI.normalize(blog).to_s
   end
 
+  def job_response
+    if seeking_employment 
+      "Yes"
+    else 
+      "No"
+    end
+  end
+
 end
 
