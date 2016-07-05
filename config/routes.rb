@@ -1,13 +1,23 @@
 Rails.application.routes.draw do
 
-  devise_for :admins, controllers: { 
+  devise_for :admins, :skip => [:registrations], controllers: { 
     sessions: 'admins/sessions',
-    registrations: 'admins/registrations'
+    # registrations: 'admins/registrations'
   }
-  devise_for :students, controllers: { 
+  as :admin do
+    get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'    
+    patch 'admins' => 'devise/registrations#update', :as => 'admin_registration'            
+  end
+
+  devise_for :students, :skip => [:registrations], controllers: { 
     sessions: 'students/sessions',
-    registrations: 'students/registrations'
+    # registrations: 'students/registrations'
   }
+  as :student do
+    get 'students/edit' => 'devise/registrations#edit', :as => 'edit_student_registration'    
+    patch 'students' => 'devise/registrations#update', :as => 'student_registration'            
+  end
+
   devise_for :employers, controllers: { 
     sessions: 'employers/sessions',
     registrations: 'employers/registrations'
