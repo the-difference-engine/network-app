@@ -43,8 +43,9 @@
     </div>
 
     <div class="field">
-      <%= f.label :seeking_employment %><br />
-      <%= f.text_field :seeking_employment, autofocus: true %>
+      <p><strong>Check the box below if you are currently seeking employment</strong></p>
+      <%= f.check_box :seeking_employment, autofocus: true %>
+      <%= f.label :seeking_employment, "Yes, I'm seeking employment!" %>
     </div>
 
     <div class="field">
