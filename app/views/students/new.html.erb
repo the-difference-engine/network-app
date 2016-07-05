@@ -43,8 +43,15 @@
     </div>
 
     <div class="field">
-      <%= f.label :seeking_employment %><br />
-      <%= f.text_field :seeking_employment, autofocus: true %>
+      <div class="btn-group" data-toggle="buttons">
+    
+        <label class="btn btn-primary">
+          <input name="student[seeking_employment]" type="hidden" value="0"/> No
+        </label>
+        <label class="btn btn-primary">
+          <input autofocus="autofocus" type="checkbox" value="1" name="student[seeking_employment]" id="student_seeking_employment" /> Yes
+        </label>
+      </div>
     </div>
 
     <div class="field">
