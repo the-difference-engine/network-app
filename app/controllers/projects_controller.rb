@@ -9,10 +9,10 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
 
     if @project.save
-      flash[:message] = "Project successfully created!"
-      redirect to student_path(@project.student)
+      flash[:success] = "Project successfully created!"
+      redirect_to student_path(@project.student)
     else
-      flash[:message] = "Unable to create project."
+      flash[:success] = "Unable to create project."
       render :new
     end
   end
@@ -25,10 +25,10 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
 
     if @project.update(project_params)
-      flash[:message] = "Project successfully updated!"
-      redirect to student_path(@project.student)
+      flash[:success] = "Project successfully updated!"
+      redirect_to student_path(@project.student)
     else 
-      flash[:message] = "Unable to update project!"
+      flash[:success] = "Unable to update project!"
       render :edit
     end
   end
@@ -36,12 +36,14 @@ class ProjectsController < ApplicationController
   def destroy
     @project = Project.find(params[:id])
 
-    if @project.destroy
-      flash[:message] = "Project successfully deleted!"
-      redirect to student_path(@project.student)
-    else 
-      flash[:message] = "Unable to delete project."
-      redirect to student_path(@project.student)
+    if admin_signed_in? || student_signed_in? && @project.student_id == current_student.id
+      if @project.destroy
+        flash[:success] = "Project successfully deleted!"
+        redirect_to student_path(@project.student)
+      else 
+        flash[:success] = "Unable to delete project."
+        redirect_to student_path(@project.student)
+      end
     end
   end
 
