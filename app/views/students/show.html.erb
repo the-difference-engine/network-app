@@ -68,6 +68,7 @@
             <ul>Screencast: <img src="<%= project.screencast %>" class="img-responsive"</ul>
             <ul>Url: <%= project.website %></ul>
             <% if admin_signed_in? || student_signed_in? && current_student.id == @student.id %>
+              <%= link_to 'Edit', edit_project_path(project), class: "btn btn-default btn-sm" %>
               <%= link_to 'Delete', project_path(project), method: :delete, data: { confirm: "Are you sure you want to delete '#{project.name}'"}, class: "btn btn-default btn-sm" %>
             <% end %>
             

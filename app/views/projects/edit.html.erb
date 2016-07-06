@@ -10,7 +10,7 @@
 <% end %>
 
 <div class="container">
-  <%= form_for(@project, url: projects_path) do |f| %>
+  <%= form_for(@project, url: project_path(@project)) do |f| %>
 
     <div class="field">
       <%= f.label :name %><br />
@@ -51,12 +51,12 @@
 
     <div class="field">
       <%= f.label :student_id %><br />
-      <%= f.hidden_field :student_id, autofocus: true, value: current_user.id %>
+      <%= f.hidden_field :student_id, autofocus: true, value: @project.student_id %>
     </div>
 
     <br>
     <div class="actions">
-      <%= f.submit "Create Project", class: "btn btn-default" %>
+      <%= f.submit "Update Project", class: "btn btn-default" %>
     </div>
   <% end %>
 </div>

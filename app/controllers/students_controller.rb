@@ -34,6 +34,7 @@ class StudentsController < ApplicationController
 
   def edit
     @student = Student.find(params[:id])
+    
     unless admin_signed_in? || student_signed_in? && @student.id == current_student.id
       redirect_to students_path
       flash[:warning] = "You do not have access to that page!"
@@ -66,6 +67,9 @@ class StudentsController < ApplicationController
           format.json { render json: @student.errors, status: :unprocessable_entity }
         end
       end
+    else
+      redirect_to students_path
+      flash[:warning] = "You do not have access to that page!"
     end
   end
 

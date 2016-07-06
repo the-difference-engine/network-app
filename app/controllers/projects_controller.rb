@@ -19,17 +19,27 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+
+    unless admin_signed_in? || student_signed_in? && @project.student_id == current_student.id
+      redirect_to students_path
+      flash[:warning] = "You do not have access to that page!"
+    end
   end
 
   def update
     @project = Project.find(params[:id])
 
-    if @project.update(project_params)
-      flash[:success] = "Project successfully updated!"
-      redirect_to student_path(@project.student)
+    if admin_signed_in? || student_signed_in? && @project.student_id == current_student.id
+      if @project.update(project_params)
+        flash[:success] = "Project successfully updated!"
+        redirect_to student_path(@project.student)
+      else 
+        flash[:success] = "Unable to update project!"
+        render :edit
+      end
     else 
-      flash[:success] = "Unable to update project!"
-      render :edit
+      redirect_to students_path
+      flash[:warning] = "You do not have access to that page!"
     end
   end
 
