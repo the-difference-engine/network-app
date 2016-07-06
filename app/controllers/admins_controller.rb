@@ -93,5 +93,4 @@ class AdminsController < ApplicationController
     def needs_password?(user, params)
       params[:password].present?
     end
-
 end

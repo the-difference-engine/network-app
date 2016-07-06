@@ -72,7 +72,7 @@ class StudentsController < ApplicationController
   def destroy  
     @student = Student.find(params[:id]) 
     @student.remove_avatar!
-    # @student.remove_resume!
+    @student.remove_resume!
     @student.save
 
     if @student.destroy
