@@ -1,6 +1,8 @@
 class Project < ActiveRecord::Base
   belongs_to :student
 
+  validates :name, :description, :capstone, :client_work, presence: true
+
   def normalized_github
     github && PostRank::URI.normalize(github).to_s
   end
