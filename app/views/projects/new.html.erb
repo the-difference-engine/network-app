@@ -1,0 +1,61 @@
+<% if @project.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@project.errors.count, "error") %></h2>
+    <ul>
+    <% @project.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="container">
+  <%= form_for(@project, url: projects_path) do |f| %>
+
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :description %><br />
+      <%= f.text_field :description, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <p><strong>Check the box if this project was your ACLTC capstone</strong></p>
+      <%= f.check_box :capstone, autofocus: true %>
+      <%= f.label :capstone, "Yes, this was my capstone project." %>
+    </div>
+
+    <div class="field">
+      <p><strong>Check the box if this project is an example of client work</strong></p>
+      <%= f.check_box :client_work, autofocus: true %>
+      <%= f.label :client_work, "Yes, this is client work." %>
+    </div>
+
+    <div class="field">
+      <%= f.label :github %><br />
+      <%= f.text_field :github, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :website, "Project Website (if deployed)" %><br />
+      <%= f.text_field :website, autocomplete: "off" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :screencast, "Screencast Video Link (if available)" %><br />
+      <%= f.text_field :screencast, autocomplete: "off" %>
+    </div>
+
+    <div class="field">
+      <%= f.hidden_field :student_id, autofocus: true, value: current_user.id %>
+    </div>
+
+    <br>
+    <div class="actions">
+      <%= f.submit "Create Project", class: "btn btn-default" %>
+    </div>
+  <% end %>
+</div>

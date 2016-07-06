@@ -13,8 +13,7 @@ class Employer < ActiveRecord::Base
   validates :name, :rep_first_name, :rep_last_name, :rep_phone, :rep_email, presence: true
   validates :rep_email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :city, :state, presence: true
-
-  belongs_to :admin
+  
   def rep_full_name
     "#{rep_first_name} #{rep_last_name}"
   end
