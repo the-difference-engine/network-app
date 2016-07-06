@@ -4,77 +4,77 @@
   <div class="row">
     <div class="student-profile">
     
-    <div class="col-xs-5 col-sm-6 col-lg-4">
-      <% if @student.avatar.model["avatar"] =~ /robo/ %>
-        <%= image_tag(@student.avatar.model["avatar"]) %>
-      <% else %>
-        <%= image_tag(@student.avatar.show_tall_crop.url) %>
-      <% end %>
-      <br><br>
-      <% if admin_signed_in? %>
-        <%= link_to 'Edit', edit_student_path(@student), class: "btn btn-default" %>
-        <%= link_to 'Delete', student_path(@student), method: :delete, data: { confirm: "Are you sure you want to delete '#{@student.full_name}'"}, class: "btn btn-default" %>
-      <% elsif student_signed_in? && current_student.id == @student.id %>
-        <%= link_to 'Edit', edit_student_path(@student), class: "btn btn-default" %>
-      <% end %>
-    </div>
+      <div class="col-xs-5 col-sm-6 col-lg-4">
+        <% if @student.avatar.model["avatar"] =~ /robo/ %>
+          <%= image_tag(@student.avatar.model["avatar"]) %>
+        <% else %>
+          <%= image_tag(@student.avatar.show_tall_crop.url) %>
+        <% end %>
+        <br><br>
+        <% if admin_signed_in? %>
+          <%= link_to 'Edit', edit_student_path(@student), class: "btn btn-default" %>
+          <%= link_to 'Delete', student_path(@student), method: :delete, data: { confirm: "Are you sure you want to delete '#{@student.full_name}'"}, class: "btn btn-default" %>
+        <% elsif student_signed_in? && current_student.id == @student.id %>
+          <%= link_to 'Edit', edit_student_path(@student), class: "btn btn-default" %>
+        <% end %>
+      </div>
 
-    <div class="col-xs-7 col-sm-6 col-lg-8">
-      <h3><%= @student.full_name %></h3>
-      <h3><%= @capstone.name if @capstone %></h3>
+      <div class="col-xs-7 col-sm-6 col-lg-8">
+        <h3><%= @student.full_name %></h3>
+        <h3><%= @capstone.name if @capstone %></h3>
 
-      <ul><%= link_to "Resume", @student.resume.url %></ul>
-      <ul>Email: <%= @student.email%></ul>
-      <ul>City: <%= @student.city %></ul>
-      <ul>Inudstry: <%= @student.industry %></ul>
-      <ul>ACLTC Graduation date: <%= @student.grad_date %></ul>
-      <ul>Strengths: <li><%= @student.skill_1 %></li>
-        <li><%= @student.skill_2 %></li>
-        <li><%= @student.skill_3 %></li>
-      </ul>
+        <ul><%= link_to "Resume", @student.resume.url %></ul>
+        <ul>Email: <%= @student.email%></ul>
+        <ul>City: <%= @student.city %></ul>
+        <ul>Inudstry: <%= @student.industry %></ul>
+        <ul>ACLTC Graduation date: <%= @student.grad_date %></ul>
+        <ul>Strengths: <li><%= @student.skill_1 %></li>
+          <li><%= @student.skill_2 %></li>
+          <li><%= @student.skill_3 %></li>
+        </ul>
 
-      <ul>Areas of Interest: <li><%= @student.interest_1 %></li>
-        <li><%= @student.interest_2 %></li>
-        <li><%= @student.interest_3 %></li>
-      </ul>
-      <ul>Inteview Question One</ul>
-      <ul>Answer: <%= @student.interview_1 %></ul>
-      <ul>Inteview Question Two</ul>
-      <ul>Answer: <%= @student.interview_2 %></ul>
-      <ul>Inteview Question Three</ul>
-      <ul>Answer: <%= @student.interview_3 %></ul>
-      <ul><%= link_to 'GitHub', @student.normalized_github, target: "_blank"%></ul>
-      <ul><%= link_to 'My Blog', @student.normalized_blog, target: "_blank" %></ul>
-      <ul>Why I learned to code: <%= @student.quote %></ul>
-      <ul>Seeking Employment: <%= @student.job_response %></ul>
-    </div>
+        <ul>Areas of Interest: <li><%= @student.interest_1 %></li>
+          <li><%= @student.interest_2 %></li>
+          <li><%= @student.interest_3 %></li>
+        </ul>
+        <ul>Inteview Question One</ul>
+        <ul>Answer: <%= @student.interview_1 %></ul>
+        <ul>Inteview Question Two</ul>
+        <ul>Answer: <%= @student.interview_2 %></ul>
+        <ul>Inteview Question Three</ul>
+        <ul>Answer: <%= @student.interview_3 %></ul>
+        <ul><%= link_to 'GitHub', @student.normalized_github, target: "_blank"%></ul>
+        <ul><%= link_to 'My Blog', @student.normalized_blog, target: "_blank" %></ul>
+        <ul>Why I learned to code: <%= @student.quote %></ul>
+        <ul>Seeking Employment: <%= @student.job_response %></ul>
+      </div>
 
-    <h4>Examples of my work</h4>
-    <%= link_to "Add Project", new_project_path, class: "btn btn-default" %>
-    <div class="row">
-      <% @student.projects.all.each do |project| %>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <p>Project:</ul>
-            <ul>Name: <%= project.name %></ul>
-            <ul>Description: <%= project.description %></ul>
-            <ul>Work type:  
-            <% if project.capstone %>
-              Capstone
-            <% end %>
-            <% if project.client_work %>
-              Client work
-            <% end %></ul>
-            <ul>Code: <%= project.github %></ul>
-            <ul>Screencast: <img src="<%= project.screencast %>" class="img-responsive"</ul>
-            <ul>Url: <%= project.website %></ul>
-            <% if admin_signed_in? || student_signed_in? && current_student.id == @student.id %>
-              <%= link_to 'Edit', edit_project_path(project), class: "btn btn-default btn-sm" %>
-              <%= link_to 'Delete', project_path(project), method: :delete, data: { confirm: "Are you sure you want to delete '#{project.name}'"}, class: "btn btn-default btn-sm" %>
-            <% end %>
-            
-        </div>
-      <% end %>
-    </div>
+      <h4>Examples of my work</h4>
+      <%= link_to "Add Project", new_project_path, class: "btn btn-default" %>
+      <div class="row">
+        <% @student.projects.all.each do |project| %>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <p>Project:</p>
+              <ul>Name: <%= project.name %></ul>
+              <ul>Description: <%= project.description %></ul>
+              <ul>Work type:  
+                <% if project.capstone %>
+                  Capstone
+                <% end %>
+                <% if project.client_work %>
+                  Client work
+                <% end %>
+              </ul>
+              <ul>Code: <%= project.github %></ul>
+              <ul><a href="<%= project.screencast %>" %>Screencast</a></ul>
+              <ul>Url: <%= project.website %></ul>
+              <% if admin_signed_in? || student_signed_in? && current_student.id == @student.id %>
+                <%= link_to 'Edit', edit_project_path(project), class: "btn btn-default btn-sm" %>
+                <%= link_to 'Delete', project_path(project), method: :delete, data: { confirm: "Are you sure you want to delete '#{project.name}'"}, class: "btn btn-default btn-sm" %>
+              <% end %>  
+          </div>
+        <% end %>
+      </div>
 
     </div>
   </div>
