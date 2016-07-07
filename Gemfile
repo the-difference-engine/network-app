@@ -28,6 +28,7 @@ gem 'devise',           '~> 3.5.2'
 gem 'devise_invitable', '~> 1.5.2'
 gem 'faker'
 gem 'postrank-uri'
+gem 'ionicons-rails'
 
 gem 'figaro'
 gem 'carrierwave'
