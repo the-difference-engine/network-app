@@ -270,6 +270,10 @@ h3.heading-progress span{
 /*============================*/
 .navbar-inverse{
     background-color: #ebe7da;
+    
+    div.container {
+        min-height: 94px;
+    }
 
 }
 .navbar{
