@@ -19,54 +19,63 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= image_tag 'acltc_logo.png', class: "img-responsive navbar-brand" %>
+        <% if admin_signed_in? %>
+          <a href="/dashboard"><%= image_tag 'acltc_logo.png', class: "img-responsive navbar-brand" %></a>
+        <% elsif student_signed_in? || employer_signed_in? %>
+          <a href="/students"><%= image_tag 'acltc_logo.png', class: "img-responsive navbar-brand" %></a>
+        <% else %>
+          <a href="/sign_in"><%= image_tag 'acltc_logo.png', class: "img-responsive navbar-brand" %></a>
+        <% end %>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
+        <% if admin_signed_in? %>
           <li class="active dropdown">
             <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Admin Center <i class="ion-ios-arrow-down"></i></a>
             <ul class="dropdown-menu">
-              <li><a href="/dashboard">Dashboard</a></li>
-              <li><a href="/students/invitations/batch">Invite Students</a></li>
-              <li><a href="/admin/students/new">New Student</a></li>
-              <li><a href="/admin/employers/new">New Employer</a></li>
-              <li><a href="/admin/admins/new">New Admin</a></li>
+              <li><%= link_to 'Dashboard', admin_center_path %></li>
+              <li><%= link_to 'Invite Students', student_batch_invite_path %></li>
+              <li><%= link_to 'New Student', new_admin_student_path %></li>
+              <li><%= link_to 'New Employer', new_admin_employer_path %></li>
+              <li><%= link_to 'New Admin', new_admin_admin_path %></li>
             </ul>
           </li>
+        <% end %>
           <li class="dropdown">
-            <a href="/employers" class="dropdown-toggle js-activated">Employers</a>
+            <%= link_to 'Students', students_path, class: "dropdown-toggle js-activated" %>
           </li>
           <li class=" dropdown">
-            <a href="/students" class="dropdown-toggle js-activated">Students</a>
-            
+            <%= link_to 'Employers', employers_path, class: "dropdown-toggle js-activated" %>
           </li>
+        <% if admin_signed_in? %>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Features <i class="ion-ios-arrow-down"></i></a>
+            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown"><%= current_user.email %> <i class="ion-ios-arrow-down"></i></a>
             <ul class="dropdown-menu">
-              <li><a href="typography.html">Typography</a></li>
-              <li><a href="shortcodes.html">Shortcodes</a></li>                              
-              <li><a href="header-2.html">Header 2</a></li>
-              <li><a href="footer-2.html">Footer 2</a></li>
-              <li><a href="pricing.html">Pricing Tables</a></li>
+              <li><%= link_to 'My Profile', admin_path(current_user) %></li>
+              <li><%= link_to 'Sign Out', destroy_admin_session_path %></li>
             </ul>
           </li>
-          <li class=" dropdown">
-            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Pages <i class="ion-ios-arrow-down"></i></a>
+        <% elsif student_signed_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown"><%= current_user.email %> <i class="ion-ios-arrow-down"></i></a>
             <ul class="dropdown-menu">
-              <li><a href="about.html">About Us</a></li>
-              <li><a href="contact.html">Contact Us</a></li>
-              <li><a href="contact-2.html">Contact option</a></li>
-              <li><a href="services.html">Services</a></li>
-              <li><a href="our-team.html">Our Team</a></li>
-              <li><a href="about-me.html">About Me</a></li>
-              <li><a href="gallery.html">Gallery</a></li>
-              <li><a href="page-fullwidth.html">Full Width</a></li>
-              <li><a href="page-leftbar.html">Left Sidebar</a></li>
-              <li><a href="page-rightbar.html">Right Sidebar</a></li>
-              <li><a href="faqs.html">Faqs</a></li>
-              <li><a href="page-error.html">Error 404</a></li>
+              <li><%= link_to 'My Profile', student_path(current_user) %></li>
+              <li><%= link_to 'Sign Out', destroy_student_session_path %></li>
             </ul>
           </li>
+        <% elsif employer_signed_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown"><%= current_user.email %> <i class="ion-ios-arrow-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'My Profile', employer_path(current_user) %></li>
+              <li><%= link_to 'Sign Out', destroy_employer_session_path %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li class="dropdown">
+            <%= link_to 'Sign In', home_sign_in_path %>
+          </li>
+        <% end %>
         </ul>
       </div><!--/.nav-collapse -->
     </div><!--/.container-->
