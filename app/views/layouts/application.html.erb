@@ -82,19 +82,19 @@
       </div><!--/.nav-collapse -->
     </div><!--/.container-->
   </div><!--navigation end-->
-
-  <% flash.each do |name, message| %>
-    <% if name == "notice" %>
-      <% name = "info" %>
+  <div id="app-content">
+    <% flash.each do |name, message| %>
+      <% if name == "notice" %>
+        <% name = "info" %>
+      <% end %>
+      <div class="alert alert-<%= name %> alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <%= message %>
+      </div>
     <% end %>
-    <div class="alert alert-<%= name %> alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <%= message %>
-    </div>
-  <% end %>
 
-  <%= yield %>
-
+    <%= yield %>
+  </div>
 </body>
 <script>
   $(document).ready(function () {
