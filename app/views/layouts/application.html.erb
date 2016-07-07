@@ -24,32 +24,21 @@
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
           <li class="active dropdown">
-            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Home <i class="ion-ios-arrow-down"></i></a>
+            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Admin Center <i class="ion-ios-arrow-down"></i></a>
             <ul class="dropdown-menu">
-              <li><a href="index.html">Home-default</a></li>
-              <li><a href="home-portfolio.html">Home - Portfolio</a></li>
-              <li><a href="home-blog.html">Home - Blog</a></li>
-              <li><a href="home-all.html">Home - All</a></li>
+              <li><a href="/dashboard">Dashboard</a></li>
+              <li><a href="/students/invitations/batch">Invite Students</a></li>
+              <li><a href="/admin/students/new">New Student</a></li>
+              <li><a href="/admin/employers/new">New Employer</a></li>
+              <li><a href="/admin/admins/new">New Admin</a></li>
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Portfolio <i class="ion-ios-arrow-down"></i></a>
-            <ul class="dropdown-menu">
-                <li><a href="portfolio-2col.html">Portfolio 2 Columns</a></li>
-                <li><a href="portfolio-3col.html">Portfolio 3 Columns</a></li>
-                <li><a href="portfolio-fullwidth.html">Portfolio - full width</a></li>
-                <li><a href="portfolio-single.html">Portfolio Single</a></li>
-            </ul>
+            <a href="/employers" class="dropdown-toggle js-activated">Employers</a>
           </li>
           <li class=" dropdown">
-            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Blog <i class="ion-ios-arrow-down"></i></a>
-            <ul class="dropdown-menu">
-                <li><a href="blog-grid.html">Blog Grid</a></li>
-                <li><a href="blog-full.html">Blog Full width</a></li>
-                <li><a href="blog-sidebar.html">Blog Sidebar</a></li>
-                <li><a href="blog-filter.html">Blog filter</a></li>
-                <li><a href="blog-post.html">Blog Post</a></li>
-            </ul>
+            <a href="/students" class="dropdown-toggle js-activated">Students</a>
+            
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Features <i class="ion-ios-arrow-down"></i></a>
@@ -96,14 +85,5 @@
     <%= yield %>
   </div>
 </body>
-<script>
-  $(document).ready(function () {
-  
-  $('.js-activated').dropdownHover({
-    instantlyCloseOthers: false,
-    delay: 0
-  }).dropdown();
-  
-});
-</script>
+
 </html>
