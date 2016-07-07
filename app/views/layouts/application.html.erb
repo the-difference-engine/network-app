@@ -10,58 +10,89 @@
 </head>
 
 <body>
-  <div id="nav-bar">
-    <nav>
-      <ul>
-        <li class="active"><a href="/">Home</a></li>
+  <div class="navbar navbar-inverse navbar-fixed-top app-nav-bar" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
         <% if admin_signed_in? %>
-          <li><%= link_to 'Admin Center', admin_center_path %></li>
-          <li><%= link_to 'Admins', admins_path %></li>
-        <% end %>
-        <li><%= link_to 'Employers', employers_path %></li>
-        <li><%= link_to 'Students', students_path %></li>
-        <% if admin_signed_in? %>
-          <li><%= link_to current_user.email, admin_path(current_user) %></li>
-          <li><%= link_to 'Sign Out', destroy_admin_session_path %></li>
-        <% elsif student_signed_in? %>
-          <li><%= link_to current_user.email, student_path(current_user) %></li>
-          <li><%= link_to 'Sign Out', destroy_student_session_path %></li>
-        <% elsif employer_signed_in? %>
-          <li><%= link_to current_user.email, employer_path(current_user) %></li>
-          <li><%= link_to 'Sign Out', destroy_employer_session_path %></li>
+          <a href="/dashboard"><%= image_tag 'acltc_logo.png', class: "img-responsive navbar-brand" %></a>
+        <% elsif student_signed_in? || employer_signed_in? %>
+          <a href="/students"><%= image_tag 'acltc_logo.png', class: "img-responsive navbar-brand" %></a>
         <% else %>
-          <li><%= link_to 'Sign Out', home_sign_in_path %></li>
+          <a href="/sign_in"><%= image_tag 'acltc_logo.png', class: "img-responsive navbar-brand" %></a>
         <% end %>
-      </ul>
-    </nav>
-  </div>
-
-  <% flash.each do |name, message| %>
-    <% if name == "notice" %>
-      <% name = "info" %>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+        <% if admin_signed_in? %>
+          <li class="active dropdown">
+            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Admin Center <i class="ion-ios-arrow-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Dashboard', admin_center_path %></li>
+              <li><%= link_to 'Invite Students', student_batch_invite_path %></li>
+              <li><%= link_to 'New Student', new_admin_student_path %></li>
+              <li><%= link_to 'New Employer', new_admin_employer_path %></li>
+              <li><%= link_to 'New Admin', new_admin_admin_path %></li>
+            </ul>
+          </li>
+        <% end %>
+          <li class="dropdown">
+            <%= link_to 'Students', students_path, class: "dropdown-toggle js-activated" %>
+          </li>
+          <li class=" dropdown">
+            <%= link_to 'Employers', employers_path, class: "dropdown-toggle js-activated" %>
+          </li>
+        <% if admin_signed_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown"><%= current_user.email %> <i class="ion-ios-arrow-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'My Profile', admin_path(current_user) %></li>
+              <li><%= link_to 'Sign Out', destroy_admin_session_path %></li>
+            </ul>
+          </li>
+        <% elsif student_signed_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown"><%= current_user.email %> <i class="ion-ios-arrow-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'My Profile', student_path(current_user) %></li>
+              <li><%= link_to 'Sign Out', destroy_student_session_path %></li>
+            </ul>
+          </li>
+        <% elsif employer_signed_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown"><%= current_user.email %> <i class="ion-ios-arrow-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'My Profile', employer_path(current_user) %></li>
+              <li><%= link_to 'Sign Out', destroy_employer_session_path %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li class="dropdown">
+            <%= link_to 'Sign In', home_sign_in_path %>
+          </li>
+        <% end %>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div><!--/.container-->
+  </div><!--navigation end-->
+  <div id="app-content">
+    <% flash.each do |name, message| %>
+      <% if name == "notice" %>
+        <% name = "info" %>
+      <% end %>
+      <div class="alert alert-<%= name %> alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <%= message %>
+      </div>
     <% end %>
-    <div class="alert alert-<%= name %> alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <%= message %>
-    </div>
-  <% end %>
 
-  <%= yield %>
-
+    <%= yield %>
+  </div>
 </body>
-<script>
-  $(function(){
-    var current_page_URL = location.href;
-    $( "a" ).each(function() {
-       if ($(this).attr("href") !== "#") {
-         var target_URL = $(this).prop("href");
-         if (target_URL == current_page_URL) {
-            $('nav a').parents('li, ul').removeClass('active');
-            $(this).parent('li').addClass('active');
-            return false;
-         }
-       }
-    });
-  });
-</script>
+
 </html>

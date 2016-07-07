@@ -210,6 +210,8 @@ GEM
     fog-xml (0.1.2)
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
+    font-ionicons-rails (2.0.1.5)
+      railties (>= 3.2, < 6.0)
     formatador (0.2.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -335,6 +337,7 @@ DEPENDENCIES
   faker
   figaro
   fog
+  font-ionicons-rails
   jbuilder (~> 2.0)
   jquery-rails
   mini_magick

@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   root 'students#index'
   
   get '/sign_in' => 'pages#sign_in', as: :home_sign_in
-  get '/students/invitations/batch' => 'students#batch'
+  get '/students/invitations/batch' => 'students#batch', as: :student_batch_invite
 
   namespace :api do
     namespace :v1 do
@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   end
 
   resources :admins
-    get '/admin_center' => 'admins#admin_center', as: :admin_center
+    get '/dashboard' => 'admins#admin_center', as: :admin_center
     get '/admin/admins/new' => 'admins#new', as: :new_admin_admin
     post '/admin/admins/new' => 'admins#create', as: :admin_admins
     get '/admin/students/new' => 'students#new', as: :new_admin_student
