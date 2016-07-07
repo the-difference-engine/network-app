@@ -57,7 +57,7 @@ a.hover-color{
     transition: all 200ms ease-in;
 }
 a.hover-color:hover{
-    color:#F54325 !important;
+    color:#14a498 !important;
 }
 iframe, fieldset {
     border: 0;
@@ -269,7 +269,7 @@ h3.heading-progress span{
 /*========= main menu =========*/
 /*============================*/
 .navbar-inverse{
-    background-color: #232323;
+    background-color: #ebe7da;
 
 }
 .navbar{
@@ -280,7 +280,7 @@ h3.heading-progress span{
 
 
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus{
-    background-color: #F54325 !important;
+    background-color: #14a498 !important;
     color:#fff;
 }
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
@@ -291,8 +291,8 @@ h3.heading-progress span{
    font-family: 'Poppins', sans-serif;
    font-weight: 700;
    letter-spacing: 1px;
-     text-transform: uppercase;
-        font-size: 13px;
+   text-transform: uppercase;
+   font-size: 13px;
 }
 /*============================*/
 /*======dropdowm menu=========*/
@@ -301,7 +301,7 @@ h3.heading-progress span{
     padding: 0;
     margin: 0;
     min-width: 190px;
-    background-color: #222;
+    background-color: #ebe7da;
     border: none;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -309,10 +309,10 @@ h3.heading-progress span{
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
-    border-top: 2px solid #F54325 !important;
+    border-top: 2px solid #14a498 !important;
 }
 .navbar .dropdown-menu li a{
-    color:#fff;
+    color:#f25056 !important;
     padding: 9px 20px;
     border-bottom: 1px solid #333;
     font-weight: 400;
@@ -327,8 +327,8 @@ h3.heading-progress span{
     border-bottom: none;
 }
 .navbar .dropdown-menu li a:hover{
-    background: #F54325;
-    color:#fff;
+    background: #14a498 !important;
+    color:#fff !important;
 }
 
 @media (min-width: 768px){
