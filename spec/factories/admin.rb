@@ -4,5 +4,9 @@ FactoryGirl.define do
     last_name Faker::Name.last_name
     email Faker::Internet.email
     password "password"
+
+    factory :invalid_admin do 
+      first_name nil
+    end
   end
 end
