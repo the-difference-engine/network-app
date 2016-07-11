@@ -51,11 +51,11 @@ RSpec.describe AdminsController, :type => :controller do
 
       it "changes @admin's attributes" do
         patch :update, id: @admin, admin: attributes_for(:admin,
-          first_name: "Kerry",
+          first_name: "Joseph",
           last_name: "Maddon"
         )
         @admin.reload
-        expect(@admin.first_name).to eq("Kerry")
+        expect(@admin.first_name).to eq("Joseph")
         expect(@admin.last_name).to eq("Maddon")
       end
 
@@ -68,10 +68,10 @@ RSpec.describe AdminsController, :type => :controller do
     context "with invalid attributes" do
       it "does not change @admin's attributes" do
         patch :update, id: @admin, admin: attributes_for(:admin,
-          first_name: "Kerry",
+          first_name: "Joseph",
           last_name: nil)
         @admin.reload
-        expect(@admin.first_name).not_to eq("Kerry")
+        expect(@admin.first_name).not_to eq("Joseph")
         expect(@admin.last_name).to eq("Maddon")
       end
 
