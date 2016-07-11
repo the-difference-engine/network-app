@@ -4,8 +4,8 @@ require 'support/controller_helpers'
 RSpec.describe AdminsController, :type => :controller do
   describe 'POST #create' do
     before :each do        
-      user = create(:login_admin)
-      sign_in user
+      admin = create(:login_admin)
+      sign_in_admin(admin)
     end
 
     context "with valid attributes" do
@@ -28,9 +28,58 @@ RSpec.describe AdminsController, :type => :controller do
         }.not_to change(Admin, :count)
       end
 
-      it "re-renders admins :new template" do 
+      it "re-renders admin :new template" do 
         post :create, admin: attributes_for(:invalid_admin)
         expect(response).to render_template :new
+      end
+    end
+  end
+
+  describe 'PATCH #update' do
+    before :each do        
+      @admin = create(:login_admin, 
+        first_name: "John",
+        last_name: "Doe"
+      )
+      sign_in_admin(@admin)
+    end
+
+    context "with valid attributes" do
+      it "locates the requested @admin" do   
+        patch :update, id: @admin, admin: attributes_for(:admin)
+        expect(assigns(:admin)).to eq(@admin)
+      end
+
+      it "changes @admin's attributes" do
+        patch :update, id: @admin, admin: attributes_for(:admin,
+          first_name: "Jane",
+          last_name: "Doe"
+        )
+        @admin.reload
+        expect(@admin.first_name).to eq("Jane")
+        expect(@admin.last_name).to eq("Doe")
+      end
+
+      it "redirects to the updates @admin" do
+        patch :update, id: @admin, admin: attributes_for(:admin)
+        expect(response).to redirect_to admin_center_path
+      end
+    end
+
+    context "with invalid attributes" do
+      it "does not change @admin's attributes" do
+        patch :update, id: @admin, admin: attributes_for(:admin,
+          first_name: "Jane",
+          last_name: nil
+        )
+        @admin.reload
+        expect(@admin.first_name).not_to eq("Jane")
+        expect(@admin.last_name).to eq("Doe")
+      end
+
+      it "re-renders the admin :edit template " do
+        patch :update, id: @admin, admin: attributes_for(:invalid_admin)
+        expect(response).to render_template :edit
       end
     end
   end
