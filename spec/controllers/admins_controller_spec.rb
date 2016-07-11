@@ -59,7 +59,7 @@ RSpec.describe AdminsController, :type => :controller do
         expect(@admin.last_name).to eq("Maddon")
       end
 
-      it "redirects to the updates @admin" do
+      it "redirects to the updated @admin" do
         patch :update, id: @admin, admin: attributes_for(:admin)
         expect(response).to redirect_to admin_center_path
       end
