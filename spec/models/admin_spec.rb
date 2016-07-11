@@ -16,8 +16,6 @@ describe Admin do
       first_name: "Joe", 
       last_name: "Maddon"
     )
-    
     expect(admin.full_name).to eq("Joe Maddon")
   end
-
 end
