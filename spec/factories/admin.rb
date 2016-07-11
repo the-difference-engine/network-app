@@ -8,5 +8,9 @@ FactoryGirl.define do
     factory :invalid_admin do 
       first_name nil
     end
+
+    factory :login_admin do 
+      email "admin_login@gmail.com"
+    end
   end
 end
