@@ -5,7 +5,7 @@ describe Admin do
     expect(build(:admin)).to be_valid
   end
 
-  it "in invalid without a first name" do
+  it "is invalid without a first name" do
     admin = build(:invalid_admin)
     admin.valid?
     expect(admin.errors[:first_name]).to include("can't be blank")
