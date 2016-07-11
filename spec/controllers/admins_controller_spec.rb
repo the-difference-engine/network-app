@@ -15,5 +15,13 @@ RSpec.describe AdminsController, :type => :controller do
         expect(response).to redirect_to admin_path(assigns[:admin])
       end
     end
+
+    context "with invalid attributes" do
+ 
+      it "re-renders admins :new template" do 
+        post :create, admin: attributes_for(:invalid_admin)
+        expect(response).to render_template :new
+      end
+    end
   end
 end
