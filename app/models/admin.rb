@@ -8,7 +8,6 @@ class Admin < ActiveRecord::Base
   mount_uploader :avatar, UserFileUploader
   validates :first_name, :last_name, presence: true
 
-  has_many :employers
   def full_name
     "#{first_name} #{last_name}"
   end

@@ -18,6 +18,7 @@ class AdminsController < ApplicationController
       flash[:success] = "Admin account successfully created!"
       redirect_to admin_path(@admin)
     else
+      Rails.logger.info @admin.attributes
       flash[:warning] = "Unable to add new admin."
       render :new
     end
