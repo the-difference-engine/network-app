@@ -83,4 +83,22 @@ RSpec.describe AdminsController, :type => :controller do
       end
     end
   end
+
+  describe 'DELETE #destroy' do
+    before :each do        
+      admin = create(:login_admin)
+      sign_in_admin(admin)
+
+      @delete_admin = create(:admin)
+    end
+
+    it "deletes the admin account" do   
+      expect{ delete :destroy, id: @delete_admin}.to change(Admin, :count).by(-1)
+    end
+
+    it "deletes the admin account" do   
+      delete :destroy, id: @delete_admin
+      expect(response).to redirect_to admin_center_path
+    end
+  end
 end
