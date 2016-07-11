@@ -38,8 +38,8 @@ RSpec.describe AdminsController, :type => :controller do
   describe 'PATCH #update' do
     before :each do        
       @admin = create(:login_admin, 
-        first_name: "John",
-        last_name: "Doe")
+        first_name: "Joe",
+        last_name: "Maddon")
       sign_in_admin(@admin)
     end
 
@@ -51,12 +51,12 @@ RSpec.describe AdminsController, :type => :controller do
 
       it "changes @admin's attributes" do
         patch :update, id: @admin, admin: attributes_for(:admin,
-          first_name: "Jane",
-          last_name: "Doe"
+          first_name: "Kerry",
+          last_name: "Maddon"
         )
         @admin.reload
-        expect(@admin.first_name).to eq("Jane")
-        expect(@admin.last_name).to eq("Doe")
+        expect(@admin.first_name).to eq("Kerry")
+        expect(@admin.last_name).to eq("Maddon")
       end
 
       it "redirects to the updates @admin" do
@@ -68,11 +68,11 @@ RSpec.describe AdminsController, :type => :controller do
     context "with invalid attributes" do
       it "does not change @admin's attributes" do
         patch :update, id: @admin, admin: attributes_for(:admin,
-          first_name: "Jane",
+          first_name: "Kerry",
           last_name: nil)
         @admin.reload
-        expect(@admin.first_name).not_to eq("Jane")
-        expect(@admin.last_name).to eq("Doe")
+        expect(@admin.first_name).not_to eq("Kerry")
+        expect(@admin.last_name).to eq("Maddon")
       end
 
       it "re-renders the admin :edit template " do
