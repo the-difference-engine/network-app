@@ -39,8 +39,7 @@ RSpec.describe AdminsController, :type => :controller do
     before :each do        
       @admin = create(:login_admin, 
         first_name: "John",
-        last_name: "Doe"
-      )
+        last_name: "Doe")
       sign_in_admin(@admin)
     end
 
@@ -70,8 +69,7 @@ RSpec.describe AdminsController, :type => :controller do
       it "does not change @admin's attributes" do
         patch :update, id: @admin, admin: attributes_for(:admin,
           first_name: "Jane",
-          last_name: nil
-        )
+          last_name: nil)
         @admin.reload
         expect(@admin.first_name).not_to eq("Jane")
         expect(@admin.last_name).to eq("Doe")
@@ -88,7 +86,6 @@ RSpec.describe AdminsController, :type => :controller do
     before :each do        
       admin = create(:login_admin)
       sign_in_admin(admin)
-
       @delete_admin = create(:admin)
     end
 
@@ -96,7 +93,7 @@ RSpec.describe AdminsController, :type => :controller do
       expect{ delete :destroy, id: @delete_admin}.to change(Admin, :count).by(-1)
     end
 
-    it "deletes the admin account" do   
+    it "redirects to admin dash after delete" do   
       delete :destroy, id: @delete_admin
       expect(response).to redirect_to admin_center_path
     end
