@@ -9,6 +9,11 @@ RSpec.describe Employer, :type => :model do
   it 'creates a follow-up-list' do
     employer = create(:employer, name: "Cubs")
     expect{employer.create_list}.to change(FollowUpList, :count).by(1)
-  end    
+  end
+
+  it 'creates a follow-up-list' do
+    employer = create(:employer, name: "Cubs")
+    expect(employer.follow_up_list.name).to eq("Cubs-List")
+  end   
 end
 
