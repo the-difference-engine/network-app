@@ -33,5 +33,51 @@ RSpec.describe EmployersController, :type => :controller do
         expect(response).to render_template :new
       end
     end
+  end
+
+  describe 'PATCH #update' do
+    before :each do        
+      @employer = create(:login_employer, 
+        name: "Cubs",
+        city: "Chicago")
+      sign_in_employer(@employer)
+    end
+
+    context "with valid attributes" do
+      it "locates the requested @employer" do   
+        patch :update, id: @employer, employer: attributes_for(:employer)
+        expect(assigns(:employer)).to eq(@employer)
+      end
+
+      it "changes @employer's attributes" do
+        patch :update, id: @employer, employer: attributes_for(:employer,
+          name: "Cubbies",
+          city: "Chicago"
+        )
+        @employer.reload
+        expect(@employer.name).to eq("Cubbies")
+      end
+
+      it "redirects to the updated @employer" do
+        patch :update, id: @employer, employer: attributes_for(:employer)
+        expect(response).to redirect_to employer_path(@employer)
+      end
+    end
+
+    context "with invalid attributes" do
+      it "does not change @employer's attributes" do
+        patch :update, id: @employer, employer: attributes_for(:employer,
+          name: nil,
+          city: "Miami")
+        @employer.reload
+        expect(@employer.name).to eq("Cubs")
+        expect(@employer.city).not_to eq("Miami")
+      end
+
+      it "re-renders the employer :edit template " do
+        patch :update, id: @employer, employer: attributes_for(:invalid_employer)
+        expect(response).to render_template :edit
+      end
+    end
   end 
 end
