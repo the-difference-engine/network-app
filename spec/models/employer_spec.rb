@@ -4,5 +4,11 @@ RSpec.describe Employer, :type => :model do
   # pending "add some examples to (or delete) #{__FILE__}"  
   it 'has a valid factory' do
     expect(build(:employer)).to be_valid
+  end
+
+  it 'creates a follow-up-list' do
+    employer = create(:employer, name: "Cubs")
+    expect{employer.create_list}.to change(FollowUpList, :count).by(1)
   end    
 end
+

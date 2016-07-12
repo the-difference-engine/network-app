@@ -12,10 +12,6 @@ FactoryGirl.define do
     email Faker::Internet.email
     password "password"
 
-    after(:build) do |employer|
-      employer.follow_up_list << FactoryGirl.build(:follow_up_list, employer: employer)
-    end
-
     factory :invalid_employer do 
       name nil
     end
