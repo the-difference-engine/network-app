@@ -76,7 +76,7 @@ class EmployersController < ApplicationController
 
     if @employer.destroy
       flash[:success] = "Employer account successfully deleted!"
-      redirect_to employers_path
+      redirect_to admin_center_path
     else
       flash[:warning] = "Unable to delete the employer account."
       Rails.logger.info @employer.errors.messages
