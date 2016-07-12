@@ -35,11 +35,13 @@ RSpec.describe Employer, :type => :model do
     employer = create(:employer, 
       description: "baseball team",
       rep_first_name: "joe",
-      rep_last_name: "maddon")
+      rep_last_name: "maddon",
+      city: "chicago")
     employer.capitalize_params
     expect(employer.description).to eq("Baseball team")
     expect(employer.rep_first_name).to eq("Joe")
     expect(employer.rep_last_name).to eq("Maddon")
+    expect(employer.city).to eq("Chicago")
   end
 end
 
