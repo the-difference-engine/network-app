@@ -92,9 +92,9 @@ RSpec.describe EmployersController, :type => :controller do
       expect{ delete :destroy, id: @delete_employer}.to change(Employer, :count).by(-1)
     end
 
-    # it "redirects to admin dash after delete" do   
-    #   delete :destroy, id: @delete_employer
-    #   expect(response).to redirect_to employer_center_path
-    # end
+    it "redirects to admin dash after delete" do   
+      delete :destroy, id: @delete_employer
+      expect(response).to redirect_to admin_center_path
+    end
   end 
 end
