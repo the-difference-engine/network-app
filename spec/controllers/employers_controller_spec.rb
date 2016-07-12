@@ -89,12 +89,18 @@ RSpec.describe EmployersController, :type => :controller do
     end
 
     it "deletes the employer account" do   
-      expect{ delete :destroy, id: @delete_employer}.to change(Employer, :count).by(-1)
+      expect{ delete :destroy, id: @delete_employer }.to change(Employer, :count).by(-1)
     end
 
     it "redirects to admin dash after delete" do   
       delete :destroy, id: @delete_employer
       expect(response).to redirect_to admin_center_path
+    end
+
+    it "deletes the associated Follow-Up List" do   
+      expect { 
+        delete :destroy, id: @delete_employer
+      }.to change(FollowUpList, :count).by(-1)
     end
   end 
 end
