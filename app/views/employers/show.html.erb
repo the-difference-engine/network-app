@@ -24,7 +24,7 @@
         <em><%= @employer.rep_email %></em><br>
         <em><%= @employer.rep_phone %></em></p>
         <% if @employer.website != "" %>
-          <p><%= link_to 'Visit Our Website', @employer.normalized_webpage, target: "_blank" %></p>
+          <p><%= link_to 'Visit Our Website', @employer.normalized_website, target: "_blank" %></p>
         <% end %>
       </div>
     </div>
