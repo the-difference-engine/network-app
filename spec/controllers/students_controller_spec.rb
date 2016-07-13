@@ -83,19 +83,38 @@ RSpec.describe StudentsController, :type => :controller do
   end
 
   describe 'DELETE #destroy' do
-    before :each do        
-      admin = create(:login_admin)
-      sign_in_admin(admin)
-      @delete_student = create(:student)
+    context "when admin is signed-in" do
+      before :each do        
+        admin = create(:login_admin)
+        sign_in_admin(admin)
+        @delete_student = create(:student)
+      end
+
+      it "deletes the student account" do   
+        expect{ delete :destroy, id: @delete_student}.to change(Student, :count).by(-1)
+      end
+
+      it "redirects to student dash after delete" do   
+        delete :destroy, id: @delete_student
+        expect(response).to redirect_to admin_center_path
+      end
     end
 
-    it "deletes the student account" do   
-      expect{ delete :destroy, id: @delete_student}.to change(Student, :count).by(-1)
-    end
+    # context "when student is signed-in" do
+    #   before :each do        
+    #     student = create(:login_student)
+    #     sign_in_student(student)
+    #     @delete_student = create(:student)
+    #   end
 
-    it "redirects to student dash after delete" do   
-      delete :destroy, id: @delete_student
-      expect(response).to redirect_to admin_center_path
-    end
+    #   it "does not delete the student account" do   
+    #     expect{ delete :destroy, id: @delete_student}.not_to change(Student, :count)
+    #   end
+
+    #   it "redirects to /sign_in page after unsuccessful delete" do   
+    #     delete :destroy, id: @delete_student
+    #     expect(response).to redirect_to home_sign_in_path
+    #   end
+    # end
   end
 end
