@@ -43,6 +43,5 @@ RSpec.describe Student, :type => :model do
       project = create(:project, student: student)
       expect(student.capstone_project).to eq(project)
     end
-
   end
 end
