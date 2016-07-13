@@ -6,7 +6,7 @@ RSpec.describe Student, :type => :model do
   end
 
   context "with model methods" do
-    it "returns an student's full name as a string" do
+    it "returns a student's full name as a string" do
       student = build(:student, 
         first_name: "Jake", 
         last_name: "Arrieta"
