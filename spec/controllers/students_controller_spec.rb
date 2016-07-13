@@ -21,7 +21,7 @@ RSpec.describe StudentsController, :type => :controller do
       end
     end
 
-    context "with invalid attributes" do
+    context "with invalid attributes" do 
       it "does not save the student in the database" do   
         expect {
           post :create, student: attributes_for(:invalid_student)
