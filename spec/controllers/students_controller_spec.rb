@@ -51,11 +51,11 @@ RSpec.describe StudentsController, :type => :controller do
 
       it "changes @student's attributes" do
         patch :update, id: @student, student: attributes_for(:student,
-          first_name: "Joseph",
+          first_name: "Jacob",
           last_name: "Arrieta"
         )
         @student.reload
-        expect(@student.first_name).to eq("Joseph")
+        expect(@student.first_name).to eq("Jacob")
         expect(@student.last_name).to eq("Arrieta")
       end
 
@@ -68,10 +68,10 @@ RSpec.describe StudentsController, :type => :controller do
     context "with invalid attributes" do
       it "does not change @student's attributes" do
         patch :update, id: @student, student: attributes_for(:student,
-          first_name: "Joseph",
+          first_name: "Jacob",
           email: nil)
         @student.reload
-        expect(@student.first_name).not_to eq("Joseph")
+        expect(@student.first_name).not_to eq("Jacob")
         expect(@student.last_name).to eq("Arrieta")
       end
 
