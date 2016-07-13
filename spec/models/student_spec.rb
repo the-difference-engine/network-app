@@ -38,7 +38,7 @@ RSpec.describe Student, :type => :model do
       expect(student.job_response).to eq("No")
     end
 
-    it 'returns project if the student project is a capstone' do
+    it 'returns capstone project if project capstone attribute = true' do
       student = create(:student)
       project = create(:project, student: student)
       expect(student.capstone_project).to eq(project)
