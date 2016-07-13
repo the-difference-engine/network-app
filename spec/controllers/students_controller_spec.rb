@@ -34,4 +34,51 @@ RSpec.describe StudentsController, :type => :controller do
       end
     end
   end
+
+  describe 'PATCH #update' do
+    before :each do        
+      @student = create(:login_student, 
+        first_name: "Jake",
+        last_name: "Arrieta")
+      sign_in_student(@student)
+    end
+
+    context "with valid attributes" do
+      it "locates the requested @student" do   
+        patch :update, id: @student, student: attributes_for(:student)
+        expect(assigns(:student)).to eq(@student)
+      end
+
+      it "changes @student's attributes" do
+        patch :update, id: @student, student: attributes_for(:student,
+          first_name: "Joseph",
+          last_name: "Arrieta"
+        )
+        @student.reload
+        expect(@student.first_name).to eq("Joseph")
+        expect(@student.last_name).to eq("Arrieta")
+      end
+
+      it "redirects to the updated @student" do
+        patch :update, id: @student, student: attributes_for(:student)
+        expect(response).to redirect_to student_path(@student)
+      end
+    end
+
+    context "with invalid attributes" do
+      it "does not change @student's attributes" do
+        patch :update, id: @student, student: attributes_for(:student,
+          first_name: "Joseph",
+          email: nil)
+        @student.reload
+        expect(@student.first_name).not_to eq("Joseph")
+        expect(@student.last_name).to eq("Arrieta")
+      end
+
+      it "re-renders the student :edit template " do
+        patch :update, id: @student, student: attributes_for(:invalid_student)
+        expect(response).to render_template :edit
+      end
+    end
+  end
 end
