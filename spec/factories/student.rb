@@ -23,7 +23,7 @@ FactoryGirl.define do
     password "password"
 
     factory :invalid_student do 
-      name nil
+      email nil
     end
 
     factory :login_student do 
