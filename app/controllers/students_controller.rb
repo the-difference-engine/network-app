@@ -81,7 +81,7 @@ class StudentsController < ApplicationController
 
     if @student.destroy
       flash[:success] = "Student account successfully deleted!"
-      redirect_to students_path
+      redirect_to admin_center_path
     else
       flash[:warning] = "Unable to delete the student account."
       Rails.logger.info @student.errors.messages

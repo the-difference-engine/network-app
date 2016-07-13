@@ -81,4 +81,21 @@ RSpec.describe StudentsController, :type => :controller do
       end
     end
   end
+
+  describe 'DELETE #destroy' do
+    before :each do        
+      admin = create(:login_admin)
+      sign_in_admin(admin)
+      @delete_student = create(:student)
+    end
+
+    it "deletes the student account" do   
+      expect{ delete :destroy, id: @delete_student}.to change(Student, :count).by(-1)
+    end
+
+    it "redirects to student dash after delete" do   
+      delete :destroy, id: @delete_student
+      expect(response).to redirect_to admin_center_path
+    end
+  end
 end
