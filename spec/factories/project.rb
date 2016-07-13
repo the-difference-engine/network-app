@@ -7,7 +7,7 @@ FactoryGirl.define do
     github Faker::Internet.url
     website Faker::Internet.url
     screencast Faker::Internet.url
-    student_id rand(1..5)
+    student_id [1,2,3,4,5].sample
 
     factory :invalid_project do 
       name nil
