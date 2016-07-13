@@ -18,4 +18,14 @@ module ControllerHelpers
       allow(controller).to receive(:current_employer).and_return(employer)
     end
   end
+
+  def sign_in_student(student)
+    if student.nil?
+      allow(request.env['warden']).to receive(:authenticate!).and_throw(:warden, {:scope => :student})
+      allow(controller).to receive(:current_student).and_return(nil)
+    else
+      allow(request.env['warden']).to receive(:authenticate!).and_return(student)
+      allow(controller).to receive(:current_student).and_return(student)
+    end
+  end
 end
