@@ -15,11 +15,13 @@ RSpec.describe Admin, :type => :model do
     expect(admin.errors[:first_name]).to include("can't be blank")
   end
 
-  it "returns an admin's full name as a string" do
-    admin = build(:admin, 
-      first_name: "Joe", 
-      last_name: "Maddon"
-    )
-    expect(admin.full_name).to eq("Joe Maddon")
+  context "with model methods" do
+    it "returns an admin's full name as a string" do
+      admin = build(:admin, 
+        first_name: "Joe", 
+        last_name: "Maddon"
+      )
+      expect(admin.full_name).to eq("Joe Maddon")
+    end
   end
 end

@@ -16,7 +16,6 @@ class Student < ActiveRecord::Base
 
   def capstone_project
     Project.all.find_by(:student_id => id, :capstone => true)
-    # projects.where(capstone: true).last
   end
 
   def normalized_github
