@@ -339,7 +339,7 @@ div#preloader {
   width: 100%;
   height: 100%;
   overflow: visible;
-  background: #fff image-url("/assets/images/loader.gif") no-repeat center center;
+  background: #fff image-url("loader.gif") no-repeat center center;
 }
 
 /**********back to top*************/
@@ -906,7 +906,7 @@ MULTI LEVEL DROPDOWN CSS
 .slider-overlay,
 .slider-overlay-nobg {
   background: rgba(0, 0, 0, 0.4);
-  background-image: image-url("/assets/images/pattern.png");
+  background-image: image-url("pattern.png");
   background-repeat: repeat;
   position: absolute;
   top: 0;
@@ -2365,7 +2365,7 @@ h3.subtitle {
 /****************breadcrumbs*********************************************/
 .page-tree-bg,
 .page-tree-bg2 {
-  background-image: image-url("/assets/images/bread-bg.png");
+  background-image: image-url("bread-bg.png");
   background-position: center 688px;
   background-color: #0FAF97;
   padding: 40px 0;
@@ -2377,7 +2377,7 @@ h3.subtitle {
 }
 
 .page-tree-bg2 {
-  background-image: image-url("/assets/images/bread-bg.png");
+  background-image: image-url("bread-bg.png");
 }
 
 h3.page-tree-text {

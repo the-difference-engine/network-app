@@ -1,33 +1,37 @@
-<h2>Students Index</h2>
-<div class="container-fluid">
-  <div class="row">
-    
-    <% @students.each do |student| %>
-      <div class="col-md-6 col-sm-6 col-xs-12 student-index-card" >
-        
-        <div class="col-md-6 col-sm-6">
-          <% if student.avatar.model["avatar"] =~ /robo/ %>
-            <%= image_tag(student.avatar.model["avatar"]) %>
-          <% else %>
-            <%= image_tag(student.avatar.url) %>
-          <% end %>
-          <p><%= link_to student.full_name, "/students/#{student.id}" %></p>
-          <!-- fix student model methods so code below works
-          student.capstone_project.name -->
-
-        </div>
-
-        <div class="col-md-6 col-sm-6">
-          <% student.projects.each do |project| %>
-            <% if project.capstone? %>
-            <img src="<%= project.screencast %>" class="img-responsive">
-            <p>My Capstone: <%= link_to project.name, "/students/#{student.id}" %> </p>
-            <% end %>
-          <% end %>
-        </div>
-            
-      </div>
-    <% end %>
-
+<section id="content-region-3" class="padding-40 page-tree-bg">
+  <div class="container">
+      <h3 class="page-tree-text">Students</h3>
   </div>
-</div>
+</section><!--page-tree end here-->
+<div class="space-70"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+        <ul class="portfolio-filters">
+            <li class="filter active" data-filter="all">all</li>
+            <li class="filter" data-filter="design">design</li>
+            <li class="filter" data-filter="html">HTML5</li>
+            <li class="filter" data-filter="wordpress">Wordpress</li>
+            <li class="filter" data-filter="seo">Seo</li>
+        </ul>
+        <div id="grid" class="row">
+          <% @students.each do |student| %>
+            <div class=" mix design col-md-4 col-sm-6 margin-btm-40">
+              <div class="portfolio-sec">
+                <div class="portfolio-thumnail">
+                  <a href="portfolio-single.html">
+                    <img src="<%= student.avatar.url %>" class="img-responsive" alt="">
+                  </a>  
+                </div>
+                <div class="portfolio-desc text-center">
+                  <h4 class="portfolio-post-title"><%= student.full_name %></h4>
+                  <span class="portfolio-post-cat">Branding</span>
+                  <h4><a href="portfolio-single.html" class="btn theme-btn-default btn-lg">More detail</a></h4>
+                </div>
+              </div>
+            </div><!--portfolio item -->
+          <% end %>
+        </div><!--grid-->
+    </div>
+  </div><!--row-->
+</div><!--portfolio container end-->

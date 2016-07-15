@@ -7,6 +7,8 @@ class StudentsController < ApplicationController
   def index
     @students = Student.all
     @projects = Project.all
+
+    # render layout: 'portfolio.html.erb'
   end
 
   def new
