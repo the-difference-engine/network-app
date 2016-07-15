@@ -1,39 +1,37 @@
 <section id="content-region-3" class="padding-40 page-tree-bg">
-    <div class="container">
-        <h3 class="page-tree-text">
-            ACLTC Students
-        </h3>
-    </div>
+  <div class="container">
+    <h3 class="page-tree-text">ACLTC Students</h3>
+  </div>
 </section><!--page-tree end here-->
 <div class="space-70"></div>
 <div class="container student-index">
-    <div class="row">
-        <div class="col-md-12">
-            <ul class="portfolio-filters">
-                <li class="filter active" data-filter="all">all</li>
-                <li class="filter" data-filter="design">design</li>
-                <li class="filter" data-filter="html">HTML5</li>
-                <li class="filter" data-filter="wordpress">Wordpress</li>
-                <li class="filter" data-filter="seo">Seo</li>
-            </ul>
-            <div id="grid" class="row">
-              <% @students.each do |student| %>
-                <div class=" mix col-md-4 col-sm-6 margin-btm-40">
-                    <div class="portfolio-sec">
-                        <div class="portfolio-thumnail">
-                          <%= link_to image_tag("#{student.avatar.index_square.url}"), student_path(student), class: "img-responsive" %>
-                        </div>
-                        <div class="portfolio-desc text-center">
-                            <h4 class="portfolio-post-title"><%= student.full_name %></h4>
-                            <span class="portfolio-post-cat"><%= student.skill_1 %></span>
-                            <span class="portfolio-post-cat"><%= student.skill_2 %></span>
-                            <span class="portfolio-post-cat"><%= student.skill_3 %></span>
-                            <h4><%= link_to "More Details", student_path(student), class: "btn theme-btn-default btn-lg" %></h4>
-                        </div>
-                    </div>
-                </div><!--portfolio item -->
-              <% end %>
-            </div><!--grid-->
-        </div>
-    </div><!--row-->
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="portfolio-filters">
+        <li class="filter active" data-filter="all">all</li>
+        <li class="filter" data-filter="design">design</li>
+        <li class="filter" data-filter="html">HTML5</li>
+        <li class="filter" data-filter="wordpress">Wordpress</li>
+        <li class="filter" data-filter="seo">Seo</li>
+      </ul>
+      <div id="grid" class="row">
+        <% @students.each do |student| %>
+          <div class=" mix col-md-4 col-sm-6 margin-btm-40">
+            <div class="portfolio-sec">
+              <div class="portfolio-thumnail">
+                <%= link_to image_tag("#{student.avatar.index_square.url}"), student_path(student), class: "img-responsive" %>
+              </div>
+              <div class="portfolio-desc text-center">
+                <h4 class="portfolio-post-title"><%= student.full_name %></h4>
+                <span class="portfolio-post-cat"><%= student.skill_1 %></span>
+                <span class="portfolio-post-cat"><%= student.skill_2 %></span>
+                <span class="portfolio-post-cat"><%= student.skill_3 %></span>
+                <h4><%= link_to "More Details", student_path(student), class: "btn theme-btn-default btn-lg" %></h4>
+              </div>
+            </div>
+          </div><!--portfolio item -->
+        <% end %>
+      </div><!--grid-->
+    </div>
+  </div><!--row-->
 </div><!--portfolio container end-->
