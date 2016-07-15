@@ -64,6 +64,10 @@ class UserFileUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [300,400]
   end
 
+  version :index_square_lg, :from_version => :large do
+    process resize_to_fill: [358,358]
+  end
+
   version :index_square, :from_version => :large do
     process resize_to_fill: [300,300]
   end
