@@ -62,76 +62,44 @@
               </ul>
             </li>
           <% end %>
-          <li class="dropdown active">
-            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Portfolio</a>
-            <ul class="dropdown-menu">
-              <li><a href="portfolio.html">Portfolio 3 col</a></li>
-              <li><a href="portfolio-masonry.html">Portfolio Masonry</a></li>
-              <li><a href="portfolio-full.html">Portfolio Full width</a></li>
-              <li><a href="portfolio-full-boxed.html">Full width boxed</a></li>                            
-              <li><a href="portfolio-single.html">Portfolio Single</a></li>
-            </ul>
+          <li class="dropdown">
+            <%= link_to 'Students', students_path, class: "dropdown-toggle js-activated" %>
           </li>
-          <li class=" dropdown">
-            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Blog</a>
-            <ul class="dropdown-menu">
-              <li><a href="blog-full.html">Blog Full width</a></li>
-              <li><a href="blog-sidebar.html">Blog Sidebar</a></li>  
-              <li><a href="blog-masonry.html">Blog Masonry</a></li>
-              <li><a href="blog-post.html">Blog Post</a></li>
-            </ul>
+          <li class="dropdown">
+            <%= link_to 'Employers', employers_path, class: "dropdown-toggle js-activated" %>
           </li>
-          <!--mega menu-->
-          <li class="dropdown yamm-fw">
-            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">More  <i class="fa fa-angle-down"></i></a>
-            <ul class="dropdown-menu">
-              <li>
-                <div class="yamm-content">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h3 class="heading">Pages 1</h3>
-                      <ul class="nav mega-vertical-nav">  
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="our-team.html">Our Team</a></li>
-                        <li><a href="login.html">Login</a></li>
-                        <li><a href="signup.html">Sign up</a></li>
-                      </ul>
-                    </div>
-                    <div class="col-sm-3">
-                      <h3 class="heading">Pages 2 </h3>
-                      <ul class="nav mega-vertical-nav">
-                        <li><a href="page-fullwidth.html">Full Width</a></li>
-                        <li><a href="page-leftbar.html">Left Sidebar</a></li>
-                        <li><a href="page-rightbar.html">Right Sidebar</a></li>
-                        <li><a href="faqs.html">Faqs</a></li>
-                        <li><a href="page-error.html">Error 404</a></li>
-                      </ul>
-                    </div>
-                    <div class="col-sm-3">
-                      <h3 class="heading">Features</h3>
-                      <ul class="nav mega-vertical-nav">
-                        <li><a href="typography.html">Typography</a></li>
-                        <li><a href="shortcodes.html">Shortcodes</a></li>                              
-                        <li><a href="pricing.html">Pricing Tables</a></li>
-                        <li><a href="footer-option.html">Footer option</a></li>
-                      </ul>
-                    </div>
-                    <div class="col-sm-3">
-                      <h3 class="heading">Shop</h3>
-                      <ul class="nav mega-vertical-nav">
-                        <li><a href="shop-default.html">Shop 3 columns</a></li><li><a href="shop-sidebar.html">Shop Sidebar</a></li>
-                        <li><a href="product-detail.html">Product Detail</a></li>                              
-                        <li><a href="shop-cart.html">Cart</a></li>
-                        <li><a href="shop-checkout.html">Checkout</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </li> 
+          <% if admin_signed_in? %>
+            <li class=" dropdown">
+              <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">My Account</a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'View My Profile', admin_path(current_user) %></li>
+                <li><%= link_to 'Edit My Account', edit_admin_path(current_user) %></li>
+                <li><%= link_to 'Sign Out', destroy_admin_session_path %></li>
+              </ul>
+            </li>
+          <% elsif student_signed_in? %>
+            <li class=" dropdown">
+              <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">My Account</a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'View My Profile', student_path(current_user) %></li>
+                <li><%= link_to 'Edit My Account', edit_student_path(current_user) %></li>
+                <li><%= link_to 'Sign Out', destroy_student_session_path %></li>
+              </ul>
+            </li>
+          <% elsif employer_signed_in? %>
+            <li class=" dropdown">
+              <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">My Account</a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'View My Profile', employer_path(current_user) %></li>
+                <li><%= link_to 'Edit My Account', edit_employer_path(current_user) %></li>
+                <li><%= link_to 'Sign Out', destroy_employer_session_path %></li>
+              </ul>
+            </li>
+          <% else %>
+            <li class="dropdown">
+              <%= link_to 'Sign In', home_sign_in_path %>
+            </li>
+          <% end %>
           <!--menu Features li end here--> 
           <li class="social-nav"><a href="#"><i class="ion-social-facebook"></i></a></li>
           <li class="social-nav"><a href="#"><i class="ion-social-twitter"></i></a></li>
