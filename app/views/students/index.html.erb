@@ -6,7 +6,7 @@
     </div>
 </section><!--page-tree end here-->
 <div class="space-70"></div>
-<div class="container">
+<div class="container student-index">
     <div class="row">
         <div class="col-md-12">
             <ul class="portfolio-filters">
@@ -25,7 +25,9 @@
                         </div>
                         <div class="portfolio-desc text-center">
                             <h4 class="portfolio-post-title"><%= student.full_name %></h4>
-                            <span class="portfolio-post-cat">Branding</span>
+                            <span class="portfolio-post-cat"><%= student.skill_1 %></span>
+                            <span class="portfolio-post-cat"><%= student.skill_2 %></span>
+                            <span class="portfolio-post-cat"><%= student.skill_3 %></span>
                             <h4><%= link_to "More Details", student_path(student), class: "btn theme-btn-default btn-lg" %></h4>
                         </div>
                     </div>
