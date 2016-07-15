@@ -13,11 +13,11 @@
 //= require angular
 //= require app
 //= require jquery
-//= require jquery
 //= require jquery_ujs
 //= require jquery-ui
 //= require bootstrap-sprockets
 //= require bootstrap-hover-dropdown.min
+//= require jquery.easing.1.3.min
 //= require jquery.flexslider-min
 //= require jquery.mixitup.min
 //= require jquery.sticky
