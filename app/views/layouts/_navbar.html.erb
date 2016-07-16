@@ -10,7 +10,13 @@
       <div class="container">
         <div class="pull-right">
           <ul class="info list-inline hidden-xs">
-            <li><a href="#" class="hover-color"><i class="ion-man"></i> &nbsp;<%= current_user.email.upcase %> &nbsp;|&nbsp; <%= current_user.class.name.upcase %></a></li>
+            <% if admin_signed_in? %>
+              <li><a href="/admins/<%= current_user.id %>" class="hover-color"><i class="ion-man"></i> &nbsp;<%= current_user.email.upcase %> &nbsp;|&nbsp; <%= current_user.class.name.upcase %></a></li>
+            <% elsif student_signed_in? %>
+              <li><a href="/students/<%= current_user.id %>" class="hover-color"><i class="ion-man"></i> &nbsp;<%= current_user.email.upcase %> &nbsp;|&nbsp; <%= current_user.class.name.upcase %></a></li>
+            <% elsif employer_signed_in? %>
+              <li><a href="/employers/<%= current_user.id %>" class="hover-color"><i class="ion-man"></i> &nbsp;<%= current_user.email.upcase %> &nbsp;|&nbsp; <%= current_user.class.name.upcase %></a></li>
+            <% end %>
          </ul>
          </div>
        </div><!--container end-->
@@ -97,10 +103,6 @@
               <%= link_to 'Sign In', home_sign_in_path %>
             </li>
           <% end %>
-          <!--menu Features li end here--> 
-          <li class="social-nav"><a href="#"><i class="ion-social-facebook"></i></a></li>
-          <li class="social-nav"><a href="#"><i class="ion-social-twitter"></i></a></li>
-          <li class="social-nav"><a href="#"><i class="ion-social-youtube"></i></a></li>  
         </ul>
       </div><!--/.nav-collapse -->
     </div><!--/.container-->
