@@ -114,6 +114,38 @@ RSpec.describe Student, :type => :model do
       expect(student.interview_answers?).to eq(false)
     end
 
+    it 'returns true if student has at least one non-nil interest answer' do
+      student = create(:student,
+        interest_1: nil,
+        interest_2: nil,
+        interest_3: "if you look hot, wear it")
+      expect(student.interests?).to eq(true)
+    end
+
+    it 'returns false if student has all nil interest answers' do
+      student = create(:student,
+        interest_1: nil,
+        interest_2: nil,
+        interest_3: nil)
+      expect(student.interests?).to eq(false)
+    end
+
+    it 'returns true if student has at least one non-empty-string interest answer' do
+      student = create(:student,
+        interest_1: "",
+        interest_2: "",
+        interest_3: "if you look hot, wear it")
+      expect(student.interests?).to eq(true)
+    end
+
+    it 'returns false if student has all empty-string interest answers' do
+      student = create(:student,
+        interest_1: "",
+        interest_2: "",
+        interest_3: "")
+      expect(student.interests?).to eq(false)
+    end
+
     it 'returns "abbreviated month year" format for student friendly_grad_date method' do
       student = create(:student,
         grad_date: "2016-03-25")
