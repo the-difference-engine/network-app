@@ -16,6 +16,7 @@ FactoryGirl.define do
     interview_3 Faker::Hacker.say_something_smart
     github Faker::Internet.url
     blog Faker::Internet.url
+    linked_in Faker::Internet.url
     quote Faker::Hacker.say_something_smart
     seeking_employment true
     resume Faker::Internet.url
