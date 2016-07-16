@@ -24,9 +24,19 @@
               <div class="portfolio-desc text-center">
                 <h4 class="portfolio-post-title"><%= student.full_name %></h4>
                 <span class="portfolio-post-cat"><%= student.industry %></span>
-                <span class="portfolio-post-cat skill"><%= student.skill_1 %></span>
-                <span class="portfolio-post-cat skill"><%= student.skill_2 %></span>
-                <span class="portfolio-post-cat skill"><%= student.skill_3 %></span>
+                <% if student.skills? %>
+                  <% unless student.skill_1 == nil || student.skill_1 == "" %>
+                    <span class="portfolio-post-cat skill"><%= student.skill_1 %></span>
+                  <% end %>
+                  <% unless student.skill_2 == nil || student.skill_2 == "" %>
+                    <span class="portfolio-post-cat skill"><%= student.skill_2 %></span>
+                  <% end %>
+                  <% unless student.skill_3 == nil || student.skill_3 == "" %>
+                    <span class="portfolio-post-cat skill"><%= student.skill_3 %></span>
+                  <% end %>
+                <% else %>
+                  <span class="portfolio-post-cat skill">Coming Soon</span>
+                <% end %>
                 <h4><%= link_to "More Details", student_path(student), class: "btn theme-btn-default btn-lg" %></h4>
               </div>
             </div>
