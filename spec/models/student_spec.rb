@@ -26,6 +26,12 @@ RSpec.describe Student, :type => :model do
       expect(student.normalized_blog).to eq("http://m.cubs.mlb.com/player/453562/jake-arrieta")
     end
 
+    it 'returns normalized student linked_in link as a string' do
+      student = build(:student, 
+        linked_in: "linkedin.com/in/jake-arrieta-2853944a")
+      expect(student.normalized_linked_in).to eq("http://linkedin.com/in/jake-arrieta-2853944a")
+    end
+
     it 'returns "Yes" if seeking_employment attribute = true' do
       student = build(:student, 
         seeking_employment: true)
