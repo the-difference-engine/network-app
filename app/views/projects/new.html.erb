@@ -1,17 +1,6 @@
-<% if @project.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@project.errors.count, "error") %></h2>
-    <ul>
-    <% @project.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
 <div class="container">
   <%= form_for(@project, url: projects_path) do |f| %>
-
+    <%= form_errors_for @project %>
     <div class="field">
       <%= f.label :name %><br />
       <%= f.text_field :name, autofocus: true %>

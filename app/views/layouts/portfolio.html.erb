@@ -24,7 +24,12 @@
   </head>
   <body>
     <%= render "layouts/navbar" %>
-    <%= yield %>
+    
+    <div class="container">
+      <%= render "layouts/flash_messages" %>
+      <%= yield :form_errors %>
+      <%= yield %>
+    </div>
 
     <div class="space-70"></div>
     <%= render "layouts/footer" %>

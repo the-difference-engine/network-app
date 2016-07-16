@@ -25,7 +25,12 @@
   </head>
   <body>
     <%= render "layouts/navbar" %>
-    <%= yield %>
+    
+    <div class="container">
+      <%= render "layouts/flash_messages" %>
+      <%= yield :form_errors %>
+      <%= yield %>
+    </div>
     
     <section id="slider-sec" class="slider-reg">
         <div class="main-flex-slider">
