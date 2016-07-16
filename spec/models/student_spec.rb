@@ -49,5 +49,37 @@ RSpec.describe Student, :type => :model do
       project = create(:project, student: student)
       expect(student.capstone_project).to eq(project)
     end
+
+    it 'returns true if student has at least one non-nil skill attribute ' do
+      student = create(:student,
+        skill_1: nil,
+        skill_2: nil,
+        skill_3: "pitching")
+      expect(student.skills?).to eq(true)
+    end
+
+    it 'returns false if student has all nil skill attributes' do
+      student = create(:student,
+        skill_1: nil,
+        skill_2: nil,
+        skill_3: nil)
+      expect(student.skills?).to eq(false)
+    end
+
+    it 'returns true if student has at least one non-empty-string skill attribute' do
+      student = create(:student,
+        skill_1: "",
+        skill_2: "",
+        skill_3: "pitching")
+      expect(student.skills?).to eq(true)
+    end
+
+    it 'returns false if student has all empty-string skill attributes' do
+      student = create(:student,
+        skill_1: "",
+        skill_2: "",
+        skill_3: "")
+      expect(student.skills?).to eq(false)
+    end
   end
 end
