@@ -11,7 +11,7 @@
 <div class="container student-show">
   <div class="row">
     <div class="col-md-8">
-      <div class="blog-post-section">
+      <div class="blog-post-section student-section-one">
         <div class="blog-post-img">
             <%= image_tag "#{@student.avatar.index_square.url}", alt: "", class: "img-responsive show-image" %>
         </div>
@@ -23,7 +23,8 @@
         <div class="blog-post-header city-header">
             <h3><a href="" class="student-city"><%= @student.city %></a></h3>
         </div>
-        
+      </div>
+      <div class="blog-post-section student-section-two">
         <div class="blog-post-detail">
           <h4 class="heading-mini section-heading">My Bootcamp</h4>
           <div class="acltc-info">
@@ -154,10 +155,13 @@
               <li><a href="%= @student.normalized_linked_in %>"><i class="ion-social-linkedin-outline" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Connect on LinkedIn"></i></a></li>
             <% end %>
           </ul>
-        </div>
+        </div><hr>
       <% end %>
-      <div class="clearfix"></div>
-      <hr>
+      <% if admin_signed_in? || student_signed_in? %>
+        <div class="sidebar-box">
+          <a href="#" class="btn btn-lg theme-btn-color"><i class="ion-plus"></i> &nbsp;Add Project</a> 
+        </div><hr>
+      <% end %> 
     </div><!--sideabr blog end -->
   </div>
 </div><!--blog post page content end here-->
