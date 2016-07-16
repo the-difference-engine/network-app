@@ -1,4 +1,5 @@
 $green: #0FAF97;
+$gray: #777;
 
 .ion-android-person {
   font-size: 16px;
@@ -37,12 +38,17 @@ $green: #0FAF97;
     border: 3px solid $green;
   }
 
-  .acltc-info {
+  .acltc-info, .student-quote {
     text-align: center;
+  }
+
+  .services-icon i {
+    margin-bottom: 10px;
   }
 
   .heading-mini {
     margin-top: 10px;
+    text-transform: none;
   }
 
   .student-grad-date {
