@@ -1,79 +1,160 @@
-<h1>Students Show</h1>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="student-profile">
-    
-      <div class="col-xs-5 col-sm-6 col-lg-4">
-        <% if @student.avatar.model["avatar"] =~ /robo/ %>
-          <%= image_tag(@student.avatar.model["avatar"]) %>
-        <% else %>
-          <%= image_tag(@student.avatar.show_tall_crop.url) %>
-        <% end %>
-        <br><br>
-        <% if admin_signed_in? %>
-          <%= link_to 'Edit', edit_student_path(@student), class: "btn btn-default" %>
-          <%= link_to 'Delete', student_path(@student), method: :delete, data: { confirm: "Are you sure you want to delete '#{@student.full_name}'"}, class: "btn btn-default" %>
-        <% elsif student_signed_in? && current_student.id == @student.id %>
-          <%= link_to 'Edit', edit_student_path(@student), class: "btn btn-default" %>
-        <% end %>
-      </div>
-
-      <div class="col-xs-7 col-sm-6 col-lg-8">
-        <h3><%= @student.full_name %></h3>
-        <ul><%= link_to "Resume", @student.resume.url %></ul>
-        <ul>Email: <%= @student.email%></ul>
-        <ul>City: <%= @student.city %></ul>
-        <ul>Inudstry: <%= @student.industry %></ul>
-        <ul>ACLTC Graduation date: <%= @student.grad_date %></ul>
-        <ul>Strengths: <li><%= @student.skill_1 %></li>
-          <li><%= @student.skill_2 %></li>
-          <li><%= @student.skill_3 %></li>
-        </ul>
-
-        <ul>Areas of Interest: <li><%= @student.interest_1 %></li>
-          <li><%= @student.interest_2 %></li>
-          <li><%= @student.interest_3 %></li>
-        </ul>
-        <ul>Inteview Question One</ul>
-        <ul>Answer: <%= @student.interview_1 %></ul>
-        <ul>Inteview Question Two</ul>
-        <ul>Answer: <%= @student.interview_2 %></ul>
-        <ul>Inteview Question Three</ul>
-        <ul>Answer: <%= @student.interview_3 %></ul>
-        <ul><%= link_to 'GitHub', @student.normalized_github, target: "_blank"%></ul>
-        <ul><%= link_to 'My Blog', @student.normalized_blog, target: "_blank" %></ul>
-        <ul>Why I learned to code: <%= @student.quote %></ul>
-        <ul>Seeking Employment: <%= @student.job_response %></ul>
-      </div>
-
-      <h4>Examples of my work</h4>
-      <%= link_to "Add Project", new_project_path, class: "btn btn-default" %>
-      <div class="row">
-        <% @student.projects.all.each do |project| %>
-          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-              <p>Project:</p>
-              <ul>Name: <%= project.name %></ul>
-              <ul>Description: <%= project.description %></ul>
-              <ul>Work type:  
-                <% if project.capstone %>
-                  Capstone
-                <% end %>
-                <% if project.client_work %>
-                  Client work
-                <% end %>
-              </ul>
-              <ul><%= link_to 'Code', project.normalized_github %></ul>
-              <ul><%= link_to 'Screencast', project.normalized_screencast %></ul>
-              <ul><%= link_to 'Website', project.normalized_website %></ul>
-              <% if admin_signed_in? || student_signed_in? && current_student.id == @student.id %>
-                <%= link_to 'Edit', edit_project_path(project), class: "btn btn-default btn-sm" %>
-                <%= link_to 'Delete', project_path(project), method: :delete, data: { confirm: "Are you sure you want to delete '#{project.name}'"}, class: "btn btn-default btn-sm" %>
-              <% end %>  
-          </div>
-        <% end %>
-      </div>
-
-    </div>
+<section id="content-region-3" class="padding-40 page-tree-bg">
+  <div class="container">
+    <h3 class="page-tree-text"><%= @student.full_name %></h3>
   </div>
-</div>
+</section><!--page-tree end here-->
+<div class="space-70"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="blog-post-section">
+                <div class="blog-post-img">
+                    <img src="assets/img/blog/blog-1.jpg" class="img-responsive" alt="">
+                </div>
+                <div class="blog-post-header">
+                    <h3><a href="" class="hover-color">standard blog post with image</a></h3>
+                </div>
+                <div class="blog-post-info">
+                    <span><a href="#" class="hover-color">by author</a> | on 27 may 2014 | <a href="#" class="hover-color">Sports</a> | <a href="#" class="hover-color">3 comment</a></span>
+                </div>
+                <div class="blog-post-detail">
+                    <p>
+                        Magnis modipsae que lib voloratati andigen daepeditem quiate ut repore autem labor. Laceaque quiae sitiorem rest non restibusaes es tumquam core posae volor remped modis volor. Doloreiur qui commolu oreprerum.Magnis modipsae que lib voloratati andigen daepeditem quiate ut repore autem labor. Laceaque quiae sitiorem rest non restibusaes es tumquam core posae volor remped modis volor. Doloreiur qui commolu oreprerum.
+                    </p>
+                    <p>
+                        Magnis modipsae que lib voloratati andigen daepeditem quiate ut repore autem labor. Laceaque quiae sitiorem rest non restibusaes es tumquam core posae volor remped modis volor. Doloreiur qui commolu oreprerum.
+                    </p>
+                </div>
+               
+            </div><!--blog post section end-->
+       
+            <div class="row">
+                <div class="col-md-12">
+                 <div class="post-comment-wrapper clearfix">
+                    <h3>Comment (3)</h3>
+                    <div class="comment-box clearfix">
+                        <img src="assets/img/blog/blog-1.jpg" class="img-responsive" alt="">
+
+                            <span>by user | <a href="#" class="hover-color">Reply</a></span>
+                           <p>
+                        aliqua.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. aliqua.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+                    </p>
+                    </div><!--comment box-->
+                     <div class="comment-box clearfix">
+                        <img src="assets/img/blog/blog-2.jpg" class="img-responsive" alt="">
+
+                            <span>by user | <a href="#" class="hover-color">Reply</a></span>
+                           <p>
+                        aliqua.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. aliqua.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+                    </p>
+                    </div><!--comment box-->
+                     <div class="comment-box clearfix">
+                        <img src="assets/img/blog/blog-3.jpg" class="img-responsive" alt="">
+
+                            <span>by user | <a href="#" class="hover-color">Reply</a></span>
+                           <p>
+                        aliqua.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. aliqua.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+                    </p>
+                    </div><!--comment box-->
+                </div><!--comment wrapper-->
+                <div class="space-40"></div>
+                <div class="comment-form-wrapper">
+                    <h3>leave a comment</h3>
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Name">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                            <div class="col-md-12">
+                                <textarea class="form-control" rows="7" placeholder="Comment"></textarea>
+                            </div>
+                            <div class="col-md-12 text-right">
+                                <button type="submit" class="btn btn-lg theme-btn-color">Comment</button>
+                            </div>
+                        </div>
+                    </form>
+                </div><!--comment form wrapper-->
+            </div>
+            </div><!--row-->
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="pagination">
+                        <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                </div>
+            </div><!--pagiantion-->
+         
+
+
+        </div><!--blog content--> 
+         <div class="col-md-4">
+            <div class="sidebar-box">
+                <div class="widget-search">
+                    <form class="search-form">
+                        <input type="text" class="form-control" placeholder="search here...">
+                        <i class="ion-search" data-toggle="tooltip" data-placement="top" title="" data-original-title="hit enter to search"></i>
+                    </form>
+                </div>
+            </div><!--sidebar-box--><hr>
+            <div class="sidebar-box">
+              <h4>Skills</h4>
+              <ul class="cat-list">
+                <li><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="10" class="hover-color"><%= @student.skill_1 %></a></li>
+                <li><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="6" class="hover-color"><%= @student.skill_2 %></a></li>
+                <li><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="8" class="hover-color"><%= @student.skill_3 %></a></li>
+              </ul>
+            </div><hr>
+            <div class="sidebar-box">
+                <h4>Text widget</h4>
+                <p>
+                    Doloreiur quia commolu ptatemp dolupta oreprerum tibusam eumenis et consent accullignis dentibea autem inisita.
+                </p>
+            </div><hr>
+            <div class="sidebar-box">
+                <h4>recent post</h4>
+                <div class="recent">
+                    <span>
+                        <img src="assets/img/blog/blog-1.jpg" class="img-responsive" alt="">
+                    </span>
+                    <p><a href="#" class="hover-color">There are many  embarrassing hidden in the middle of text.</a></p>
+                    <span class="recent-date">On 27 may in office.</span>
+                </div>
+                <div class="recent">
+                    <span>
+                        <img src="assets/img/blog/blog-2.jpg" class="img-responsive" alt="">
+                    </span>
+                    <p><a href="#" class="hover-color">There are many  embarrassing hidden in the middle of text.</a></p>
+                    <span class="recent-date">On 27 may in office.</span>
+                </div>
+                <div class="recent">
+                    <span>
+                        <img src="assets/img/blog/blog-3.jpg" class="img-responsive" alt="">
+                    </span>
+                    <p><a href="#" class="hover-color">There are many  embarrassing hidden in the middle of text.</a></p>
+                    <span class="recent-date">On 27 may in office.</span>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <hr>
+            <div class="sidebar-box">
+                <h4>Elsewhere</h4>
+                <ul class=" list-inline social-btn">
+                    <li><a href="#"><i class="ion-social-facebook" data-toggle="tooltip" data-placement="top" title="" data-original-title="Like On Facebook"></i></a></li>
+                    <li><a href="#"><i class="ion-social-twitter" data-toggle="tooltip" data-placement="top" title="" data-original-title="Follow On twitter"></i></a></li>
+                    <li><a href="#"><i class="ion-social-googleplus" data-toggle="tooltip" data-placement="top" title="" data-original-title="Follow On googleplus"></i></a></li>
+                    <li><a href="#"><i class="ion-social-pinterest" data-toggle="tooltip" data-placement="top" title="" data-original-title="pinterest"></i></a></li>
+                    <li><a href="#"><i class="ion-social-skype" data-toggle="tooltip" data-placement="top" title="" data-original-title="skype"></i></a></li>
+                </ul>
+            </div><hr>
+        </div><!--sideabr blog end -->
+    </div>
+</div><!--blog post page content end here-->
