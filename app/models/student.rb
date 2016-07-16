@@ -40,7 +40,7 @@ class Student < ActiveRecord::Base
 
   def friendly_grad_date
     if grad_date
-      grad_date.strftime("%b %Y")
+      grad_date.strftime("%B %Y")
     end
   end
 
