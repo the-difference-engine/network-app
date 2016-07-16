@@ -45,6 +45,8 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
+    @project.remove_project_image!
+    @project.save
 
     if admin_signed_in? || student_signed_in? && @project.student_id == current_student.id
       if @project.destroy

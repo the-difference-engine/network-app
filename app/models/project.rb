@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+  mount_uploader :project_image, ProjectImageUploader
+  
   belongs_to :student
 
   validates :name, :description, presence: true
