@@ -3,6 +3,8 @@ FactoryGirl.define do
     first_name Faker::Name.first_name
     last_name Faker::Name.last_name
     city Faker::Address.city
+    current_city Faker::Address.city
+    current_state Faker::Address.state_abbr
     industry Faker::Internet.domain_word
     grad_date "2015-03-25"
     skill_1 Faker::Hacker.abbreviation
