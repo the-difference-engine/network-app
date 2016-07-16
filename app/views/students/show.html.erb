@@ -14,18 +14,20 @@
                 <div class="blog-post-header">
                     <h3><a href="" class="hover-color"><%= @student.city %></a></h3>
                 </div>
-                <div class="blog-post-info">
-                    <span><a href="#" class="hover-color">by author</a> | on 27 may 2014 | <a href="#" class="hover-color">Sports</a> | <a href="#" class="hover-color">3 comment</a></span>
-                </div>
+                <% if @student.seeking_employment %>
+                  <div class="blog-post-info">
+                    <button class="btn btn-lg theme-btn-color"> Seeking Employment!</button>
+                  </div>
+                <% end %>
                 <div class="blog-post-detail">
-                  <div class="blog-post-detail acltc-info">
+                  <div class="acltc-info">
                     <div class="row">
                       <div class="col-md-3 services-icon">
-                          <i class="ion-university"></i>
+                        <i class="ion-university"></i>
                       </div><!--services icon-->
                       <div class="col-md-9 services-text">
-                          <h4 class="heading-mini">ACLTC: <%= @student.city %></h4>
-                          <h5 class="student-grad-date">Graduated: <%= @student.friendly_grad_date %></h5> 
+                        <h4 class="heading-mini">ACLTC: <%= @student.city %></h4>
+                        <h5 class="student-grad-date">Graduated: <%= @student.friendly_grad_date %></h5>
                       </div><!--services 1 text-->
                     </div><!--services 1 row-->
                   </div>
