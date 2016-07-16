@@ -127,6 +127,7 @@ class StudentsController < ApplicationController
         :interview_3,
         :github,
         :blog,
+        :linked_in,
         :quote,
         :seeking_employment,
         :resume,
