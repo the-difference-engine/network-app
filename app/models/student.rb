@@ -38,5 +38,11 @@ class Student < ActiveRecord::Base
     end
   end
 
+  def friendly_grad_date
+    if grad_date
+      grad_date.strftime("%b %Y")
+    end
+  end
+
 end
 
