@@ -47,6 +47,47 @@
               </div><!--services 1 row-->
             </div>
           <% end %>
+          <% if @student.interview_answers? %>
+            <% unless @student.interview_1 == "" || @student.interview_1 == nil %>
+              <div class="student-interview">
+                <div class="row">
+                  <div class="col-md-3 services-icon">
+                    <i class="ion-help"></i>
+                  </div><!--services icon-->
+                  <div class="col-md-9 services-text">
+                    <h4 class="heading-mini question-heading">What is a closure, and how/why would you use one?</h4> 
+                    <p><em>" <%= @student.interview_1.capitalize %> "</em></p> 
+                  </div><!--services 1 text-->
+                </div><!--services 1 row-->
+              </div>
+            <% end %>
+            <% unless @student.interview_2 == "" || @student.interview_2 == nil %>
+              <div class="student-interview">
+                <div class="row">
+                  <div class="col-md-3 services-icon">
+                    <i class="ion-help"></i>
+                  </div><!--services icon-->
+                  <div class="col-md-9 services-text">
+                    <h4 class="heading-mini question-heading">What does CORS stand for and what issue does it address?</h4> 
+                    <p><em>" <%= @student.interview_2.capitalize %> "</em></p> 
+                  </div><!--services 1 text-->
+                </div><!--services 1 row-->
+              </div>
+            <% end %>
+            <% unless @student.interview_3 == "" || @student.interview_3 == nil %>
+              <div class="student-interview">
+                <div class="row">
+                  <div class="col-md-3 services-icon">
+                    <i class="ion-help"></i>
+                  </div><!--services icon-->
+                  <div class="col-md-9 services-text">
+                    <h4 class="heading-mini question-heading">What is a recent technical challenge you experienced and how did you solve it?</h4> 
+                    <p><em>" <%= @student.interview_3.capitalize %> "</em></p> 
+                  </div><!--services 1 text-->
+                </div><!--services 1 row-->
+              </div>
+            <% end %>
+          <% end %>
         </div>
       </div><!--blog post section end-->
     </div><!--blog content--> 

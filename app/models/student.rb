@@ -45,13 +45,31 @@ class Student < ActiveRecord::Base
   end
 
   def interview_answers?
-    unless interview_1 == nil || interview_1 == "" || interview_2 == nil || interview_2 == "" || interview_3 == nil || interview_3 == ""
-      true
+    @questions_answered = false
+
+    if interview_1 == nil || interview_1 == ""
+      @question_1 = false
     else
-      false
+      @question_1 = true
     end
+
+    if interview_2 == nil || interview_2 == ""
+      @question_2 = false
+     else
+      @question_2 = true
+    end
+
+    if interview_3 == nil || interview_3 == ""
+      @question_3 = false
+    else
+      @question_3 = true
+    end
+
+    if @question_1 || @question_2 || @question_3
+      @questions_answered = true
+    end
+
+    return @questions_answered
   end
-
-
 end
 
