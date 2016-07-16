@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
         flash[:success] = "Project successfully updated!"
         redirect_to student_path(@project.student)
       else 
-        flash[:success] = "Unable to update project!"
+        flash[:warning] = "Unable to update project."
         render :edit
       end
     else 
@@ -53,7 +53,7 @@ class ProjectsController < ApplicationController
         flash[:success] = "Project successfully deleted!"
         redirect_to student_path(@project.student)
       else 
-        flash[:success] = "Unable to delete project."
+        flash[:warning] = "Unable to delete project."
         redirect_to student_path(@project.student)
       end
     end

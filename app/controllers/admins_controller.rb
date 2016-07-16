@@ -50,10 +50,11 @@ class AdminsController < ApplicationController
       if successfully_updated
         format.html { redirect_to admin_center_path }
         flash[:success] = "The account was successfully updated!"
-        # format.json { head :no_content }
+        format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        # format.json { render json: @admins.errors, status: :unprocessable_entity }
+        flash[:warning] = "Unable to update the account."
+        format.json { render json: @admins.errors, status: :unprocessable_entity }
       end
     end
   end

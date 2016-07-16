@@ -63,6 +63,7 @@ class StudentsController < ApplicationController
           format.json { head :no_content }
         else
           format.html { render action: 'edit' }
+          flash[:warning] = "Unable to update your account."
           format.json { render json: @student.errors, status: :unprocessable_entity }
         end
       end
