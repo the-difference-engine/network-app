@@ -26,6 +26,10 @@ class Student < ActiveRecord::Base
     blog && PostRank::URI.normalize(blog).to_s
   end
 
+  def normalized_linked_in
+    linked_in && PostRank::URI.normalize(linked_in).to_s
+  end
+
   def job_response
     if seeking_employment 
       "Yes"
