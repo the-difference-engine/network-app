@@ -103,10 +103,16 @@
       <div class="sidebar-box">
         <h4>Skills</h4>
         <ul class="cat-list">
-          <% unless @student.skill_1 == "" || @student.skill_1 == nil %>
-            <li><a href="#" class="hover-color"><%= @student.skill_1 %></a></li>
-            <li><a href="#" class="hover-color"><%= @student.skill_2 %></a></li>
-            <li><a href="#" class="hover-color"><%= @student.skill_3 %></a></li>
+          <% if @student.skills? %>
+            <% unless @student.skill_1 == "" || @student.skill_1 == nil %>
+              <li><a href="#" class="hover-color"><%= @student.skill_1 %></a></li>
+            <% end %>
+            <% unless @student.skill_2 == "" || @student.skill_2 == nil %>
+              <li><a href="#" class="hover-color"><%= @student.skill_2 %></a></li>
+            <% end %>
+            <% unless @student.skill_3 == "" || @student.skill_3 == nil %>
+              <li><a href="#" class="hover-color"><%= @student.skill_3 %></a></li>
+            <% end %>
           <% else %>
             <li><a href="#" class="hover-color">Coming Soon</a></li>
           <% end %>
@@ -115,10 +121,16 @@
       <div class="sidebar-box">
         <h4>Interests</h4>
         <ul class="cat-list">
-          <% unless @student.interest_1 == "" || @student.interest_1 == nil %>
-            <li><a href="#" class="hover-color"><%= @student.interest_1 %></a></li>
-            <li><a href="#" class="hover-color"><%= @student.interest_2 %></a></li>
-            <li><a href="#" class="hover-color"><%= @student.interest_3 %></a></li>
+          <% if @student.interests? %>
+            <% unless @student.interest_1 == "" || @student.interest_1 == nil %>
+              <li><a href="#" class="hover-color"><%= @student.interest_1 %></a></li>
+            <% end %>
+            <% unless @student.interest_2 == "" || @student.interest_2 == nil %>
+              <li><a href="#" class="hover-color"><%= @student.interest_2 %></a></li>
+            <% end %>
+            <% unless @student.interest_3 == "" || @student.interest_3 == nil %>
+              <li><a href="#" class="hover-color"><%= @student.interest_3 %></a></li>
+            <% end %>
           <% else %>
             <li><a href="#" class="hover-color">Coming Soon</a></li>
           <% end %>
@@ -287,7 +299,6 @@
             </a>
         </div><!--masonry box-->
     </div>
-  
 </div><!--masonary wrapper-->
 
 

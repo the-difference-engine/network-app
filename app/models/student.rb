@@ -99,5 +99,33 @@ class Student < ActiveRecord::Base
 
     return questions_answered
   end
+
+  def interests?
+    interests_answered = false
+
+    if interest_1 == nil || interest_1 == ""
+      interest_1 = false
+    else
+      interest_1 = true
+    end
+
+    if interest_2 == nil || interest_2 == ""
+      interest_2 = false
+     else
+      interest_2 = true
+    end
+
+    if interest_3 == nil || interest_3 == ""
+      interest_3 = false
+    else
+      interest_3 = true
+    end
+
+    if interest_1 || interest_2 || interest_3
+      interests_answered = true
+    end
+
+    return interests_answered
+  end
 end
 
