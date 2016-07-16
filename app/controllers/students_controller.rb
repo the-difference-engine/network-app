@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  layout 'portfolio'
   
   before_action :authenticate_user!
   before_action :authenticate_admin!, :only => [:new, :create, :destroy, :batch, :batch_invite]

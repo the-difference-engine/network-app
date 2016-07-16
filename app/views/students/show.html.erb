@@ -9,185 +9,91 @@
 </section><!--page-tree end here-->
 <div class="space-70"></div>
 <div class="container student-show">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="blog-post-section">
-                <div class="blog-post-img">
-                    <%= image_tag "#{@student.avatar.index_square.url}", alt: "", class: "img-responsive show-image" %>
-                </div>
-                <div class="blog-post-header">
-                    <h3><a href="" class="hover-color"><%= @student.city %></a></h3>
-                </div>
-                <% if @student.seeking_employment %>
-                  <div class="blog-post-info">
-                    <button class="btn btn-lg theme-btn-color"> Seeking Employment!</button>
-                  </div>
-                <% end %>
-                <div class="blog-post-detail">
-                  <div class="acltc-info">
-                    <div class="row">
-                      <div class="col-md-3 services-icon">
-                        <i class="ion-university"></i>
-                      </div><!--services icon-->
-                      <div class="col-md-9 services-text">
-                        <h4 class="heading-mini">ACLTC: <%= @student.city %></h4>
-                        <h5 class="student-grad-date">Graduated: <%= @student.friendly_grad_date %></h5>
-                      </div><!--services 1 text-->
-                    </div><!--services 1 row-->
-                  </div>
-                  <div class="student-quote">
-                    <div class="row">
-                      <div class="col-md-3 services-icon">
-                        <i class="ion-android-hangout"></i>
-                      </div><!--services icon-->
-                      <div class="col-md-9 services-text">
-                        <h4 class="heading-mini quote-heading"><em>" <%= @student.quote %> "</em></h4>
-                       
-                      </div><!--services 1 text-->
-                    </div><!--services 1 row-->
-                  </div>
-                </div>
-            
-               
-            </div><!--blog post section end-->
-       
+  <div class="row">
+    <div class="col-md-8">
+      <div class="blog-post-section">
+        <div class="blog-post-img">
+            <%= image_tag "#{@student.avatar.index_square.url}", alt: "", class: "img-responsive show-image" %>
+        </div>
+        <div class="blog-post-header">
+            <h3><a href="" class="hover-color"><%= @student.city %></a></h3>
+        </div>
+        <% if @student.seeking_employment %>
+          <div class="blog-post-info">
+            <button class="btn btn-lg theme-btn-color"> Seeking Employment!</button>
+          </div>
+        <% end %>
+        <div class="blog-post-detail">
+          <div class="acltc-info">
             <div class="row">
-                <div class="col-md-12">
-                 <div class="post-comment-wrapper clearfix">
-                    <h3>Comment (3)</h3>
-                    <div class="comment-box clearfix">
-                        <img src="assets/img/blog/blog-1.jpg" class="img-responsive" alt="">
-
-                            <span>by user | <a href="#" class="hover-color">Reply</a></span>
-                           <p>
-                        aliqua.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. aliqua.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
-                    </p>
-                    </div><!--comment box-->
-                     <div class="comment-box clearfix">
-                        <img src="assets/img/blog/blog-2.jpg" class="img-responsive" alt="">
-
-                            <span>by user | <a href="#" class="hover-color">Reply</a></span>
-                           <p>
-                        aliqua.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. aliqua.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
-                    </p>
-                    </div><!--comment box-->
-                     <div class="comment-box clearfix">
-                        <img src="assets/img/blog/blog-3.jpg" class="img-responsive" alt="">
-
-                            <span>by user | <a href="#" class="hover-color">Reply</a></span>
-                           <p>
-                        aliqua.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. aliqua.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
-                    </p>
-                    </div><!--comment box-->
-                </div><!--comment wrapper-->
-                <div class="space-40"></div>
-                <div class="comment-form-wrapper">
-                    <h3>leave a comment</h3>
-                    <form>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Name">
-                            </div>
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" placeholder="Email">
-                            </div>
-                            <div class="col-md-12">
-                                <textarea class="form-control" rows="7" placeholder="Comment"></textarea>
-                            </div>
-                            <div class="col-md-12 text-right">
-                                <button type="submit" class="btn btn-lg theme-btn-color">Comment</button>
-                            </div>
-                        </div>
-                    </form>
-                </div><!--comment form wrapper-->
+              <div class="col-md-3 services-icon">
+                <i class="ion-university"></i>
+              </div><!--services icon-->
+              <div class="col-md-9 services-text">
+                <h4 class="heading-mini">ACLTC: <%= @student.city || "Unavailable" %></h4>
+                <h5 class="student-grad-date">Graduated: <%= @student.friendly_grad_date || "Unavailable" %></h5>
+              </div><!--services 1 text-->
+            </div><!--services 1 row-->
+          </div>
+          <% if @student.quote %>
+            <div class="student-quote">
+              <div class="row">
+                <div class="col-md-3 services-icon">
+                  <i class="ion-android-hangout"></i>
+                </div><!--services icon-->
+                <div class="col-md-9 services-text">
+                  <h4 class="heading-mini quote-heading"><em>" <%= @student.quote %> "</em></h4> 
+                </div><!--services 1 text-->
+              </div><!--services 1 row-->
             </div>
-            </div><!--row-->
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="pagination">
-                        <li><a href="#">&laquo;</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">&raquo;</a></li>
-                    </ul>
-                </div>
-            </div><!--pagiantion-->
-         
-
-
-        </div><!--blog content--> 
-         <div class="col-md-4">
-            <div class="sidebar-box">
-                <div class="widget-search">
-                    <form class="search-form">
-                        <input type="text" class="form-control" placeholder="search here...">
-                        <i class="ion-search" data-toggle="tooltip" data-placement="top" title="" data-original-title="hit enter to search"></i>
-                    </form>
-                </div>
-            </div><!--sidebar-box--><hr>
-
-            <div class="sidebar-box">
-              <h4>Skills</h4>
-              <ul class="cat-list">
-                <li><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="10" class="hover-color"><%= @student.skill_1 %></a></li>
-                <li><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="6" class="hover-color"><%= @student.skill_2 %></a></li>
-                <li><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="8" class="hover-color"><%= @student.skill_3 %></a></li>
-              </ul>
-            </div><hr>
-            <div class="sidebar-box">
-              <h4>Interests</h4>
-              <ul class="cat-list">
-                <li><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="10" class="hover-color"><%= @student.interest_1 %></a></li>
-                <li><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="6" class="hover-color"><%= @student.interest_2 %></a></li>
-                <li><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="8" class="hover-color"><%= @student.interest_3 %></a></li>
-              </ul>
-            </div><hr>
-            <% if @student.github || @student.blog || @student.linked_in %>
-              <div class="sidebar-box">
-                  <h4>Find Me Online</h4>
-                  <ul class=" list-inline social-btn">
-                    <% if @student.github %> 
-                      <li><a href="<%= @student.normalized_github %>"><i class="ion-social-github" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Check Out My GitHub"></i></a></li>
-                    <% end %>
-                    <% if @student.blog %> 
-                      <li><a href="<%= @student.normalized_blog %>"><i class="ion-android-desktop" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Check Out My Blog"></i></a></li>
-                    <% end %>
-                    <% if @student.linked_in %> 
-                      <li><a href="%= @student.normalized_linked_in %>"><i class="ion-social-linkedin-outline" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Connect on LinkedIn"></i></a></li>
-                    <% end %>
-                  </ul>
-              </div><hr>
+          <% end %>
+        </div>
+      </div><!--blog post section end-->
+    </div><!--blog content--> 
+    <div class="col-md-4">
+      <div class="sidebar-box">
+        <div class="widget-search">
+          <form class="search-form">
+            <input type="text" class="form-control" placeholder="search here...">
+            <i class="ion-search" data-toggle="tooltip" data-placement="top" title="" data-original-title="hit enter to search"></i>
+          </form>
+        </div>
+      </div><!--sidebar-box--><hr>
+      <div class="sidebar-box">
+        <h4>Skills</h4>
+        <ul class="cat-list">
+          <li><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="10" class="hover-color"><%= @student.skill_1 %></a></li>
+          <li><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="6" class="hover-color"><%= @student.skill_2 %></a></li>
+          <li><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="8" class="hover-color"><%= @student.skill_3 %></a></li>
+        </ul>
+      </div><hr>
+      <div class="sidebar-box">
+        <h4>Interests</h4>
+        <ul class="cat-list">
+          <li><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="10" class="hover-color"><%= @student.interest_1 %></a></li>
+          <li><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="6" class="hover-color"><%= @student.interest_2 %></a></li>
+          <li><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="8" class="hover-color"><%= @student.interest_3 %></a></li>
+        </ul>
+      </div><hr>
+      <% if @student.github || @student.blog || @student.linked_in %>
+        <div class="sidebar-box">
+          <h4>Find Me Online</h4>
+          <ul class=" list-inline social-btn">
+            <% if @student.github %> 
+              <li><a href="<%= @student.normalized_github %>"><i class="ion-social-github" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Check Out My GitHub"></i></a></li>
             <% end %>
-            <div class="sidebar-box">
-                <h4>recent post</h4>
-                <div class="recent">
-                    <span>
-                        <img src="assets/img/blog/blog-1.jpg" class="img-responsive" alt="">
-                    </span>
-                    <p><a href="#" class="hover-color">There are many  embarrassing hidden in the middle of text.</a></p>
-                    <span class="recent-date">On 27 may in office.</span>
-                </div>
-                <div class="recent">
-                    <span>
-                        <img src="assets/img/blog/blog-2.jpg" class="img-responsive" alt="">
-                    </span>
-                    <p><a href="#" class="hover-color">There are many  embarrassing hidden in the middle of text.</a></p>
-                    <span class="recent-date">On 27 may in office.</span>
-                </div>
-                <div class="recent">
-                    <span>
-                        <img src="assets/img/blog/blog-3.jpg" class="img-responsive" alt="">
-                    </span>
-                    <p><a href="#" class="hover-color">There are many  embarrassing hidden in the middle of text.</a></p>
-                    <span class="recent-date">On 27 may in office.</span>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <hr>
-        </div><!--sideabr blog end -->
-    </div>
+            <% if @student.blog %> 
+              <li><a href="<%= @student.normalized_blog %>"><i class="ion-android-desktop" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Check Out My Blog"></i></a></li>
+            <% end %>
+            <% if @student.linked_in %> 
+              <li><a href="%= @student.normalized_linked_in %>"><i class="ion-social-linkedin-outline" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Connect on LinkedIn"></i></a></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="clearfix"></div>
+      <hr>
+    </div><!--sideabr blog end -->
+  </div>
 </div><!--blog post page content end here-->
 
