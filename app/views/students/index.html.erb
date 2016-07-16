@@ -32,6 +32,51 @@
             </div>
           </div><!--portfolio item -->
         <% end %>
+        <div class=" mix seo col-md-4 col-sm-12 col-xs-12 margin-btm-40">
+          <div class="portfolio-sec">
+            <div class="portfolio-thumnail">
+              <%= link_to image_tag("#{@students[0].avatar.index_square.url}"), student_path(@students[0]), class: "img-responsive" %>
+            </div>
+            <div class="portfolio-desc text-center">
+              <h4 class="portfolio-post-title"><%= @students[0].full_name %></h4>
+              <span class="portfolio-post-cat"><%= @students[0].industry %></span>
+              <span class="portfolio-post-cat skill"><%= @students[0].skill_1 %></span>
+              <span class="portfolio-post-cat skill"><%= @students[0].skill_2 %></span>
+              <span class="portfolio-post-cat skill"><%= @students[0].skill_3 %></span>
+              <h4><%= link_to "More Details", student_path(@students[0]), class: "btn theme-btn-default btn-lg" %></h4>
+            </div>
+          </div>
+        </div><!--portfolio item -->
+        <div class=" mix seo col-md-4 col-sm-12 col-xs-12 margin-btm-40">
+          <div class="portfolio-sec">
+            <div class="portfolio-thumnail">
+              <%= link_to image_tag("#{@students[-1].avatar.index_square.url}"), student_path(@students[-1]), class: "img-responsive" %>
+            </div>
+            <div class="portfolio-desc text-center">
+              <h4 class="portfolio-post-title"><%= @students[-1].full_name %></h4>
+              <span class="portfolio-post-cat"><%= @students[-1].industry %></span>
+              <span class="portfolio-post-cat skill"><%= @students[-1].skill_1 %></span>
+              <span class="portfolio-post-cat skill"><%= @students[-1].skill_2 %></span>
+              <span class="portfolio-post-cat skill"><%= @students[-1].skill_3 %></span>
+              <h4><%= link_to "More Details", student_path(@students[-1]), class: "btn theme-btn-default btn-lg" %></h4>
+            </div>
+          </div>
+        </div><!--portfolio item -->
+        <div class=" mix design col-md-4 col-sm-12 col-xs-12 margin-btm-40">
+          <div class="portfolio-sec">
+            <div class="portfolio-thumnail">
+              <%= link_to image_tag("#{@students[0].avatar.index_square.url}"), student_path(@students[-2]), class: "img-responsive" %>
+            </div>
+            <div class="portfolio-desc text-center">
+              <h4 class="portfolio-post-title"><%= @students[-2].full_name %></h4>
+              <span class="portfolio-post-cat"><%= @students[-2].industry %></span>
+              <span class="portfolio-post-cat skill"><%= @students[-2].skill_1 %></span>
+              <span class="portfolio-post-cat skill"><%= @students[-2].skill_2 %></span>
+              <span class="portfolio-post-cat skill"><%= @students[-2].skill_3 %></span>
+              <h4><%= link_to "More Details", student_path(@students[-2]), class: "btn theme-btn-default btn-lg" %></h4>
+            </div>
+          </div>
+        </div><!--portfolio item -->
       </div><!--grid-->
     </div>
   </div><!--row-->
