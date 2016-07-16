@@ -1,4 +1,4 @@
-
+$green: #0FAF97;
 
 .student-index {
   #grid .mix {
@@ -16,8 +16,20 @@
     text-transform: uppercase;
     font-size: 10px;
     color: #fff;
-    background: #0FAF97;
+    background: $green;
     padding: 5px;
     margin-top: 15px;
+  }
+}
+
+.student-show {
+  .sidebar-box h4 {
+    border-bottom: 5px solid $green;
+    display: table;
+  }
+
+  .show-image {
+    margin: auto;
+    border: 3px solid $green;
   }
 }

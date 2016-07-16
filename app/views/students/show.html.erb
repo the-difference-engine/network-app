@@ -4,12 +4,12 @@
   </div>
 </section><!--page-tree end here-->
 <div class="space-70"></div>
-<div class="container">
+<div class="container student-show">
     <div class="row">
         <div class="col-md-8">
             <div class="blog-post-section">
                 <div class="blog-post-img">
-                    <img src="assets/img/blog/blog-1.jpg" class="img-responsive" alt="">
+                    <%= image_tag "#{@student.avatar.index_square.url}", alt: "", class: "img-responsive show-image" %>
                 </div>
                 <div class="blog-post-header">
                     <h3><a href="" class="hover-color">standard blog post with image</a></h3>
@@ -114,10 +114,12 @@
               </ul>
             </div><hr>
             <div class="sidebar-box">
-                <h4>Text widget</h4>
-                <p>
-                    Doloreiur quia commolu ptatemp dolupta oreprerum tibusam eumenis et consent accullignis dentibea autem inisita.
-                </p>
+              <h4>Interests</h4>
+              <ul class="cat-list">
+                <li><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="10" class="hover-color"><%= @student.interest_1 %></a></li>
+                <li><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="6" class="hover-color"><%= @student.interest_2 %></a></li>
+                <li><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="8" class="hover-color"><%= @student.interest_3 %></a></li>
+              </ul>
             </div><hr>
             <div class="sidebar-box">
                 <h4>recent post</h4>
