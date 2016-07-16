@@ -113,5 +113,11 @@ RSpec.describe Student, :type => :model do
         interview_3: "")
       expect(student.interview_answers?).to eq(false)
     end
+
+    it 'returns "abbreviated month year" format for student friendly_grad_date method' do
+      student = create(:student,
+        grad_date: "2016-03-25")
+      expect(student.friendly_grad_date).to eq("Mar 2016")
+    end
   end
 end
