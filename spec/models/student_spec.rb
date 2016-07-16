@@ -81,5 +81,37 @@ RSpec.describe Student, :type => :model do
         skill_3: "")
       expect(student.skills?).to eq(false)
     end
+
+    it 'returns true if student has at least one non-nil interview answer' do
+      student = create(:student,
+        interview_1: nil,
+        interview_2: nil,
+        interview_3: "if you look hot, wear it")
+      expect(student.interview_answers?).to eq(true)
+    end
+
+    it 'returns false if student has all nil interview answers' do
+      student = create(:student,
+        interview_1: nil,
+        interview_2: nil,
+        interview_3: nil)
+      expect(student.interview_answers?).to eq(false)
+    end
+
+    it 'returns true if student has at least one non-empty-string interview answer' do
+      student = create(:student,
+        interview_1: "",
+        interview_2: "",
+        interview_3: "if you look hot, wear it")
+      expect(student.interview_answers?).to eq(true)
+    end
+
+    it 'returns false if student has all empty-string interview answers' do
+      student = create(:student,
+        interview_1: "",
+        interview_2: "",
+        interview_3: "")
+      expect(student.interview_answers?).to eq(false)
+    end
   end
 end
