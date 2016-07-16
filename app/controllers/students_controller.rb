@@ -1,6 +1,4 @@
-class StudentsController < ApplicationController
-  layout 'portfolio'
-  
+class StudentsController < ApplicationController  
   before_action :authenticate_user!
   before_action :authenticate_admin!, :only => [:new, :create, :destroy, :batch, :batch_invite]
   before_action :authenticate_admin_student!, :only => [:edit, :update]
@@ -8,8 +6,6 @@ class StudentsController < ApplicationController
   def index
     @students = Student.all.order(:last_name)
     @projects = Project.all
-
-    render layout: 'portfolio.html.erb'
   end
 
   def new
@@ -115,6 +111,8 @@ class StudentsController < ApplicationController
         :last_name,
         :avatar,
         :city,
+        :current_city,
+        :current_state,
         :industry,
         :grad_date,
         :skill_1,
