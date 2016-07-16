@@ -12,32 +12,35 @@
                     <%= image_tag "#{@student.avatar.index_square.url}", alt: "", class: "img-responsive show-image" %>
                 </div>
                 <div class="blog-post-header">
-                    <h3><a href="" class="hover-color">standard blog post with image</a></h3>
+                    <h3><a href="" class="hover-color"><%= @student.city %></a></h3>
                 </div>
                 <div class="blog-post-info">
                     <span><a href="#" class="hover-color">by author</a> | on 27 may 2014 | <a href="#" class="hover-color">Sports</a> | <a href="#" class="hover-color">3 comment</a></span>
                 </div>
-                <div class="blog-post-detail">
-                    <p>
-                        Magnis modipsae que lib voloratati andigen daepeditem quiate ut repore autem labor. Laceaque quiae sitiorem rest non restibusaes es tumquam core posae volor remped modis volor. Doloreiur qui commolu oreprerum.Magnis modipsae que lib voloratati andigen daepeditem quiate ut repore autem labor. Laceaque quiae sitiorem rest non restibusaes es tumquam core posae volor remped modis volor. Doloreiur qui commolu oreprerum.
-                    </p>
-                    <p>
-                        Magnis modipsae que lib voloratati andigen daepeditem quiate ut repore autem labor. Laceaque quiae sitiorem rest non restibusaes es tumquam core posae volor remped modis volor. Doloreiur qui commolu oreprerum.
-                    </p>
-                </div>
-               
-            </div><!--blog post section end-->
+                <div class="blog-post-detail">     
+                  <h4 class="heading-mini">Why hire us?</h4>
+                  <div class="row">
+                    <div class="col-md-3 services-icon">
+                      <i class="ion-university"></i>
+                    </div><!--services icon-->
+                    <div class="col-md-9 services-text">
+                      <h4 class="heading-mini">ACLTC: <%= @student.city %></h4>
+                      <h5><%= @student.grad_date %></h5>
+                    </div><!--services 1 text-->
+                    <div class="space-20"></div>
+                  </div>
+                </div><!--blog post section end-->
        
             <div class="row">
                 <div class="col-md-12">
                  <div class="post-comment-wrapper clearfix">
                     <h3>Comment (3)</h3>
                     <div class="comment-box clearfix">
-                        <img src="assets/img/blog/blog-1.jpg" class="img-responsive" alt="">
+                      <img src="assets/img/blog/blog-1.jpg" class="img-responsive" alt="">
 
-                            <span>by user | <a href="#" class="hover-color">Reply</a></span>
-                           <p>
-                        aliqua.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. aliqua.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+                       <span>by user | <a href="#" class="hover-color">Reply</a></span>
+                    <p>
+                      aliqua.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. aliqua.adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
                     </p>
                     </div><!--comment box-->
                      <div class="comment-box clearfix">
