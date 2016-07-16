@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160716024845) do
+ActiveRecord::Schema.define(version: 20160716214651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -149,6 +149,8 @@ ActiveRecord::Schema.define(version: 20160716024845) do
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
     t.string   "linked_in"
+    t.string   "current_city"
+    t.string   "current_state"
   end
 
   add_index "students", ["email"], name: "index_students_on_email", unique: true, using: :btree
