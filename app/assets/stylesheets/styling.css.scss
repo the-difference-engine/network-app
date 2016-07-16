@@ -11,10 +11,6 @@ $gray: #777;
     opacity: 1;
   }
 
-  .portfolio-thumnail img {
-    // width: 60%;
-  }
-
   .skill {
     display: inline-block;
     letter-spacing: 1px;
@@ -35,6 +31,7 @@ $gray: #777;
 
   .show-image {
     margin: auto;
+    max-width: 300px;
     border: 3px solid $green;
   }
 

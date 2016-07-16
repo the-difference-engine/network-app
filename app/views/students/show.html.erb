@@ -35,7 +35,7 @@
               </div><!--services 1 text-->
             </div><!--services 1 row-->
           </div>
-          <% if @student.quote %>
+          <% unless @student.quote == "" || @student.quote == nil %>
             <div class="student-quote">
               <div class="row">
                 <div class="col-md-3 services-icon">
@@ -62,17 +62,25 @@
       <div class="sidebar-box">
         <h4>Skills</h4>
         <ul class="cat-list">
-          <li><a href="#" class="hover-color"><%= @student.skill_1 %></a></li>
-          <li><a href="#" class="hover-color"><%= @student.skill_2 %></a></li>
-          <li><a href="#" class="hover-color"><%= @student.skill_3 %></a></li>
+          <% unless @student.skill_1 == "" || @student.skill_1 == nil %>
+            <li><a href="#" class="hover-color"><%= @student.skill_1 %></a></li>
+            <li><a href="#" class="hover-color"><%= @student.skill_2 %></a></li>
+            <li><a href="#" class="hover-color"><%= @student.skill_3 %></a></li>
+          <% else %>
+            <li><a href="#" class="hover-color">Coming Soon</a></li>
+          <% end %>
         </ul>
       </div><hr>
       <div class="sidebar-box">
         <h4>Interests</h4>
         <ul class="cat-list">
-          <li><a href="#" class="hover-color"><%= @student.interest_1 %></a></li>
-          <li><a href="#" class="hover-color"><%= @student.interest_2 %></a></li>
-          <li><a href="#" class="hover-color"><%= @student.interest_3 %></a></li>
+          <% unless @student.interest_1 == "" || @student.interest_1 == nil %>
+            <li><a href="#" class="hover-color"><%= @student.interest_1 %></a></li>
+            <li><a href="#" class="hover-color"><%= @student.interest_2 %></a></li>
+            <li><a href="#" class="hover-color"><%= @student.interest_3 %></a></li>
+          <% else %>
+            <li><a href="#" class="hover-color">Coming Soon</a></li>
+          <% end %>
         </ul>
       </div><hr>
       <% if @student.github || @student.blog || @student.linked_in %>
