@@ -44,5 +44,14 @@ class Student < ActiveRecord::Base
     end
   end
 
+  def interview_answers?
+    unless interview_1 == nil || interview_1 == "" || interview_2 == nil || interview_2 == "" || interview_3 == nil || interview_3 == ""
+      true
+    else
+      false
+    end
+  end
+
+
 end
 
