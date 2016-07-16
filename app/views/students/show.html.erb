@@ -15,46 +15,37 @@
         <div class="blog-post-img">
             <%= image_tag "#{@student.avatar.index_square.url}", alt: "", class: "img-responsive show-image" %>
         </div>
-        <div class="blog-post-header">
-            <h3><a href="" class="hover-color"><%= @student.city %></a></h3>
-        </div>
         <% if @student.seeking_employment %>
-          <div class="blog-post-info">
-            <button class="btn btn-lg theme-btn-color"> Seeking Employment!</button>
+          <div class="blog-post-info employment-btn-div">
+            <button class="btn btn-lg theme-btn-color employment-btn"> Seeking Employment!</button>
           </div>
         <% end %>
+        <div class="blog-post-header city-header">
+            <h3><a href="" class="student-city"><%= @student.city %></a></h3>
+        </div>
+        
         <div class="blog-post-detail">
+          <h4 class="heading-mini section-heading">My Bootcamp</h4>
           <div class="acltc-info">
             <div class="row">
               <div class="col-md-3 services-icon">
                 <i class="ion-university"></i>
               </div><!--services icon-->
-              <div class="col-md-9 services-text">
+              <div class="col-md-6 services-text">
                 <h4 class="heading-mini">ACLTC: <%= @student.city || "Unavailable" %></h4>
                 <h5 class="student-grad-date">Graduated: <%= @student.friendly_grad_date || "Unavailable" %></h5>
               </div><!--services 1 text-->
             </div><!--services 1 row-->
           </div>
-          <% unless @student.quote == "" || @student.quote == nil %>
-            <div class="student-quote">
-              <div class="row">
-                <div class="col-md-3 services-icon">
-                  <i class="ion-android-hangout"></i>
-                </div><!--services icon-->
-                <div class="col-md-9 services-text">
-                  <h4 class="heading-mini quote-heading"><em>" <%= @student.quote %> "</em></h4> 
-                </div><!--services 1 text-->
-              </div><!--services 1 row-->
-            </div>
-          <% end %>
           <% if @student.interview_answers? %>
+            <h4 class="heading-mini section-heading">Interview Responses</h4>
             <% unless @student.interview_1 == "" || @student.interview_1 == nil %>
               <div class="student-interview">
                 <div class="row">
                   <div class="col-md-3 services-icon">
                     <i class="ion-help"></i>
                   </div><!--services icon-->
-                  <div class="col-md-9 services-text">
+                  <div class="col-md-6 services-text">
                     <h4 class="heading-mini question-heading">What is a closure, and how/why would you use one?</h4> 
                     <p><em>" <%= @student.interview_1.capitalize %> "</em></p> 
                   </div><!--services 1 text-->
@@ -67,7 +58,7 @@
                   <div class="col-md-3 services-icon">
                     <i class="ion-help"></i>
                   </div><!--services icon-->
-                  <div class="col-md-9 services-text">
+                  <div class="col-md-6 services-text">
                     <h4 class="heading-mini question-heading">What does CORS stand for and what issue does it address?</h4> 
                     <p><em>" <%= @student.interview_2.capitalize %> "</em></p> 
                   </div><!--services 1 text-->
@@ -80,13 +71,26 @@
                   <div class="col-md-3 services-icon">
                     <i class="ion-help"></i>
                   </div><!--services icon-->
-                  <div class="col-md-9 services-text">
+                  <div class="col-md-6 services-text">
                     <h4 class="heading-mini question-heading">What is a recent technical challenge you experienced and how did you solve it?</h4> 
                     <p><em>" <%= @student.interview_3.capitalize %> "</em></p> 
                   </div><!--services 1 text-->
                 </div><!--services 1 row-->
               </div>
             <% end %>
+          <% end %>
+          <% unless @student.quote == "" || @student.quote == nil %>
+            <h4 class="heading-mini section-heading">Quote</h4>
+            <div class="student-quote">
+              <div class="row">
+                <div class="col-md-3 services-icon">
+                  <i class="ion-android-hangout"></i>
+                </div><!--services icon-->
+                <div class="col-md-6 services-text">
+                  <h4 class="heading-mini quote-heading"><em>" <%= @student.quote %> "</em></h4> 
+                </div><!--services 1 text-->
+              </div><!--services 1 row-->
+            </div>
           <% end %>
         </div>
       </div><!--blog post section end-->
