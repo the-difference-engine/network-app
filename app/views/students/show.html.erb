@@ -105,6 +105,7 @@
                     </form>
                 </div>
             </div><!--sidebar-box--><hr>
+
             <div class="sidebar-box">
               <h4>Skills</h4>
               <ul class="cat-list">
@@ -121,6 +122,22 @@
                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="8" class="hover-color"><%= @student.interest_3 %></a></li>
               </ul>
             </div><hr>
+            <% if @student.github || @student.blog || @student.linked_in %>
+              <div class="sidebar-box">
+                  <h4>Find Me Online</h4>
+                  <ul class=" list-inline social-btn">
+                    <% if @student.github %> 
+                      <li><a href="<%= @student.normalized_github %>"><i class="ion-social-github" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Check Out My GitHub"></i></a></li>
+                    <% end %>
+                    <% if @student.blog %> 
+                      <li><a href="<%= @student.normalized_blog %>"><i class="ion-android-desktop" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Check Out My Blog"></i></a></li>
+                    <% end %>
+                    <% if @student.linked_in %> 
+                      <li><a href="%= @student.normalized_linked_in %>"><i class="ion-social-linkedin-outline" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Connect on LinkedIn"></i></a></li>
+                    <% end %>
+                  </ul>
+              </div><hr>
+            <% end %>
             <div class="sidebar-box">
                 <h4>recent post</h4>
                 <div class="recent">
@@ -147,16 +164,7 @@
             </div>
             <div class="clearfix"></div>
             <hr>
-            <div class="sidebar-box">
-                <h4>Elsewhere</h4>
-                <ul class=" list-inline social-btn">
-                    <li><a href="#"><i class="ion-social-facebook" data-toggle="tooltip" data-placement="top" title="" data-original-title="Like On Facebook"></i></a></li>
-                    <li><a href="#"><i class="ion-social-twitter" data-toggle="tooltip" data-placement="top" title="" data-original-title="Follow On twitter"></i></a></li>
-                    <li><a href="#"><i class="ion-social-googleplus" data-toggle="tooltip" data-placement="top" title="" data-original-title="Follow On googleplus"></i></a></li>
-                    <li><a href="#"><i class="ion-social-pinterest" data-toggle="tooltip" data-placement="top" title="" data-original-title="pinterest"></i></a></li>
-                    <li><a href="#"><i class="ion-social-skype" data-toggle="tooltip" data-placement="top" title="" data-original-title="skype"></i></a></li>
-                </ul>
-            </div><hr>
         </div><!--sideabr blog end -->
     </div>
 </div><!--blog post page content end here-->
+
