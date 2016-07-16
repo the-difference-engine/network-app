@@ -19,10 +19,17 @@
 //= require bootstrap-hover-dropdown.min
 //= require jquery.easing.1.3.min
 //= require jquery.flexslider-min
+//= require jquery.hoverdir
+//= require jquery.masonry.min
+//= require jquery-migrate.min
 //= require jquery.mixitup.min
 //= require jquery.sticky
+//= require masonary-custom
 //= require modernizr.custom.97074
 //= require parallax.min
 //= require wow.min
 //= require app-theme
 //= require_tree .
+
+
+      
