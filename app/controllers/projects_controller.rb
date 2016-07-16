@@ -67,7 +67,8 @@ class ProjectsController < ApplicationController
         :client_work,
         :github,
         :website,
-        :screencast
+        :screencast,
+        :project_image
       )
     end
 end
