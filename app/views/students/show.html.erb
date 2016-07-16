@@ -1,6 +1,10 @@
 <section id="content-region-3" class="padding-40 page-tree-bg">
   <div class="container">
-    <h3 class="page-tree-text"><%= @student.full_name %></h3>
+    <% if @student.industry %>
+      <h3 class="page-tree-text"><%= @student.full_name %> &nbsp;|&nbsp; <em><%= @student.industry %></em></h3>
+    <% else %>
+      <h3 class="page-tree-text"><%= @student.full_name %> &nbsp;|&nbsp; <em><%= @student.industry %></em></h3>
+    <% end %>
   </div>
 </section><!--page-tree end here-->
 <div class="space-70"></div>
