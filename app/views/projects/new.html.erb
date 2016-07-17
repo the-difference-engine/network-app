@@ -5,120 +5,66 @@
 </section><!--page-tree end here-->
 
 <div class="space-70"></div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="my-login-form">
-                <%= form_for(@project, url: projects_path) do |f| %>
-                  <%= form_errors_for @project %>
-                    <h4 class="heading-mini">Enter Project Information</h4><hr>
-                    <div class="form-group">
-                      <%= f.label :name, "Name" %><br>
-                      <%= f.text_field :name, class: "form-control" %>
-                    </div>
-
-                    <div class="form-group">
-                      <%= f.label :description, "Description" %><br>
-                      <%= f.text_field :description, class: "form-control" %>
-                    </div>
-
-                    <div class="form-group">
-                      <%= f.check_box :capstone, id: "checkbox1", name: "iCheck" %>
-                      <%= f.label :capstone, "Yes, this was my capstone project." %>
-                    </div>
-
-                    <input type="checkbox" id="checkbox1" name="iCheck"><label for="checkbox1"> Checkbox 1</label>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h4 class="heading-mini">Radio & Checkbox buttons</h4>
-                            
-                            <ul class="list-unstyled radio-cehckboxed">
-                                <li>
-                                    <input type="checkbox" id="checkbox1" name="iCheck"><label for="checkbox1"> Checkbox 1</label>
-                                </li>
-                                 <li>
-                                     <input type="checkbox" id="checkbox2" name="iCheck" checked><label for="checkbox2"> Checkbox 2</label>
-                                </li>
-                                 <li>
-                                     <input type="radio" id="radio1"  name="iCheck"><label for="radio1"> Radio 1</label>
-                                </li>
-                                 <li>
-                                     <input type="radio" id="radio2"  name="iCheck" checked><label for="radio2"> Radio 2</label>
-                                </li>
-                            </ul>                
-                        </div>
-                    </div>
-
-                    <div class=" text-right">
-                        <button type="submit" class="btn theme-btn-color">Login</button>
-                    </div>
-                    <hr>
-                    <div class="form-btm-link text-center">
-                        <a href="#">Lost password?</a><span>Or</span><a href="signup.html">Create new account</a>
-                    </div>
-                <% end %><!--login form end-->
+<div class="container project-new">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="my-login-form">
+        <%= form_for(@project, url: projects_path) do |f| %>
+          <%= form_errors_for @project %>
+            <h4 class="heading-mini">Enter Project Information</h4><hr>
+            <div class="form-group">
+              <%= f.label :name, "Name" %><br />
+              <%= f.text_field :name, class: "form-control" %>
             </div>
-        </div>
+
+            <div class="form-group">
+              <%= f.label :description, "Description" %><br />
+              <%= f.text_field :description, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.check_box :capstone, id: "checkbox1", name: "iCheck" %>&nbsp;
+              <%= f.label :capstone, "This was my capstone project" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.check_box :client_work, id: "checkbox2", name: "iCheck" %>&nbsp;
+              <%= f.label :client_work, "This is client work" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :github %><br />
+              <%= f.text_field :github, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :website, "Project Website (if deployed)" %><br />
+              <%= f.text_field :website, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :screencast, "Screencast Video Link (if available)" %><br />
+              <%= f.text_field :screencast, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :project_image, "Project Screencap/Image (if available)" %><br />
+              <%= f.file_field :project_image, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.hidden_field :student_id, class: "form-control", value: current_user.id %>
+            </div>
+
+            <br>
+            <div class="text-right submit-btn">
+              <%= f.submit "Create Project", class: "btn theme-btn-color" %>
+            </div>
+        <% end %><!--login form end-->
+      </div>
     </div>
+  </div>
 </div><!--login page container end-->
-
-
-
-<div class="container">
-  <%= form_for(@project, url: projects_path) do |f| %>
-    <%= form_errors_for @project %>
-    <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label :description %><br />
-      <%= f.text_field :description, autofocus: true %>
-    </div>
-
-    <div class="field">
-      <p><strong>Check the box if this project was your ACLTC capstone</strong></p>
-      <%= f.check_box :capstone, autofocus: true %>
-      <%= f.label :capstone, "Yes, this was my capstone project." %>
-    </div>
-
-    <div class="field">
-      <p><strong>Check the box if this project is an example of client work</strong></p>
-      <%= f.check_box :client_work, autofocus: true %>
-      <%= f.label :client_work, "Yes, this is client work." %>
-    </div>
-
-    <div class="field">
-      <%= f.label :github %><br />
-      <%= f.text_field :github, autofocus: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label :website, "Project Website (if deployed)" %><br />
-      <%= f.text_field :website, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :screencast, "Screencast Video Link (if available)" %><br />
-      <%= f.text_field :screencast, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :project_image, "Project Screencap/Image (if available)" %><br />
-      <%= f.file_field :project_image, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-      <%= f.hidden_field :student_id, autofocus: true, value: current_user.id %>
-    </div>
-
-    <br>
-    <div class="actions">
-      <%= f.submit "Create Project", class: "btn btn-default" %>
-    </div>
-  <% end %>
-</div>
 
 <script type="text/javascript">
     document.querySelector('.timer-alert').onclick = function () {

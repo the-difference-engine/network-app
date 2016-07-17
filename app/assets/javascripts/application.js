@@ -25,12 +25,12 @@
 //= require jquery-migrate.min
 //= require jquery.mixitup.min
 //= require jquery.sticky
+
 //= require icheck.min
 //= require masonary-custom
 //= require modernizr.custom.97074
 //= require parallax.min
 //= require sweetalert.min
-//= require theme_shortcodes
 //= require wow.min
 //= require app-theme
 //= require_tree .
