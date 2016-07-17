@@ -1,66 +1,69 @@
-<% if @project.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@project.errors.count, "error") %></h2>
-    <ul>
-    <% @project.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
+<section id="content-region-3" class="padding-40 page-tree-bg">
+  <div class="container">
+    <h3 class="page-tree-text">Edit Project</h3>
   </div>
-<% end %>
+</section><!--page-tree end here-->
 
-<div class="container">
-  <%= form_for(@project, url: project_path(@project)) do |f| %>
+<div class="space-70"></div>
+<div class="container project-edit">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="my-login-form">
+        <%= form_for(@project, url: project_path(@project)) do |f| %>
+          <%= form_errors_for @project %>
+            <h4 class="heading-mini">Enter Project Information</h4><hr>
+            <div class="form-group">
+              <%= f.label :name, "Name" %><br />
+              <%= f.text_field :name, class: "form-control" %>
+            </div>
 
-    <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true %>
+            <div class="form-group">
+              <%= f.label :description, "Description" %><br />
+              <%= f.text_field :description, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.check_box :capstone %>&nbsp;
+              <%= f.label :capstone, "This is my capstone project" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.check_box :client_work %>&nbsp;
+              <%= f.label :client_work, "This is client work" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :github %><br />
+              <%= f.text_field :github, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :website, "Project Website (if deployed)" %><br />
+              <%= f.text_field :website, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :screencast, "Screencast Video Link (if available)" %><br />
+              <%= f.text_field :screencast, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :project_image, "Project Screencap/Image (if available)" %><br />
+              <%= f.file_field :project_image, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.hidden_field :student_id, class: "form-control", value: current_user.id %>
+            </div>
+
+            <br>
+            <div class="text-right submit-btn">
+              <%= f.submit "Update Project", class: "btn theme-btn-color" %>
+            </div>
+        <% end %><!--login form end-->
+      </div>
     </div>
+  </div>
+</div><!--login page container end-->
 
-    <div class="field">
-      <%= f.label :description %><br />
-      <%= f.text_field :description, autofocus: true %>
-    </div>
-
-    <div class="field">
-      <p><strong>Check the box if this project was your ACLTC capstone</strong></p>
-      <%= f.check_box :capstone, autofocus: true %>
-      <%= f.label :capstone, "Yes, this was my capstone project." %>
-    </div>
-
-    <div class="field">
-      <p><strong>Check the box if this project is an example of client work</strong></p>
-      <%= f.check_box :client_work, autofocus: true %>
-      <%= f.label :client_work, "Yes, this is client work." %>
-    </div>
-
-    <div class="field">
-      <%= f.label :github %><br />
-      <%= f.text_field :github, autofocus: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label :website, "Project Website (if deployed)" %><br />
-      <%= f.text_field :website, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :screencast, "Screencast Video Link (if available)" %><br />
-      <%= f.text_field :screencast, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :project_image, "Project Screencap/Image (if available)" %><br />
-      <%= f.file_field :project_image, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-      <%= f.hidden_field :student_id, autofocus: true, value: @project.student_id %>
-    </div>
-
-    <br>
-    <div class="actions">
-      <%= f.submit "Update Project", class: "btn btn-default" %>
-    </div>
-  <% end %>
-</div>
+<%= render "shared/alerts_checkbox_radio_scripts" %>
