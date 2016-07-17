@@ -39,96 +39,95 @@
                 </div><!--services 1 text-->
               </div><!--services 1 row-->
             </div>
-            <% if @student.interview_answers? %>
-              <h4 class="heading-mini section-heading">Interview Responses</h4>
-              <% unless @student.interview_1 == "" || @student.interview_1 == nil %>
-                <div class="student-interview">
-                  <div class="row">
-                    <div class="col-md-3 services-icon">
-                      <i class="ion-help"></i>
-                    </div><!--services icon-->
-                    <div class="col-md-6 services-text">
-                      <h4 class="heading-mini question-heading">What is a closure, and how/why would you use one?</h4> 
-                      <p><em>" <%= @student.interview_1.capitalize %> "</em></p> 
-                    </div><!--services 1 text-->
-                  </div><!--services 1 row-->
+            
+            <% if @capstone %>
+                <h4 class="heading-mini section-heading">My Capstone: <%= @capstone.name %></h4>
+                <div class="blog-post-img">
+                  <%= image_tag "#{@capstone.project_image.masonry.url}", alt: "", class: "img-responsive capstone-image" %>
                 </div>
-              <% end %>
-              <% unless @student.interview_2 == "" || @student.interview_2 == nil %>
-                <div class="student-interview">
-                  <div class="row">
-                    <div class="col-md-3 services-icon">
-                      <i class="ion-help"></i>
-                    </div><!--services icon-->
-                    <div class="col-md-6 services-text">
-                      <h4 class="heading-mini question-heading">What does CORS stand for and what issue does it address?</h4> 
-                      <p><em>" <%= @student.interview_2.capitalize %> "</em></p> 
-                    </div><!--services 1 text-->
-                  </div><!--services 1 row-->
-                </div>
-              <% end %>
-              <% unless @student.interview_3 == "" || @student.interview_3 == nil %>
-                <div class="student-interview">
-                  <div class="row">
-                    <div class="col-md-3 services-icon">
-                      <i class="ion-help"></i>
-                    </div><!--services icon-->
-                    <div class="col-md-6 services-text">
-                      <h4 class="heading-mini question-heading">What is a recent technical challenge you experienced and how did you solve it?</h4> 
-                      <p><em>" <%= @student.interview_3.capitalize %> "</em></p> 
-                    </div><!--services 1 text-->
-                  </div><!--services 1 row-->
-                </div>
-              <% end %>
-            <% end %>
-            <% unless @student.quote == "" || @student.quote == nil %>
-              <h4 class="heading-mini section-heading">Quote</h4>
-              <div class="student-quote">
-                <div class="row">
-                  <div class="col-md-3 services-icon">
-                    <i class="ion-android-hangout"></i>
-                  </div><!--services icon-->
-                  <div class="col-md-6 services-text">
-                    <h4 class="heading-mini quote-heading"><em>" <%= @student.quote %> "</em></h4> 
-                  </div><!--services 1 text-->
-                </div><!--services 1 row-->
-              </div>
+                <% unless @capstone.description == "" || @capstone.description == nil %>
+                  <div class="student-interview capstone-info">
+                    <h4 class="heading-mini question-heading capstone-description-heading">Description</h4> 
+                    <p class="capstone-description"><em>" <%= @capstone.description.capitalize %> "</em></p> 
+                    <% if @capstone.github || @capstone.website || @capstone.screencast %>
+                      <h4 class="heading-mini question-heading checkout-icon-header">Check It Out</h4>
+                      <div class="sidebar-box">            
+                        <ul class=" list-inline social-btn">
+                          <% if @capstone.normalized_github %> 
+                            <li><a href="<%= @capstone.normalized_github %>"><i class="ion-social-github" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="My Code On GitHub"></i></a></li>
+                          <% end %>
+                          <% if @capstone.normalized_website %> 
+                            <li><a href="<%= @capstone.normalized_website %>"><i class="ion-android-desktop" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Live Website"></i></a></li>
+                          <% end %>
+                          <% if @capstone.normalized_screencast %> 
+                            <li><a href="%= @capstone.normalized_screencast %>"><i class="ion-ios-videocam" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="App Screencast"></i></a></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    <% end %>
+                  </div>
+                <% end %>
             <% end %>
           </div>
         </div><!--blog post section end-->
 
-      <% if @capstone %>
         <div class="blog-post-section student-section-three">
-          <h4 class="heading-mini section-heading">My Capstone: <%= @capstone.name %></h4>
-          <div class="blog-post-img">
-            <%= image_tag "#{@capstone.project_image.masonry.url}", alt: "", class: "img-responsive capstone-image" %>
-          </div>
-          <% unless @capstone.description == "" || @capstone.description == nil %>
-            <div class="student-interview capstone-info">
-              <h4 class="heading-mini question-heading capstone-description-heading">Description</h4> 
-              <p class="capstone-description"><em>" <%= @capstone.description.capitalize %> "</em></p> 
-              <% if @capstone.github || @capstone.website || @capstone.screencast %>
-                <h4 class="heading-mini question-heading checkout-icon-header">Check It Out</h4>
-                <div class="sidebar-box">
-                  
-                  <ul class=" list-inline social-btn">
-                    <% if @capstone.normalized_github %> 
-                      <li><a href="<%= @capstone.normalized_github %>"><i class="ion-social-github" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="My Code On GitHub"></i></a></li>
-                    <% end %>
-                    <% if @capstone.normalized_website %> 
-                      <li><a href="<%= @capstone.normalized_website %>"><i class="ion-android-desktop" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Live Website"></i></a></li>
-                    <% end %>
-                    <% if @capstone.normalized_screencast %> 
-                      <li><a href="%= @capstone.normalized_screencast %>"><i class="ion-ios-videocam" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="App Screencast"></i></a></li>
-                    <% end %>
-                  </ul>
-                </div>
-              <% end %>
-
+          <% if @student.interview_answers? %>
+            <h4 class="heading-mini section-heading">Interview Responses</h4>
+            <% unless @student.interview_1 == "" || @student.interview_1 == nil %>
+              <div class="student-interview">
+                <div class="row">
+                  <div class="col-md-3 services-icon">
+                    <i class="ion-help"></i>
+                  </div><!--services icon-->
+                  <div class="col-md-6 services-text">
+                    <h4 class="heading-mini question-heading">What is a closure, and how/why would you use one?</h4> 
+                    <p><em>" <%= @student.interview_1.capitalize %> "</em></p> 
+                  </div><!--services 1 text-->
+                </div><!--services 1 row-->
+              </div>
+            <% end %>
+            <% unless @student.interview_2 == "" || @student.interview_2 == nil %>
+              <div class="student-interview">
+                <div class="row">
+                  <div class="col-md-3 services-icon">
+                    <i class="ion-help"></i>
+                  </div><!--services icon-->
+                  <div class="col-md-6 services-text">
+                    <h4 class="heading-mini question-heading">What does CORS stand for and what issue does it address?</h4> 
+                    <p><em>" <%= @student.interview_2.capitalize %> "</em></p> 
+                  </div><!--services 1 text-->
+                </div><!--services 1 row-->
+              </div>
+            <% end %>
+            <% unless @student.interview_3 == "" || @student.interview_3 == nil %>
+              <div class="student-interview">
+                <div class="row">
+                  <div class="col-md-3 services-icon">
+                    <i class="ion-help"></i>
+                  </div><!--services icon-->
+                  <div class="col-md-6 services-text">
+                    <h4 class="heading-mini question-heading">What is a recent technical challenge you experienced and how did you solve it?</h4> 
+                    <p><em>" <%= @student.interview_3.capitalize %> "</em></p> 
+                  </div><!--services 1 text-->
+                </div><!--services 1 row-->
+              </div>
+            <% end %>
+          <% end %>
+          <% unless @student.quote == "" || @student.quote == nil %>
+            <h4 class="heading-mini section-heading">Quote</h4>
+            <div class="student-quote">
+              <div class="row">
+                <div class="col-md-3 services-icon">
+                  <i class="ion-android-hangout"></i>
+                </div><!--services icon-->
+                <div class="col-md-6 services-text">
+                  <h4 class="heading-mini quote-heading"><em>" <%= @student.quote %> "</em></h4> 
+                </div><!--services 1 text-->
+              </div><!--services 1 row-->
             </div>
           <% end %>
-        </div>
-      <% end %>
+        </div><!--blog post section end-->
 
       </div><!--blog content--> 
       <div class="col-md-4">
