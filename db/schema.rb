@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160716214651) do
+ActiveRecord::Schema.define(version: 20160717010821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,8 +98,8 @@ ActiveRecord::Schema.define(version: 20160716214651) do
     t.integer "student_id"
     t.string  "name"
     t.text    "description"
-    t.boolean "capstone"
-    t.boolean "client_work"
+    t.boolean "capstone",      default: false
+    t.boolean "client_work",   default: false
     t.string  "github"
     t.string  "website"
     t.string  "screencast"
