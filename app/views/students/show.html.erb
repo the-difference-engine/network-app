@@ -141,6 +141,15 @@
             </form>
           </div>
         </div><!--sidebar-box--><hr>
+        
+        <div class="sidebar-box control-buttons">
+          <% if admin_signed_in? || student_signed_in? %>
+              <a href="/projects/new" class="btn btn-lg theme-btn-color"><i class="ion-plus"></i> &nbsp;Add Project</a> 
+          <% end %> 
+          <% if admin_signed_in? %>
+              <a href="/students/<%= @student.id %>/edit" class="btn btn-lg theme-btn-color"><i class="ion-ios-compose edit-icon"></i></a> 
+          <% end %>
+        </div><hr>
 
         <div class="sidebar-box">
           <h4>Skills</h4>
@@ -196,15 +205,6 @@
             </ul>
           </div><hr>
         <% end %>
-
-        <div class="sidebar-box control-buttons">
-          <% if admin_signed_in? || student_signed_in? %>
-              <a href="/projects/new" class="btn btn-lg theme-btn-color"><i class="ion-plus"></i> &nbsp;Add Project</a> 
-          <% end %> 
-          <% if admin_signed_in? %>
-              <a href="/students/<%= @student.id %>/edit" class="btn btn-lg theme-btn-color"><i class="ion-ios-compose edit-icon"></i></a> 
-          <% end %>
-        </div><hr>
       </div><!--sideabr blog end -->
     </div>
   </div><!--blog post page content end here-->
