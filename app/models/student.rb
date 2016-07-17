@@ -14,6 +14,10 @@ class Student < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def current_location
+    "#{current_city}, #{current_state}"
+  end
+
   def capstone_project
     Project.all.find_by(:student_id => id, :capstone => true)
   end
