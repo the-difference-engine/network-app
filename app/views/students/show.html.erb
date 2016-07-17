@@ -24,7 +24,7 @@
           <div class="blog-post-header city-header">
               <h3><a href="" class="student-city"><%= @student.city %></a></h3>
           </div>
-        </div>
+        </div><!--blog post section end-->
         <div class="blog-post-section student-section-two">
           <div class="blog-post-detail">
             <h4 class="heading-mini section-heading">My Bootcamp</h4>
@@ -96,6 +96,17 @@
             <% end %>
           </div>
         </div><!--blog post section end-->
+        <% if @capstone %>
+          <div class="blog-post-section student-section-three">
+            <div class="blog-post-img">
+              <h4 class="heading-mini section-heading">My Capstone: <%= @capstone.name %></h4>
+              <%= image_tag "#{@capstone.project_image.masonry.url}", alt: "", class: "img-responsive capstone-image" %>
+            </div>
+            <div class="blog-post-header city-header">
+              <h3><a href="" class="student-city"><%= @capstone.name %></a></h3>
+            </div>
+          </div>
+        <% end %><!--blog post section end-->
       </div><!--blog content--> 
       <div class="col-md-4">
         <div class="sidebar-box">
