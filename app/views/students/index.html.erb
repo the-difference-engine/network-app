@@ -17,7 +17,7 @@
         </ul>
         <div id="grid" class="row">
           <% @students.each do |student| %>
-            <div class=" mix col-md-4 col-sm-12 col-xs-12 margin-btm-40">
+            <div class=" mix col-md-4 col-sm-6 col-xs-12 margin-btm-40">
               <div class="portfolio-sec">
                 <div class="portfolio-thumnail">
                   <%= link_to image_tag("#{student.avatar.index_square.url}"), student_path(student), class: "img-responsive" %>
