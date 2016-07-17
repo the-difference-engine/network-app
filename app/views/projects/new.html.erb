@@ -1,3 +1,69 @@
+<section id="content-region-3" class="padding-40 page-tree-bg">
+  <div class="container">
+    <h3 class="page-tree-text">New Project</h3>
+  </div>
+</section><!--page-tree end here-->
+
+<div class="space-70"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="my-login-form">
+                <%= form_for(@project, url: projects_path) do |f| %>
+                  <%= form_errors_for @project %>
+                    <h4 class="heading-mini">Enter Project Information</h4><hr>
+                    <div class="form-group">
+                      <%= f.label :name, "Name" %><br>
+                      <%= f.text_field :name, class: "form-control" %>
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.label :description, "Description" %><br>
+                      <%= f.text_field :description, class: "form-control" %>
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.check_box :capstone, id: "checkbox1", name: "iCheck" %>
+                      <%= f.label :capstone, "Yes, this was my capstone project." %>
+                    </div>
+
+                    <input type="checkbox" id="checkbox1" name="iCheck"><label for="checkbox1"> Checkbox 1</label>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h4 class="heading-mini">Radio & Checkbox buttons</h4>
+                            
+                            <ul class="list-unstyled radio-cehckboxed">
+                                <li>
+                                    <input type="checkbox" id="checkbox1" name="iCheck"><label for="checkbox1"> Checkbox 1</label>
+                                </li>
+                                 <li>
+                                     <input type="checkbox" id="checkbox2" name="iCheck" checked><label for="checkbox2"> Checkbox 2</label>
+                                </li>
+                                 <li>
+                                     <input type="radio" id="radio1"  name="iCheck"><label for="radio1"> Radio 1</label>
+                                </li>
+                                 <li>
+                                     <input type="radio" id="radio2"  name="iCheck" checked><label for="radio2"> Radio 2</label>
+                                </li>
+                            </ul>                
+                        </div>
+                    </div>
+
+                    <div class=" text-right">
+                        <button type="submit" class="btn theme-btn-color">Login</button>
+                    </div>
+                    <hr>
+                    <div class="form-btm-link text-center">
+                        <a href="#">Lost password?</a><span>Or</span><a href="signup.html">Create new account</a>
+                    </div>
+                <% end %><!--login form end-->
+            </div>
+        </div>
+    </div>
+</div><!--login page container end-->
+
+
+
 <div class="container">
   <%= form_for(@project, url: projects_path) do |f| %>
     <%= form_errors_for @project %>
@@ -53,3 +119,49 @@
     </div>
   <% end %>
 </div>
+
+<script type="text/javascript">
+    document.querySelector('.timer-alert').onclick = function () {
+        swal({
+            title: "Auto close alert!",
+            text: "I will close in 3 seconds.",
+            timer: 3000,
+            showConfirmButton: false
+        });
+    };
+    document.querySelector('.success-alert').onclick = function () {
+        swal("Good job!", "You clicked the button!", "success");
+    };
+    document.querySelector('.simple-alert').onclick = function () {
+        swal({
+            title: "Welcome in Alerts",
+            text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        });
+    };
+    document.querySelector('.warning-alert').onclick = function () {
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this imaginary file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: '#DD6B55',
+            confirmButtonText: 'Yes, delete it!',
+            closeOnConfirm: false
+        },
+        function () {
+            swal("Deleted!", "Your imaginary file has been deleted!", "success");
+        });
+    };
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#content-scroll").mCustomScrollbar({
+        });
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-gray',
+            radioClass: 'iradio_square-gray',
+            increaseArea: '20%' // optional
+        });
+    });
+</script>

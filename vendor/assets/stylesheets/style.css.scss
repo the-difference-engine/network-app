@@ -274,7 +274,7 @@ small {
   padding: 0;
   width: 22px;
   height: 22px;
-  background: image-url("/assets/images/grey.png") no-repeat;
+  background: image-url("grey.png") no-repeat;
   border: none;
   cursor: pointer;
 }
@@ -325,7 +325,7 @@ small {
 @media (-o-min-device-pixel-ratio: 5 / 4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi), (min-resolution: 1.25dppx) {
   .icheckbox_square-gray,
   .iradio_square-gray {
-    background-image: image-url("/assets/images/grey@2x.png");
+    background-image: image-url("grey@2x.png");
     -webkit-background-size: 240px 24px;
     background-size: 240px 24px;
   }
@@ -2614,17 +2614,17 @@ h3.heading-progress {
 }
 
 #item-1 {
-  background-image: image-url("/assets/images/img-5.jpg");
+  background-image: image-url("img-5.jpg");
   width: 100%;
 }
 
 #item-2 {
-  background-image: image-url("/assets/images/img-6.jpg");
+  background-image: image-url("img-6.jpg");
   width: 100%;
 }
 
 #item-3 {
-  background-image: image-url("/assets/images/img-4.jpg");
+  background-image: image-url("img-4.jpg");
   width: 100%;
 }
 
