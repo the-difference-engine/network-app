@@ -16,4 +16,14 @@ class Project < ActiveRecord::Base
   def normalized_screencast
     screencast && PostRank::URI.normalize(screencast).to_s
   end
+
+  def project_type
+    if capstone
+      "Capstone Project"
+    elsif client_work
+      "Client Work"
+    else
+      "Personal Project"
+    end
+  end
 end
