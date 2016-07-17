@@ -15,7 +15,13 @@ class Student < ActiveRecord::Base
   end
 
   def current_location
-    "#{current_city}, #{current_state}"
+    if current_city == nil || current_city == ""
+      "#{city}"
+    else
+      unless current_state == nil || current_state == ""
+        "#{current_city}, #{current_state}"
+      end
+    end
   end
 
   def capstone_project
