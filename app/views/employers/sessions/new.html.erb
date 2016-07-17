@@ -1,26 +1,48 @@
-<h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<section id="content-region-3" class="padding-40 page-tree-bg">
+  <div class="container">
+    <h3 class="page-tree-text">Employer Log In</h3>
   </div>
+</section><!--page-tree end here-->
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+<div class="space-70"></div>
+<div class="container project-new">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="my-login-form">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= form_errors_for @project %>
+          <h4 class="heading-mini">Log In</h4><hr>
+          <div class="form-group">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, class: "form-control" %>
+          </div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+          <div class="form-group">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+          </div>
+          
+          <% if devise_mapping.rememberable? -%>
+            <div class="form-group">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end %>
+
+          <div class="text-right submit-btn">
+            <%= f.submit "Log in", class: "btn theme-btn-color" %>
+          </div>
+
+          <div class="form-btm-link text-center">
+              <a href="#">Lost password?</a><span>Or</span><a href="signup.html">Create new account</a>
+          </div>
+        <% end -%>
+      </div>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+</div><!--login page container end-->
 
-<%= render "employers/shared/links" %>
+<%= render "shared/alerts_checkbox_radio_scripts" %>
+
+
