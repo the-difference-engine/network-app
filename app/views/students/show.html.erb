@@ -23,7 +23,7 @@
             </div>
           <% end %>
           <div class="blog-post-header city-header">
-              <h3><a href="" class="student-city"><%= @student.city %></a></h3>
+              <h3><a href="" class="student-city"><%= @student.current_location %></a></h3>
           </div>
         </div>
 
@@ -196,7 +196,7 @@
             </ul>
           </div><hr>
         <% end %>
-        
+
         <% if admin_signed_in? || student_signed_in? %>
           <div class="sidebar-box">
             <a href="/projects/new" class="btn btn-lg theme-btn-color"><i class="ion-plus"></i> &nbsp;Add Project</a> 

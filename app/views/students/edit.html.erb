@@ -49,7 +49,7 @@
 
     <div class="field">
       <%= f.label :current_state %><br />
-      <%= f.select(:current_state, options_for_select(us_states, @employer.current_state)) %>
+      <%= f.select(:current_state, options_for_select(us_states, @student.current_state), :prompt => "Please Select") %>
     </div>
 
     <div class="field">
