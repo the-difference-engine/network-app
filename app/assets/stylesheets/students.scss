@@ -33,7 +33,6 @@
 
   .capstone-image {
     margin: auto;
-    // max-width: 500px;
     border: 1px solid $light-gray;
     padding: 5px;
   }
@@ -53,6 +52,15 @@
   .heading-mini {
     margin-top: 10px;
     text-transform: none;
+  }
+
+  .checkout-icon-header, .capstone-description-heading {
+    text-transform: none;
+    margin-bottom: 7px;
+  }
+
+  .capstone-description {
+    margin-bottom: 20px;
   }
 
   .student-grad-date {
