@@ -87,16 +87,30 @@
   }
 
   .direc-hover-box a .direc-overlay span {
+    font-weight: 700;
+  }
+
+  .direc-hover-box a .direc-overlay span {
     // display: block;
     position: relative;
     padding: 5px;
     // width: 100%;
-    // top: 50%;
+    top: 30%;
     // color: #fff;
     // font-size: 20px;
     // text-align: center;
     // font-family: "Open Sans", sans-serif;
     // font-weight: 400;
     // text-transform: uppercase;
-  }  
+  } 
+
+  .direc-hover-box a .direc-overlay {
+    position: absolute;
+    background: rgba(15, 175, 151, 0.8);
+  }
+
+  .no-projects-message {
+    text-align: center;
+    color: $green;
+  }
 }

@@ -176,141 +176,24 @@
   </section><!--page-tree end here-->
 
   <div class="space-70"></div>
-
+<% if @student.projects[0] %>
   <div class="portfolio-masonary-wrapper">
-      <div class="container mas-boxes">
-        <% @student.projects.each do |project| %>
-          <div class="mas-boxes-inner direc-hover-box wow animated fadeInUp">
-              <a href="#">
-                  <%= image_tag "no_project_768x1024.png", class: "img-responsive" %>
-                  <div class="direc-overlay">
-                      <span><%= project.name %></span>
-                      <span class="project-type">Client Work</span>
-                  </div>
-              </a>
-          </div><!--masonry box-->
-        <% end %>
-           <div class="mas-boxes-inner direc-hover-box wow animated fadeInUp">
-              <a href="#">
-                  <%= image_tag "no_project_768x576.png", class: "img-responsive" %>
-                  <div class="direc-overlay">
-                      <span>Project 2</span>
-                  </div>
-              </a>
-          </div><!--masonry box-->
-          <div class="mas-boxes-inner direc-hover-box wow animated fadeInUp">
-              <a href="#">
-                  <%= image_tag "no_project_768x1024.png", class: "img-responsive" %>
-                  <div class="direc-overlay">
-                      <span>Project 3</span>
-                  </div>
-              </a>
-          </div><!--masonry box-->
-           <div class="mas-boxes-inner direc-hover-box wow animated fadeInUp">
-              <a href="#">
-                  <%= image_tag "no_project_768x1156.png", class: "img-responsive" %>
-                  <div class="direc-overlay">
-                      <span>Project 4</span>
-                  </div>
-              </a>
-          </div><!--masonry box-->
-           <div class="mas-boxes-inner direc-hover-box wow animated fadeInUp">
-              <a href="#">
-                  <%= image_tag "no_project_768x1024.png", class: "img-responsive" %>
-                  <div class="direc-overlay">
-                      <span>Project 5</span>
-                  </div>
-              </a>
-          </div><!--masonry box-->
-           <div class="mas-boxes-inner direc-hover-box wow animated fadeInUp">
-              <a href="#">
-                  <%= image_tag "no_project_768x576.png", class: "img-responsive" %>
-                  <div class="direc-overlay">
-                      <span>Project 6</span>
-                  </div>
-              </a>
-          </div><!--masonry box-->
-          <div class="mas-boxes-inner direc-hover-box wow animated fadeInUp">
-              <a href="#">
-                  <%= image_tag "no_project_768x576.png", class: "img-responsive" %>
-                  <div class="direc-overlay">
-                      <span>Project 7</span>
-                  </div>
-              </a>
-          </div><!--masonry box-->
-           <div class="mas-boxes-inner direc-hover-box wow animated fadeInUp">
-              <a href="#">
-                  <%= image_tag "no_project_768x1024.png", class: "img-responsive" %>
-                  <div class="direc-overlay">
-                      <span>Project 8</span>
-                  </div>
-              </a>
-          </div><!--masonry box-->
-           <div class="mas-boxes-inner direc-hover-box wow animated fadeInUp">
-              <a href="#">
-                  <%= image_tag "no_project_768x1156.png", class: "img-responsive" %>
-                  <div class="direc-overlay">
-                      <span>Project 9</span>
-                  </div>
-              </a>
-          </div><!--masonry box-->
-         <div class="mas-boxes-inner direc-hover-box wow animated fadeInUp">
-              <a href="#">
-                  <%= image_tag "no_project_768x1024.png", class: "img-responsive" %>
-                  <div class="direc-overlay">
-                      <span>Project 10</span>
-                  </div>
-              </a>
-          </div><!--masonry box-->
-          <div class="mas-boxes-inner direc-hover-box wow animated fadeInUp">
-              <a href="#">
-                  <%= image_tag "no_project_768x576.png", class: "img-responsive" %>
-                  <div class="direc-overlay">
-                      <span>Project 11</span>
-                  </div>
-              </a>
-          </div><!--masonry box-->
-          <div class="mas-boxes-inner direc-hover-box wow animated fadeInUp">
-              <a href="#">
-                  <%= image_tag "no_project_768x1024.png", class: "img-responsive" %>
-                  <div class="direc-overlay">
-                      <span>Project 12</span>
-                  </div>
-              </a>
-          </div><!--masonry box-->
-           <div class="mas-boxes-inner direc-hover-box wow animated fadeInUp">
-              <a href="#">
-                  <%= image_tag "no_project_768x1156.png", class: "img-responsive" %>
-                  <div class="direc-overlay">
-                      <span>Project 13</span>
-                  </div>
-              </a>
-          </div><!--masonry box-->
-           <div class="mas-boxes-inner direc-hover-box wow animated fadeInUp">
-              <a href="#">
-                  <%= image_tag "no_project_768x1156.png", class: "img-responsive" %>
-                  <div class="direc-overlay">
-                      <span>Project 14</span>
-                  </div>
-              </a>
-          </div><!--masonry box-->
-           <div class="mas-boxes-inner direc-hover-box wow animated fadeInUp">
-              <a href="#">
-                  <%= image_tag "no_project_768x576.png", class: "img-responsive" %>
-                  <div class="direc-overlay">
-                      <span>Project 15</span>
-                  </div>
-              </a>
-          </div><!--masonry box-->
-           <div class="mas-boxes-inner direc-hover-box wow animated fadeInUp">
-              <a href="#">
-                  <%= image_tag "no_project_768x1024.png", class: "img-responsive" %>
-                  <div class="direc-overlay">
-                      <span>Project 16</span>
-                  </div>
-              </a>
-          </div><!--masonry box-->
-      </div>
+    <div class="container mas-boxes">
+      <% @student.projects.each do |project| %>
+        <div class="mas-boxes-inner direc-hover-box wow animated fadeInUp">
+            <a href="#">
+                <%= image_tag "#{project.project_image.masonry.url}", class: "img-responsive" %>
+                <div class="direc-overlay">
+                    <span><%= project.name %></span>
+                    <span class="project-type"><%= project.project_type %></span>
+                </div>
+            </a>
+        </div><!--masonry box-->
+      <% end %>
+    </div>
   </div><!--masonary wrapper-->
+<% else %>
+  <h3 class="no-projects-message"><em>In progess. More projects coming soon!</em></h3>
+<% end %>
 </div>
 
