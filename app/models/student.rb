@@ -18,6 +18,14 @@ class Student < ActiveRecord::Base
     Project.all.find_by(:student_id => id, :capstone => true)
   end
 
+  def client_projects
+    Project.all.where(:student_id => id, :client_work => true)
+  end
+
+  def personal_projects
+    Project.all.where(:student_id => id, :capstone => false, :client_work => false)
+  end
+
   def normalized_github
     github && PostRank::URI.normalize(github).to_s
   end
