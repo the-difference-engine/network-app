@@ -176,10 +176,10 @@
   </section><!--page-tree end here-->
 
   <div class="space-70"></div>
-<% if @student.projects[0] %>
+<% if @projects[0] %>
   <div class="portfolio-masonary-wrapper">
     <div class="container mas-boxes">
-      <% @student.projects.each do |project| %>
+      <% @projects.each do |project| %>
         <div class="mas-boxes-inner direc-hover-box wow animated fadeInUp">
             <a href="#">
                 <%= image_tag "#{project.project_image.masonry.url}", class: "img-responsive" %>

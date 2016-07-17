@@ -26,7 +26,8 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find(params[:id])
-    
+    @projects = @student.projects
+
     if @student.capstone_project
       @capstone = @student.capstone_project
     end
