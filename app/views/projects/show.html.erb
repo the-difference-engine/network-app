@@ -16,7 +16,7 @@
               <div class="tabs"><!--tabs start-->
                   <ul class="nav nav-tabs">
                       <li class=""><a href="#description" data-toggle="tab">Description</a></li>
-                    <% if @project.screencast != nil || @project.screencast != "" %>
+                    <% if @project.embed_youtube_screencast %>
                       <li class=""><a href="#screencast" data-toggle="tab">Screencast</a></li>
                     <% end %>
                   </ul>
@@ -28,7 +28,7 @@
                               <p><%= @project.description %></p>
                           </div> 
                       </div>
-                    <% if @project.screencast != nil || @project.screencast != "" %>
+                    <% if @project.embed_youtube_screencast %>
                       <div class="tab-pane" id="screencast">
                           <div class="tab-desc animated fadeIn screencast-iframe embed-responsive embed-responsive-16by9">
                               <iframe src="<%= @project.embed_youtube_screencast %>" frameborder="0" allowfullscreen>Your browser does not support iframe. Click <a href="<%= @project.screencast %>">here</a> to check out the screencast</iframe>

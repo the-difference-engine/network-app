@@ -31,7 +31,7 @@ class Project < ActiveRecord::Base
     if normalized_screencast.include?("youtube") && normalized_screencast.include?("watch?v=")
       link = normalized_screencast
       link_for_embed = link.gsub!("watch?v=", "embed/")
-    elsif normalized_screencast.include?("/embed/")
+    elsif normalized_screencast.include?("youtube") && normalized_screencast.include?("/embed/")
       normalized_screencast
     else 
       false
