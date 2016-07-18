@@ -15,7 +15,7 @@
             
               <div class="tabs"><!--tabs start-->
                   <ul class="nav nav-tabs">
-                      <li class=""><a href="#description" data-toggle="tab"><h4 class="heading-mini tab-name">Description</h4></a></li>
+                      <li class="active"><a href="#description" data-toggle="tab"><h4 class="heading-mini tab-name">Description</h4></a></li>
                     <% if @project.embed_youtube_screencast %>
                       <li class=""><a href="#screencast" data-toggle="tab"><h4 class="heading-mini tab-name">Screencast</h4></a></li>
                     <% end %>
@@ -23,7 +23,7 @@
 
                   <!-- Tab panes -->
                   <div class="tab-content">
-                      <div class="tab-pane" id="description">
+                      <div class="tab-pane description-pane active" id="description">
                           <div class="tab-desc animated fadeInDown">
                               <p><%= @project.description %></p>
                           </div> 
