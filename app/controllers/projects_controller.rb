@@ -17,6 +17,10 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def show
+    @product = Product.find(params[:id])
+  end
+
   def edit
     @project = Project.find(params[:id])
 
