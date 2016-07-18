@@ -223,7 +223,7 @@
       <div class="container mas-boxes">
         <% @projects.each do |project| %>
           <div class="mas-boxes-inner direc-hover-box wow animated fadeInUp">
-              <a href="#">
+              <a href="/projects/<%= project.id %>">
                   <%= image_tag "#{project.project_image.masonry.url}", class: "img-responsive" %>
                   <div class="direc-overlay">
                       <span><%= project.name %></span>
