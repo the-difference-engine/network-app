@@ -17,4 +17,15 @@
   .description-pane > .active {
     display: block;
   }
+
+  .sidebar-box h4 {
+    border-bottom: 5px solid $green;
+    display: table;
+    margin: auto;
+    margin-bottom: 15px;
+  }
+
+  .cat-list li {
+    text-align: center;
+  }
 }
