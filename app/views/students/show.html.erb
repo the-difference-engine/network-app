@@ -45,7 +45,7 @@
             <% if @capstone %>
                 <h4 class="heading-mini section-heading">My Capstone: <%= @capstone.name %></h4>
                 <div class="blog-post-img">
-                  <%= image_tag "#{@capstone.project_image.masonry.url}", alt: "", class: "img-responsive capstone-image" %>
+                  <a href="/projects/<%= @capstone.id %>"><%= image_tag "#{@capstone.project_image.masonry.url}", alt: "", class: "img-responsive capstone-image" %></a>
                 </div>
                 <% unless @capstone.description == "" || @capstone.description == nil %>
                   <div class="student-interview capstone-info">
