@@ -22,10 +22,23 @@
     border-bottom: 5px solid $green;
     display: table;
     margin: auto;
-    margin-bottom: 15px;
+    margin-bottom: 24px;
   }
 
   .cat-list li {
     text-align: center;
   }
+
+  .social-btn li a i {
+    font-size: 20px;
+  }
+
+  .social-btn {
+    text-align: center;
+  }
+
+  .project-checkout {
+    margin-bottom: 25px;
+  }
+
 }

@@ -56,13 +56,13 @@
                       <div class="sidebar-box">            
                         <ul class=" list-inline social-btn">
                           <% if @capstone.normalized_github %> 
-                            <li><a href="<%= @capstone.normalized_github %>"><i class="ion-social-github" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="My Code On GitHub"></i></a></li>
+                            <li><a href="<%= @capstone.normalized_github %>"><i class="ion-social-github" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="My Code On GitHub" target="_blank"></i></a></li>
                           <% end %>
                           <% if @capstone.normalized_website %> 
-                            <li><a href="<%= @capstone.normalized_website %>"><i class="ion-android-desktop" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Live Website"></i></a></li>
+                            <li><a href="<%= @capstone.normalized_website %>"><i class="ion-android-desktop" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Live Website" target="_blank"></i></a></li>
                           <% end %>
                           <% if @capstone.normalized_screencast %> 
-                            <li><a href="%= @capstone.normalized_screencast %>"><i class="ion-ios-videocam" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="App Screencast"></i></a></li>
+                            <li><a href="<%= @capstone.normalized_screencast %>" target="_blank"><i class="ion-ios-videocam" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="App Screencast"></i></a></li>
                           <% end %>
                         </ul>
                       </div>
