@@ -1,0 +1,63 @@
+<div class="project-show">
+  <section id="content-region-3" class="padding-40 page-tree-bg">
+    <div class="container">
+      <h3 class="page-tree-text"><%= @project.name %></h3>
+    </div>
+  </section><!--page-tree end here-->
+
+  <div class="space-70"></div>
+  <div class="container portfolio-details">
+      <div class="row">
+          <div class="col-md-8 portfolio-single-slide margin-btm-40">
+              <div class="flexslider">
+                  <%= image_tag @project.project_image.large.url %>
+              </div><!--flex slider-->
+            
+              <div class="tabs"><!--tabs start-->
+                  <ul class="nav nav-tabs">
+                      <li class=""><a href="#description" data-toggle="tab">Description</a></li>
+                    <% if @project.screencast != nil || @project.screencast != "" %>
+                      <li class=""><a href="#screencast" data-toggle="tab">Screencast</a></li>
+                    <% end %>
+                  </ul>
+
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                      <div class="tab-pane" id="description">
+                          <div class="tab-desc animated fadeInDown">
+                              <p><%= @project.description %></p>
+                          </div> 
+                      </div>
+                    <% if @project.screencast != nil || @project.screencast != "" %>
+                      <div class="tab-pane" id="screencast">
+                          <div class="tab-desc animated fadeIn screencast-iframe embed-responsive embed-responsive-16by9">
+                              <iframe src="<%= @project.embed_youtube_screencast %>" frameborder="0" allowfullscreen>Your browser does not support iframe. Click <a href="<%= @project.screencast %>">here</a> to check out the screencast</iframe>
+                          </div>
+                      </div>
+                    <% end %>
+                  </div>
+              </div><!--tabs end-->
+          </div>
+          <div class="col-md-4">
+              <div class="portfolio-side-bar">
+                  <p>
+                      <strong>Client:</strong> Design_mylife
+                  </p>
+                   <p>
+                      <strong>Skills:</strong> HTML5, CSS3, Bootstrap3, Jquery
+                  </p>
+                   <p>
+                      <strong>Time:</strong> March 10 2015 - March 25 2015
+                  </p>
+                   <p>
+                      <strong>Client Says:</strong> "Great services!, my project goes live and am very happy to pay design_mylife. sed do eiusmod tempor incididunt ut labore et dolore magna."
+                  </p>
+                  <br>
+                  <p>
+                      <a href="#" class="btn btn-radius theme-btn-color">Visit Project</a>
+                  </p>
+              </div>
+          </div>
+      </div>
+  </div><!--portfolio single container end-->
+</div>
