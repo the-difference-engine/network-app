@@ -39,33 +39,40 @@
               </div><!--tabs end-->
           </div>
           <div class="col-md-4">
-              <div class="portfolio-side-bar">
-                  <% if @project.github || @project.website || @project.screencast %>
-                    <div class="sidebar-box">
-                      <h4 class="project-checkout">Check It Out</h4>
-                      <ul class=" list-inline social-btn">
-                        <% if @project.github %> 
-                          <li><a href="<%= @project.normalized_github %>" target="_blank"><i class="ion-social-github" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Code On GitHub" target="_blank"></i></a></li>
-                        <% end %>
-                        <% if @project.website %> 
-                          <li><a href="<%= @project.normalized_website %>" target="_blank"><i class="ion-android-desktop" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Live Website" target="_blank"></i></a></li>
-                        <% end %>
-                        <% if @project.screencast %> 
-                          <li><a href="<%= @project.normalized_screencast %>" target="_blank"><i class="ion-ios-videocam" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Watch App Screencast" target="_blank"></i></a></li>
-                        <% end %>
-                      </ul>
-                    </div><hr>
-                  <% end %>
+            <div class="portfolio-side-bar">
+              <% if admin_signed_in? || student_signed_in? %>
+                <div class="sidebar-box control-buttons">
+                  <a href="/projects/<%= @project.id %>/edit" class="btn btn-lg theme-btn-color"><i class="ion-edit"></i></a> 
+                  <a href="/projects/<%= @project.id %>/edit" class="btn btn-lg theme-btn-color"><i class="ion-trash-a"></i></a> 
+                </div><hr>
+              <% end %>
 
-                  <div class="sidebar-box">
-                    <h4>Technologies</h4>
-                    <ul class="cat-list">  
-                      <li><a href="#" class="hover-color">Coming Soon</a></li>
-                      <li><a href="#" class="hover-color">Coming Soon</a></li>
-                      <li><a href="#" class="hover-color">Coming Soon</a></li>
-                    </ul>
-                  </div><hr>
-              </div>
+              <% if @project.github || @project.website || @project.screencast %>
+                <div class="sidebar-box">
+                  <h4 class="project-checkout">Check It Out</h4>
+                  <ul class=" list-inline social-btn">
+                    <% if @project.github %> 
+                      <li><a href="<%= @project.normalized_github %>" target="_blank"><i class="ion-social-github" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Code On GitHub" target="_blank"></i></a></li>
+                    <% end %>
+                    <% if @project.website %> 
+                      <li><a href="<%= @project.normalized_website %>" target="_blank"><i class="ion-android-desktop" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Live Website" target="_blank"></i></a></li>
+                    <% end %>
+                    <% if @project.screencast %> 
+                      <li><a href="<%= @project.normalized_screencast %>" target="_blank"><i class="ion-ios-videocam" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Watch App Screencast" target="_blank"></i></a></li>
+                    <% end %>
+                  </ul>
+                </div><hr>
+              <% end %>
+
+              <div class="sidebar-box">
+                <h4>Technologies</h4>
+                <ul class="cat-list">  
+                  <li><a href="#" class="hover-color">Coming Soon</a></li>
+                  <li><a href="#" class="hover-color">Coming Soon</a></li>
+                  <li><a href="#" class="hover-color">Coming Soon</a></li>
+                </ul>
+              </div><hr>
+            </div>
           </div>
       </div>
   </div><!--portfolio single container end-->
