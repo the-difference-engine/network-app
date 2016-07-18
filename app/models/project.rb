@@ -26,4 +26,13 @@ class Project < ActiveRecord::Base
       "Personal Project"
     end
   end
+
+  def embed_youtube_screencast
+    if normalized_screencast.include?("youtube") && normalized_screencast.include?("watch?v=")
+      link = normalized_screencast
+      link_for_embed = link.gsub!("watch?v=", "embed/")
+    else
+      false
+    end
+  end
 end
