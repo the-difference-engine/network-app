@@ -151,5 +151,37 @@ RSpec.describe Student, :type => :model do
         grad_date: "2016-03-25")
       expect(student.friendly_grad_date).to eq("March 2016")
     end
+
+    it 'returns true if student has at least one non-empty-string social link (github, blog, linked_in) answer' do
+      student = create(:student,
+        github: "",
+        blog: "",
+        linked_in: "if you look hot, wear it")
+      expect(student.social_links?).to eq(true)
+    end
+
+    it 'returns false if student has all empty-string social link (github, blog, linked_in) answers' do
+      student = create(:student,
+        github: "",
+        blog: "",
+        linked_in: "")
+      expect(student.social_links?).to eq(false)
+    end
+
+    it 'returns true if student has at least one non-nil social link (github, blog, linked_in) answer' do
+      student = create(:student,
+        github: nil,
+        blog: nil,
+        linked_in: "if you look hot, wear it")
+      expect(student.social_links?).to eq(true)
+    end
+
+    it 'returns false if student has all nil social link (github, blog, linked_in) answers' do
+      student = create(:student,
+        github: nil,
+        blog: nil,
+        linked_in: nil)
+      expect(student.social_links?).to eq(false)
+    end
   end
 end

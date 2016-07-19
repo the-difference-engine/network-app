@@ -171,7 +171,7 @@ class Student < ActiveRecord::Base
       social_links = true
     end
 
-    return social_links
+    social_links
   end
 end
 
