@@ -145,15 +145,18 @@
         
         <div class="sidebar-box control-buttons">
           <% if admin_signed_in? || student_signed_in? %>
-              <a href="/projects/new" class="btn btn-lg theme-btn-color"><i class="ion-plus"></i> &nbsp;Add Project</a> 
+            <a href="/projects/new" class="btn btn-lg theme-btn-color"><i class="ion-plus"></i> &nbsp;Add Project</a> 
+            <% if @student.resume.url != "" && @student.resume.url != nil%>
+              <a href="<%= @student.resume.url %>" class="btn btn-lg theme-btn-color"><i class="ion-document-text"></i> &nbsp;Resume</a>
+            <% end %>
           <% end %> 
           <% if admin_signed_in? %>
               <a href="/students/<%= @student.id %>/edit" class="btn btn-lg theme-btn-color"><i class="ion-edit"></i></a>
-              <a href="<%= @student.resume.url %>" class="btn btn-lg theme-btn-color"><i class="ion-document-text"></i> &nbsp;Resume</a>
-          <% elsif @student.resume.url != "" && @student.resume.url != nil && employer_signed_in?  %>
+          <% elsif @student.resume.url != "" && @student.resume.url != nil && employer_signed_in? %>
             <a href="<%= @student.resume.url %>" class="btn btn-lg theme-btn-color"><i class="ion-document-text"></i> &nbsp;Resume</a>
           <% end %>
-        </div><hr>
+        </div>
+        <% unless employer_signed_in? %><hr><% end %>
 
         <div class="sidebar-box">
           <h4>Top 3 Skills</h4>

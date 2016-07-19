@@ -78,7 +78,7 @@
     border-color: $green; 
   }
 
-  .resume-btn {
+  .btn.btn-lg.theme-btn-color.resume-btn {
     margin-top: 10px;
     margin-bottom: 15px;
   }
@@ -89,8 +89,9 @@
     border-color: $green; 
   }
 
-  .resume-btn i {
+  .resume-btn-center i {
     font-size: 16px;
+    margin-bottom: 15px;
   }
 
   .employment-btn-div {
