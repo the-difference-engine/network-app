@@ -145,5 +145,33 @@ class Student < ActiveRecord::Base
 
     return interests_answered
   end
+
+  def social_links?
+    social_links = false
+
+    if github == nil || github == ""
+      github = false
+    else
+      github = true
+    end
+
+    if blog == nil || blog == ""
+      blog = false
+     else
+      blog = true
+    end
+
+    if linked_in == nil || linked_in == ""
+      linked_in = false
+    else
+      linked_in = true
+    end
+
+    if github || blog || linked_in
+      social_links = true
+    end
+
+    return social_links
+  end
 end
 
