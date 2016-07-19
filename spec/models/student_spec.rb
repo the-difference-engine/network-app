@@ -50,6 +50,24 @@ RSpec.describe Student, :type => :model do
       expect(student.capstone_project).to eq(project)
     end
 
+    it 'returns all client projects if project client_work attribute = true' do
+      student = create(:student)
+      project_1 = create(:project, client_work: true, student: student)
+      project_2 = create(:project, client_work: true, student: student)
+      project_2 = create(:project, client_work: false, student: student)
+      projects = student.client_projects
+      expect(projects.count).to eq(2)
+    end
+
+    it 'returns only personal projects, excluding projects with client_work or capstone = true' do
+      student = create(:student)
+      project_1 = create(:project, client_work: true, student: student)
+      project_2 = create(:project, capstone: true, student: student)
+      project_2 = create(:project, capstone: false, client_work: false, student: student)
+      projects = student.personal_projects
+      expect(projects.count).to eq(1)
+    end
+
     it 'returns true if student has at least one non-nil skill attribute ' do
       student = create(:student,
         skill_1: nil,
