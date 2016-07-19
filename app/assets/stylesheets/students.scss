@@ -75,8 +75,21 @@
   .employment-btn {
     color: #fff;
     background-color: $green;
-    border-color: $green;
-    
+    border-color: $green; 
+  }
+
+  .resume-btn {
+    margin-bottom: 15px;
+  }
+
+  .resume-btn h4 {
+    color: #fff;
+    background-color: $green;
+    border-color: $green; 
+  }
+
+  .resume-btn i {
+    font-size: 16px;
   }
 
   .employment-btn-div {
