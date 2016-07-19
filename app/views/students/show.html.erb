@@ -148,7 +148,10 @@
               <a href="/projects/new" class="btn btn-lg theme-btn-color"><i class="ion-plus"></i> &nbsp;Add Project</a> 
           <% end %> 
           <% if admin_signed_in? %>
-              <a href="/students/<%= @student.id %>/edit" class="btn btn-lg theme-btn-color"><i class="ion-edit"></i></a> 
+              <a href="/students/<%= @student.id %>/edit" class="btn btn-lg theme-btn-color"><i class="ion-edit"></i></a>
+              <a href="<%= @student.resume.url %>" class="btn btn-lg theme-btn-color"><i class="ion-document-text"></i> &nbsp;Resume</a>
+          <% elsif @student.resume.url != "" && @student.resume.url != nil && employer_signed_in?  %>
+            <a href="<%= @student.resume.url %>" class="btn btn-lg theme-btn-color"><i class="ion-document-text"></i> &nbsp;Resume</a>
           <% end %>
         </div><hr>
 
