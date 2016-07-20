@@ -1,39 +1,53 @@
-<h2>Sign up</h2>
+<div class="employer-new-admin">
+  <div class="login-page">
+    <section id="content-region-3" class="padding-40 page-tree-bg">
+      <div class="container">
+        <h3 class="page-tree-text">Admin Sign Up</h3>
+      </div>
+    </section><!--page-tree end here-->
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
+    <div class="space-70"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="my-login-form">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= devise_error_messages! %>
+              <div class="col-md-6 margin-btm-20">
+                <%= f.label :first_name %><br />
+                <%= f.text_field :first_name, class: "form-control" %>
+              </div>
+              <div class="col-md-6 margin-btm-20">
+                <%= f.label :last_name %><br />
+                <%= f.text_field :last_name, class: "form-control" %>
+              </div>
+              <div class="col-md-12 margin-btm-20">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, class: "form-control" %>
+              </div>
+              <div class="col-md-12 margin-btm-20">
+                <%= f.label :password, "Password (minimum of 8 characters)" %>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+              </div>
+              <div class="col-md-12 margin-btm-20">
+                <%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+              </div>
+              <hr>
+              <div class="col-md-12 text-right">
+                <%= f.submit "Sign Up", class: "btn theme-btn-color" %>
+              </div>
+              <% end %>
+              <hr>
+              <div class="form-btm-link text-center">
+                <%= link_to "Already have an account? Log in!", new_admin_session_path %>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div><!--login page container end-->
   </div>
-
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "admins/shared/links" %>
+</div>

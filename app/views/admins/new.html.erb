@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 <div class="employer-new-admin">
   <div class="login-page">
     <section id="content-region-3" class="padding-40 page-tree-bg">
@@ -32,8 +25,11 @@
                 <%= f.label :email %><br />
                 <%= f.email_field :email, class: "form-control" %>
               </div>
-               <div class="col-md-12 margin-btm-20">
-                <%= f.label :password %><br />
+              <div class="col-md-12 margin-btm-20">
+                <%= f.label :password, "Password (minimum of 8 characters)" %>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
                 <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
               </div>
                <div class="col-md-12 margin-btm-20">
