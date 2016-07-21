@@ -1,53 +1,61 @@
-<% if @admin.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@admin.errors.count, "error") %></h2>
-    <ul>
-    <% @admin.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+<div class="login-page">
+  <section id="content-region-3" class="padding-40 page-tree-bg">
+    <div class="container">
+      <h3 class="page-tree-text">Update Admin Account</h3>
+    </div>
+  </section><!--page-tree end here-->
 
-<div class="container">
-  <h2>Edit <%= @admin.full_name %> Profile</h2>
+  <div class="space-70"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="my-login-form">
+          <%= form_for(@admin, url: admin_path(@admin), html: { :multipart => true }) do |f| %>
+            <%= form_errors_for @admin %>
+            <h4 class="heading-mini">Update Account Details</h4><hr>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <%= f.label :first_name %><br />
+                <%= f.text_field :first_name, class: "form-control" %>
+              </div>
+              <div class="form-group col-md-6">
+                <%= f.label :last_name %><br />
+                <%= f.text_field :last_name, class: "form-control" %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, class: "form-control" %>
+              </div>
+              <div class="form-group col-md-12">
+                <%= f.label :password, "Password (minimum of 8 characters)" %>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+              </div>
+              <div class="form-group col-md-12">
+                <%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+              </div>
+              <div class="text-right submit-btn col-md-12">
+                <%= f.submit "Update", class: "btn theme-btn-color" %>
+              </div>
+            </div>
   
-  <%= form_for(@admin, url: admin_path(@admin), html: { :multipart => true }) do |f| %>
-
-    <div class="field">
-      <%= f.label :first_name %><br />
-      <%= f.text_field :first_name, autofocus: true %>
+          <% end -%>
+        </div>
+      </div>
     </div>
-
-    <div class="field">
-      <%= f.label :last_name %><br />
-      <%= f.text_field :last_name, autofocus: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label :avatar %><br />
-      <%= f.file_field :avatar, autofocus: true %>
-    </div>
-
-    <h3>Log In Information</h3>
-
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label 'Change password' %><i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-      <%= f.label 'Confirm new password' %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
-    <br>
-    <div class="actions">
-      <%= f.submit "Update", class: "btn btn-default" %>
-    </div>
-  <% end %>
+  </div><!--login page container end-->
 </div>
+
+
+
+
+
+
+
+
+
