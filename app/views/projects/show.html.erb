@@ -7,73 +7,73 @@
 
   <div class="space-70"></div>
   <div class="container portfolio-details">
-      <div class="row">
-          <div class="col-md-8 portfolio-single-slide margin-btm-40">
-              <div class="flexslider">
-                  <%= image_tag @project.project_image.large.url %>
-              </div><!--flex slider-->
-            
-              <div class="tabs"><!--tabs start-->
-                  <ul class="nav nav-tabs">
-                      <li class="active"><a href="#description" data-toggle="tab"><h4 class="heading-mini tab-name">Description</h4></a></li>
-                    <% if @project.embed_youtube_screencast %>
-                      <li class=""><a href="#screencast" data-toggle="tab"><h4 class="heading-mini tab-name">Screencast</h4></a></li>
-                    <% end %>
-                  </ul>
+    <div class="row">
+      <div class="col-md-8 portfolio-single-slide margin-btm-40">
+        <div class="flexslider">
+          <%= image_tag @project.project_image.large.url %>
+        </div><!--flex slider-->
+      
+        <div class="tabs"><!--tabs start-->
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#description" data-toggle="tab"><h4 class="heading-mini tab-name">Description</h4></a></li>
+            <% if @project.embed_youtube_screencast %>
+              <li class=""><a href="#screencast" data-toggle="tab"><h4 class="heading-mini tab-name">Screencast</h4></a></li>
+            <% end %>
+          </ul>
 
-                  <!-- Tab panes -->
-                  <div class="tab-content">
-                      <div class="tab-pane description-pane active" id="description">
-                          <div class="tab-desc animated fadeInDown">
-                              <p><%= @project.description %></p>
-                          </div> 
-                      </div>
-                    <% if @project.embed_youtube_screencast %>
-                      <div class="tab-pane" id="screencast">
-                          <div class="tab-desc animated fadeIn screencast-iframe embed-responsive embed-responsive-16by9">
-                              <iframe src="<%= @project.embed_youtube_screencast %>" frameborder="0" allowfullscreen>Your browser does not support iframe. Click <a href="<%= @project.screencast %>">here</a> to check out the screencast</iframe>
-                          </div>
-                      </div>
-                    <% end %>
-                  </div>
-              </div><!--tabs end-->
-          </div>
-          <div class="col-md-4">
-            <div class="portfolio-side-bar">
-              <% if admin_signed_in? || student_signed_in? %>
-                <div class="sidebar-box control-buttons">
-                  <a href="/projects/<%= @project.id %>/edit" class="btn btn-lg theme-btn-color"><i class="ion-edit"></i></a> 
-                  <a href="/projects/<%= @project.id %>" data-method="delete" data-confirm="Are you sure you want to delete '<%= @project.name %>'?" class="btn btn-lg theme-btn-color"><i class="ion-trash-a"></i></a> 
-                </div><hr>
-              <% end %>
-
-              <% if @project.project_links? %>
-                <div class="sidebar-box">
-                  <h4 class="project-checkout">Check It Out</h4>
-                  <ul class=" list-inline social-btn">
-                    <% unless @project.github == "" || @project.github == nil %> 
-                      <li><a href="<%= @project.normalized_github %>" target="_blank"><i class="ion-social-github" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Code On GitHub" target="_blank"></i></a></li>
-                    <% end %>
-                    <% unless @project.website == "" || @project.website == nil %> 
-                      <li><a href="<%= @project.normalized_website %>" target="_blank"><i class="ion-android-desktop" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Live Website" target="_blank"></i></a></li>
-                    <% end %>
-                    <% unless @project.screencast == "" || @project.screencast == nil %> 
-                      <li><a href="<%= @project.normalized_screencast %>" target="_blank"><i class="ion-ios-videocam" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Watch App Screencast" target="_blank"></i></a></li>
-                    <% end %>
-                  </ul>
-                </div><hr>
-              <% end %>
-
-              <div class="sidebar-box">
-                <h4>Technologies</h4>
-                <ul class="cat-list">  
-                  <li><a href="#" class="hover-color">Coming Soon</a></li>
-                  <li><a href="#" class="hover-color">Coming Soon</a></li>
-                  <li><a href="#" class="hover-color">Coming Soon</a></li>
-                </ul>
-              </div><hr>
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="tab-pane description-pane active" id="description">
+              <div class="tab-desc animated fadeInDown">
+                <p><%= @project.description %></p>
+              </div> 
             </div>
-          </div>
+            <% if @project.embed_youtube_screencast %>
+              <div class="tab-pane" id="screencast">
+                <div class="tab-desc animated fadeIn screencast-iframe embed-responsive embed-responsive-16by9">
+                  <iframe src="<%= @project.embed_youtube_screencast %>" frameborder="0" allowfullscreen>Your browser does not support iframe. Click <a href="<%= @project.screencast %>">here</a> to check out the screencast</iframe>
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div><!--tabs end-->
       </div>
+      <div class="col-md-4">
+        <div class="portfolio-side-bar">
+          <% if admin_signed_in? || student_signed_in? %>
+            <div class="sidebar-box control-buttons">
+              <a href="/projects/<%= @project.id %>/edit" class="btn btn-lg theme-btn-color"><i class="ion-edit"></i></a> 
+              <a href="/projects/<%= @project.id %>" data-method="delete" data-confirm="Are you sure you want to delete '<%= @project.name %>'?" class="btn btn-lg theme-btn-color"><i class="ion-trash-a"></i></a> 
+            </div><hr>
+          <% end %>
+
+          <% if @project.project_links? %>
+            <div class="sidebar-box">
+              <h4 class="project-checkout">Check It Out</h4>
+              <ul class=" list-inline social-btn">
+                <% unless @project.github == "" || @project.github == nil %> 
+                  <li><a href="<%= @project.normalized_github %>" target="_blank"><i class="ion-social-github" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Code On GitHub" target="_blank"></i></a></li>
+                <% end %>
+                <% unless @project.website == "" || @project.website == nil %> 
+                  <li><a href="<%= @project.normalized_website %>" target="_blank"><i class="ion-android-desktop" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Live Website" target="_blank"></i></a></li>
+                <% end %>
+                <% unless @project.screencast == "" || @project.screencast == nil %> 
+                  <li><a href="<%= @project.normalized_screencast %>" target="_blank"><i class="ion-ios-videocam" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Watch App Screencast" target="_blank"></i></a></li>
+                <% end %>
+              </ul>
+            </div><hr>
+          <% end %>
+
+          <div class="sidebar-box">
+            <h4>Technologies</h4>
+            <ul class="cat-list">  
+              <li><a href="#" class="hover-color">Coming Soon</a></li>
+              <li><a href="#" class="hover-color">Coming Soon</a></li>
+              <li><a href="#" class="hover-color">Coming Soon</a></li>
+            </ul>
+          </div><hr>
+        </div>
+      </div>
+    </div>
   </div><!--portfolio single container end-->
 </div>
