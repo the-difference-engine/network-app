@@ -29,7 +29,7 @@
                 <%= f.email_field :email, class: "form-control" %>
               </div>
               <div class="form-group col-md-12">
-                <%= f.label :password, "Password (minimum of 8 characters)" %>
+                <%= f.label :password, "Password (8 characters minimum)" %>
                 <% if @minimum_password_length %>
                 <em>(<%= @minimum_password_length %> characters minimum)</em>
                 <% end %><br />
@@ -43,7 +43,6 @@
                 <%= f.submit "Update", class: "btn theme-btn-color" %>
               </div>
             </div>
-  
           <% end -%>
         </div>
       </div>
