@@ -1,39 +1,189 @@
-<h2><%= t 'devise.invitations.edit.header' %></h2>
+<div class="student-new-admin">
+  <section id="content-region-3" class="padding-40 page-tree-bg">
+      <div class="container">
+          <h3 class="page-tree-text">
+              Set Up Student Account
+          </h3>
+      </div>
+  </section><!--page-tree end here-->
 
-<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :invitation_token %>
+  <div class="space-70"></div>
 
-  <p><%= f.label :first_name %><br />
-  <%= f.text_field :first_name, autofocus: true %></p>
-    
-  <p><%= f.label :last_name %><br />
-  <%= f.text_field :last_name, autofocus: true %></p>
-    
-  <p><%= f.label :city %><br />
-  <%= f.text_field :city, autofocus: true %></p>
-    
-  <p><%= f.label :grad_date %><br />
-  <%= f.date_select :grad_date, discard_day: true, autofocus: true %></p>
-
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
-
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.submit t("devise.invitations.edit.submit_button") %></p>
-<% end %>
-
-
-<% if @student.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@student.errors.count, "error") %></h2>
-    <ul>
-    <% @student.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
+  <div class="container">
+    <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
+    <%= devise_error_messages! %>
+    <%= f.hidden_field :invitation_token %>
+    <div class="row">
+      <div class="my-login-form col-md-6">
+        <div class="login-info-box">
+          <h4 class="heading-mini">Log In Information</h4><hr>
+          <div class="row">
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label :first_name %><br />
+              <%= f.text_field :first_name, class: "form-control" %>
+            </div>
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label :last_name %><br />
+              <%= f.text_field :last_name, class: "form-control" %>
+            </div>
+            <div class="col-md-12 margin-btm-20">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, class: "form-control" %>
+            </div>
+            <div class="col-md-12 margin-btm-20">
+              <%= f.label :password, "Password (8 characters minimum)" %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+            </div>
+            <div class="col-md-12 margin-btm-20">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="my-login-form col-md-6">
+        <div class="login-info-box">
+          <h4 class="heading-mini">ACLTC Cohort Details</h4><hr>
+          <div class="row">
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label :city %><br />
+              <%= f.text_field :city, class: "form-control" %>
+            </div>
+             <div class="col-md-6 margin-btm-20">
+              <%= f.label :grad_date %><br />
+              <%= f.date_select :grad_date, discard_day: true, autofocus: true, class: "form-control" %>
+            </div>
+          </div><br>
+          <h4 class="heading-mini">Current Location & Employment Details</h4><hr>
+          <div class="row">
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label :current_city %><br />
+              <%= f.text_field :current_city, class: "form-control" %>
+            </div>
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label :current_state %><br />
+              <%= f.select(:current_state, options_for_select(us_states, @student.current_state), :prompt => "Select State", class: "form-control" ) %>
+            </div>
+            <div class="col-md-12 margin-btm-20">
+              <%= f.label :industry %><br />
+              <%= f.text_field :industry, class: "form-control" %>
+            </div>
+            <div class="col-md-12 margin-btm-20">
+              <%= f.check_box :seeking_employment %>&nbsp;
+              <%= f.label :seeking_employment, "I'm currently seeking employment!" %>
+            </div>
+            <div class="col-md-12 margin-btm-20">
+              <%= f.label :resume, "Resume (upload as pdf)" %><br />
+              <%= f.file_field :resume, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="my-login-form col-md-6">
+        <div class="login-info-box">
+          <h4 class="heading-mini">Top 3 Skills</h4><hr>
+          <div class="row">
+            <div class="col-md-4 margin-btm-20">
+              <%= f.label :skill_1 %><br />
+              <%= f.text_field :skill_1, class: "form-control" %>
+            </div>
+            <div class="col-md-4 margin-btm-20">
+              <%= f.label :skill_2 %><br />
+              <%= f.text_field :skill_2, class: "form-control" %>
+            </div>
+          
+             <div class="col-md-4 margin-btm-20">
+              <%= f.label :skill_3 %><br />
+              <%= f.text_field :skill_3, class: "form-control" %>
+            </div>
+          </div><br>
+          <h4 class="heading-mini">Top 3 Interests</h4><hr>
+          <div class="row">
+            <div class="col-md-4 margin-btm-20">
+              <%= f.label :interest_1 %><br />
+              <%= f.text_field :interest_1, class: "form-control" %>
+            </div>
+            <div class="col-md-4 margin-btm-20">
+              <%= f.label :interest_2 %><br />
+              <%= f.text_field :interest_2, class: "form-control" %>
+            </div>
+          
+             <div class="col-md-4 margin-btm-20">
+              <%= f.label :interest_3 %><br />
+              <%= f.text_field :interest_3, class: "form-control" %>
+            </div>     
+          </div>
+        </div>
+      </div>
+      <div class="my-login-form col-md-6">
+        <div class="login-info-box">
+          <h4 class="heading-mini">Interview Questions</h4><hr>
+          <div class="row">
+            <div class="col-md-12 margin-btm-20">
+              <%= f.label :interview_1 %><br />
+              <%= f.text_field :interview_1, class: "form-control" %>
+            </div>
+            <div class="col-md-12 margin-btm-20">
+              <%= f.label :interview_2 %><br />
+              <%= f.text_field :interview_2, class: "form-control" %>
+            </div>
+          
+             <div class="col-md-12 margin-btm-20">
+              <%= f.label :interview_3 %><br />
+              <%= f.text_field :interview_3, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="my-login-form col-md-6">
+        <div class="login-info-box">
+          <h4 class="heading-mini">Social / Media </h4><hr>
+          <div class="row">
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label :github %><br />
+              <%= f.text_field :github, class: "form-control" %>
+            </div>
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label :blog %><br />
+              <%= f.text_field :blog, class: "form-control" %>
+            </div>
+          
+             <div class="col-md-6 margin-btm-20">
+              <%= f.label :linked_in, "LinkedIn" %><br />
+              <%= f.text_field :linked_in, class: "form-control" %>
+            </div>
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label :avatar %><br />
+              <%= f.file_field :avatar, class: "form-control" %>
+            </div>
+            <div class="col-md-12 margin-btm-20">
+              <%= f.label :quote %><br />
+              <%= f.text_field :quote, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="my-login-form col-md-6">
+        <div class="login-info-box">
+          <div class="row">
+            <div class="col-md-12 text-right">
+              <%= f.submit "Create My Account", class: "btn theme-btn-color" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-<% end %>
+</div>
+
+<%= render "shared/alerts_checkbox_radio_scripts" %>
+
 
