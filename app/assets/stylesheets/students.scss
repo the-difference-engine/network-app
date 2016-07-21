@@ -154,3 +154,26 @@
     text-transform: lowercase;
   }
 }
+
+.student-new-admin {
+  .my-login-form {
+    padding: 0px 5px;
+    border: none;
+  }
+  .login-info-box {
+    padding: 30px 20px;
+    border: 1px solid #eee;
+    margin: 0px 10px 15px 10px;
+  }
+
+  .text-right {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  ::selection {
+    color: #fff;
+    text-shadow: none;
+    background-color: #0FAF97;
+  }
+}
