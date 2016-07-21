@@ -26,10 +26,7 @@
               <%= f.email_field :email, class: "form-control" %>
             </div>
             <div class="col-md-6 margin-btm-20">
-              <%= f.label :password, "Password (8 characters minimum)" %>
-              <% if @minimum_password_length %>
-              <em>(<%= @minimum_password_length %> characters minimum)</em>
-              <% end %><br />
+              <%= f.label :password, "Password (8 characters minimum)" %><br />
               <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
             </div>
             <div class="col-md-6 margin-btm-20">

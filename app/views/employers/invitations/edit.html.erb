@@ -1,44 +1,109 @@
-<h2><%= t 'devise.invitations.edit.header' %></h2>
+<div class="employer-new-admin">
+  <section id="content-region-3" class="padding-40 page-tree-bg">
+      <div class="container">
+          <h3 class="page-tree-text">
+              Employer Sign Up
+          </h3>
+      </div>
+  </section><!--page-tree end here-->
 
-<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :invitation_token %>
+  <div class="space-70"></div>
 
-  
-  <p><%= f.label :name %><br />
-  <%= f.text_field :name, autofocus: true %></p>
+  <div class="container">
+    <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
+    <%= devise_error_messages! %>
+    <%= f.hidden_field :invitation_token %>
+    <div class="row">
+      <div class="my-login-form col-md-6">
+        <div class="login-info-box">
+          <h4 class="heading-mini">Log In Information</h4><hr>
+          <div class="row">
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label :name, "Company Name" %><br />
+              <%= f.text_field :name, class: "form-control" %>
+            </div>
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, class: "form-control" %>
+            </div>
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label :password, "Password (8 characters minimum)" %><br />
+              <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+            </div>
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="my-login-form col-md-6">
+        <div class="login-info-box">
+          <h4 class="heading-mini">Company Representative Details</h4><hr>
+          <div class="row">
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label :rep_first_name %><br />
+              <%= f.text_field :rep_first_name, class: "form-control" %>
+            </div>
+             <div class="col-md-6 margin-btm-20">
+              <%= f.label :rep_last_name %><br />
+              <%= f.text_field :rep_last_name, class: "form-control" %>
+            </div>
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label :rep_email %><br />
+              <%= f.email_field :rep_email, class: "form-control" %>
+            </div>
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label :rep_phone %><br />
+              <%= f.text_field :rep_phone, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="my-login-form col-md-6">
+        <div class="login-info-box">
+          <h4 class="heading-mini">Company Info</h4><hr>
+          <div class="row">
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label :city %><br />
+              <%= f.text_field :city, class: "form-control" %>
+            </div>
+             <div class="col-md-6 margin-btm-20">
+              <%= f.label :state %><br />
+              <%= f.select(:state, options_for_select(us_states, @employer.state), :prompt => "Select State", class: "form-control" ) %>
+            </div>
+             <div class="col-md-6 margin-btm-20">
+              <%= f.label :website %><br />
+              <%= f.text_field :website, class: "form-control" %>
+            </div>
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label :image, "Company Logo" %><br />
+              <%= f.file_field :image, class: "form-control" %>
+            </div>
+            <div class="col-md-12 margin-btm-20">
+              <%= f.label :description, "Company Description" %><br />
+              <%= f.text_area :description, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  <p><%= f.label :description %><br />
-  <%= f.text_field :description, autofocus: true %></p>
-    
-  <p><%= f.label :rep_first_name %><br />
-  <%= f.text_field :rep_first_name, autofocus: true %></p>
-
-    
-  <p><%= f.label :rep_last_name %><br />
-  <%= f.text_field :rep_last_name, autofocus: true %></p>
-
-    
-  <p><%= f.label :rep_phone %><br />
-  <%= f.text_field :rep_phone, autofocus: true %></p>
-
-    
-  <p><%= f.label :rep_email %><br />
-  <%= f.email_field :rep_email, autofocus: true %></p>
-
-    
-  <p><%= f.label :city %><br />
-  <%= f.text_field :city, autofocus: true %></p>
-
-    
-  <p><%= f.label :state %><br />
-  <%= f.select(:state, options_for_select(us_states, @employer.state)) %></p>
-
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
-
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.submit t("devise.invitations.edit.submit_button") %></p>
-<% end %>
+      <div class="my-login-form col-md-6">
+        <div class="login-info-box">
+          <div class="row">
+            <div class="col-md-12 text-right">
+              <%= f.submit "Sign Up", class: "btn theme-btn-color" %>
+            </div>
+            <% end %>
+ 
+            <div class="form-btm-link text-center">
+             <%= link_to "Already have an account? Log in!", new_employer_session_path %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
