@@ -1,4 +1,3 @@
-
 <div class="student-new-admin">
   <section id="content-region-3" class="padding-40 page-tree-bg">
       <div class="container">
@@ -65,7 +64,7 @@
             </div>
             <div class="col-md-6 margin-btm-20">
               <%= f.label :current_state %><br />
-              <%= f.text_field :current_state, class: "form-control" %>
+              <%= f.select(:current_state, options_for_select(us_states, @student.current_state), :prompt => "Select State", class: "form-control" ) %>
             </div>
             <div class="col-md-12 margin-btm-20">
               <%= f.label :industry %><br />
