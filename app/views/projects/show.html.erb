@@ -47,17 +47,17 @@
                 </div><hr>
               <% end %>
 
-              <% if @project.github || @project.website || @project.screencast %>
+              <% if @project.project_links? %>
                 <div class="sidebar-box">
                   <h4 class="project-checkout">Check It Out</h4>
                   <ul class=" list-inline social-btn">
-                    <% if @project.github %> 
+                    <% unless @project.github == "" || @project.github == nil %> 
                       <li><a href="<%= @project.normalized_github %>" target="_blank"><i class="ion-social-github" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Code On GitHub" target="_blank"></i></a></li>
                     <% end %>
-                    <% if @project.website %> 
+                    <% unless @project.website == "" || @project.website == nil %> 
                       <li><a href="<%= @project.normalized_website %>" target="_blank"><i class="ion-android-desktop" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Live Website" target="_blank"></i></a></li>
                     <% end %>
-                    <% if @project.screencast %> 
+                    <% unless @project.screencast == "" || @project.screencast == nil %> 
                       <li><a href="<%= @project.normalized_screencast %>" target="_blank"><i class="ion-ios-videocam" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Watch App Screencast" target="_blank"></i></a></li>
                     <% end %>
                   </ul>

@@ -37,4 +37,32 @@ class Project < ActiveRecord::Base
       false
     end
   end
+
+  def project_links?
+    project_links = false
+
+    if github == nil || github == ""
+      github = false
+    else
+      github = true
+    end
+
+    if website == nil || website == ""
+      website = false
+     else
+      website = true
+    end
+
+    if screencast == nil || screencast == ""
+      screencast = false
+    else
+      screencast = true
+    end
+
+    if github || website || screencast
+      project_links = true
+    end
+
+    project_links
+  end
 end
