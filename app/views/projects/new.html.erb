@@ -10,63 +10,62 @@
     <div class="col-md-6 col-md-offset-3">
       <div class="my-login-form">
         <%= form_for(@project, url: projects_path) do |f| %>
-          <%= form_errors_for @project %>
-            <h4 class="heading-mini">Enter Project Information</h4><hr>
-            <div class="form-group">
-              <%= f.label :name, "Name" %><br />
-              <%= f.text_field :name, class: "form-control" %>
-            </div>
+          <h4 class="heading-mini">Enter Project Information</h4><hr>
+          <div class="form-group">
+            <%= f.label :name, "Name" %><br />
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
 
-            <div class="form-group">
-              <%= f.label :description, "Description" %><br />
-              <%= f.text_field :description, class: "form-control" %>
-            </div>
+          <div class="form-group">
+            <%= f.label :description, "Description" %><br />
+            <%= f.text_field :description, class: "form-control" %>
+          </div>
 
-            <div class="form-group">
-              <%= f.check_box :capstone %>&nbsp;
-              <%= f.label :capstone, "This is my capstone project" %>
-            </div>
+          <div class="form-group">
+            <%= f.check_box :capstone %>&nbsp;
+            <%= f.label :capstone, "This is my capstone project" %>
+          </div>
 
-            <div class="form-group">
-              <%= f.check_box :client_work %>&nbsp;
-              <%= f.label :client_work, "This is client work" %>
-            </div>
+          <div class="form-group">
+            <%= f.check_box :client_work %>&nbsp;
+            <%= f.label :client_work, "This is client work" %>
+          </div>
 
-            <div class="form-group">
-              <%= f.label :github %><br />
-              <%= f.text_field :github, class: "form-control" %>
-            </div>
+          <div class="form-group">
+            <%= f.label :github %><br />
+            <%= f.text_field :github, class: "form-control" %>
+          </div>
 
-            <div class="form-group">
-              <%= f.label :website, "Project Website (if deployed)" %><br />
-              <%= f.text_field :website, class: "form-control" %>
-            </div>
+          <div class="form-group">
+            <%= f.label :website, "Project Website (if deployed)" %><br />
+            <%= f.text_field :website, class: "form-control" %>
+          </div>
 
-            <div class="form-group">
-              <%= f.label :screencast, "Screencast Video Link (if available)" %><br />
-              <%= f.text_field :screencast, class: "form-control" %>
-            </div>
+          <div class="form-group">
+            <%= f.label :screencast, "Screencast Video Link (if available)" %><br />
+            <%= f.text_field :screencast, class: "form-control" %>
+          </div>
 
+          <div class="form-group">
+            <%= f.label :project_image, "Project Screencap/Image (if available)" %><br />
+            <%= f.file_field :project_image, class: "form-control" %>
+          </div>
+          
+          <% if admin_signed_in? %>
             <div class="form-group">
-              <%= f.label :project_image, "Project Screencap/Image (if available)" %><br />
-              <%= f.file_field :project_image, class: "form-control" %>
+              <%= f.label :student_id, "Student" %><br />
+              <%= f.collection_select(:student_id, Student.all, :id, :first_name, :prompt => 'Select Student', class: "form-control") %>
             </div>
-            
-            <% if admin_signed_in? %>
-              <div class="form-group">
-                <%= f.label :student_id, "Student" %><br />
-                <%= f.collection_select(:student_id, Student.all, :id, :first_name, :prompt => 'Select Student', class: "form-control") %>
-              </div>
-            <% elsif student_signed_in? %>
-              <div class="form-group">
-                <%= f.hidden_field :student_id, class: "form-control", value: current_user.id %>
-              </div>
-            <% end %>
+          <% elsif student_signed_in? %>
+            <div class="form-group">
+              <%= f.hidden_field :student_id, class: "form-control", value: current_user.id %>
+            </div>
+          <% end %>
 
-            <br>
-            <div class="text-right submit-btn">
-              <%= f.submit "Create Project", class: "btn theme-btn-color" %>
-            </div>
+          <br>
+          <div class="text-right submit-btn">
+            <%= f.submit "Create Project", class: "btn theme-btn-color" %>
+          </div>
         <% end %><!--login form end-->
       </div>
     </div>

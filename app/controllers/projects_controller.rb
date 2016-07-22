@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
       flash[:success] = "Project successfully created!"
       redirect_to student_path(@project.student)
     else
-      flash[:success] = "Unable to create project."
+      flash[:warning] = "Unable to create project."
       render :new
     end
   end
