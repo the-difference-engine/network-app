@@ -25,14 +25,20 @@
               <%= f.label :last_name %><br />
               <%= f.text_field :last_name, class: "form-control" %>
             </div>
+          </div>
+          <div class="row">
             <div class="col-md-12 margin-btm-20">
               <%= f.label :email %><br />
               <%= f.email_field :email, class: "form-control" %>
             </div>
+          </div>
+          <div class="row">
             <div class="col-md-12 margin-btm-20">
               <%= f.label :password %><br />
               <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
             </div>
+          </div>
+          <div class="row">
             <div class="col-md-12 margin-btm-20">
               <%= f.label :password_confirmation %><br />
               <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
@@ -63,14 +69,20 @@
               <%= f.label :current_state %><br />
               <%= f.select(:current_state, options_for_select(us_states, @student.current_state), :prompt => "Select State", class: "form-control" ) %>
             </div>
+          </div>
+          <div class="row">
             <div class="col-md-12 margin-btm-20">
               <%= f.label :industry %><br />
               <%= f.text_field :industry, class: "form-control" %>
             </div>
+          </div>
+          <div class="row">
             <div class="col-md-12 margin-btm-20">
               <%= f.check_box :seeking_employment %>&nbsp;
               <%= f.label :seeking_employment, "I'm currently seeking employment!" %>
             </div>
+          </div>
+          <div class="row">
             <div class="col-md-12 margin-btm-20">
               <%= f.label :resume, "Resume (upload as pdf)" %><br />
               <%= f.file_field :resume, class: "form-control" %>
@@ -107,8 +119,7 @@
             <div class="col-md-4 margin-btm-20">
               <%= f.label :interest_2 %><br />
               <%= f.text_field :interest_2, class: "form-control" %>
-            </div>
-          
+            </div>  
              <div class="col-md-4 margin-btm-20">
               <%= f.label :interest_3 %><br />
               <%= f.text_field :interest_3, class: "form-control" %>
@@ -150,8 +161,9 @@
               <%= f.label :blog %><br />
               <%= f.text_field :blog, class: "form-control" %>
             </div>
-          
-             <div class="col-md-6 margin-btm-20">
+          </div>
+          <div class="row">
+            <div class="col-md-6 margin-btm-20">
               <%= f.label :linked_in, "LinkedIn" %><br />
               <%= f.text_field :linked_in, class: "form-control" %>
             </div>
@@ -159,6 +171,8 @@
               <%= f.label :avatar %><br />
               <%= f.file_field :avatar, class: "form-control" %>
             </div>
+          </div>
+          <div class="row">
             <div class="col-md-12 margin-btm-20">
               <%= f.label :quote %><br />
               <%= f.text_field :quote, class: "form-control" %>
@@ -173,6 +187,10 @@
               <%= f.submit "Create My Account", class: "btn theme-btn-color" %>
             </div>
             <% end %>
+ 
+            <div class="form-btm-link text-center">
+             <%= link_to "Already have an account? Log in!", new_student_session_path %>
+            </div>
           </div>
         </div>
       </div>
