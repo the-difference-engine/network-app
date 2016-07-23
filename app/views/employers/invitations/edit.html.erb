@@ -105,6 +105,23 @@
               <%= f.text_area :description, class: "form-control" %>
             </div>
           </div>
+          <div class="row">
+            <div class="col-md-12 margin-btm-20">
+              <%= f.label "Company Size" %><br />
+              <%= f.radio_button :company_size, '1-10' %> &nbsp; 
+              <%= f.label :company_size, "1-10" %><br />
+              <%= f.radio_button :company_size, "10-50" %> &nbsp;
+              <%= f.label :company_size, "10-50" %><br />
+              <%= f.radio_button :company_size, "50-200" %> &nbsp;
+              <%= f.label :company_size, "50-200" %><br />
+              <%= f.radio_button :company_size, "200-500" %> &nbsp;
+              <%= f.label :company_size, "200-500" %><br />
+              <%= f.radio_button :company_size, "500-1000" %> &nbsp;
+              <%= f.label :company_size, "500-1000" %><br />
+              <%= f.radio_button :company_size, "1000+" %> &nbsp;
+              <%= f.label :company_size, "1000+" %><br />
+            </div>
+          </div>
         </div>
       </div>
       <div class="my-login-form col-md-6">
