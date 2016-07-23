@@ -110,7 +110,8 @@ class EmployersController < ApplicationController
         :company_size,
         position_ids: [],
         position_type_ids: [],
-        industry_ids: []
+        industry_ids: [],
+        salary_range_ids: []
       )
     end
 

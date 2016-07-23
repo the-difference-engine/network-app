@@ -153,7 +153,18 @@
                   </div>
                 <% end %>
             </div>
-          </div>      
+          </div> 
+          <div class="row">
+            <div class="col-md-12 margin-btm-20">
+              <%= f.label "Industry" %><br />
+                <%= f.collection_check_boxes :industry_ids, Industry.all, :id, :name do |b| %>
+                  <div class="col-md-6 col-sm-6 collection-check-box">
+                    <%= b.check_box %>
+                    <%= b.label %>
+                  </div>
+                <% end %>
+            </div>
+          </div>     
         </div>
       </div>
     </div>

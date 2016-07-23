@@ -108,7 +108,8 @@ protected
       :invited_by_type,
       position_ids: [],
       position_type_ids: [],
-      industry_ids: []
+      industry_ids: [],
+      salary_range_ids: []
     ]
   end
 
