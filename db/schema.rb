@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160723204613) do
+ActiveRecord::Schema.define(version: 20160723210659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,11 @@ ActiveRecord::Schema.define(version: 20160723204613) do
     t.integer "position_id", null: false
   end
 
+  create_table "employers_salary_ranges", id: false, force: :cascade do |t|
+    t.integer "employer_id",     null: false
+    t.integer "salary_range_id", null: false
+  end
+
   create_table "follow_up_lists", force: :cascade do |t|
     t.integer  "employer_id"
     t.string   "name"
@@ -141,6 +146,12 @@ ActiveRecord::Schema.define(version: 20160723204613) do
     t.string  "website"
     t.string  "screencast"
     t.string  "project_image"
+  end
+
+  create_table "salary_ranges", force: :cascade do |t|
+    t.string   "salary_range"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "students", force: :cascade do |t|

@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Salary range:</strong>
+  <%= @salary_range.salary_range %>
+</p>
+
+<%= link_to 'Edit', edit_salary_range_path(@salary_range) %> |
+<%= link_to 'Back', salary_ranges_path %>

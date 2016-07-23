@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :salary_ranges
   resources :industries
   resources :position_types
   resources :positions
