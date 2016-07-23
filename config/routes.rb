@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :position_types
   resources :positions
   devise_for :admins, :skip => [:registrations], controllers: { 
     sessions: 'admins/sessions',
