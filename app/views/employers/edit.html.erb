@@ -89,6 +89,17 @@
           </div>
           <div class="row">
             <div class="col-md-12 margin-btm-20">
+              <%= f.label "Industry" %><br />
+                <%= f.collection_check_boxes :industry_ids, Industry.all, :id, :name do |b| %>
+                  <div class="col-md-6 col-sm-6 collection-check-box">
+                    <%= b.check_box %>
+                    <%= b.label %>
+                  </div>
+                <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 margin-btm-20">
               <%= f.label :description, "Company Description" %><br />
               <%= f.text_area :description, class: "form-control" %>
             </div>
@@ -106,7 +117,7 @@
             </div>
           </div> 
           <div class="row">
-            <div class="col-md-6 margin-btm-20">
+            <div class="col-md-6 col-sm-6 margin-btm-20">
               <%= f.label "Positions Available" %><br />
                 <%= f.collection_check_boxes :position_ids, Position.all, :id, :name do |b| %>
                   <div class="collection-check-box">
@@ -115,7 +126,7 @@
                   </div>
                 <% end %>
             </div>
-            <div class="col-md-6 margin-btm-20">
+            <div class="col-md-6 col-sm-6 margin-btm-20">
               <%= f.label "Position Types" %><br />
                 <%= f.collection_check_boxes :position_type_ids, PositionType.all, :id, :name do |b| %>
                   <div class="collection-check-box">
