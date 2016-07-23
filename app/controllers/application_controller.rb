@@ -102,7 +102,8 @@ protected
       :password_confirmation,
       :invited_by_id, 
       :invited_by_type,
-      position_ids: []
+      position_ids: [],
+      position_type_ids: []
     ]
   end
 
