@@ -156,9 +156,9 @@
           </div> 
           <div class="row">
             <div class="col-md-12 margin-btm-20">
-              <%= f.label "Industry" %><br />
-                <%= f.collection_check_boxes :industry_ids, Industry.all, :id, :name do |b| %>
-                  <div class="col-md-6 col-sm-6 collection-check-box">
+              <%= f.label "Salary Range" %><br />
+                <%= f.collection_check_boxes :salary_range_ids, SalaryRange.all.order(:id), :id, :salary_range do |b| %>
+                  <div class="collection-check-box">
                     <%= b.check_box %>
                     <%= b.label %>
                   </div>
