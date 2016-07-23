@@ -29,5 +29,12 @@
       </div>
     </div>
   </div> 
+  <% if @employer.positions.any? %>
+    <div class="row">
+      <% @positions.each do |position| %>
+        <h3><%= position.name %></h3>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
