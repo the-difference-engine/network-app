@@ -1,6 +1,7 @@
 class PositionTypesController < ApplicationController
   before_action :set_position_type, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_admin!
+  
   # GET /position_types
   # GET /position_types.json
   def index
