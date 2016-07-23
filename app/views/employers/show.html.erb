@@ -33,7 +33,7 @@
     <div class="row">
       <h2>Positions Available</h2>
       <% @positions.each do |position| %>
-        <h3><%= position.name %></h3>
+        <p><%= position.name %></p>
       <% end %>
     </div>
   <% end %>
@@ -42,7 +42,16 @@
     <div class="row">
       <h2>Position Types</h2>
       <% @position_types.each do |position_type| %>
-        <h3><%= position_type.name %></h3>
+        <p><%= position_type.name %></p>
+      <% end %>
+    </div>
+  <% end %>
+  <br>
+  <% if @employer.industries.any? %>
+    <div class="row">
+      <h2>Industries</h2>
+      <% @industries.each do |industry| %>
+        <p><%= industry.name %></p>
       <% end %>
     </div>
   <% end %>
