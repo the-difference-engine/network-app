@@ -99,6 +99,13 @@
         <div class="login-info-box">
           <h4 class="heading-mini">Hiring Needs</h4><hr>
           <div class="row">
+            <div class="col-md-12 margin-btm-20">
+              <%= f.label :currently_hiring, "Are you currently hiring?" %><br />
+              <%= f.radio_button :currently_hiring, "1", checked: @employer.currently_hiring %> &nbsp;<%= f.label :currently_hiring, " Yes" %> &nbsp; &nbsp;
+              <%= f.radio_button :currently_hiring, "0", checked: !@employer.currently_hiring %> &nbsp;<%= f.label :currently_hiring, " No" %><br />
+            </div>
+          </div> 
+          <div class="row">
             <div class="col-md-6 margin-btm-20">
               <%= f.label "Positions Available" %><br />
                 <%= f.collection_check_boxes :position_ids, Position.all, :id, :name do |b| %>
