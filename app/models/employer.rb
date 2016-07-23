@@ -9,6 +9,7 @@ class Employer < ActiveRecord::Base
   before_update :capitalize_params
   after_create :create_list
   has_one :follow_up_list, dependent: :destroy
+  has_and_belongs_to_many :positions
 
   validates :name, :rep_first_name, :rep_last_name, :rep_phone, :rep_email, presence: true
   validates :rep_email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
