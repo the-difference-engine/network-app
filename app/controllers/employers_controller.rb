@@ -28,6 +28,7 @@ class EmployersController < ApplicationController
     @follow_up_list = @employer.follow_up_list
     @positions = @employer.positions if @employer.positions.any?
     @position_types = @employer.position_types if @employer.position_types.any?
+    @industries = @employer.industries if @employer.industries.any?
   end
 
   def edit
