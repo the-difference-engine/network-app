@@ -107,7 +107,8 @@ class EmployersController < ApplicationController
         :hiring_timeline,
         :number_of_positions,
         position_ids: [],
-        position_type_ids: []
+        position_type_ids: [],
+        industry_ids: []
       )
     end
 
