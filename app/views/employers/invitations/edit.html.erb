@@ -132,6 +132,26 @@
     <div class="row">
       <div class="my-login-form col-md-6">
         <div class="login-info-box">
+          <h4 class="heading-mini">Hiring Details</h4><hr>
+          <div class="row">
+            <div class="col-md-12 margin-btm-20">
+              <%= f.label "How soon will you be hiring for new positions?" %><br />
+              <%= f.radio_button :hiring_timeline, 'ASAP' %> &nbsp; 
+              <%= f.label :hiring_timeline, "ASAP" %><br />
+              <%= f.radio_button :hiring_timeline, "0 - 3 Months" %> &nbsp;
+              <%= f.label :hiring_timeline, "0 - 3 Months" %><br />
+              <%= f.radio_button :hiring_timeline, "3 - 6 Months" %> &nbsp;
+              <%= f.label :hiring_timeline, "3 - 6 Months" %><br />
+              <%= f.radio_button :hiring_timeline, "Building a Pipeline" %> &nbsp;
+              <%= f.label :hiring_timeline, "We're Building A Pipeline" %><br />
+              <%= f.radio_button :hiring_timeline, "No Date Yet" %> &nbsp;
+              <%= f.label :hiring_timeline, "No Date Yet" %><br />
+            </div>
+          </div> 
+        </div>
+      </div>
+      <div class="my-login-form col-md-6">
+        <div class="login-info-box">
           <div class="row">
             <div class="col-md-12 text-right">
               <%= f.submit "Creat My Account", class: "btn theme-btn-color" %>
