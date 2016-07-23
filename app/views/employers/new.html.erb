@@ -95,15 +95,32 @@
           </div>
         </div>
       </div>
+      <div class="my-login-form col-md-6">
+        <div class="login-info-box">
+          <h4 class="heading-mini">Hiring Needs</h4><hr>
 
+          <div class="row">
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label "Positions Available" %><br />
+                <%= f.collection_check_boxes :position_ids, Position.all, :id, :name do |b| %>
+                  <div class="collection-check-box">
+                    <%= b.check_box %>
+                    <%= b.label %>
+                  </div>
+                <% end %>
+            </div>
+          </div>     
+        </div>
+      </div>
+    </div>
+    <div class="row">
       <div class="my-login-form col-md-6">
         <div class="login-info-box">
           <div class="row">
             <div class="col-md-12 text-right">
               <%= f.submit "Sign Up", class: "btn theme-btn-color" %>
             </div>
-            <% end %>
- 
+            <% end %>     
             <div class="form-btm-link text-center">
              <%= link_to "Already have an account? Log in!", new_employer_session_path %>
             </div>
@@ -113,3 +130,5 @@
     </div>
   </div>
 </div>
+
+<%= render "shared/alerts_checkbox_radio_scripts" %>

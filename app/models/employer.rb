@@ -33,6 +33,5 @@ class Employer < ActiveRecord::Base
     self.rep_last_name = self.rep_last_name.downcase.titleize if self.rep_last_name
     self.city = self.city.downcase.titleize if self.city
     # self.state = self.state.downcase.capitalize if self.state
-  end
-  
+  end 
 end

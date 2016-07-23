@@ -72,13 +72,13 @@
               <%= f.label :city %><br />
               <%= f.text_field :city, class: "form-control" %>
             </div>
-             <div class="col-md-6 margin-btm-20">
+            <div class="col-md-6 margin-btm-20">
               <%= f.label :state %><br />
               <%= f.select(:state, options_for_select(us_states, @employer.state), :prompt => "Select State", class: "form-control" ) %>
             </div>
           </div>
           <div class="row">
-             <div class="col-md-6 margin-btm-20">
+            <div class="col-md-6 margin-btm-20">
               <%= f.label :website %><br />
               <%= f.text_field :website, class: "form-control" %>
             </div>
@@ -95,7 +95,24 @@
           </div>
         </div>
       </div>
-
+      <div class="my-login-form col-md-6">
+        <div class="login-info-box">
+          <h4 class="heading-mini">Hiring Needs</h4><hr>
+          <div class="row">
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label "Positions Available" %><br />
+                <%= f.collection_check_boxes :position_ids, Position.all, :id, :name do |b| %>
+                  <div class="collection-check-box">
+                    <%= b.check_box %>
+                    <%= b.label %>
+                  </div>
+                <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
       <div class="my-login-form col-md-6">
         <div class="login-info-box">
           <div class="row">
@@ -110,4 +127,5 @@
   </div>
 </div>
 
+<%= render "shared/alerts_checkbox_radio_scripts" %>
 
