@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160723210659) do
+ActiveRecord::Schema.define(version: 20160723212651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,6 +111,11 @@ ActiveRecord::Schema.define(version: 20160723210659) do
     t.integer "salary_range_id", null: false
   end
 
+  create_table "employers_technologies", id: false, force: :cascade do |t|
+    t.integer "employer_id",   null: false
+    t.integer "technology_id", null: false
+  end
+
   create_table "follow_up_lists", force: :cascade do |t|
     t.integer  "employer_id"
     t.string   "name"
@@ -206,5 +211,11 @@ ActiveRecord::Schema.define(version: 20160723210659) do
   add_index "students", ["invitations_count"], name: "index_students_on_invitations_count", using: :btree
   add_index "students", ["invited_by_id"], name: "index_students_on_invited_by_id", using: :btree
   add_index "students", ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true, using: :btree
+
+  create_table "technologies", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
