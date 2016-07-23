@@ -103,6 +103,9 @@ class EmployersController < ApplicationController
         :password,
         :password_confirmation,
         :email,
+        :currently_hiring,
+        :hiring_timeline,
+        :number_of_positions,
         position_ids: [],
         position_type_ids: []
       )
