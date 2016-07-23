@@ -101,7 +101,8 @@ protected
       :password,
       :password_confirmation,
       :invited_by_id, 
-      :invited_by_type
+      :invited_by_type,
+      position_ids: []
     ]
   end
 

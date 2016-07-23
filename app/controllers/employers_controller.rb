@@ -100,8 +100,8 @@ class EmployersController < ApplicationController
         :state,
         :password,
         :password_confirmation,
-        # :current_password,
-        :email
+        :email,
+        position_ids: []
       )
     end
 
