@@ -107,6 +107,7 @@ class EmployersController < ApplicationController
         :currently_hiring,
         :hiring_timeline,
         :number_of_positions,
+        :company_size,
         position_ids: [],
         position_type_ids: [],
         industry_ids: []
