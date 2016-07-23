@@ -26,6 +26,7 @@ class EmployersController < ApplicationController
   def show
     @employer = Employer.find(params[:id])
     @follow_up_list = @employer.follow_up_list
+    @positions = @employer.positions if @employer.positions.any?
   end
 
   def edit
