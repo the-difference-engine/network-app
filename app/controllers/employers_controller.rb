@@ -111,7 +111,8 @@ class EmployersController < ApplicationController
         position_ids: [],
         position_type_ids: [],
         industry_ids: [],
-        salary_range_ids: []
+        salary_range_ids: [],
+        technology_ids: []
       )
     end
 
