@@ -29,6 +29,7 @@ class EmployersController < ApplicationController
     @positions = @employer.positions if @employer.positions.any?
     @position_types = @employer.position_types if @employer.position_types.any?
     @industries = @employer.industries if @employer.industries.any?
+    @technologies = @employer.technologies if @employer.technologies.any?
   end
 
   def edit
