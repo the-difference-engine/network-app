@@ -9,10 +9,16 @@ class Employer < ActiveRecord::Base
   before_update :capitalize_params
   after_create :create_list
   has_one :follow_up_list, dependent: :destroy
+  has_and_belongs_to_many :positions
+  has_and_belongs_to_many :position_types
+  has_and_belongs_to_many :industries
+  has_and_belongs_to_many :salary_ranges
+  has_and_belongs_to_many :technologies
 
   validates :name, :rep_first_name, :rep_last_name, :rep_phone, :rep_email, presence: true
   validates :rep_email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :city, :state, presence: true
+  validates :number_of_positions, numericality: { only_integer: true, allow_nil: true }
   
   def rep_full_name
     "#{rep_first_name} #{rep_last_name}"
@@ -32,6 +38,5 @@ class Employer < ActiveRecord::Base
     self.rep_last_name = self.rep_last_name.downcase.titleize if self.rep_last_name
     self.city = self.city.downcase.titleize if self.city
     # self.state = self.state.downcase.capitalize if self.state
-  end
-  
+  end 
 end

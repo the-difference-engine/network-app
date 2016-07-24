@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Salary Ranges</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Salary range</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @salary_ranges.each do |salary_range| %>
+      <tr>
+        <td><%= salary_range.salary_range %></td>
+        <td><%= link_to 'Show', salary_range %></td>
+        <td><%= link_to 'Edit', edit_salary_range_path(salary_range) %></td>
+        <td><%= link_to 'Destroy', salary_range, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Salary range', new_salary_range_path %>

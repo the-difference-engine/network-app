@@ -78,7 +78,7 @@
             </div>
           </div>
           <div class="row">
-             <div class="col-md-6 margin-btm-20">
+            <div class="col-md-6 margin-btm-20">
               <%= f.label :website %><br />
               <%= f.text_field :website, class: "form-control" %>
             </div>
@@ -89,21 +89,128 @@
           </div>
           <div class="row">
             <div class="col-md-12 margin-btm-20">
+              <%= f.label "Industry" %><br />
+                <%= f.collection_check_boxes :industry_ids, Industry.all, :id, :name do |b| %>
+                  <div class="col-md-6 col-sm-6 collection-check-box">
+                    <%= b.check_box %>
+                    <%= b.label %>
+                  </div>
+                <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 margin-btm-20">
               <%= f.label :description, "Company Description" %><br />
               <%= f.text_area :description, class: "form-control" %>
             </div>
           </div>
+          <div class="row">
+            <div class="col-md-12 margin-btm-20">
+              <%= f.label "Company Size" %><br />
+              <%= f.radio_button :company_size, '1-10' %> &nbsp; 
+              <%= f.label :company_size, "1-10" %><br />
+              <%= f.radio_button :company_size, "10-50" %> &nbsp;
+              <%= f.label :company_size, "10-50" %><br />
+              <%= f.radio_button :company_size, "50-200" %> &nbsp;
+              <%= f.label :company_size, "50-200" %><br />
+              <%= f.radio_button :company_size, "200-500" %> &nbsp;
+              <%= f.label :company_size, "200-500" %><br />
+              <%= f.radio_button :company_size, "500-1000" %> &nbsp;
+              <%= f.label :company_size, "500-1000" %><br />
+              <%= f.radio_button :company_size, "1000+" %> &nbsp;
+              <%= f.label :company_size, "1000+" %><br />
+            </div>
+          </div>
         </div>
       </div>
-
+      <div class="my-login-form col-md-6">
+        <div class="login-info-box">
+          <h4 class="heading-mini">Hiring Needs</h4><hr>
+          <div class="row">
+            <div class="col-md-12 margin-btm-20">
+              <%= f.label :currently_hiring, "Are you currently hiring?" %><br />
+              <%= f.radio_button :currently_hiring, "1" %> &nbsp;<%= f.label :currently_hiring, " Yes" %> &nbsp; &nbsp;
+              <%= f.radio_button :currently_hiring, "0" %> &nbsp;<%= f.label :currently_hiring, " No" %><br />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 margin-btm-20">
+              <%= f.label :number_of_positions %><br />
+              <%= f.text_field :number_of_positions, class: "form-control" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-sm-6 margin-btm-20">
+              <%= f.label "Positions Available" %><br />
+                <%= f.collection_check_boxes :position_ids, Position.all, :id, :name do |b| %>
+                  <div class="collection-check-box">
+                    <%= b.check_box %>
+                    <%= b.label %>
+                  </div>
+                <% end %>
+            </div>
+            <div class="col-md-6 col-sm-6 margin-btm-20">
+              <%= f.label "Position Types" %><br />
+                <%= f.collection_check_boxes :position_type_ids, PositionType.all, :id, :name do |b| %>
+                  <div class="collection-check-box">
+                    <%= b.check_box %>
+                    <%= b.label %>
+                  </div>
+                <% end %>
+            </div>
+          </div> 
+          <div class="row">
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label "Salary Range" %><br />
+                <%= f.collection_check_boxes :salary_range_ids, SalaryRange.all.order(:id), :id, :salary_range do |b| %>
+                  <div class="collection-check-box">
+                    <%= b.check_box %>
+                    <%= b.label %>
+                  </div>
+                <% end %>
+            </div>
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label "How soon will you be hiring?" %><br />
+              <%= f.radio_button :hiring_timeline, 'ASAP' %> &nbsp; 
+              <%= f.label :hiring_timeline, "ASAP" %><br />
+              <%= f.radio_button :hiring_timeline, "0 - 3 Months" %> &nbsp;
+              <%= f.label :hiring_timeline, "0 - 3 Months" %><br />
+              <%= f.radio_button :hiring_timeline, "3 - 6 Months" %> &nbsp;
+              <%= f.label :hiring_timeline, "3 - 6 Months" %><br />
+              <%= f.radio_button :hiring_timeline, "Building a Pipeline" %> &nbsp;
+              <%= f.label :hiring_timeline, "We're Building A Pipeline" %><br />
+              <%= f.radio_button :hiring_timeline, "No Date Yet" %> &nbsp;
+              <%= f.label :hiring_timeline, "No Date Yet" %><br />
+            </div>
+          </div>   
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="my-login-form col-md-6">
+        <div class="login-info-box">
+          <h4 class="heading-mini">Technologies</h4>
+          <hr>
+          <div class="row">
+            <div class="col-md-12 margin-btm-20">
+              <%= f.label "What technologies/languages are you hiring for?" %><br /><br />
+                <%= f.collection_check_boxes :technology_ids, Technology.all.order(:name), :id, :name do |b| %>
+                  <div class="col-md-4 col-sm-4 collection-check-box">
+                    <%= b.check_box %>
+                    <%= b.label %>
+                  </div>
+                <% end %>
+            </div>
+          </div>      
+        </div>
+      </div>
       <div class="my-login-form col-md-6">
         <div class="login-info-box">
           <div class="row">
             <div class="col-md-12 text-right">
               <%= f.submit "Sign Up", class: "btn theme-btn-color" %>
             </div>
-            <% end %>
-
+            <% end %>   
             <div class="form-btm-link text-center">
              <%= link_to "Already have an account? Log in!", new_employer_session_path %>
             </div>
@@ -114,3 +221,4 @@
   </div>
 </div>
 
+<%= render "shared/alerts_checkbox_radio_scripts" %>

@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :technologies
+  resources :salary_ranges
+  resources :industries
+  resources :position_types
+  resources :positions
   devise_for :admins, :skip => [:registrations], controllers: { 
     sessions: 'admins/sessions',
     # registrations: 'admins/registrations'
@@ -53,6 +58,7 @@ Rails.application.routes.draw do
   
   resources :employers
   resources :projects
+  resources :positions
 
 
   # The priority is based upon order of creation: first created -> highest priority.

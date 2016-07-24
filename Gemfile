@@ -30,6 +30,7 @@ gem 'faker'
 gem 'postrank-uri'
 gem 'jquery-ui-rails'
 gem "font-ionicons-rails"
+gem 'seed_dump'
 
 gem 'figaro'
 gem 'carrierwave'

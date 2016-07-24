@@ -29,5 +29,50 @@
       </div>
     </div>
   </div> 
+  <% if @employer.positions.any? %>
+    <div class="row">
+      <h2>Positions Available</h2>
+      <% @positions.each do |position| %>
+        <p><%= position.name %></p>
+      <% end %>
+    </div>
+  <% end %>
+  <br>
+  <% if @employer.position_types.any? %>
+    <div class="row">
+      <h2>Position Types</h2>
+      <% @position_types.each do |position_type| %>
+        <p><%= position_type.name %></p>
+      <% end %>
+    </div>
+  <% end %>
+  <br>
+  <% if @employer.salary_ranges.any? %>
+    <div class="row">
+      <h2>Salary Range</h2>
+      <% @salary_ranges.each do |salary_range| %>
+        <p><%= salary_range.salary_range %></p>
+      <% end %>
+    </div>
+  <% end %>
+  <br>
+  <% if @employer.industries.any? %>
+    <div class="row">
+      <h2>Industries</h2>
+      <% @industries.each do |industry| %>
+        <p><%= industry.name %></p>
+      <% end %>
+    </div>
+  <% end %>
+  <br>
+  <% if @employer.technologies.any? %>
+    <div class="row">
+      <h2>Technologies</h2>
+      <% @technologies.each do |technology| %>
+        <p><%= technology.name %></p>
+      <% end %>
+    </div>
+  <% end %>
+
 </div>
 
