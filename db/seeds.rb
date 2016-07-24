@@ -104,11 +104,11 @@ Industry.create!([
 ])
 
 SalaryRange.create!([
-  {salary_range: "$130,000 +"},
-  {salary_range: "$115,000 - $130,000"},
-  {salary_range: "$95,000 - $115,000"},
-  {salary_range: "$75,000 - $95,000"},
-  {salary_range: "$55,000 - $75,000"},
+  {salary_range: "Less than $35,000"},
   {salary_range: "$35,000 - $55,000"},
-  {salary_range: "Less than $35,000"}
+  {salary_range: "$55,000 - $75,000"},
+  {salary_range: "$75,000 - $95,000"},
+  {salary_range: "$95,000 - $115,000"},
+  {salary_range: "$115,000 - $130,000"},
+  {salary_range: "$130,000 +"}
 ])
