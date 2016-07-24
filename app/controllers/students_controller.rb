@@ -136,7 +136,8 @@ class StudentsController < ApplicationController
         :follow_up_list_id,
         :email,
         :password,
-        :password_confirmation
+        :password_confirmation,
+        :technology_ids: []
       )
     end
 
