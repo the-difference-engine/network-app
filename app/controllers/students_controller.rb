@@ -10,6 +10,7 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
+    @technologies = @student.technologies if @student.technologies.any?
   end
 
   def create
