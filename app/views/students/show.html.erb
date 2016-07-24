@@ -160,7 +160,24 @@
           <% end %>
         </div>
         <% unless employer_signed_in? %><hr><% end %>
-
+        
+        <% if @student.social_links? %>
+          <div class="sidebar-box">
+            <h4>Find Me Online</h4>
+            <ul class=" list-inline social-btn">
+              <% unless @student.github == "" || @student.github == nil %> 
+                <li><a href="<%= @student.normalized_github %>" target="_blank"><i class="ion-social-github" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Check Out My GitHub"></i></a></li>
+              <% end %>
+              <% unless @student.blog == "" || @student.blog == nil %>  
+                <li><a href="<%= @student.normalized_blog %>" target="_blank"><i class="ion-android-desktop" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Check Out My Blog"></i></a></li>
+              <% end %>
+              <% unless @student.linked_in == "" || @student.linked_in == nil %> 
+                <li><a href="<%= @student.normalized_linked_in %>" target="_blank"><i class="ion-social-linkedin-outline" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Connect on LinkedIn"></i></a></li>
+              <% end %>
+            </ul>
+          </div><hr>
+        <% end %>
+        
         <div class="sidebar-box">
           <h4>Top 3 Skills</h4>
           <ul class="cat-list">
@@ -199,18 +216,12 @@
           </ul>
         </div><hr>
 
-        <% if @student.social_links? %>
+        <% if @student.technologies.any? %>
           <div class="sidebar-box">
-            <h4>Find Me Online</h4>
-            <ul class=" list-inline social-btn">
-              <% unless @student.github == "" || @student.github == nil %> 
-                <li><a href="<%= @student.normalized_github %>" target="_blank"><i class="ion-social-github" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Check Out My GitHub"></i></a></li>
-              <% end %>
-              <% unless @student.blog == "" || @student.blog == nil %>  
-                <li><a href="<%= @student.normalized_blog %>" target="_blank"><i class="ion-android-desktop" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Check Out My Blog"></i></a></li>
-              <% end %>
-              <% unless @student.linked_in == "" || @student.linked_in == nil %> 
-                <li><a href="<%= @student.normalized_linked_in %>" target="_blank"><i class="ion-social-linkedin-outline" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Connect on LinkedIn"></i></a></li>
+            <h4>Tech Skills</h4>
+            <ul class="cat-list">
+              <% @technologies.each do |tech| %>
+                <li><a href="#" class="hover-color"><%= tech.name %></a></li>
               <% end %>
             </ul>
           </div><hr>

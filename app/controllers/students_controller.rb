@@ -10,7 +10,6 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
-    @technologies = @student.technologies if @student.technologies.any?
   end
 
   def create
@@ -28,6 +27,7 @@ class StudentsController < ApplicationController
   def show
     @student = Student.find(params[:id])
     @projects = @student.projects
+    @technologies = @student.technologies if @student.technologies.any?
 
     if @student.capstone_project
       @capstone = @student.capstone_project
