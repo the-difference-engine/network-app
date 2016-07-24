@@ -117,7 +117,7 @@ class StudentsController < ApplicationController
         :city,
         :current_city,
         :current_state,
-        :industry,
+        :current_industry,
         :grad_date,
         :skill_1,
         :skill_2,
