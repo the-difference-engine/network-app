@@ -11,6 +11,7 @@ class Student < ActiveRecord::Base
   has_many :projects, dependent: :destroy
   has_and_belongs_to_many :technologies
   has_and_belongs_to_many :industries
+  has_and_belongs_to_many :positions
 
   def full_name
     "#{first_name} #{last_name}"
