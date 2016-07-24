@@ -193,6 +193,17 @@
           </ul>
         </div><hr>
 
+        <% if @student.technologies.any? %>
+          <div class="sidebar-box">
+            <h4>Tech Skills</h4>
+            <ul class="cat-list">
+              <% @technologies.each do |tech| %>
+                <li><a href="#" class="hover-color"><%= tech.name %></a></li>
+              <% end %>
+            </ul>
+          </div><hr>
+        <% end %>
+
         <div class="sidebar-box">
           <h4>Interests</h4>
           <ul class="cat-list">
@@ -212,12 +223,12 @@
           </ul>
         </div><hr>
 
-        <% if @student.technologies.any? %>
+        <% if @student.positions.any? %>
           <div class="sidebar-box">
-            <h4>Tech Skills</h4>
+            <h4>Desired Positions</h4>
             <ul class="cat-list">
-              <% @technologies.each do |tech| %>
-                <li><a href="#" class="hover-color"><%= tech.name %></a></li>
+              <% @positions.each do |position| %>
+                <li><a href="#" class="hover-color"><%= position.name %></a></li>
               <% end %>
             </ul>
           </div><hr>

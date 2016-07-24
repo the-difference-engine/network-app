@@ -28,6 +28,7 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
     @projects = @student.projects
     @technologies = @student.technologies if @student.technologies.any?
+    @positions = @student.positions if @student.positions.any?
 
     if @student.capstone_project
       @capstone = @student.capstone_project
