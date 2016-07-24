@@ -138,7 +138,8 @@ class StudentsController < ApplicationController
         :email,
         :password,
         :password_confirmation,
-        technology_ids: []
+        technology_ids: [],
+        industry_ids: []
       )
     end
 
