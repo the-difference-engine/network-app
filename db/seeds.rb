@@ -59,7 +59,8 @@ Technology.create!([
   {name: "CoffeeScript"},
   {name: "JavaScript"},
   {name: "HTML"},
-  {name: "CSS"}
+  {name: "CSS"},
+  {name: "Git"}
 ])
 
 Position.create!([
