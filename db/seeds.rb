@@ -57,7 +57,9 @@ Technology.create!([
   {name: "Language Agnostic"},
   {name: "Objecive-C"},
   {name: "CoffeeScript"},
-  {name: "JavaScript"}
+  {name: "JavaScript"},
+  {name: "HTML"},
+  {name: "CSS"}
 ])
 
 Position.create!([
