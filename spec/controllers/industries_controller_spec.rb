@@ -20,140 +20,140 @@ require 'rails_helper'
 
 RSpec.describe IndustriesController, type: :controller do
 
-  # This should return the minimal set of attributes required to create a valid
-  # Industry. As you add validations to Industry, be sure to
-  # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  # # This should return the minimal set of attributes required to create a valid
+  # # Industry. As you add validations to Industry, be sure to
+  # # adjust the attributes here as well.
+  # let(:valid_attributes) {
+  #   skip("Add a hash of attributes valid for your model")
+  # }
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  # let(:invalid_attributes) {
+  #   skip("Add a hash of attributes invalid for your model")
+  # }
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # IndustriesController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  # # This should return the minimal set of values that should be in the session
+  # # in order to pass any filters (e.g. authentication) defined in
+  # # IndustriesController. Be sure to keep this updated too.
+  # let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "assigns all industries as @industries" do
-      industry = Industry.create! valid_attributes
-      get :index, {}, valid_session
-      expect(assigns(:industries)).to eq([industry])
-    end
-  end
+  # describe "GET #index" do
+  #   it "assigns all industries as @industries" do
+  #     industry = Industry.create! valid_attributes
+  #     get :index, {}, valid_session
+  #     expect(assigns(:industries)).to eq([industry])
+  #   end
+  # end
 
-  describe "GET #show" do
-    it "assigns the requested industry as @industry" do
-      industry = Industry.create! valid_attributes
-      get :show, {:id => industry.to_param}, valid_session
-      expect(assigns(:industry)).to eq(industry)
-    end
-  end
+  # describe "GET #show" do
+  #   it "assigns the requested industry as @industry" do
+  #     industry = Industry.create! valid_attributes
+  #     get :show, {:id => industry.to_param}, valid_session
+  #     expect(assigns(:industry)).to eq(industry)
+  #   end
+  # end
 
-  describe "GET #new" do
-    it "assigns a new industry as @industry" do
-      get :new, {}, valid_session
-      expect(assigns(:industry)).to be_a_new(Industry)
-    end
-  end
+  # describe "GET #new" do
+  #   it "assigns a new industry as @industry" do
+  #     get :new, {}, valid_session
+  #     expect(assigns(:industry)).to be_a_new(Industry)
+  #   end
+  # end
 
-  describe "GET #edit" do
-    it "assigns the requested industry as @industry" do
-      industry = Industry.create! valid_attributes
-      get :edit, {:id => industry.to_param}, valid_session
-      expect(assigns(:industry)).to eq(industry)
-    end
-  end
+  # describe "GET #edit" do
+  #   it "assigns the requested industry as @industry" do
+  #     industry = Industry.create! valid_attributes
+  #     get :edit, {:id => industry.to_param}, valid_session
+  #     expect(assigns(:industry)).to eq(industry)
+  #   end
+  # end
 
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new Industry" do
-        expect {
-          post :create, {:industry => valid_attributes}, valid_session
-        }.to change(Industry, :count).by(1)
-      end
+  # describe "POST #create" do
+  #   context "with valid params" do
+  #     it "creates a new Industry" do
+  #       expect {
+  #         post :create, {:industry => valid_attributes}, valid_session
+  #       }.to change(Industry, :count).by(1)
+  #     end
 
-      it "assigns a newly created industry as @industry" do
-        post :create, {:industry => valid_attributes}, valid_session
-        expect(assigns(:industry)).to be_a(Industry)
-        expect(assigns(:industry)).to be_persisted
-      end
+  #     it "assigns a newly created industry as @industry" do
+  #       post :create, {:industry => valid_attributes}, valid_session
+  #       expect(assigns(:industry)).to be_a(Industry)
+  #       expect(assigns(:industry)).to be_persisted
+  #     end
 
-      it "redirects to the created industry" do
-        post :create, {:industry => valid_attributes}, valid_session
-        expect(response).to redirect_to(Industry.last)
-      end
-    end
+  #     it "redirects to the created industry" do
+  #       post :create, {:industry => valid_attributes}, valid_session
+  #       expect(response).to redirect_to(Industry.last)
+  #     end
+  #   end
 
-    context "with invalid params" do
-      it "assigns a newly created but unsaved industry as @industry" do
-        post :create, {:industry => invalid_attributes}, valid_session
-        expect(assigns(:industry)).to be_a_new(Industry)
-      end
+  #   context "with invalid params" do
+  #     it "assigns a newly created but unsaved industry as @industry" do
+  #       post :create, {:industry => invalid_attributes}, valid_session
+  #       expect(assigns(:industry)).to be_a_new(Industry)
+  #     end
 
-      it "re-renders the 'new' template" do
-        post :create, {:industry => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
-      end
-    end
-  end
+  #     it "re-renders the 'new' template" do
+  #       post :create, {:industry => invalid_attributes}, valid_session
+  #       expect(response).to render_template("new")
+  #     end
+  #   end
+  # end
 
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+  # describe "PUT #update" do
+  #   context "with valid params" do
+  #     let(:new_attributes) {
+  #       skip("Add a hash of attributes valid for your model")
+  #     }
 
-      it "updates the requested industry" do
-        industry = Industry.create! valid_attributes
-        put :update, {:id => industry.to_param, :industry => new_attributes}, valid_session
-        industry.reload
-        skip("Add assertions for updated state")
-      end
+  #     it "updates the requested industry" do
+  #       industry = Industry.create! valid_attributes
+  #       put :update, {:id => industry.to_param, :industry => new_attributes}, valid_session
+  #       industry.reload
+  #       skip("Add assertions for updated state")
+  #     end
 
-      it "assigns the requested industry as @industry" do
-        industry = Industry.create! valid_attributes
-        put :update, {:id => industry.to_param, :industry => valid_attributes}, valid_session
-        expect(assigns(:industry)).to eq(industry)
-      end
+  #     it "assigns the requested industry as @industry" do
+  #       industry = Industry.create! valid_attributes
+  #       put :update, {:id => industry.to_param, :industry => valid_attributes}, valid_session
+  #       expect(assigns(:industry)).to eq(industry)
+  #     end
 
-      it "redirects to the industry" do
-        industry = Industry.create! valid_attributes
-        put :update, {:id => industry.to_param, :industry => valid_attributes}, valid_session
-        expect(response).to redirect_to(industry)
-      end
-    end
+  #     it "redirects to the industry" do
+  #       industry = Industry.create! valid_attributes
+  #       put :update, {:id => industry.to_param, :industry => valid_attributes}, valid_session
+  #       expect(response).to redirect_to(industry)
+  #     end
+  #   end
 
-    context "with invalid params" do
-      it "assigns the industry as @industry" do
-        industry = Industry.create! valid_attributes
-        put :update, {:id => industry.to_param, :industry => invalid_attributes}, valid_session
-        expect(assigns(:industry)).to eq(industry)
-      end
+  #   context "with invalid params" do
+  #     it "assigns the industry as @industry" do
+  #       industry = Industry.create! valid_attributes
+  #       put :update, {:id => industry.to_param, :industry => invalid_attributes}, valid_session
+  #       expect(assigns(:industry)).to eq(industry)
+  #     end
 
-      it "re-renders the 'edit' template" do
-        industry = Industry.create! valid_attributes
-        put :update, {:id => industry.to_param, :industry => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
-      end
-    end
-  end
+  #     it "re-renders the 'edit' template" do
+  #       industry = Industry.create! valid_attributes
+  #       put :update, {:id => industry.to_param, :industry => invalid_attributes}, valid_session
+  #       expect(response).to render_template("edit")
+  #     end
+  #   end
+  # end
 
-  describe "DELETE #destroy" do
-    it "destroys the requested industry" do
-      industry = Industry.create! valid_attributes
-      expect {
-        delete :destroy, {:id => industry.to_param}, valid_session
-      }.to change(Industry, :count).by(-1)
-    end
+  # describe "DELETE #destroy" do
+  #   it "destroys the requested industry" do
+  #     industry = Industry.create! valid_attributes
+  #     expect {
+  #       delete :destroy, {:id => industry.to_param}, valid_session
+  #     }.to change(Industry, :count).by(-1)
+  #   end
 
-    it "redirects to the industries list" do
-      industry = Industry.create! valid_attributes
-      delete :destroy, {:id => industry.to_param}, valid_session
-      expect(response).to redirect_to(industries_url)
-    end
-  end
+  #   it "redirects to the industries list" do
+  #     industry = Industry.create! valid_attributes
+  #     delete :destroy, {:id => industry.to_param}, valid_session
+  #     expect(response).to redirect_to(industries_url)
+  #   end
+  # end
 
 end

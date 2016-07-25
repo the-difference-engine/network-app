@@ -20,140 +20,140 @@ require 'rails_helper'
 
 RSpec.describe PositionTypesController, type: :controller do
 
-  # This should return the minimal set of attributes required to create a valid
-  # PositionType. As you add validations to PositionType, be sure to
-  # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  # # This should return the minimal set of attributes required to create a valid
+  # # PositionType. As you add validations to PositionType, be sure to
+  # # adjust the attributes here as well.
+  # let(:valid_attributes) {
+  #   skip("Add a hash of attributes valid for your model")
+  # }
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  # let(:invalid_attributes) {
+  #   skip("Add a hash of attributes invalid for your model")
+  # }
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # PositionTypesController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  # # This should return the minimal set of values that should be in the session
+  # # in order to pass any filters (e.g. authentication) defined in
+  # # PositionTypesController. Be sure to keep this updated too.
+  # let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "assigns all position_types as @position_types" do
-      position_type = PositionType.create! valid_attributes
-      get :index, {}, valid_session
-      expect(assigns(:position_types)).to eq([position_type])
-    end
-  end
+  # describe "GET #index" do
+  #   it "assigns all position_types as @position_types" do
+  #     position_type = PositionType.create! valid_attributes
+  #     get :index, {}, valid_session
+  #     expect(assigns(:position_types)).to eq([position_type])
+  #   end
+  # end
 
-  describe "GET #show" do
-    it "assigns the requested position_type as @position_type" do
-      position_type = PositionType.create! valid_attributes
-      get :show, {:id => position_type.to_param}, valid_session
-      expect(assigns(:position_type)).to eq(position_type)
-    end
-  end
+  # describe "GET #show" do
+  #   it "assigns the requested position_type as @position_type" do
+  #     position_type = PositionType.create! valid_attributes
+  #     get :show, {:id => position_type.to_param}, valid_session
+  #     expect(assigns(:position_type)).to eq(position_type)
+  #   end
+  # end
 
-  describe "GET #new" do
-    it "assigns a new position_type as @position_type" do
-      get :new, {}, valid_session
-      expect(assigns(:position_type)).to be_a_new(PositionType)
-    end
-  end
+  # describe "GET #new" do
+  #   it "assigns a new position_type as @position_type" do
+  #     get :new, {}, valid_session
+  #     expect(assigns(:position_type)).to be_a_new(PositionType)
+  #   end
+  # end
 
-  describe "GET #edit" do
-    it "assigns the requested position_type as @position_type" do
-      position_type = PositionType.create! valid_attributes
-      get :edit, {:id => position_type.to_param}, valid_session
-      expect(assigns(:position_type)).to eq(position_type)
-    end
-  end
+  # describe "GET #edit" do
+  #   it "assigns the requested position_type as @position_type" do
+  #     position_type = PositionType.create! valid_attributes
+  #     get :edit, {:id => position_type.to_param}, valid_session
+  #     expect(assigns(:position_type)).to eq(position_type)
+  #   end
+  # end
 
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new PositionType" do
-        expect {
-          post :create, {:position_type => valid_attributes}, valid_session
-        }.to change(PositionType, :count).by(1)
-      end
+  # describe "POST #create" do
+  #   context "with valid params" do
+  #     it "creates a new PositionType" do
+  #       expect {
+  #         post :create, {:position_type => valid_attributes}, valid_session
+  #       }.to change(PositionType, :count).by(1)
+  #     end
 
-      it "assigns a newly created position_type as @position_type" do
-        post :create, {:position_type => valid_attributes}, valid_session
-        expect(assigns(:position_type)).to be_a(PositionType)
-        expect(assigns(:position_type)).to be_persisted
-      end
+  #     it "assigns a newly created position_type as @position_type" do
+  #       post :create, {:position_type => valid_attributes}, valid_session
+  #       expect(assigns(:position_type)).to be_a(PositionType)
+  #       expect(assigns(:position_type)).to be_persisted
+  #     end
 
-      it "redirects to the created position_type" do
-        post :create, {:position_type => valid_attributes}, valid_session
-        expect(response).to redirect_to(PositionType.last)
-      end
-    end
+  #     it "redirects to the created position_type" do
+  #       post :create, {:position_type => valid_attributes}, valid_session
+  #       expect(response).to redirect_to(PositionType.last)
+  #     end
+  #   end
 
-    context "with invalid params" do
-      it "assigns a newly created but unsaved position_type as @position_type" do
-        post :create, {:position_type => invalid_attributes}, valid_session
-        expect(assigns(:position_type)).to be_a_new(PositionType)
-      end
+  #   context "with invalid params" do
+  #     it "assigns a newly created but unsaved position_type as @position_type" do
+  #       post :create, {:position_type => invalid_attributes}, valid_session
+  #       expect(assigns(:position_type)).to be_a_new(PositionType)
+  #     end
 
-      it "re-renders the 'new' template" do
-        post :create, {:position_type => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
-      end
-    end
-  end
+  #     it "re-renders the 'new' template" do
+  #       post :create, {:position_type => invalid_attributes}, valid_session
+  #       expect(response).to render_template("new")
+  #     end
+  #   end
+  # end
 
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+  # describe "PUT #update" do
+  #   context "with valid params" do
+  #     let(:new_attributes) {
+  #       skip("Add a hash of attributes valid for your model")
+  #     }
 
-      it "updates the requested position_type" do
-        position_type = PositionType.create! valid_attributes
-        put :update, {:id => position_type.to_param, :position_type => new_attributes}, valid_session
-        position_type.reload
-        skip("Add assertions for updated state")
-      end
+  #     it "updates the requested position_type" do
+  #       position_type = PositionType.create! valid_attributes
+  #       put :update, {:id => position_type.to_param, :position_type => new_attributes}, valid_session
+  #       position_type.reload
+  #       skip("Add assertions for updated state")
+  #     end
 
-      it "assigns the requested position_type as @position_type" do
-        position_type = PositionType.create! valid_attributes
-        put :update, {:id => position_type.to_param, :position_type => valid_attributes}, valid_session
-        expect(assigns(:position_type)).to eq(position_type)
-      end
+  #     it "assigns the requested position_type as @position_type" do
+  #       position_type = PositionType.create! valid_attributes
+  #       put :update, {:id => position_type.to_param, :position_type => valid_attributes}, valid_session
+  #       expect(assigns(:position_type)).to eq(position_type)
+  #     end
 
-      it "redirects to the position_type" do
-        position_type = PositionType.create! valid_attributes
-        put :update, {:id => position_type.to_param, :position_type => valid_attributes}, valid_session
-        expect(response).to redirect_to(position_type)
-      end
-    end
+  #     it "redirects to the position_type" do
+  #       position_type = PositionType.create! valid_attributes
+  #       put :update, {:id => position_type.to_param, :position_type => valid_attributes}, valid_session
+  #       expect(response).to redirect_to(position_type)
+  #     end
+  #   end
 
-    context "with invalid params" do
-      it "assigns the position_type as @position_type" do
-        position_type = PositionType.create! valid_attributes
-        put :update, {:id => position_type.to_param, :position_type => invalid_attributes}, valid_session
-        expect(assigns(:position_type)).to eq(position_type)
-      end
+  #   context "with invalid params" do
+  #     it "assigns the position_type as @position_type" do
+  #       position_type = PositionType.create! valid_attributes
+  #       put :update, {:id => position_type.to_param, :position_type => invalid_attributes}, valid_session
+  #       expect(assigns(:position_type)).to eq(position_type)
+  #     end
 
-      it "re-renders the 'edit' template" do
-        position_type = PositionType.create! valid_attributes
-        put :update, {:id => position_type.to_param, :position_type => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
-      end
-    end
-  end
+  #     it "re-renders the 'edit' template" do
+  #       position_type = PositionType.create! valid_attributes
+  #       put :update, {:id => position_type.to_param, :position_type => invalid_attributes}, valid_session
+  #       expect(response).to render_template("edit")
+  #     end
+  #   end
+  # end
 
-  describe "DELETE #destroy" do
-    it "destroys the requested position_type" do
-      position_type = PositionType.create! valid_attributes
-      expect {
-        delete :destroy, {:id => position_type.to_param}, valid_session
-      }.to change(PositionType, :count).by(-1)
-    end
+  # describe "DELETE #destroy" do
+  #   it "destroys the requested position_type" do
+  #     position_type = PositionType.create! valid_attributes
+  #     expect {
+  #       delete :destroy, {:id => position_type.to_param}, valid_session
+  #     }.to change(PositionType, :count).by(-1)
+  #   end
 
-    it "redirects to the position_types list" do
-      position_type = PositionType.create! valid_attributes
-      delete :destroy, {:id => position_type.to_param}, valid_session
-      expect(response).to redirect_to(position_types_url)
-    end
-  end
+  #   it "redirects to the position_types list" do
+  #     position_type = PositionType.create! valid_attributes
+  #     delete :destroy, {:id => position_type.to_param}, valid_session
+  #     expect(response).to redirect_to(position_types_url)
+  #   end
+  # end
 
 end
