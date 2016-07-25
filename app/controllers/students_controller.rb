@@ -136,6 +136,7 @@ class StudentsController < ApplicationController
         :quote,
         :seeking_employment,
         :resume,
+        :about_me,
         :active,
         :follow_up_list_id,
         :email,

@@ -34,15 +34,19 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-12 margin-btm-20">
+            <div class="col-md-6 margin-btm-20">
               <%= f.label :password %><br />
               <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12 margin-btm-20">
+            <div class="col-md-6 margin-btm-20">
               <%= f.label :password_confirmation %><br />
               <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+            </div>
+          </div><br>
+          <h4 class="heading-mini">About Me</h4><hr>
+          <div class="row">
+            <div class="col-md-12 margin-btm-20">
+              <%= f.text_area :about_me, placeholder: "Enter a short description of yourself and your goals", class: "form-control" %>
             </div>
           </div>
         </div>
