@@ -74,7 +74,8 @@ class ProjectsController < ApplicationController
         :github,
         :website,
         :screencast,
-        :project_image
+        :project_image,
+        technology_ids: []
       )
     end
 end

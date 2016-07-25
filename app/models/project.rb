@@ -2,6 +2,7 @@ class Project < ActiveRecord::Base
   mount_uploader :project_image, ProjectImageUploader
   
   belongs_to :student
+  has_and_belongs_to_many :technologies
 
   validates :name, :description, presence: true
 
