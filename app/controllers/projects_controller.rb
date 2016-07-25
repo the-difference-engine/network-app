@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @technologies = @project.technologies if @project.technologies.any?
   end
 
   def edit
