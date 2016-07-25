@@ -4,7 +4,7 @@ class EmployersController < ApplicationController
   before_action :authenticate_admin_employer!, :only => [:edit, :update, :destroy]
   
   def index
-    @employers = Employer.all
+    @employers = Employer.where(active: true).order(:name)
   end
 
   def new

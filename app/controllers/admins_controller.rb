@@ -3,7 +3,7 @@ class AdminsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @admins = Admin.all
+    @admins = Admin.where(active: true).order(:last_name)
   end
 
   def new
