@@ -4,7 +4,7 @@ json.last_name student.last_name
 json.full_name student.full_name
 json.city student.city
 json.grad_date student.grad_date
-json.industry student.industry
+json.current_industry student.current_industry
 json.skill_1 student.skill_1
 json.skill_2 student.skill_2
 json.skill_3 student.skill_3
@@ -16,7 +16,9 @@ json.interview_2 student.interview_2
 json.interview_3 student.interview_3
 json.github student.github
 json.blog student.blog
+json.linked_in student.linked_in
 json.quote student.quote
 json.seeking_employment student.seeking_employment
+json.active student.active
 
 

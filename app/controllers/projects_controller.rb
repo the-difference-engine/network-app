@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @technologies = @project.technologies if @project.technologies.any?
   end
 
   def edit
@@ -74,7 +75,8 @@ class ProjectsController < ApplicationController
         :github,
         :website,
         :screencast,
-        :project_image
+        :project_image,
+        technology_ids: []
       )
     end
 end

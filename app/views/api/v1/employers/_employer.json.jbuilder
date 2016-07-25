@@ -10,4 +10,7 @@ json.rep_last_name employer.rep_last_name
 json.rep_full_name employer.rep_full_name
 json.rep_email employer.rep_email
 json.rep_phone employer.rep_phone
-
+json.hiring_timeline employer.hiring_timeline
+json.number_of_positions employer.number_of_positions
+json.company_size employer.company_size
+json.active employer.active

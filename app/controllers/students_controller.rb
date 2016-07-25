@@ -4,7 +4,7 @@ class StudentsController < ApplicationController
   before_action :authenticate_admin_student!, :only => [:edit, :update]
 
   def index
-    @students = Student.all.order(:last_name)
+    @students = Student.where(active: true).order(:last_name)
     @projects = Project.all
   end
 
@@ -27,6 +27,9 @@ class StudentsController < ApplicationController
   def show
     @student = Student.find(params[:id])
     @projects = @student.projects
+    @technologies = @student.technologies if @student.technologies.any?
+    @positions = @student.positions if @student.positions.any?
+    @industries = @student.industries if @student.industries.any?
 
     if @student.capstone_project
       @capstone = @student.capstone_project
@@ -116,7 +119,7 @@ class StudentsController < ApplicationController
         :city,
         :current_city,
         :current_state,
-        :industry,
+        :current_industry,
         :grad_date,
         :skill_1,
         :skill_2,
@@ -133,10 +136,15 @@ class StudentsController < ApplicationController
         :quote,
         :seeking_employment,
         :resume,
+        :about_me,
+        :active,
         :follow_up_list_id,
         :email,
         :password,
-        :password_confirmation
+        :password_confirmation,
+        technology_ids: [],
+        industry_ids: [],
+        position_ids: []
       )
     end
 

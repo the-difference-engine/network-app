@@ -20,140 +20,140 @@ require 'rails_helper'
 
 RSpec.describe TechnologiesController, type: :controller do
 
-  # This should return the minimal set of attributes required to create a valid
-  # Technology. As you add validations to Technology, be sure to
-  # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  # # This should return the minimal set of attributes required to create a valid
+  # # Technology. As you add validations to Technology, be sure to
+  # # adjust the attributes here as well.
+  # let(:valid_attributes) {
+  #   skip("Add a hash of attributes valid for your model")
+  # }
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  # let(:invalid_attributes) {
+  #   skip("Add a hash of attributes invalid for your model")
+  # }
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # TechnologiesController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  # # This should return the minimal set of values that should be in the session
+  # # in order to pass any filters (e.g. authentication) defined in
+  # # TechnologiesController. Be sure to keep this updated too.
+  # let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "assigns all technologies as @technologies" do
-      technology = Technology.create! valid_attributes
-      get :index, {}, valid_session
-      expect(assigns(:technologies)).to eq([technology])
-    end
-  end
+  # describe "GET #index" do
+  #   it "assigns all technologies as @technologies" do
+  #     technology = Technology.create! valid_attributes
+  #     get :index, {}, valid_session
+  #     expect(assigns(:technologies)).to eq([technology])
+  #   end
+  # end
 
-  describe "GET #show" do
-    it "assigns the requested technology as @technology" do
-      technology = Technology.create! valid_attributes
-      get :show, {:id => technology.to_param}, valid_session
-      expect(assigns(:technology)).to eq(technology)
-    end
-  end
+  # describe "GET #show" do
+  #   it "assigns the requested technology as @technology" do
+  #     technology = Technology.create! valid_attributes
+  #     get :show, {:id => technology.to_param}, valid_session
+  #     expect(assigns(:technology)).to eq(technology)
+  #   end
+  # end
 
-  describe "GET #new" do
-    it "assigns a new technology as @technology" do
-      get :new, {}, valid_session
-      expect(assigns(:technology)).to be_a_new(Technology)
-    end
-  end
+  # describe "GET #new" do
+  #   it "assigns a new technology as @technology" do
+  #     get :new, {}, valid_session
+  #     expect(assigns(:technology)).to be_a_new(Technology)
+  #   end
+  # end
 
-  describe "GET #edit" do
-    it "assigns the requested technology as @technology" do
-      technology = Technology.create! valid_attributes
-      get :edit, {:id => technology.to_param}, valid_session
-      expect(assigns(:technology)).to eq(technology)
-    end
-  end
+  # describe "GET #edit" do
+  #   it "assigns the requested technology as @technology" do
+  #     technology = Technology.create! valid_attributes
+  #     get :edit, {:id => technology.to_param}, valid_session
+  #     expect(assigns(:technology)).to eq(technology)
+  #   end
+  # end
 
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new Technology" do
-        expect {
-          post :create, {:technology => valid_attributes}, valid_session
-        }.to change(Technology, :count).by(1)
-      end
+  # describe "POST #create" do
+  #   context "with valid params" do
+  #     it "creates a new Technology" do
+  #       expect {
+  #         post :create, {:technology => valid_attributes}, valid_session
+  #       }.to change(Technology, :count).by(1)
+  #     end
 
-      it "assigns a newly created technology as @technology" do
-        post :create, {:technology => valid_attributes}, valid_session
-        expect(assigns(:technology)).to be_a(Technology)
-        expect(assigns(:technology)).to be_persisted
-      end
+  #     it "assigns a newly created technology as @technology" do
+  #       post :create, {:technology => valid_attributes}, valid_session
+  #       expect(assigns(:technology)).to be_a(Technology)
+  #       expect(assigns(:technology)).to be_persisted
+  #     end
 
-      it "redirects to the created technology" do
-        post :create, {:technology => valid_attributes}, valid_session
-        expect(response).to redirect_to(Technology.last)
-      end
-    end
+  #     it "redirects to the created technology" do
+  #       post :create, {:technology => valid_attributes}, valid_session
+  #       expect(response).to redirect_to(Technology.last)
+  #     end
+  #   end
 
-    context "with invalid params" do
-      it "assigns a newly created but unsaved technology as @technology" do
-        post :create, {:technology => invalid_attributes}, valid_session
-        expect(assigns(:technology)).to be_a_new(Technology)
-      end
+  #   context "with invalid params" do
+  #     it "assigns a newly created but unsaved technology as @technology" do
+  #       post :create, {:technology => invalid_attributes}, valid_session
+  #       expect(assigns(:technology)).to be_a_new(Technology)
+  #     end
 
-      it "re-renders the 'new' template" do
-        post :create, {:technology => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
-      end
-    end
-  end
+  #     it "re-renders the 'new' template" do
+  #       post :create, {:technology => invalid_attributes}, valid_session
+  #       expect(response).to render_template("new")
+  #     end
+  #   end
+  # end
 
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+  # describe "PUT #update" do
+  #   context "with valid params" do
+  #     let(:new_attributes) {
+  #       skip("Add a hash of attributes valid for your model")
+  #     }
 
-      it "updates the requested technology" do
-        technology = Technology.create! valid_attributes
-        put :update, {:id => technology.to_param, :technology => new_attributes}, valid_session
-        technology.reload
-        skip("Add assertions for updated state")
-      end
+  #     it "updates the requested technology" do
+  #       technology = Technology.create! valid_attributes
+  #       put :update, {:id => technology.to_param, :technology => new_attributes}, valid_session
+  #       technology.reload
+  #       skip("Add assertions for updated state")
+  #     end
 
-      it "assigns the requested technology as @technology" do
-        technology = Technology.create! valid_attributes
-        put :update, {:id => technology.to_param, :technology => valid_attributes}, valid_session
-        expect(assigns(:technology)).to eq(technology)
-      end
+  #     it "assigns the requested technology as @technology" do
+  #       technology = Technology.create! valid_attributes
+  #       put :update, {:id => technology.to_param, :technology => valid_attributes}, valid_session
+  #       expect(assigns(:technology)).to eq(technology)
+  #     end
 
-      it "redirects to the technology" do
-        technology = Technology.create! valid_attributes
-        put :update, {:id => technology.to_param, :technology => valid_attributes}, valid_session
-        expect(response).to redirect_to(technology)
-      end
-    end
+  #     it "redirects to the technology" do
+  #       technology = Technology.create! valid_attributes
+  #       put :update, {:id => technology.to_param, :technology => valid_attributes}, valid_session
+  #       expect(response).to redirect_to(technology)
+  #     end
+  #   end
 
-    context "with invalid params" do
-      it "assigns the technology as @technology" do
-        technology = Technology.create! valid_attributes
-        put :update, {:id => technology.to_param, :technology => invalid_attributes}, valid_session
-        expect(assigns(:technology)).to eq(technology)
-      end
+  #   context "with invalid params" do
+  #     it "assigns the technology as @technology" do
+  #       technology = Technology.create! valid_attributes
+  #       put :update, {:id => technology.to_param, :technology => invalid_attributes}, valid_session
+  #       expect(assigns(:technology)).to eq(technology)
+  #     end
 
-      it "re-renders the 'edit' template" do
-        technology = Technology.create! valid_attributes
-        put :update, {:id => technology.to_param, :technology => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
-      end
-    end
-  end
+  #     it "re-renders the 'edit' template" do
+  #       technology = Technology.create! valid_attributes
+  #       put :update, {:id => technology.to_param, :technology => invalid_attributes}, valid_session
+  #       expect(response).to render_template("edit")
+  #     end
+  #   end
+  # end
 
-  describe "DELETE #destroy" do
-    it "destroys the requested technology" do
-      technology = Technology.create! valid_attributes
-      expect {
-        delete :destroy, {:id => technology.to_param}, valid_session
-      }.to change(Technology, :count).by(-1)
-    end
+  # describe "DELETE #destroy" do
+  #   it "destroys the requested technology" do
+  #     technology = Technology.create! valid_attributes
+  #     expect {
+  #       delete :destroy, {:id => technology.to_param}, valid_session
+  #     }.to change(Technology, :count).by(-1)
+  #   end
 
-    it "redirects to the technologies list" do
-      technology = Technology.create! valid_attributes
-      delete :destroy, {:id => technology.to_param}, valid_session
-      expect(response).to redirect_to(technologies_url)
-    end
-  end
+  #   it "redirects to the technologies list" do
+  #     technology = Technology.create! valid_attributes
+  #     delete :destroy, {:id => technology.to_param}, valid_session
+  #     expect(response).to redirect_to(technologies_url)
+  #   end
+  # end
 
 end

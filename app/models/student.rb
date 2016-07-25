@@ -9,6 +9,9 @@ class Student < ActiveRecord::Base
   
   belongs_to :follow_up_list
   has_many :projects, dependent: :destroy
+  has_and_belongs_to_many :technologies
+  has_and_belongs_to_many :industries
+  has_and_belongs_to_many :positions
 
   def full_name
     "#{first_name} #{last_name}"
@@ -172,6 +175,14 @@ class Student < ActiveRecord::Base
     end
 
     social_links
+  end
+
+  def about_me?
+    if about_me == nil || about_me == ""
+      false
+    else
+      true
+    end
   end
 end
 

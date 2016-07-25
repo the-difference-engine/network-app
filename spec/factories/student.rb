@@ -5,8 +5,9 @@ FactoryGirl.define do
     city Faker::Address.city
     current_city Faker::Address.city
     current_state Faker::Address.state_abbr
-    industry Faker::Internet.domain_word
+    current_industry Faker::Internet.domain_word
     grad_date "2015-03-25"
+    about_me Faker::Hacker.say_something_smart
     skill_1 Faker::Hacker.abbreviation
     skill_2 Faker::Hacker.abbreviation
     skill_3 Faker::Hacker.abbreviation
@@ -22,6 +23,7 @@ FactoryGirl.define do
     quote Faker::Hacker.say_something_smart
     seeking_employment true
     resume Faker::Internet.url
+    active true
     email Faker::Internet.email
     password "password"
 

@@ -9,6 +9,7 @@ FactoryGirl.define do
     website Faker::Internet.url
     city Faker::Address.city
     state Faker::Address.state_abbr
+    active true
     email Faker::Internet.email
     password "password"
 

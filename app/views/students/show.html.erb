@@ -1,11 +1,7 @@
 <div class="student-show">
   <section id="content-region-3" class="padding-40 page-tree-bg">
     <div class="container">
-      <% if @student.industry %>
-        <h3 class="page-tree-text"><%= @student.full_name %> &nbsp;|&nbsp; <em><%= @student.industry %></em></h3>
-      <% else %>
-        <h3 class="page-tree-text"><%= @student.full_name %> &nbsp;|&nbsp; <em><%= @student.industry %></em></h3>
-      <% end %>
+      <h3 class="page-tree-text"><%= @student.full_name %></h3>
     </div>
   </section><!--page-tree end here-->
   <div class="space-70"></div>
@@ -29,6 +25,20 @@
 
         <div class="blog-post-section student-section-two">
           <div class="blog-post-detail">
+            <% if @student.about_me? %>
+              <h4 class="heading-mini section-heading">About Me</h4>
+              <div class="acltc-info">
+                <div class="row">
+                  <div class="col-md-3 services-icon">
+                    <i class="ion-android-hangout"></i>
+                  </div><!--services icon-->
+                  <div class="col-md-6 services-text"><br>
+                    <p><em>"<%= @student.about_me %>"</em></p>
+                  </div><!--services 1 text-->
+                </div><!--services 1 row-->
+              </div>
+            <% end %>
+
             <h4 class="heading-mini section-heading">My Bootcamp</h4>
             <div class="acltc-info">
               <div class="row">
@@ -85,7 +95,7 @@
                   </div><!--services icon-->
                   <div class="col-md-6 services-text">
                     <h4 class="heading-mini question-heading">What is a closure, and how/why would you use one?</h4> 
-                    <p><em>" <%= @student.interview_1.capitalize %> "</em></p> 
+                    <p><em>"<%= @student.interview_1.capitalize %>"</em></p> 
                   </div><!--services 1 text-->
                 </div><!--services 1 row-->
               </div>
@@ -98,7 +108,7 @@
                   </div><!--services icon-->
                   <div class="col-md-6 services-text">
                     <h4 class="heading-mini question-heading">What does CORS stand for and what issue does it address?</h4> 
-                    <p><em>" <%= @student.interview_2.capitalize %> "</em></p> 
+                    <p><em>"<%= @student.interview_2.capitalize %>"</em></p> 
                   </div><!--services 1 text-->
                 </div><!--services 1 row-->
               </div>
@@ -111,7 +121,7 @@
                   </div><!--services icon-->
                   <div class="col-md-6 services-text">
                     <h4 class="heading-mini question-heading">What is a recent technical challenge you experienced and how did you solve it?</h4> 
-                    <p><em>" <%= @student.interview_3.capitalize %> "</em></p> 
+                    <p><em>"<%= @student.interview_3.capitalize %>"</em></p> 
                   </div><!--services 1 text-->
                 </div><!--services 1 row-->
               </div>
@@ -122,10 +132,10 @@
             <div class="student-quote">
               <div class="row">
                 <div class="col-md-3 services-icon">
-                  <i class="ion-android-hangout"></i>
+                  <i class="ion-chatbox"></i>
                 </div><!--services icon-->
                 <div class="col-md-6 services-text">
-                  <h4 class="heading-mini quote-heading"><em>" <%= @student.quote %> "</em></h4> 
+                  <h4 class="heading-mini quote-heading"><em>"<%= @student.quote %>"</em></h4> 
                 </div><!--services 1 text-->
               </div><!--services 1 row-->
             </div>
@@ -160,7 +170,24 @@
           <% end %>
         </div>
         <% unless employer_signed_in? %><hr><% end %>
-
+        
+        <% if @student.social_links? %>
+          <div class="sidebar-box">
+            <h4>Find Me Online</h4>
+            <ul class=" list-inline social-btn">
+              <% unless @student.github == "" || @student.github == nil %> 
+                <li><a href="<%= @student.normalized_github %>" target="_blank"><i class="ion-social-github" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Check Out My GitHub"></i></a></li>
+              <% end %>
+              <% unless @student.blog == "" || @student.blog == nil %>  
+                <li><a href="<%= @student.normalized_blog %>" target="_blank"><i class="ion-android-desktop" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Check Out My Blog"></i></a></li>
+              <% end %>
+              <% unless @student.linked_in == "" || @student.linked_in == nil %> 
+                <li><a href="<%= @student.normalized_linked_in %>" target="_blank"><i class="ion-social-linkedin-outline" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Connect on LinkedIn"></i></a></li>
+              <% end %>
+            </ul>
+          </div><hr>
+        <% end %>
+        
         <div class="sidebar-box">
           <h4>Top 3 Skills</h4>
           <ul class="cat-list">
@@ -179,6 +206,17 @@
             <% end %>
           </ul>
         </div><hr>
+
+        <% if @student.technologies.any? %>
+          <div class="sidebar-box">
+            <h4>Tech Skills</h4>
+            <ul class="cat-list">
+              <% @technologies.each do |tech| %>
+                <li><a href="#" class="hover-color"><%= tech.name %></a></li>
+              <% end %>
+            </ul>
+          </div><hr>
+        <% end %>
 
         <div class="sidebar-box">
           <h4>Interests</h4>
@@ -199,18 +237,23 @@
           </ul>
         </div><hr>
 
-        <% if @student.social_links? %>
+        <% if @student.positions.any? %>
           <div class="sidebar-box">
-            <h4>Find Me Online</h4>
-            <ul class=" list-inline social-btn">
-              <% unless @student.github == "" || @student.github == nil %> 
-                <li><a href="<%= @student.normalized_github %>" target="_blank"><i class="ion-social-github" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Check Out My GitHub"></i></a></li>
+            <h4>Preferred Positions</h4>
+            <ul class="cat-list">
+              <% @positions.each do |position| %>
+                <li><a href="#" class="hover-color"><%= position.name %></a></li>
               <% end %>
-              <% unless @student.blog == "" || @student.blog == nil %>  
-                <li><a href="<%= @student.normalized_blog %>" target="_blank"><i class="ion-android-desktop" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Check Out My Blog"></i></a></li>
-              <% end %>
-              <% unless @student.linked_in == "" || @student.linked_in == nil %> 
-                <li><a href="<%= @student.normalized_linked_in %>" target="_blank"><i class="ion-social-linkedin-outline" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Connect on LinkedIn"></i></a></li>
+            </ul>
+          </div><hr>
+        <% end %>
+
+        <% if @student.industries.any? %>
+          <div class="sidebar-box">
+            <h4>Preferred Industries</h4>
+            <ul class="cat-list">
+              <% @industries.each do |industry| %>
+                <li><a href="#" class="hover-color"><%= industry.name %></a></li>
               <% end %>
             </ul>
           </div><hr>

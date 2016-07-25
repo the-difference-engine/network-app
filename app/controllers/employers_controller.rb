@@ -4,7 +4,7 @@ class EmployersController < ApplicationController
   before_action :authenticate_admin_employer!, :only => [:edit, :update, :destroy]
   
   def index
-    @employers = Employer.all
+    @employers = Employer.where(active: true).order(:name)
   end
 
   def new
@@ -104,13 +104,14 @@ class EmployersController < ApplicationController
         :website,
         :city,
         :state,
-        :password,
-        :password_confirmation,
-        :email,
         :currently_hiring,
         :hiring_timeline,
         :number_of_positions,
         :company_size,
+        :active,
+        :password,
+        :password_confirmation,
+        :email,
         position_ids: [],
         position_type_ids: [],
         industry_ids: [],

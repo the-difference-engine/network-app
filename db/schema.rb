@@ -11,24 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160723212651) do
+ActiveRecord::Schema.define(version: 20160725062103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "admins", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "avatar"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20160723212651) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
+    t.boolean  "active",                 default: false
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
@@ -83,6 +84,7 @@ ActiveRecord::Schema.define(version: 20160723212651) do
     t.string   "hiring_timeline"
     t.integer  "number_of_positions"
     t.string   "company_size"
+    t.boolean  "active",                 default: false
   end
 
   add_index "employers", ["email"], name: "index_employers_on_email", unique: true, using: :btree
@@ -129,6 +131,11 @@ ActiveRecord::Schema.define(version: 20160723212651) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "industries_students", id: false, force: :cascade do |t|
+    t.integer "industry_id", null: false
+    t.integer "student_id",  null: false
+  end
+
   create_table "position_types", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -141,6 +148,11 @@ ActiveRecord::Schema.define(version: 20160723212651) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "positions_students", id: false, force: :cascade do |t|
+    t.integer "position_id", null: false
+    t.integer "student_id",  null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.integer "student_id"
     t.string  "name"
@@ -151,6 +163,11 @@ ActiveRecord::Schema.define(version: 20160723212651) do
     t.string  "website"
     t.string  "screencast"
     t.string  "project_image"
+  end
+
+  create_table "projects_technologies", id: false, force: :cascade do |t|
+    t.integer "project_id",    null: false
+    t.integer "technology_id", null: false
   end
 
   create_table "salary_ranges", force: :cascade do |t|
@@ -177,7 +194,7 @@ ActiveRecord::Schema.define(version: 20160723212651) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "city"
-    t.string   "industry"
+    t.string   "current_industry"
     t.date     "grad_date"
     t.string   "skill_1"
     t.string   "skill_2"
@@ -204,6 +221,8 @@ ActiveRecord::Schema.define(version: 20160723212651) do
     t.string   "linked_in"
     t.string   "current_city"
     t.string   "current_state"
+    t.boolean  "active",                 default: false
+    t.text     "about_me"
   end
 
   add_index "students", ["email"], name: "index_students_on_email", unique: true, using: :btree
@@ -211,6 +230,11 @@ ActiveRecord::Schema.define(version: 20160723212651) do
   add_index "students", ["invitations_count"], name: "index_students_on_invitations_count", using: :btree
   add_index "students", ["invited_by_id"], name: "index_students_on_invited_by_id", using: :btree
   add_index "students", ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true, using: :btree
+
+  create_table "students_technologies", id: false, force: :cascade do |t|
+    t.integer "student_id",    null: false
+    t.integer "technology_id", null: false
+  end
 
   create_table "technologies", force: :cascade do |t|
     t.string   "name"
