@@ -67,9 +67,13 @@
           <div class="sidebar-box">
             <h4>Technologies</h4>
             <ul class="cat-list">  
-              <li><a href="#" class="hover-color">Coming Soon</a></li>
-              <li><a href="#" class="hover-color">Coming Soon</a></li>
-              <li><a href="#" class="hover-color">Coming Soon</a></li>
+              <% if @project.technologies.any? %>
+                <% @technologies.each do |tech| %>
+                    <li><a href="#" class="hover-color"><%= tech.name %></a></li>
+                <% end %>
+              <% else %>
+                <li><a href="#" class="hover-color">Coming Soon</a></li>
+              <% end %>
             </ul>
           </div><hr>
         </div>
