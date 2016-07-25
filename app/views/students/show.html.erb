@@ -25,6 +25,20 @@
 
         <div class="blog-post-section student-section-two">
           <div class="blog-post-detail">
+            <% if @student.about_me? %>
+              <h4 class="heading-mini section-heading">About Me</h4>
+              <div class="acltc-info">
+                <div class="row">
+                  <div class="col-md-3 services-icon">
+                    <i class="ion-android-hangout"></i>
+                  </div><!--services icon-->
+                  <div class="col-md-6 services-text"><br>
+                    <p><em>"<%= @student.about_me %>"</em></p>
+                  </div><!--services 1 text-->
+                </div><!--services 1 row-->
+              </div>
+            <% end %>
+
             <h4 class="heading-mini section-heading">My Bootcamp</h4>
             <div class="acltc-info">
               <div class="row">
@@ -81,7 +95,7 @@
                   </div><!--services icon-->
                   <div class="col-md-6 services-text">
                     <h4 class="heading-mini question-heading">What is a closure, and how/why would you use one?</h4> 
-                    <p><em>" <%= @student.interview_1.capitalize %> "</em></p> 
+                    <p><em>"<%= @student.interview_1.capitalize %>"</em></p> 
                   </div><!--services 1 text-->
                 </div><!--services 1 row-->
               </div>
@@ -94,7 +108,7 @@
                   </div><!--services icon-->
                   <div class="col-md-6 services-text">
                     <h4 class="heading-mini question-heading">What does CORS stand for and what issue does it address?</h4> 
-                    <p><em>" <%= @student.interview_2.capitalize %> "</em></p> 
+                    <p><em>"<%= @student.interview_2.capitalize %>"</em></p> 
                   </div><!--services 1 text-->
                 </div><!--services 1 row-->
               </div>
@@ -107,7 +121,7 @@
                   </div><!--services icon-->
                   <div class="col-md-6 services-text">
                     <h4 class="heading-mini question-heading">What is a recent technical challenge you experienced and how did you solve it?</h4> 
-                    <p><em>" <%= @student.interview_3.capitalize %> "</em></p> 
+                    <p><em>"<%= @student.interview_3.capitalize %>"</em></p> 
                   </div><!--services 1 text-->
                 </div><!--services 1 row-->
               </div>
@@ -118,10 +132,10 @@
             <div class="student-quote">
               <div class="row">
                 <div class="col-md-3 services-icon">
-                  <i class="ion-android-hangout"></i>
+                  <i class="ion-chatbox"></i>
                 </div><!--services icon-->
                 <div class="col-md-6 services-text">
-                  <h4 class="heading-mini quote-heading"><em>" <%= @student.quote %> "</em></h4> 
+                  <h4 class="heading-mini quote-heading"><em>"<%= @student.quote %>"</em></h4> 
                 </div><!--services 1 text-->
               </div><!--services 1 row-->
             </div>
