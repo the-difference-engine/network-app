@@ -176,5 +176,13 @@ class Student < ActiveRecord::Base
 
     social_links
   end
+
+  def about_me?
+    if about_me == nil || about_me == ""
+      false
+    else
+      true
+    end
+  end
 end
 
