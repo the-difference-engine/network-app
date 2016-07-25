@@ -3,12 +3,8 @@
     <ul>
     <% @employers.each do |employer| %>
       <div class="indiv-employer">
-        <li>
-          <% if employer.image.model["image"] =~ /robo/ %>
-            <%= image_tag(employer.image.model["image"]) %>
-          <% else %>
-            <%= image_tag(employer.image.thumb.url) %>
-          <% end %>
+        <li>  
+          <%= image_tag(employer.image.thumb.url) %>
           <h3><%= link_to employer.name, employer_path(employer) %></h3>
           <p><%= employer.description %></p>
           <br>
