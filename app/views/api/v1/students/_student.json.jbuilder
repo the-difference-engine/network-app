@@ -19,5 +19,6 @@ json.blog student.blog
 json.linked_in student.linked_in
 json.quote student.quote
 json.seeking_employment student.seeking_employment
+json.active student.active
 
 

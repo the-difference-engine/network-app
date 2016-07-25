@@ -11,6 +11,7 @@
 
   <div class="container">
     <%= form_for(@student, url: admin_students_path, html: { :multipart => true }) do |f| %>
+    <%= f.hidden_field :active, true %>
     <div class="row">
       <div class="my-login-form col-md-6">
         <div class="login-info-box">
