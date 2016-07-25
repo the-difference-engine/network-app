@@ -85,6 +85,7 @@ class AdminsController < ApplicationController
         :first_name,
         :last_name,
         :avatar,
+        :active,
         :email,
         :password,
         :password_confirmation

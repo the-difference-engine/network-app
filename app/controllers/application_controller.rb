@@ -102,6 +102,7 @@ protected
       :hiring_timeline,
       :number_of_positions,
       :company_size,
+      :active,
       :password,
       :password_confirmation,
       :invited_by_id, 
