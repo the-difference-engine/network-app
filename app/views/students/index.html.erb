@@ -24,7 +24,7 @@
                 </div>
                 <div class="portfolio-desc text-center">
                   <h4 class="portfolio-post-title"><%= student.full_name %></h4>
-                  <span class="portfolio-post-cat"><%= student.industry %></span>
+                  <span class="portfolio-post-cat"><%= student.current_location %></span>
                   <% if student.skills? %>
                     <% unless student.skill_1 == nil || student.skill_1 == "" %>
                       <span class="portfolio-post-cat skill"><%= student.skill_1 %></span>
