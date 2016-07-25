@@ -29,6 +29,7 @@ class StudentsController < ApplicationController
     @projects = @student.projects
     @technologies = @student.technologies if @student.technologies.any?
     @positions = @student.positions if @student.positions.any?
+    @industries = @student.industries if @student.industries.any?
 
     if @student.capstone_project
       @capstone = @student.capstone_project

@@ -233,6 +233,17 @@
             </ul>
           </div><hr>
         <% end %>
+
+        <% if @student.industries.any? %>
+          <div class="sidebar-box">
+            <h4>Preferred Industries</h4>
+            <ul class="cat-list">
+              <% @industries.each do |industry| %>
+                <li><a href="#" class="hover-color"><%= industry.name %></a></li>
+              <% end %>
+            </ul>
+          </div><hr>
+        <% end %>
       </div><!--sideabr blog end -->
     </div>
   </div><!--blog post page content end here-->
