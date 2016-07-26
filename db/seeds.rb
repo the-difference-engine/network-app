@@ -5,6 +5,7 @@ Technology.create!([
   {name: "SQL"},
   {name: "Sinatra"},
   {name: "PostgreSQL"},
+  {name: "MySQL"},
   {name: "RSpec"},
   {name: "Capybara"},
   {name: "Jasmine"},
