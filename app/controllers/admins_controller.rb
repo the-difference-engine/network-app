@@ -73,9 +73,9 @@ class AdminsController < ApplicationController
   end
 
   def admin_center
-    @employers = Employer.all.order(:name)
-    @students = Student.all.order(:first_name)
-    @admins = Admin.all.order(:first_name)
+    @employers = Employer.where(active: true).order(:name)
+    @students = Student.where(active: true).order(:first_name)
+    @admins = Admin.where(active: true).order(:first_name)
   end
 
   private
