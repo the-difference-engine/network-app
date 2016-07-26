@@ -2,81 +2,119 @@
   <div class="container" id="admin-new-buttons">
     <div ng-app="app">
       <div ng-controller="adminsCtrl" ng-init="setupUserSearch()">
-        <%= link_to 'Add Employer', new_admin_employer_path, class: "btn btn-default" %>
-        <%= link_to 'Add Student', new_admin_student_path, class: "btn btn-default" %>
-        <%= link_to 'Batch Add Students', '/students/invitations/batch', class: "btn btn-default" %>
-        <%= link_to 'Add Admin', new_admin_admin_path, class: "btn btn-default" %>
-      
-        <div id='tab-nav'>
-          <!-- Nav tabs -->
-          <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#employers" aria-controls="employers" role="tab" data-toggle="tab">Employers</a></li>
-            <li role="presentation"><a href="#students" aria-controls="students" role="tab" data-toggle="tab">Students</a></li>
-            <li role="presentation"><a href="#admins" aria-controls="admins" role="tab" data-toggle="tab">Admins</a></li>
-          </ul>
+        
+        <div class="col-md-6">
+            <h4 class="heading-mini">Tabs</h4>
 
-          <!-- Tab panes -->
-          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="employers">
-              <div class="list-container">
-                <ul class="hoverlist">  
-                  <li class="admin-center-search-li">
-                    <div class="form-group">
-                        <input type="text" ng-model="searchEmployerName" class="form-control admin-center-search-bar" placeholder="Search Employers">
-                    </div>
-                  </li>       
-                  <li class="user-entries" ng-repeat="employer in employers | filter: { name: searchEmployerName }">
-                    <a href="/employers/{{ employer.id }}" class="user-name">{{ employer.name }}</a>
-                    <a href="/employers/{{ employer.id }}" class="btn btn-default btn-sm user-btn" data-method="delete" data-confirm="Are you sure you want to delete '{{ employer.name }}'">Delete</a>
-                    <a href="/employers/{{ employer.id }}/edit" class="btn btn-default btn-sm user-btn">Edit</a>
-                  </li>
+            <!--tabs start-->
+            <div class="tabs">
+                <ul class="nav nav-tabs">
+                    <li class=""><a href="#students" data-toggle="tab">Students</a></li>
+                    <li class=""><a href="#employers" data-toggle="tab">Employers</a></li>
+                    <li class="active"><a href="#admins" data-toggle="tab">Admins</a></li>
                 </ul>
-              </div>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane" id="students">
+                      <div class="tab-desc animated fadeIn">
+                        <div class="admin-center-search">
+                          <div class="form-group">
+                            <input type="text" ng-model="searchStudentName" class="form-control admin-center-search-bar" placeholder="Search Students">
+                          </div>
+                        </div>
+                        <table class="table table-hover">
+                          <tbody>
+                            <tr class="hover-list"ng-repeat="student in students | filter: { full_name: searchStudentName } | orderBy: 'last_name'">
+                              <td class="user-entries">
+                                <div class="cell-div">
+                                  <a href="/students/{{ student.id }}" class="user-name">{{ student.full_name }}</a>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="cell-div">
+                                  <a href="/students/{{ student.id }}/edit" class="btn btn-xs btn-default">Edit</a>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="cell-div">
+                                  <a href="/students/{{ student.id }}" data-method="delete" data-confirm="Are you sure you want to delete '{{ student.name }}'?" class="btn btn-xs btn-default">Delete</a>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div> 
+                    </div>
+                    <div class="tab-pane" id="employers">
+                      <div class="tab-desc animated fadeIn">
+                        <div class="admin-center-search">
+                          <div class="form-group">
+                            <input type="text" ng-model="searchEmployerName" class="form-control admin-center-search-bar" placeholder="Search Employers">
+                          </div>
+                        </div>
+                        <table class="table table-hover">
+                          <tbody>
+                            <tr class="hover-list"ng-repeat="employer in employers | filter: { name: searchEmployerName } | orderBy: 'name'">
+                              <td class="user-entries">
+                                <div class="cell-div">
+                                  <a href="/employers/{{ employer.id }}" class="user-name">{{ employer.name }}</a>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="cell-div">
+                                  <a href="/employers/{{ employer.id }}/edit" class="btn btn-xs btn-default">Edit</a>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="cell-div">
+                                  <a href="/employers/{{ employer.id }}" data-method="delete" data-confirm="Are you sure you want to delete '{{ employer.name }}'?" class="btn btn-xs btn-default">Delete</a>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div> 
+                    </div>
+                    <div class="tab-pane active" id="admins">
+                        <div class="tab-desc animated fadeIn">
+                          <div class="tab-desc animated fadeIn">
+                            <div class="admin-center-search">
+                              <div class="form-group">
+                                <input type="text" ng-model="searchAdminName" class="form-control admin-center-search-bar" placeholder="Search Admins">
+                              </div>
+                            </div>
+                            <table class="table table-hover">
+                              <tbody>
+                                <tr class="hover-list"ng-repeat="admin in admins | filter: { full_name: searchAdminName } | orderBy: 'last_name'">
+                                  <td class="user-entries">
+                                    <div class="cell-div">
+                                      <a href="/admins/{{ admin.id }}" class="user-name">{{ admin.full_name }}</a>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="cell-div">
+                                      <a href="/admins/{{ admin.id }}/edit" class="btn btn-xs btn-default">Edit</a>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="cell-div">
+                                      <a href="/admins/{{ admin.id }}" data-method="delete" data-confirm="Are you sure you want to delete '{{ admin.name }}'?" class="btn btn-xs btn-default">Delete</a>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div> 
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div role="tabpanel" class="tab-pane" id="students">
-              <div class="list-container">
-                <ul class="hoverlist">  
-                  <li class="admin-center-search-li">
-                    <div class="form-group">
-                        <input type="text" ng-model="searchStudentName" class="form-control admin-center-search-bar" placeholder="Search Students">
-                    </div>
-                  </li>     
-                  <li class="user-entries" ng-repeat="student in students | filter: { full_name: searchStudentName }">
-                    <a href="/students/{{ student.id }}" class="user-name">{{ student.full_name }}</a>
-                    <a href="/students/{{ student.id }}" class="btn btn-default btn-sm user-btn" data-method="delete" data-confirm="Are you sure you want to delete '{{ student.full_name }}'">Delete</a>
-                    <a href="/students/{{ student.id }}/edit" class="btn btn-default btn-sm user-btn">Edit</a>
-                  </li>
-                </ul>
-              </div> 
-            </div>
-
-            <div role="tabpanel" class="tab-pane" id="admins">
-              <div class="list-container">
-                <ul class="hoverlist"> 
-                  <li class="admin-center-search-li">
-                    <div class="form-group">
-                        <input type="text" ng-model="searchAdminName" class="form-control admin-center-search-bar" placeholder="Search Admins">
-                    </div>
-                  </li>    
-                  <li class="user-entries" ng-repeat="admin in admins | filter: { full_name: searchAdminName }">
-                    <a href="/admins/{{ admin.id }}" class="user-name">{{ admin.full_name }}</a>
-                    <a href="/admins/{{ admin.id }}" class="btn btn-default btn-sm user-btn" data-method="delete" data-confirm="Are you sure you want to delete '{{ admin.full_name }}'">Delete</a>
-                    <a href="/admins/{{ admin.id }}/edit" class="btn btn-default btn-sm user-btn">Edit</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+            <!--tabs end-->
         </div>
+    
       </div>
     </div>
   </div>
 </div>
-
-<script type="text/javascript">
-  $('#userTabs a').click(function (e) {
-    e.preventDefault()
-    $(this).tab('show')
-  })
-</script>
