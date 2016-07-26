@@ -3,6 +3,8 @@ json.first_name student.first_name
 json.last_name student.last_name
 json.full_name student.full_name
 json.city student.city
+json.current_city student.current_city
+json.current_state student.current_state
 json.grad_date student.grad_date
 json.current_industry student.current_industry
 json.skill_1 student.skill_1
@@ -20,5 +22,6 @@ json.linked_in student.linked_in
 json.quote student.quote
 json.seeking_employment student.seeking_employment
 json.active student.active
+json.about_me student.about_me
 
 
