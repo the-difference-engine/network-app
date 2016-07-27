@@ -123,11 +123,11 @@
           <% if @student.avatar.url.include?("aws") %>
             <div class="row">
               <div class="form-group col-md-12">
-                <%= f.label "Current Avatar" %><br />
+                <%= f.label :current_avatar, "Current Avatar" %><br />
                 <%= image_tag @student.avatar.thumb.url, class: "form-img-preview" %>
               </div>
               <div class="form-group col-md-12">
-                <%= f.check_box :remove_avatar %> &nbsp;<%= f.label :remove_avatar %>
+                <%= f.check_box :remove_avatar %> &nbsp;<%= f.label :remove_avatar, "Remove Avatar" %>
               </div>
             </div>
           <% end %>
@@ -145,16 +145,16 @@
           <div class="row">
             <div class="col-md-12 margin-btm-20">
               <%= f.label :interview_1 %><br />
-              <%= f.text_field :interview_1, class: "form-control" %>
+              <%= f.text_area :interview_1, class: "form-control" %>
             </div>
             <div class="col-md-12 margin-btm-20">
               <%= f.label :interview_2 %><br />
-              <%= f.text_field :interview_2, class: "form-control" %>
+              <%= f.text_area :interview_2, class: "form-control" %>
             </div>
           
              <div class="col-md-12 margin-btm-20">
               <%= f.label :interview_3 %><br />
-              <%= f.text_field :interview_3, class: "form-control" %>
+              <%= f.text_area :interview_3, class: "form-control" %>
             </div>
           </div>
         </div>
