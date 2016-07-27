@@ -49,45 +49,34 @@
       list-style-type: none;
     }
 
-    a.user-name {
-    font: 400 16px/1.5 Helvetica, Verdana, sans-serif;
-    color: #6d6d6d;
-      -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
-      -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
-      -o-transition: font-size 0.3s ease, background-color 0.3s ease;
-      -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
-      transition: font-size 0.3s ease, background-color 0.3s ease;
-    }
+   
 
     .cell-div {
       height: 35px;
       line-height: 34px;
     }
 
+    a.user-name {
+      color: #6d6d6d;
+      transition: none;
+    }
+
     a.btn {
       color: #6d6d6d;
+      transition: none;
     }
 
     tr:hover td {
       background: rgba(15, 175, 151, 0.6);
 
-      a.user-name {
-        font-size: 25px;
+      a.user-name { 
         color: #fff;
-
-        -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
-        -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
-        -o-transition: font-size 0.3s ease, background-color 0.3s ease;
-        -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
-        transition: font-size 0.3s ease, background-color 0.3s ease;
-      }
-
-      a.user-name:hover {
-        text-decoration: none;
+        transition: none;
       }
 
       a.btn:hover {
         color: $green;
+        transition: none;
       }
     }
   }
