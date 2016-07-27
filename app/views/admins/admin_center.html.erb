@@ -142,6 +142,16 @@
                                     <a href="#" class="user-name">{{ user.role }}</a>
                                   </div>
                                 </td>
+                                <td>
+                                  <div class="cell-div">
+                                    <a href="/{{ user.role.toLowerCase() }}s/{{ user.id }}/edit" class="btn btn-xs btn-default">Edit</a>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="cell-div">
+                                    <a href="/{{ user.role.toLowerCase() }}s/{{ user.id }}" data-method="delete" data-confirm="Are you sure you want to delete this account?" class="btn btn-xs btn-default">Delete</a>
+                                  </div>
+                                </td>
                               </tr>
                             </tbody>
                           </table>
