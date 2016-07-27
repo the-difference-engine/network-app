@@ -23,10 +23,6 @@ class AdminsController < ApplicationController
     end
   end
 
-  def show
-    @admin = Admin.find(params[:id])
-  end
-
   def edit
     @admin = Admin.find(params[:id])
   end
