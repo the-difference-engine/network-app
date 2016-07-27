@@ -78,5 +78,29 @@
       }
     }
   }
+
+  .page-tree-bg {
+    padding: 15px 0px;
+  }
+
+  .container.welcome-admin {
+    height: 84px;
+    line-height: 94px;
+  }
+
+  .admin-dash-image {
+    max-width: 84px;
+    border: 1px solid $light-gray;
+    padding: 3px;
+    float: left;  
+  }
+
+  .admin-name {
+    display: inline-block;
+  }
+
+  .welcome-admin {
+    text-align: center;
+  }
 }
 
