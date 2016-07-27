@@ -2,6 +2,6 @@ class Api::V1::StudentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @students = Student.all
+    @students = Student.where(active: true)
   end
 end
