@@ -17,156 +17,165 @@
             <h4 class="heading-mini">
                 Manage Users
             </h4>
+            <!--tabs start-->
+            <div class="tabs">
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#students" data-toggle="tab">Students</a></li>
+                <li class=""><a href="#employers" data-toggle="tab">Employers</a></li>
+                <li class=""><a href="#admins" data-toggle="tab">Admins</a></li>
+                <li class=""><a href="#pending" data-toggle="tab">Pending Invites ( {{ pendingUsers.length || 0 }} )</a></li>
+              </ul>
 
-                <!--tabs start-->
-                <div class="tabs">
-                  <ul class="nav nav-tabs">
-                    <li class="active"><a href="#students" data-toggle="tab">Students</a></li>
-                    <li class=""><a href="#employers" data-toggle="tab">Employers</a></li>
-                    <li class=""><a href="#admins" data-toggle="tab">Admins</a></li>
-                    <li class=""><a href="#pending" data-toggle="tab">Pending Invites ( {{ pendingUsers.length || 0 }} )</a></li>
-                  </ul>
-
-                  <!-- Tab panes -->
-                  <div class="tab-content">
-                    <div class="tab-pane active" id="students">
-                      <div class="tab-desc animated fadeIn">
+              <!-- Tab panes -->
+              <div class="tab-content">
+                <div class="tab-pane active" id="students">
+                  <div class="tab-desc animated fadeIn">
+                    <% if @students.any? %>
+                      <div class="admin-center-search">
+                        <div class="form-group">
+                          <input type="text" ng-model="searchStudentName" class="form-control admin-center-search-bar" placeholder="Search students">
+                        </div>
+                      </div>
+                      <table class="table table-hover">
+                        <tbody>
+                          <tr class="hover-list"ng-repeat="student in activeStudents | filter: { full_name: searchStudentName } | orderBy: 'last_name'">
+                            <td class="user-entries">
+                              <div class="cell-div">
+                                <a href="/students/{{ student.id }}" class="user-name">{{ student.full_name }}</a>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="cell-div">
+                                <a href="/students/{{ student.id }}/edit" class="btn btn-xs btn-default">Edit</a>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="cell-div">
+                                <a href="/students/{{ student.id }}" data-method="delete" data-confirm="Are you sure you want to delete '{{ student.name }}'?" class="btn btn-xs btn-default">Delete</a>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    <% else %>
+                      <div class="no-accounts"><h5><em>There are no active student accounts</em></h5></div>
+                    <% end %>
+                  </div> 
+                </div>
+                <div class="tab-pane" id="employers">
+                  <div class="tab-desc animated fadeIn">
+                    <% if @employers.any? %>
+                      <div class="admin-center-search">
+                        <div class="form-group">
+                          <input type="text" ng-model="searchEmployerName" class="form-control admin-center-search-bar" placeholder="Search employers">
+                        </div>
+                      </div>
+                      <table class="table table-hover">
+                        <tbody>
+                          <tr class="hover-list"ng-repeat="employer in employers | filter: { name: searchEmployerName } | orderBy: 'name'">
+                            <td class="user-entries">
+                              <div class="cell-div">
+                                <a href="/employers/{{ employer.id }}" class="user-name">{{ employer.name }}</a>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="cell-div">
+                                <a href="/employers/{{ employer.id }}/edit" class="btn btn-xs btn-default">Edit</a>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="cell-div">
+                                <a href="/employers/{{ employer.id }}" data-method="delete" data-confirm="Are you sure you want to delete '{{ employer.name }}'?" class="btn btn-xs btn-default">Delete</a>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    <% else %>
+                      <div class="no-accounts"><h5><em>There are no active employer accounts</em></h5></div>
+                    <% end %>
+                  </div> 
+                </div>
+                <div class="tab-pane" id="admins">
+                  <div class="tab-desc animated fadeIn">
+                    <div class="tab-desc animated fadeIn">
+                      <% if @admins.any? %>
                         <div class="admin-center-search">
                           <div class="form-group">
-                            <input type="text" ng-model="searchStudentName" class="form-control admin-center-search-bar" placeholder="Search students">
+                            <input type="text" ng-model="searchAdminName" class="form-control admin-center-search-bar" placeholder="Search admins">
                           </div>
                         </div>
                         <table class="table table-hover">
                           <tbody>
-                            <tr class="hover-list"ng-repeat="student in activeStudents | filter: { full_name: searchStudentName } | orderBy: 'last_name'">
+                            <tr class="hover-list"ng-repeat="admin in admins | filter: { full_name: searchAdminName } | orderBy: 'last_name'">
                               <td class="user-entries">
                                 <div class="cell-div">
-                                  <a href="/students/{{ student.id }}" class="user-name">{{ student.full_name }}</a>
+                                  <a href="/admins/{{ admin.id }}" class="user-name">{{ admin.full_name }}</a>
                                 </div>
                               </td>
                               <td>
                                 <div class="cell-div">
-                                  <a href="/students/{{ student.id }}/edit" class="btn btn-xs btn-default">Edit</a>
+                                  <a href="/admins/{{ admin.id }}/edit" class="btn btn-xs btn-default">Edit</a>
                                 </div>
                               </td>
                               <td>
                                 <div class="cell-div">
-                                  <a href="/students/{{ student.id }}" data-method="delete" data-confirm="Are you sure you want to delete '{{ student.name }}'?" class="btn btn-xs btn-default">Delete</a>
+                                  <a href="/admins/{{ admin.id }}" data-method="delete" data-confirm="Are you sure you want to delete '{{ admin.name }}'?" class="btn btn-xs btn-default">Delete</a>
                                 </div>
                               </td>
                             </tr>
                           </tbody>
                         </table>
-                      </div> 
-                    </div>
-                    <div class="tab-pane" id="employers">
-                      <div class="tab-desc animated fadeIn">
-                        <div class="admin-center-search">
-                          <div class="form-group">
-                            <input type="text" ng-model="searchEmployerName" class="form-control admin-center-search-bar" placeholder="Search employers">
-                          </div>
-                        </div>
-                        <table class="table table-hover">
-                          <tbody>
-                            <tr class="hover-list"ng-repeat="employer in employers | filter: { name: searchEmployerName } | orderBy: 'name'">
-                              <td class="user-entries">
-                                <div class="cell-div">
-                                  <a href="/employers/{{ employer.id }}" class="user-name">{{ employer.name }}</a>
-                                </div>
-                              </td>
-                              <td>
-                                <div class="cell-div">
-                                  <a href="/employers/{{ employer.id }}/edit" class="btn btn-xs btn-default">Edit</a>
-                                </div>
-                              </td>
-                              <td>
-                                <div class="cell-div">
-                                  <a href="/employers/{{ employer.id }}" data-method="delete" data-confirm="Are you sure you want to delete '{{ employer.name }}'?" class="btn btn-xs btn-default">Delete</a>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div> 
-                    </div>
-                    <div class="tab-pane" id="admins">
-                      <div class="tab-desc animated fadeIn">
-                        <div class="tab-desc animated fadeIn">
-                          <div class="admin-center-search">
-                            <div class="form-group">
-                              <input type="text" ng-model="searchAdminName" class="form-control admin-center-search-bar" placeholder="Search admins">
-                            </div>
-                          </div>
-                          <table class="table table-hover">
-                            <tbody>
-                              <tr class="hover-list"ng-repeat="admin in admins | filter: { full_name: searchAdminName } | orderBy: 'last_name'">
-                                <td class="user-entries">
-                                  <div class="cell-div">
-                                    <a href="/admins/{{ admin.id }}" class="user-name">{{ admin.full_name }}</a>
-                                  </div>
-                                </td>
-                                <td>
-                                  <div class="cell-div">
-                                    <a href="/admins/{{ admin.id }}/edit" class="btn btn-xs btn-default">Edit</a>
-                                  </div>
-                                </td>
-                                <td>
-                                  <div class="cell-div">
-                                    <a href="/admins/{{ admin.id }}" data-method="delete" data-confirm="Are you sure you want to delete '{{ admin.name }}'?" class="btn btn-xs btn-default">Delete</a>
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div> 
-                      </div>
-                    </div>
-                    <div class="tab-pane" id="pending">
-                      <div class="tab-desc animated fadeIn">
-                        <div class="tab-desc animated fadeIn">
-                        <% if @pending_invites.any? %>
-                          <div class="admin-center-search">
-                            <div class="form-group">
-                              <input type="text" ng-model="searchUserEmail" class="form-control admin-center-search-bar" placeholder="Search pending invites">
-                            </div>
-                          </div>
-                          <table class="table table-hover">
-                            <tbody>
-                              <tr class="hover-list"ng-repeat="user in pendingUsers | filter: { email: searchUserEmail } | orderBy: 'role'">
-                                <td class="user-entries">
-                                  <div class="cell-div">
-                                    <a href="#" class="user-name">{{ user.email }}</a>
-                                  </div>
-                                </td>
-                                <td class="user-entries">
-                                  <div class="cell-div">
-                                    <a href="#" class="user-name">{{ user.role }}</a>
-                                  </div>
-                                </td>
-                                <td>
-                                  <div class="cell-div">
-                                    <a href="/{{ user.role.toLowerCase() }}s/{{ user.id }}/edit" class="btn btn-xs btn-default">Edit</a>
-                                  </div>
-                                </td>
-                                <td>
-                                  <div class="cell-div">
-                                    <a href="/{{ user.role.toLowerCase() }}s/{{ user.id }}" data-method="delete" data-confirm="Are you sure you want to delete this account?" class="btn btn-xs btn-default">Delete</a>
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        <% else %>
-                          <div class="no-accounts"><h5><em>There no pending invitations</em></h5></div>
-                        <% end %>
-                        </div> 
-                      </div>
-                    </div>
+                      <% else %>
+                        <div class="no-accounts"><h5><em>There are no active admin accounts</em></h5></div>
+                      <% end %>
+                    </div> 
                   </div>
                 </div>
-                <!--tabs end-->
-            
-              
+                <div class="tab-pane" id="pending">
+                  <div class="tab-desc animated fadeIn">
+                    <div class="tab-desc animated fadeIn">
+                    <% if @pending_invites.any? %>
+                      <div class="admin-center-search">
+                        <div class="form-group">
+                          <input type="text" ng-model="searchUserEmail" class="form-control admin-center-search-bar" placeholder="Search pending invites">
+                        </div>
+                      </div>
+                      <table class="table table-hover">
+                        <tbody>
+                          <tr class="hover-list"ng-repeat="user in pendingUsers | filter: { email: searchUserEmail } | orderBy: 'role'">
+                            <td class="user-entries">
+                              <div class="cell-div">
+                                <a href="#" class="user-name">{{ user.email }}</a>
+                              </div>
+                            </td>
+                            <td class="user-entries">
+                              <div class="cell-div">
+                                <a href="#" class="user-name">{{ user.role }}</a>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="cell-div">
+                                <a href="/{{ user.role.toLowerCase() }}s/{{ user.id }}/edit" class="btn btn-xs btn-default">Edit</a>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="cell-div">
+                                <a href="/{{ user.role.toLowerCase() }}s/{{ user.id }}" data-method="delete" data-confirm="Are you sure you want to delete this account?" class="btn btn-xs btn-default">Delete</a>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    <% else %>
+                      <div class="no-accounts"><h5><em>There are no pending invitations</em></h5></div>
+                    <% end %>
+                    </div> 
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--tabs end-->  
           </div>
         </div>
       </div><!--left sidebar page end-->
