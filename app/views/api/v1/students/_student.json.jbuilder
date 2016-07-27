@@ -2,6 +2,7 @@ json.id student.id
 json.first_name student.first_name
 json.last_name student.last_name
 json.full_name student.full_name
+json.email student.email
 json.city student.city
 json.current_city student.current_city
 json.current_state student.current_state
@@ -23,5 +24,6 @@ json.quote student.quote
 json.seeking_employment student.seeking_employment
 json.active student.active
 json.about_me student.about_me
+
 
 
