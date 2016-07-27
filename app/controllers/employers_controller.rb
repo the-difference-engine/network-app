@@ -96,6 +96,7 @@ class EmployersController < ApplicationController
       params.require(:employer).permit(
         :name,
         :image,
+        :remove_image,
         :description,
         :rep_first_name,
         :rep_last_name,

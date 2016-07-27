@@ -44,6 +44,11 @@
                                 <a href="/students/{{ student.id }}" class="user-name">{{ student.full_name }}</a>
                               </div>
                             </td>
+                            <td class="user-entries">
+                              <div class="cell-div">
+                                <p>{{ student.email }}</p>
+                              </div>
+                            </td>
                             <td>
                               <div class="cell-div">
                                 <a href="/students/{{ student.id }}/edit" class="btn btn-xs btn-default">Edit</a>
@@ -78,6 +83,11 @@
                                 <a href="/employers/{{ employer.id }}" class="user-name">{{ employer.name }}</a>
                               </div>
                             </td>
+                            <td class="user-entries">
+                              <div class="cell-div">
+                                <p>{{ employer.email }}</p>
+                              </div>
+                            </td>
                             <td>
                               <div class="cell-div">
                                 <a href="/employers/{{ employer.id }}/edit" class="btn btn-xs btn-default">Edit</a>
@@ -110,7 +120,12 @@
                             <tr class="hover-list"ng-repeat="admin in admins | filter: { full_name: searchAdminName } | orderBy: 'last_name'">
                               <td class="user-entries">
                                 <div class="cell-div">
-                                  <a href="/admins/{{ admin.id }}" class="user-name">{{ admin.full_name }}</a>
+                                  <p>{{ admin.full_name }}</p>
+                                </div>
+                              </td>
+                              <td class="user-entries">
+                                <div class="cell-div">
+                                  <p>{{ admin.email }}</p>
                                 </div>
                               </td>
                               <td>
@@ -146,12 +161,12 @@
                           <tr class="hover-list"ng-repeat="user in pendingUsers | filter: { email: searchUserEmail } | orderBy: 'role'">
                             <td class="user-entries">
                               <div class="cell-div">
-                                <a href="#" class="user-name">{{ user.email }}</a>
+                                <p>{{ user.email }}</p>
                               </div>
                             </td>
                             <td class="user-entries">
                               <div class="cell-div">
-                                <a href="#" class="user-name">{{ user.role }}</a>
+                                <p>{{ user.role }}</p>
                               </div>
                             </td>
                             <td>

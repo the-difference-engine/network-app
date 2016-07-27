@@ -23,6 +23,10 @@ class AdminsController < ApplicationController
     end
   end
 
+  def show
+    redirect_to admin_center_path
+  end
+
   def edit
     @admin = Admin.find(params[:id])
   end
@@ -82,6 +86,7 @@ class AdminsController < ApplicationController
         :first_name,
         :last_name,
         :avatar,
+        :remove_avatar,
         :active,
         :email,
         :password,
