@@ -42,172 +42,70 @@
   }
 }
 
-
-// .list-container {
-//   ul.hoverlist {
-//     width: 490px;
-//     height: 500px;
-//     overflow-y: auto;
-//   }
-
-//   div.list-container {
-//     width: 500px;
-//     height: 560px;
-//     margin: 10px;
-//   }
-   
-//   h2 {
-//     font: 400 40px/1.5 Helvetica, Verdana, sans-serif;
-//     margin: 0;
-//     padding: 0;
-//     text-align: center;
-//   }
-   
-//   ul {
-//     list-style-type: none;
-//     margin: 0;
-//     padding: 10px;
-//   }
-   
-//   li {
-//     font: 400 18px/1.5 Helvetica, Verdana, sans-serif;
-//     border-bottom: 1px solid #ccc;
-//     width: 476px;
-//   }
-   
-//   li:last-child {
-//     border: none;
-//   }
-   
-//   li a {
-//     text-decoration: none;
-//     color: #000;
-//     display: block;
-//     width: 476px;
-//     text-align: left;
-//     padding: 10px;
-//     border-radius: 5px;
-
-//     -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
-//     -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
-//     -o-transition: font-size 0.3s ease, background-color 0.3s ease;
-//     -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
-//     transition: font-size 0.3s ease, background-color 0.3s ease;
-//   }
-   
-//   li a:hover {
-//     font-size: 30px;
-//     background: #f6f6f6;
-//     text-decoration: none;
-//     text-align: left;
-//   }
-// }
-
 #admin-center {
-  #tab-nav {
-    margin: 20px 0;
-  }
-
-  .tab-content {
-    background: #eee;
-    width: 500px;
-    border: 2px solid #eee;
-    border-radius: 0 5px 5px 5px;
-  }
-
-  .nav {
-    width: 500px;
-    border: none;
-  }
-
-  .nav li a:hover {
-    color: #000; 
-    background: #f6f6f6;  
-  }
-
-  .nav a {
-    color: #fff;
-    font-size: 18px;
-    text-transform: uppercase;
-    font-family: Helvetica, Verdana, sans-serif;
-  }
-
-  .nav li a {
-    background: #000;  
-  }
-
-  .nav li.active a {
-    color: #000;
-    background: #eee;  
-  }
-
-  .nav-tabs a {
-    border: none;
-  }
-
-  ul.hoverlist {
-    text-decoration: none;
-    list-style-type: none;
-    height: 530px;
-    overflow-y: auto;
-  }
-
-  li.user-entries {
-    font: 400 18px/1.5 Helvetica, Verdana, sans-serif;
-    border-bottom: 1px solid #ccc;
-    width: 485px;
-    height: 60px;
-    margin-left: -35px;
-    padding-right: 5px;
-    line-height: 55px;
-
-    a.user-name {
-      color: #000;
-      padding: 10px;
-
-      -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
-      -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
-      -o-transition: font-size 0.3s ease, background-color 0.3s ease;
-      -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
-      transition: font-size 0.3s ease, background-color 0.3s ease;
-    }
-
-    .user-btn {
-      float: right;
-      margin-top: 15px;
-      margin-left: 5px;
-    }
-  }
-
-  li.user-entries:hover {
-    background: #f6f6f6;
-
-    a.user-name {
-      font-size: 30px;
-      color: #000;
-
-      -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
-      -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
-      -o-transition: font-size 0.3s ease, background-color 0.3s ease;
-      -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
-      transition: font-size 0.3s ease, background-color 0.3s ease;
-    }
-
-    a.user-name:hover {
+  .table {
+    tr.hoverlist {
       text-decoration: none;
+      list-style-type: none;
+    }
+    
+    .cell-div {
+      height: 35px;
+      line-height: 34px;
+    }
+
+    a.user-name {
+      color: #6d6d6d;
+      transition: none;
+    }
+
+    a.btn {
+      color: #6d6d6d;
+      transition: none;
+    }
+
+    tr:hover td {
+      background: rgba(15, 175, 151, 0.6);
+
+      a.user-name { 
+        color: #fff;
+        transition: none;
+      }
+
+      a.btn:hover {
+        color: $green;
+        transition: none;
+      }
+
+      p {
+        color: #fff;
+        transition: none;
+      }
     }
   }
 
-  .admin-center-search-bar {
-    width: 475px;
-    height: 50px;
-    margin: 12px 0 10px 5px;
+  .page-tree-bg {
+    padding: 15px 0px;
   }
 
-  .admin-center-search-li {
-    border-bottom: 1px solid #ccc;
-    width: 485px;
-    margin-left: -35px;
+  .container.welcome-admin {
+    height: 84px;
+    line-height: 94px;
+  }
+
+  .admin-dash-image {
+    max-width: 84px;
+    border: 1px solid $light-gray;
+    padding: 3px;
+    float: left;  
+  }
+
+  .admin-name {
+    display: inline-block;
+  }
+
+  .welcome-admin {
+    text-align: center;
   }
 }
 

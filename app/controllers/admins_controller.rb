@@ -24,7 +24,7 @@ class AdminsController < ApplicationController
   end
 
   def show
-    @admin = Admin.find(params[:id])
+    redirect_to admin_center_path
   end
 
   def edit
@@ -73,9 +73,10 @@ class AdminsController < ApplicationController
   end
 
   def admin_center
-    @employers = Employer.where(active: true).order(:name)
     @students = Student.where(active: true).order(:first_name)
+    @employers = Employer.where(active: true).order(:name)
     @admins = Admin.where(active: true).order(:first_name)
+    @pending_invites = Employer.where(active: false) + Student.where(active: false) + Admin.where(active: false)
   end
 
   private
@@ -85,6 +86,7 @@ class AdminsController < ApplicationController
         :first_name,
         :last_name,
         :avatar,
+        :remove_avatar,
         :active,
         :email,
         :password,

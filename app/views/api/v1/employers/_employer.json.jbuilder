@@ -14,3 +14,4 @@ json.hiring_timeline employer.hiring_timeline
 json.number_of_positions employer.number_of_positions
 json.company_size employer.company_size
 json.active employer.active
+json.role employer.class.name

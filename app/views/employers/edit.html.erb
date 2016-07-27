@@ -78,16 +78,37 @@
               <%= f.select(:state, options_for_select(us_states, @employer.state), :prompt => "Select State", class: "form-control" ) %>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6 margin-btm-20">
-              <%= f.label :website %><br />
-              <%= f.text_field :website, class: "form-control" %>
+          <% if @employer.image.url && @employer.image.url.include?("aws") %>
+            <div class="row">
+              <div class="col-md-12 margin-btm-20">
+                <%= f.label :website %><br />
+                <%= f.text_field :website, class: "form-control" %>
+              </div>
+              <div class="form-group col-md-12">
+                <%= f.label :current_image, "Current Logo" %><br />
+                <%= image_tag @employer.image.thumb.url, class: "form-img-preview" %>
+              </div>
+              <div class="form-group col-md-12">
+                <%= f.check_box :remove_image %> &nbsp;<%= f.label :remove_image, "Remove Logo" %>
+              </div>
+              <div class="form-group col-md-12">
+                <%= f.label :image, "Change Logo" %><br />
+                <%= f.file_field :image, class: "form-control", id: "control" %>
+              </div>
             </div>
-            <div class="col-md-6 margin-btm-20">
-              <%= f.label :image, "Company Logo" %><br />
-              <%= f.file_field :image, class: "form-control" %>
+          <% else %>
+            <div class="row">
+              <div class="col-md-6 margin-btm-20">
+                <%= f.label :website %><br />
+                <%= f.text_field :website, class: "form-control" %>
+              </div>
+              <div class="col-md-6 margin-btm-20">
+                <%= f.label :image, "Upload Company Logo" %><br />
+                <%= f.file_field :image, class: "form-control" %>
+              </div>
             </div>
-          </div>
+          <% end %>
+
           <div class="row">
             <div class="col-md-12 margin-btm-20">
               <%= f.label "Industry" %><br />

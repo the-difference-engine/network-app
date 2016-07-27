@@ -76,6 +76,7 @@ class ProjectsController < ApplicationController
         :website,
         :screencast,
         :project_image,
+        :remove_project_image,
         technology_ids: []
       )
     end

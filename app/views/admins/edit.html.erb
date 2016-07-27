@@ -25,12 +25,6 @@
             </div>
             <div class="row">
               <div class="form-group col-md-12">
-                <%= f.label :avatar %><br />
-                <%= f.file_field :avatar, class: "form-control" %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group col-md-12">
                 <%= f.label :email %><br />
                 <%= f.email_field :email, class: "form-control" %>
               </div>
@@ -47,6 +41,30 @@
                 <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
               </div>
             </div>
+            <% if @admin.avatar.url && @admin.avatar.url.include?("aws") %>
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <%= f.label "Current Avatar" %><br />
+                  <%= image_tag @admin.avatar.thumb.url, class: "form-img-preview" %>
+                </div>
+                <div class="form-group col-md-12">
+                  <%= f.check_box :remove_avatar %> &nbsp;<%= f.label :remove_avatar %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <%= f.label :avatar, "Change Avatar" %><br />
+                  <%= f.file_field :avatar, class: "form-control", id: "control" %>
+                </div>
+              </div><br>
+            <% else %>
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <%= f.label :avatar, "Upload Avatar" %><br />
+                  <%= f.file_field :avatar, class: "form-control", id: "control" %>
+                </div>
+              </div><br>
+            <% end %>
             <div class="row">
               <div class="text-right submit-btn col-md-12">
                 <%= f.submit "Update", class: "btn theme-btn-color" %>
@@ -58,6 +76,8 @@
     </div>
   </div><!--login page container end-->
 </div>
+
+<%= render "shared/alerts_checkbox_radio_scripts" %>
 
 
 

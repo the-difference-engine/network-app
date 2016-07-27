@@ -46,7 +46,9 @@
                 <div class="col-md-6 services-text">
                   <h4 class="heading-mini">ACLTC: <%= @student.city || "Unavailable" %></h4>
                   <h5 class="student-grad-date">Graduated: <%= @student.friendly_grad_date || "Unavailable" %></h5>
-                  <a href="<%= @student.resume.url %>"><button class="btn btn-lg theme-btn-color resume-btn"><i class="ion-document-text"></i> &nbsp;Resume</button></a>
+                  <% if @student.resume.url && @student.resume.url.include?("aws") %>
+                    <a href="<%= @student.resume.url %>"><button class="btn btn-lg theme-btn-color resume-btn"><i class="ion-document-text"></i> &nbsp;Resume</button></a>
+                  <% end %>
                 </div><!--services 1 text-->
               </div><!--services 1 row-->
             </div>
