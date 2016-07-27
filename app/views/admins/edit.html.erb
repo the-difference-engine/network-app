@@ -41,7 +41,7 @@
                 <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
               </div>
             </div>
-            <% if @admin.avatar.url.include?("aws") %>
+            <% if @admin.avatar.url && @admin.avatar.url.include?("aws") %>
               <div class="row">
                 <div class="form-group col-md-12">
                   <%= f.label "Current Avatar" %><br />
@@ -51,13 +51,20 @@
                   <%= f.check_box :remove_avatar %> &nbsp;<%= f.label :remove_avatar %>
                 </div>
               </div>
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <%= f.label :avatar, "Change Avatar" %><br />
+                  <%= f.file_field :avatar, class: "form-control", id: "control" %>
+                </div>
+              </div><br>
+            <% else %>
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <%= f.label :avatar, "Upload Avatar" %><br />
+                  <%= f.file_field :avatar, class: "form-control", id: "control" %>
+                </div>
+              </div><br>
             <% end %>
-            <div class="row">
-              <div class="form-group col-md-12">
-                <%= f.label :avatar, "Change Avatar" %><br />
-                <%= f.file_field :avatar, class: "form-control", id: "control" %>
-              </div>
-            </div><br>
             <div class="row">
               <div class="text-right submit-btn col-md-12">
                 <%= f.submit "Update", class: "btn theme-btn-color" %>

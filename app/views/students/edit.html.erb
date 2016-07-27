@@ -86,12 +86,29 @@
               <%= f.label :seeking_employment, "I'm currently seeking employment!" %>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-12 margin-btm-20">
-              <%= f.label :resume, "Resume (upload as pdf)" %><br />
-              <%= f.file_field :resume, class: "form-control" %>
+          <% if @student.resume.url && @student.resume.url.include?("aws") %>
+            <div class="row">
+              <div class="form-group col-md-12">     
+                <%= link_to "View Current Resume", @student.resume.url, target: "_blank", class: "btn theme-btn-color" %>
+              </div>
+              <div class="form-group col-md-12">
+                <%= f.check_box :remove_resume %> &nbsp;<%= f.label :remove_resume, "Remove current resume" %>
+              </div>
             </div>
-          </div>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <%= f.label :resume, "Change Resume (pdf)" %><br />
+                <%= f.file_field :resume, class: "form-control", id: "control" %>
+              </div>
+            </div>
+          <% else %>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <%= f.label :resume, "Upload Resume (pdf)" %><br />
+                <%= f.file_field :resume, class: "form-control", id: "control" %>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -130,13 +147,20 @@
                 <%= f.check_box :remove_avatar %> &nbsp;<%= f.label :remove_avatar, "Remove Avatar" %>
               </div>
             </div>
-          <% end %>
-          <div class="row">
-            <div class="form-group col-md-12">
-              <%= f.label :avatar, "Change Avatar" %><br />
-              <%= f.file_field :avatar, class: "form-control", id: "control" %>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <%= f.label :avatar, "Change Avatar" %><br />
+                <%= f.file_field :avatar, class: "form-control", id: "control" %>
+              </div>
             </div>
-          </div>
+          <% else %>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <%= f.label :avatar, "Upload Avatar" %><br />
+                <%= f.file_field :avatar, class: "form-control", id: "control" %>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="my-login-form col-md-6">
