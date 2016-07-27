@@ -124,6 +124,7 @@
                     <div class="tab-pane" id="pending">
                       <div class="tab-desc animated fadeIn">
                         <div class="tab-desc animated fadeIn">
+                        <% if @pending_invites.any? %>
                           <div class="admin-center-search">
                             <div class="form-group">
                               <input type="text" ng-model="searchUserEmail" class="form-control admin-center-search-bar" placeholder="Search pending invites">
@@ -155,6 +156,9 @@
                               </tr>
                             </tbody>
                           </table>
+                        <% else %>
+                          <div class="no-accounts"><h5><em>There no pending invitations</em></h5></div>
+                        <% end %>
                         </div> 
                       </div>
                     </div>
