@@ -24,6 +24,9 @@ json.quote student.quote
 json.seeking_employment student.seeking_employment
 json.active student.active
 json.about_me student.about_me
+json.role student.class.name
+
+
 
 
 

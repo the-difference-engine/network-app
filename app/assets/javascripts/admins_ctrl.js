@@ -4,6 +4,8 @@
   angular.module("app").controller("adminsCtrl", ['$scope', '$http', function($scope, $http){
 
     $scope.setupUserSearch = function(){
+      $scope.pendingUsers = [];
+
       $http.get('/api/v1/employers.json').then(function(response){
         $scope.employers = response.data;
         $scope.activeEmployers = [];
@@ -15,6 +17,7 @@
             $scope.activeEmployers.push(employer);
           } else  {
             $scope.pendingEmployers.push(employer);
+            $scope.pendingUsers.push(employer);
           }
         }
       });
@@ -30,6 +33,7 @@
             $scope.activeStudents.push(student);
           } else  {
             $scope.pendingStudents.push(student);
+            $scope.pendingUsers.push(student);
           }
         }
       });
@@ -45,6 +49,7 @@
             $scope.activeAdmins.push(admin);
           } else  {
             $scope.pendingAdmins.push(admin);
+            $scope.pendingUsers.push(admin);
           }
         }
       });
