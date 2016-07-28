@@ -1,78 +1,203 @@
-<div class="container" id="employer-show">
-  <div class="row">
-    <div id="employer-show-img" class="col-md-6">
-      <% if @employer.image.model["image"] =~ /robo/ %>
-        <%= image_tag(@employer.image.model["image"]) %>
-      <% else %>
-        <%= image_tag(@employer.image.index_square.url) %>
-      <% end %>
-      <h1><%= @employer.name %></h1>
-      <p><%= @employer.city %>, <%= @employer.state %> </p>
-      <% if admin_signed_in? || employer_signed_in? && current_employer.id == @employer.id %>
-        <%= link_to 'Edit Profile', edit_employer_path(@employer), class: "btn btn-default" %>
-        <%= link_to 'Delete', employer_path(@employer), method: :delete, data: { confirm: "Are you sure you want to delete '#{@employer.name}'"}, class: "btn btn-default" %>
-      <% end %>
+<div class="employer-show">
+  <section id="content-region-3" class="padding-40 page-tree-bg">
+    <div class="container">
+      <h3 class="page-tree-text"><%= @employer.name %></h3>
     </div>
+  </section><!--page-tree end here-->
 
-    <div id="employer-details" class="col-md-6">
-      <h3>About Us</h3>
-      <p><%= @employer.description %></p>
-  
-      <h3>Contact</h3>
-      <div id="rep-contact">
-        <p><em><%= @employer.rep_full_name %></em><br>
-        <em><%= @employer.rep_email %></em><br>
-        <em><%= @employer.rep_phone %></em></p>
-        <% if @employer.website != "" %>
-          <p><%= link_to 'Visit Our Website', @employer.normalized_website, target: "_blank" %></p>
-        <% end %>
+  <div class="space-70"></div>
+  <div class="container portfolio-details">
+    <div class="row">
+      <div class="col-md-8 portfolio-single-slide margin-btm-40">
+        <div class="flexslider">
+          <%= image_tag @employer.image.large.url, class: "img-responsive" %>
+        </div><!--flex slider-->
+      
+        <div class="tabs"><!--tabs start-->
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#description" data-toggle="tab"><h4 class="heading-mini tab-name">Description</h4></a></li>
+            <% if @employer.positions.any? || @employer.position_types.any? || @employer.salary_ranges.any? || @employer.hiring_fields? %>
+              <li class=""><a href="#positions" data-toggle="tab"><h4 class="heading-mini tab-name">Positions</h4></a></li>
+            <% end %>
+            <% if @employer.technologies.any? %>
+              <li class=""><a href="#tech" data-toggle="tab"><h4 class="heading-mini tab-name">Technologies</h4></a></li>
+            <% end %>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="tab-pane description-pane active" id="description">  
+              <div class="tab-desc animated fadeIn">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="col-md-6">
+                      <h4 class="heading-mini tab-inner">About Our Company</h4><hr>
+                    </div>
+                    <div class="col-md-12">
+                      <h5><%= @employer.description %></h5>
+                    </div>
+                    <% unless @employer.company_size == nil || @employer.company_size == "" %>
+                      <div class="col-md-6"><br>
+                        <h4 class="heading-mini tab-inner">Company Size</h4><hr>
+                      </div>
+                      <div class="col-md-12">
+                        <h5>We currently have about <%= @employer.company_size %> employees</h5>
+                      </div>
+                    <% end %>
+                  </div>
+                </div><br>
+
+                <% if @employer.industries.any? %>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="col-md-6">
+                        <h4 class="heading-mini tab-inner">Industries We Work In</h4><hr>
+                      </div>
+                      <% @industries.each do |industry| %>
+                        <div class="col-md-12">
+                          <h5><%= industry.name %></h5>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+              </div> 
+            </div>
+
+            <div class="tab-pane description-pane" id="positions">  
+              <div class="tab-desc animated fadeIn">
+                <% if @employer.hiring_fields? %>
+                  <div class="row">
+                    <% unless @employer.number_of_positions == nil || @employer.number_of_positions == "" %>
+                      <div class="col-md-6">
+                        <div class="col-md-12">
+                          <h4 class="heading-mini tab-inner">Number of Open Positions</h4><hr>
+                        </div>
+                        <div class="col-md-12">
+                          <h5>We currently have <%= @employer.number_of_positions %> open positions</h5><br>
+                        </div>
+                      </div>
+                    <% end %>
+                    <% unless @employer.hiring_timeline == nil || @employer.hiring_timeline == "" %>
+                      <div class="col-md-6">
+                        <div class="col-md-12">
+                          <h4 class="heading-mini tab-inner">How Soon Are We Hiring?</h4><hr>
+                        </div>
+                        <div class="col-md-12">
+                          <h5><%= @employer.hiring_timeline %></h5><br>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                <% end %>
+                <% if @employer.positions.any? || @employer.position_types.any? || @employer.salary_ranges.any? %>
+                  <% if @employer.positions.any? || @employer.position_types.any? %>
+                    <div class="row">
+                      <% if @employer.positions.any? %>
+                        <div class="col-md-6">
+                          <div class="col-md-12">
+                            <h4 class="heading-mini tab-inner">Positions We're Looking To Fill</h4><hr>
+                          </div>
+                          <% @positions.each do |position| %>
+                            <div class="col-md-12">
+                              <h5><%= position.name %></h5>
+                            </div>
+                          <% end %><br>
+                        </div>
+                      <% end %>
+
+                      <% if @employer.position_types.any? %>
+                        <div class="col-md-6">
+                          <div class="col-md-12">
+                            <h4 class="heading-mini tab-inner">Position Types</h4><hr>
+                          </div>
+                          <% @position_types.each do |position_type| %>
+                            <div class="col-md-12">
+                              <h5><%= position_type.name %></h5>
+                            </div>
+                          <% end %>
+                        </div>
+                      <% end %>
+                    </div><br>
+                  <% end %>
+
+                  <% if @employer.salary_ranges.any? %>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="col-md-12">
+                          <h4 class="heading-mini tab-inner">Salary Ranges</h4><hr>
+                        </div>
+                        <% @salary_ranges.each do |salary_range| %>
+                          <div class="col-md-12">
+                            <h5><%= salary_range.salary_range %></h5>
+                          </div>
+                        <% end %>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div> 
+            </div>
+
+            <% if @employer.technologies.any? %>
+              <div class="tab-pane description-pane" id="tech">  
+                <div class="tab-desc animated fadeIn">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="col-md-6">
+                        <h4 class="heading-mini tab-inner">Technolgies We Work With</h4><hr>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <% @technologies.each do |tech| %>
+                        <div class="col-md-6">
+                          <h5><%= tech.name %></h5>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            <% end %>
+          </div>
+        </div><!--tabs end-->
+      </div>
+
+      <div class="col-md-4"><hr>
+        <div class="portfolio-side-bar">
+          <% if admin_signed_in? || employer_signed_in? %>
+            <div class="sidebar-box control-buttons">
+              <a href="/employers/<%= @employer.id %>/edit" class="btn btn-lg theme-btn-color"><i class="ion-edit"></i></a> 
+              <a href="/employers/<%= @employer.id %>" data-method="delete" data-confirm="Are you sure you want to delete '<%= @employer.name %>'?" class="btn btn-lg theme-btn-color"><i class="ion-trash-a"></i></a> 
+            </div><hr>
+          <% end %>
+
+          <% if @employer.currently_hiring %>
+            <div class="sidebar-box">
+              <button class="btn btn-lg theme-btn-color employment-btn">We're Hiring!</button>
+            </div><hr>
+          <% else %>
+            <div class="sidebar-box">
+              <button class="btn btn-lg theme-btn-color employment-btn">Not Currently Hiring</button>
+            </div><hr>
+          <% end %>
+
+          <div class="sidebar-box">
+            <h4>Where We Are Located</h4>
+            <ul class="cat-list">  
+               <li><a href="#" class="hover-color"><%= @employer.location %></a></li>    
+            </ul>
+          </div><hr>
+
+          <% unless @employer.website == nil || @employer.website == "" %>
+            <div class="sidebar-box">
+              <ul class=" list-inline social-btn">
+                <li><a href="<%= @employer.normalized_website %>" target="_blank"><i class="ion-android-desktop" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Check Out Our Website" target="_blank"></i></a></li>
+              </ul>
+            </div><hr>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div> 
-  <% if @employer.positions.any? %>
-    <div class="row">
-      <h2>Positions Available</h2>
-      <% @positions.each do |position| %>
-        <p><%= position.name %></p>
-      <% end %>
-    </div>
-  <% end %>
-  <br>
-  <% if @employer.position_types.any? %>
-    <div class="row">
-      <h2>Position Types</h2>
-      <% @position_types.each do |position_type| %>
-        <p><%= position_type.name %></p>
-      <% end %>
-    </div>
-  <% end %>
-  <br>
-  <% if @employer.salary_ranges.any? %>
-    <div class="row">
-      <h2>Salary Range</h2>
-      <% @salary_ranges.each do |salary_range| %>
-        <p><%= salary_range.salary_range %></p>
-      <% end %>
-    </div>
-  <% end %>
-  <br>
-  <% if @employer.industries.any? %>
-    <div class="row">
-      <h2>Industries</h2>
-      <% @industries.each do |industry| %>
-        <p><%= industry.name %></p>
-      <% end %>
-    </div>
-  <% end %>
-  <br>
-  <% if @employer.technologies.any? %>
-    <div class="row">
-      <h2>Technologies</h2>
-      <% @technologies.each do |technology| %>
-        <p><%= technology.name %></p>
-      <% end %>
-    </div>
-  <% end %>
-
+  </div><!--portfolio single container end-->
 </div>
-

@@ -5,7 +5,7 @@ class Admin < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseInvitable::Inviter
 
-  mount_uploader :avatar, UserFileUploader
+  mount_uploader :avatar, AvatarUploader
   validates :first_name, :last_name, presence: true
 
   def full_name

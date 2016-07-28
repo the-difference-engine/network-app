@@ -1,8 +1,8 @@
 # encoding: utf-8
 
-class UserFileUploader < CarrierWave::Uploader::Base
+class ImageUploader < CarrierWave::Uploader::Base
 
-  # Include RMagick or MiniMagick support:
+   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
@@ -77,7 +77,7 @@ class UserFileUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    'no_avatar_1000.png'
+    'no_employer_image_1000.png'
   end
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
