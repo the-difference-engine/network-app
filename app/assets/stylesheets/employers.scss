@@ -43,24 +43,49 @@
   }
 }
 
-#employer-show {
-  #employer-show-img {
-    width: 400px;
-    text-align: center;
-    margin: auto;
-    margin-bottom: 40px;
+.employer-show {
 
-    img {
-      max-width: 300px;
-      border: 2px solid #bbb;
-    }
-  }
-  #employer-details {
-    width: 500px;
+  .img-responsive {
     margin: auto;
-    // margin-top: 30px;
+  }
+
+  h4.heading-mini {
+    margin-bottom: -2px;
+  }
+
+  .heading-mini.tab-inner {
+    text-transform: none;
+  }
+
+  .description-pane > .active {
+    display: block;
+  }
+
+  .sidebar-box h4 {
+    border-bottom: 5px solid $green;
+    display: table;
+    margin: auto;
+    margin-bottom: 24px;
+  }
+
+  .cat-list li {
     text-align: center;
-  
+  }
+
+  .social-btn li a i {
+    font-size: 20px;
+  }
+
+  .sidebar-box {
+    text-align: center;
+  }
+
+  .project-checkout {
+    margin-bottom: 25px;
+  }
+
+  .control-buttons i {
+    font-size: 20px;
   }
 }
 

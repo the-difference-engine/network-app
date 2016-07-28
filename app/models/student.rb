@@ -4,7 +4,7 @@ class Student < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  mount_uploader :avatar, UserFileUploader
+  mount_uploader :avatar, AvatarUploader
   mount_uploader :resume, ResumeUploader
   
   belongs_to :follow_up_list

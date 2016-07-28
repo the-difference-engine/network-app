@@ -1,8 +1,8 @@
 # encoding: utf-8
 
-class UserFileUploader < CarrierWave::Uploader::Base
+class AvatarUploader < CarrierWave::Uploader::Base
 
-  # Include RMagick or MiniMagick support:
+   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 

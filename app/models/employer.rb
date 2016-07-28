@@ -4,7 +4,7 @@ class Employer < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  mount_uploader :image, UserFileUploader
+  mount_uploader :image, ImageUploader
 
   before_update :capitalize_params
   after_create :create_list
@@ -39,4 +39,8 @@ class Employer < ActiveRecord::Base
     self.city = self.city.downcase.titleize if self.city
     # self.state = self.state.downcase.capitalize if self.state
   end 
+
+  def location
+    "#{city}, #{state}"
+  end
 end
