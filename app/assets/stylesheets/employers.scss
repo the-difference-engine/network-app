@@ -44,8 +44,7 @@
 }
 
 .employer-show {
-
-  .img-responsive {
+ .img-responsive {
     margin: auto;
   }
 
@@ -86,6 +85,12 @@
 
   .control-buttons i {
     font-size: 20px;
+  }
+
+  .theme-btn-color:hover {
+    color: #fff;
+    background-color: $green;
+    border-color: $green; 
   }
 }
 

@@ -18,6 +18,7 @@ class Employer < ActiveRecord::Base
   validates :name, :rep_first_name, :rep_last_name, :rep_phone, :rep_email, presence: true
   validates :rep_email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :city, :state, presence: true
+  validates :description, presence: true
   validates :number_of_positions, numericality: { only_integer: true, allow_nil: true }
   
   def rep_full_name

@@ -120,12 +120,18 @@
         </div><!--tabs end-->
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4"><hr>
         <div class="portfolio-side-bar">
           <% if admin_signed_in? || employer_signed_in? %>
             <div class="sidebar-box control-buttons">
               <a href="/employers/<%= @employer.id %>/edit" class="btn btn-lg theme-btn-color"><i class="ion-edit"></i></a> 
               <a href="/employers/<%= @employer.id %>" data-method="delete" data-confirm="Are you sure you want to delete '<%= @employer.name %>'?" class="btn btn-lg theme-btn-color"><i class="ion-trash-a"></i></a> 
+            </div><hr>
+          <% end %>
+
+          <% if @employer.currently_hiring %>
+            <div class="sidebar-box">
+              <button class="btn btn-lg theme-btn-color employment-btn">We're Hiring!</button>
             </div><hr>
           <% end %>
 
