@@ -37,7 +37,7 @@
                   </div>
                 </div><br>
                 <div class="row">
-                  <% if @industries.any? %>
+                  <% if @employer.industries.any? %>
                     <% @industries.each do |industry| %>
                       <div class="col-md-12">
                         <h4 class="heading-mini tab-inner">Industries We Work In</h4><hr>
@@ -51,7 +51,7 @@
               </div> 
             </div>
 
-            <% if @positions.any? || @employer.position_types.any? %>
+            <% if @employer.positions.any? || @employer.position_types.any? %>
               <div class="tab-pane description-pane" id="positions">  
                 <div class="tab-desc animated fadeIn">
                   <div class="row">
@@ -65,10 +65,10 @@
                             <h5><%= position.name %></h5>
                           </div>
                         <% end %>
-                      <% end %>
+                      <% end %><br>
                     </div>
                     <div class="col-md-6">
-                      <% if @position_types.any? %>
+                      <% if @employer.position_types.any? %>
                         <div class="col-md-12">
                           <h4 class="heading-mini tab-inner">Position Types</h4><hr>
                         </div>
@@ -80,23 +80,37 @@
                       <% end %>
                     </div>
                   </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <% if @employer.salary_ranges.any? %><br>
+                          <div class="col-md-12">
+                            <h4 class="heading-mini tab-inner">Salary Ranges</h4><hr>
+                          </div>
+                  
+                  
+                          <% @salary_ranges.each do |salary_range| %>
+                            <div class="col-md-12">
+                              <h5><%= salary_range.salary_range %></h5>
+                            </div>
+                          <% end %>
+                      <% end %>
+                    </div>
+                  </div>
                 </div> 
               </div>
             <% end %>
 
-            <% if @technologies.any? %>
+            <% if @employer.technologies.any? %>
               <div class="tab-pane description-pane" id="tech">  
                 <div class="tab-desc animated fadeIn">
                   <div class="row">
-                    <% if @technologies.any? %>
-                      <div class="col-md-12">
-                        <h4 class="heading-mini tab-inner">Technolgies We Work With</h4><hr>
+                    <div class="col-md-12">
+                      <h4 class="heading-mini tab-inner">Technolgies We Work With</h4><hr>
+                    </div>
+                    <% @technologies.each do |tech| %>
+                      <div class="col-md-6">
+                        <h5><%= tech.name %></h5>
                       </div>
-                      <% @technologies.each do |tech| %>
-                        <div class="col-md-6">
-                          <h5><%= tech.name %></h5>
-                        </div>
-                      <% end %>
                     <% end %>
                   </div>
                 </div> 
@@ -105,7 +119,7 @@
           </div>
         </div><!--tabs end-->
       </div>
-      
+
       <div class="col-md-4">
         <div class="portfolio-side-bar">
           <% if admin_signed_in? || employer_signed_in? %>
