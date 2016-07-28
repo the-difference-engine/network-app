@@ -44,4 +44,26 @@ class Employer < ActiveRecord::Base
   def location
     "#{city}, #{state}"
   end
+
+  def hiring_fields?
+    fields = false
+
+    if number_of_positions == nil || number_of_positions == ""
+      number_of_positions = false
+    else
+      number_of_positions = true
+    end
+
+    if hiring_timeline == nil || hiring_timeline == ""
+      hiring_timeline = false
+     else
+      hiring_timeline = true
+    end
+
+    if number_of_positions || hiring_timeline
+      fields = true
+    end
+
+    fields
+  end
 end

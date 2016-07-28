@@ -1,5 +1,3 @@
-
-
 <div class="employer-show">
   <section id="content-region-3" class="padding-40 page-tree-bg">
     <div class="container">
@@ -18,7 +16,7 @@
         <div class="tabs"><!--tabs start-->
           <ul class="nav nav-tabs">
             <li class="active"><a href="#description" data-toggle="tab"><h4 class="heading-mini tab-name">Description</h4></a></li>
-            <% if @employer.positions.any? || @employer.position_types.any? || @employer.salary_ranges.any? %>
+            <% if @employer.positions.any? || @employer.position_types.any? || @employer.salary_ranges.any? || @employer.hiring_fields? %>
               <li class=""><a href="#positions" data-toggle="tab"><h4 class="heading-mini tab-name">Positions</h4></a></li>
             <% end %>
             <% if @employer.technologies.any? %>
@@ -38,8 +36,17 @@
                     <div class="col-md-12">
                       <h5><%= @employer.description %></h5>
                     </div>
+                    <% unless @employer.company_size == nil || @employer.company_size == "" %>
+                      <div class="col-md-6"><br>
+                        <h4 class="heading-mini tab-inner">Company Size</h4><hr>
+                      </div>
+                      <div class="col-md-12">
+                        <h5>We currently have about <%= @employer.company_size %> employees</h5>
+                      </div>
+                    <% end %>
                   </div>
                 </div><br>
+
                 <% if @employer.industries.any? %>
                   <div class="row">
                     <div class="col-md-12">
@@ -57,9 +64,33 @@
               </div> 
             </div>
 
-            <% if @employer.positions.any? || @employer.position_types.any? || @employer.salary_ranges.any? %>
-              <div class="tab-pane description-pane" id="positions">  
-                <div class="tab-desc animated fadeIn">
+            <div class="tab-pane description-pane" id="positions">  
+              <div class="tab-desc animated fadeIn">
+                <% if @employer.hiring_fields? %>
+                  <div class="row">
+                    <% unless @employer.number_of_positions == nil || @employer.number_of_positions == "" %>
+                      <div class="col-md-6">
+                        <div class="col-md-12">
+                          <h4 class="heading-mini tab-inner">Number of Open Positions</h4><hr>
+                        </div>
+                        <div class="col-md-12">
+                          <h5>We currently have <%= @employer.number_of_positions %> open positions</h5><br>
+                        </div>
+                      </div>
+                    <% end %>
+                    <% unless @employer.hiring_timeline == nil || @employer.hiring_timeline == "" %>
+                      <div class="col-md-6">
+                        <div class="col-md-12">
+                          <h4 class="heading-mini tab-inner">How Soon Are We Hiring?</h4><hr>
+                        </div>
+                        <div class="col-md-12">
+                          <h5><%= @employer.hiring_timeline %></h5><br>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                <% end %>
+                <% if @employer.positions.any? || @employer.position_types.any? || @employer.salary_ranges.any? %>
                   <% if @employer.positions.any? || @employer.position_types.any? %>
                     <div class="row">
                       <% if @employer.positions.any? %>
@@ -74,6 +105,7 @@
                           <% end %><br>
                         </div>
                       <% end %>
+
                       <% if @employer.position_types.any? %>
                         <div class="col-md-6">
                           <div class="col-md-12">
@@ -88,23 +120,24 @@
                       <% end %>
                     </div><br>
                   <% end %>
+
                   <% if @employer.salary_ranges.any? %>
                     <div class="row">
                       <div class="col-md-6">
-                            <div class="col-md-12">
-                              <h4 class="heading-mini tab-inner">Salary Ranges</h4><hr>
-                            </div>
-                            <% @salary_ranges.each do |salary_range| %>
-                              <div class="col-md-12">
-                                <h5><%= salary_range.salary_range %></h5>
-                              </div>
-                            <% end %>
+                        <div class="col-md-12">
+                          <h4 class="heading-mini tab-inner">Salary Ranges</h4><hr>
+                        </div>
+                        <% @salary_ranges.each do |salary_range| %>
+                          <div class="col-md-12">
+                            <h5><%= salary_range.salary_range %></h5>
+                          </div>
+                        <% end %>
                       </div>
                     </div>
                   <% end %>
-                </div> 
-              </div>
-            <% end %>
+                <% end %>
+              </div> 
+            </div>
 
             <% if @employer.technologies.any? %>
               <div class="tab-pane description-pane" id="tech">  
@@ -142,6 +175,10 @@
           <% if @employer.currently_hiring %>
             <div class="sidebar-box">
               <button class="btn btn-lg theme-btn-color employment-btn">We're Hiring!</button>
+            </div><hr>
+          <% else %>
+            <div class="sidebar-box">
+              <button class="btn btn-lg theme-btn-color employment-btn">Not Currently Hiring</button>
             </div><hr>
           <% end %>
 
