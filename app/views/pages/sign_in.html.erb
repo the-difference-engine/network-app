@@ -1,6 +1,26 @@
-<h1>Pages#home</h1>
-
-<%= link_to "Admin Sign In", new_admin_session_path, class: "btn btn-default" %>
-<%= link_to "Student Sign In", new_student_session_path, class: "btn btn-default" %>
-<%= link_to "Employer Sign In", new_employer_session_path, class: "btn btn-default" %>
+<div class="pages-sign-in">
+  <section id="slider-sec" class="slider-reg">
+      <div class="main-flex-slider">
+          <ul class="slides">
+              <li>
+                  <figure>
+                      <%= image_tag "acltc_class.jpeg", class: "img-responsive acltc-class" %>
+                      <figcaption class="slider-overlay ">
+                          <div class="slider-text animated fadeInDown">
+                              <h1>Welcome</h1>
+                              <h5>
+                                  Sign in to browse through ACLTC job-seeking alumni profiles
+                              </h5><br>
+                              <%= link_to "Employer Sign In", new_employer_session_path, class: "btn btn-white btn-lg" %>
+                              <%= link_to "Student Sign In", new_student_session_path, class: "btn btn-white btn-lg" %>
+                              <%= link_to "Admin Sign In", new_admin_session_path, class: "btn btn-white btn-lg" %>
+                            
+                          </div>
+                      </figcaption>
+                  </figure>
+              </li>
+          </ul>
+      </div>
+  </section><!--main flex slider end-->
+</div>
 
