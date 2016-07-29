@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     registrations: 'employers/registrations'
   }
 
-  root 'students#index'
+  root 'pages#setup_root'
   
   get '/sign_in' => 'pages#sign_in', as: :home_sign_in
   get '/students/invitations/batch' => 'students#batch', as: :student_batch_invite
