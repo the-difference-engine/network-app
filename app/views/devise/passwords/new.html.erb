@@ -1,16 +1,50 @@
-<h2>Forgot your password?</h2>
+<div class="login-page">
+  <section id="content-region-3" class="padding-40 page-tree-bg">
+    <div class="container">
+      <h3 class="page-tree-text">Forgot Your Password?</h3>
+    </div>
+  </section><!--page-tree end here-->
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+  <div class="space-70"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="my-login-form">
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= devise_error_messages! %>
+            <h4 class="heading-mini">Enter Your Email Address To Reset Password</h4><hr>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, class: "form-control" %>
+              </div>
+            </div>
+            <div class="row"><br>
+              <div class="text-right submit-btn col-md-12">
+                <%= f.submit "Send me reset password instructions", class: "btn theme-btn-color forgot-pw-btn" %>
+              </div>
+            </div>
+            <hr class="login-break">
+            <div class="shared-links">
+              <div class="form-btm-link text-center devise-links">
+              <%= render "devise/shared/links" %>
+              </div>  
+            </div>
+          <% end -%>
+        </div>
+      </div>
+    </div>
+  </div><!--login page container end-->
+</div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+<%= render "shared/alerts_checkbox_radio_scripts" %>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+
+
+
+
+
+
+
+
