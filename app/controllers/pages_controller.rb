@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   before_filter :authenticate_user!, :except => [:sign_in, :setup_root]
   
   def sign_in
+    render layout: "portfolio"
   end
 
   def setup_root

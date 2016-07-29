@@ -6,7 +6,7 @@
 .pages-sign-in {
   .acltc-class {
     // background: rgba(0, 0, 0, 0.6);
-    opacity: 0.5;
+    opacity: 0.3;
   }
 
   h1 {
@@ -16,6 +16,12 @@
   h5 {
     font-size: 22px;
     color: #fff;
+  }
+
+  .btn-white {
+    // background: rgba(15, 175, 151, 0.2);
+    background: rgba(255, 255, 255, 0.2);
+    margin: 2px;
   }
 
   .btn-white:hover {
