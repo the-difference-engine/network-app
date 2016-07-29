@@ -2,3 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "colors";
+
+.pages-sign-in {
+  .acltc-class {
+    // background: rgba(0, 0, 0, 0.6);
+    opacity: 0.5;
+  }
+
+  h1 {
+    font-size: 65px;
+  }
+
+  h5 {
+    font-size: 22px;
+    color: #fff;
+  }
+
+  .btn-white:hover {
+    background: $green;
+    color: #fff
+  }
+}
