@@ -43,15 +43,15 @@
 }
 
 #admin-center {
+
+  .is-breakable {
+    word-break: break-word;
+  }
+  
   .table {
     tr.hoverlist {
       text-decoration: none;
       list-style-type: none;
-    }
-    
-    .cell-div {
-      height: 35px;
-      line-height: 34px;
     }
 
     a.user-name {
