@@ -933,10 +933,10 @@ MULTI LEVEL DROPDOWN CSS
     margin-top: 100px;
   }
 }
-.slider-text p {
+.slider-text h5 {
   color: #fff;
-  font-family: "Libre Baskerville", serif;
-  font-style: italic;
+  // font-family: "Libre Baskerville", serif;
+  // font-style: italic;
   font-size: 20px;
 }
 
@@ -2567,8 +2567,8 @@ h3.heading-progress {
     font-size: 2em;
   }
 
-  .slider-text p {
-    display: none;
+  .slider-text h5 {
+    // display: none;
   }
 
   .main-flex-slider .flex-control-nav {
@@ -2581,7 +2581,7 @@ h3.heading-progress {
 @media (max-width: 433px) {
   .slider-text h1 {
     margin-top: 30px;
-    font-size: 16px;
+    font-size: 2em;
   }
 }
 /************version v1.1 css here********************/
