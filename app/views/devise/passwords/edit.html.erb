@@ -1,22 +1,60 @@
-<h2>Change your password</h2>
+<div class="login-page">
+  <section id="content-region-3" class="padding-40 page-tree-bg">
+    <div class="container">
+      <h3 class="page-tree-text">Change Your Password</h3>
+    </div>
+  </section><!--page-tree end here-->
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+  <div class="space-70"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="my-login-form">
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+            <%= devise_error_messages! %>
+            <%= f.hidden_field :reset_password_token %>
+            <h4 class="heading-mini">Enter Your New Password</h4><hr>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <%= f.label :password, "New Password" %><br />
+                <%= f.password_field :password, autofocus: true, class: "form-control" %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <%= f.label :password_confirmation, "Confirm New Password" %><br />
+                <%= f.password_field :password_confirmation, class: "form-control" %>
+              </div>
+            </div>
+            <div class="row"><br>
+              <div class="text-right submit-btn col-md-12">
+                <%= f.submit "Change My Password", class: "btn theme-btn-color forgot-pw-btn" %>
+              </div>
+            </div>
+            <hr class="login-break">
+            <div class="shared-links">
+              <div class="form-btm-link text-center devise-links">
+                <%= render "devise/shared/links" %>
+              </div>  
+            </div>
+          <% end -%>
+        </div>
+      </div>
+    </div>
+  </div><!--login page container end-->
+</div>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
-  </div>
+<%= render "shared/alerts_checkbox_radio_scripts" %>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+
+
+
+
+
+
+
+
+
+
