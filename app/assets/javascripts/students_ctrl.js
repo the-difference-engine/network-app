@@ -11,15 +11,23 @@
 
         for(var i = 0; i < $scope.students.length; i++){
           var student = $scope.students[i];
+
           if(student.active){
             $scope.activeStudents.push(student);
           } else  {
             $scope.pendingStudents.push(student);
           }
         }
-      });
 
-     
+        $scope.skillExists = function(student){
+          if(student.skill_1 == ""){
+            return false;
+          } else {
+            return true;
+          }
+        };
+
+      });
     };
 
     window.scope = $scope;

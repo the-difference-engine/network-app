@@ -1,4 +1,6 @@
 <div class="student-index">
+<div ng-app="app">
+<div ng-controller="studentsCtrl" ng-init="setupStudentIndex()">
   <section id="content-region-3" class="padding-40 page-tree-bg">
     <div class="container">
       <h3 class="page-tree-text">ACLTC Students</h3>
@@ -16,35 +18,28 @@
           <li class="filter" data-filter="seo">Seo</li>
         </ul>
         <div id="grid" class="row">
-          <% @students.each do |student| %>
-            <div class=" mix col-md-4 col-sm-6 col-xs-12 margin-btm-40">
+          
+            <div class=" mix col-md-4 col-sm-6 col-xs-12 margin-btm-40" ng-repeat="student in activeStudents">
+
               <div class="portfolio-sec">
                 <div class="portfolio-thumnail">
-                  <%= link_to image_tag("#{student.avatar.index_square.url}"), student_path(student), class: "img-responsive" %>
+                  <img ng-src="{{student.avatar.avatar.index_square.url}}" class="img-responsive" data-toggle="modal"  />
                 </div>
-                <div class="portfolio-desc text-center">
-                  <h4 class="portfolio-post-title"><%= student.full_name %></h4>
-                  <span class="portfolio-post-cat"><%= student.current_location %></span>
-                  <% if student.skills? %>
-                    <% unless student.skill_1 == nil || student.skill_1 == "" %>
-                      <span class="portfolio-post-cat skill"><%= student.skill_1 %></span>
-                    <% end %>
-                    <% unless student.skill_2 == nil || student.skill_2 == "" %>
-                      <span class="portfolio-post-cat skill"><%= student.skill_2 %></span>
-                    <% end %>
-                    <% unless student.skill_3 == nil || student.skill_3 == "" %>
-                      <span class="portfolio-post-cat skill"><%= student.skill_3 %></span>
-                    <% end %>
-                  <% else %>
-                    <span class="portfolio-post-cat skill">Coming Soon</span>
-                  <% end %>
-                  <h4><%= link_to "More Details", student_path(student), class: "btn theme-btn-default btn-lg" %></h4>
+                <div class="portfolio-desc text-center"> 
+                  <h4 class="portfolio-post-title">{{ student.full_name }}</h4>
+                  <span class="portfolio-post-cat">{{ student.current_location }}</span>
+                  <span ng-show="skillExists(student)" class="portfolio-post-cat skill">{{ student.skill_1 }}</span>
+                  <span ng-show="skillExists(student)" class="portfolio-post-cat skill">{{ student.skill_2 }}</span>
+                  <span ng-show="skillExists(student)" class="portfolio-post-cat skill">{{ student.skill_3 }}</span>
+                  <h4><a href="/students/{{ student.id }}" class="btn theme-btn-default btn-lg">More Details</a></h4>
                 </div>
               </div>
             </div><!--portfolio item -->
-          <% end %>
+
         </div><!--grid-->
       </div>
     </div><!--row-->
   </div><!--portfolio container end-->
+</div>
+</div>
 </div>
