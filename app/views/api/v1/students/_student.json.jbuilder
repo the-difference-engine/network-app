@@ -29,6 +29,9 @@ json.role student.class.name
 json.avatar student.avatar
 json.skills? student.skills?
 
+json.technologies student.technologies
+json.positions student.positions
+json.industries student.industries
 
 
 

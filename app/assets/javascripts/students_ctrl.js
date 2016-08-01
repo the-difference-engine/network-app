@@ -26,8 +26,21 @@
             return true;
           }
         };
-
       });
+
+      $http.get("/technologies.json").then(function(response){
+        $scope.technologies = response.data;
+        $scope.results = $scope.technologies;
+
+        $scope.generateList = function(){
+          if($scope.selectedList.length === 0){
+            return $scope.results;
+          } else {
+            $scope.results = $scope.selectedList;
+            return $scope.selectedList;
+          }
+        };
+      }); 
     };
 
     window.scope = $scope;

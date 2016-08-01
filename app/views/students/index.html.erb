@@ -7,18 +7,23 @@
     </div>
   </section><!--page-tree end here-->
   <div class="space-70"></div>
-  <div class="container student-index">
+  <div class="container-fluid student-index">
     <div class="row">
-      <div class="col-md-12">
-        <ul class="portfolio-filters">
-          <li class="filter active" data-filter="all">all</li>
-          <li class="filter" data-filter="design">design</li>
-          <li class="filter" data-filter="html">HTML5</li>
-          <li class="filter" data-filter="wordpress">Wordpress</li>
-          <li class="filter" data-filter="seo">Seo</li>
-        </ul>
+       <div class="col-md-2">
+        <div class="sidebar-box">
+          <div class="row">
+            <div class="col-md-12">
+              <h4 class="sidebar-heading">Filter Profiles</h4>
+              <input ng-model='skillFilter' class="form-control"></p> 
+            </div>
+            </div>
+          </div><hr>
+      </div><!--sideabr blog end -->
+
+      <div class="col-md-9">
+      
         <div id="grid" class="row">  
-          <div class=" mix col-md-4 col-sm-6 col-xs-12 margin-btm-40" ng-repeat="student in activeStudents">
+          <div class=" mix col-md-4 col-sm-6 col-xs-12 margin-btm-40" ng-repeat="student in activeStudents | filter: skillFilter">
             <div class="portfolio-sec">
               <div class="portfolio-thumnail">
                 <a href="/students/{{ student.id}}"><img ng-src="{{student.avatar.avatar.index_square.url}}" class="img-responsive" data-toggle="modal" /></a>
