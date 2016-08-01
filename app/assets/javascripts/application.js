@@ -25,7 +25,6 @@
 //= require jquery-migrate.min
 //= require jquery.mixitup.min
 //= require jquery.sticky
-
 //= require icheck.min
 //= require masonary-custom
 //= require modernizr.custom.97074
@@ -33,6 +32,7 @@
 //= require sweetalert.min
 //= require wow.min
 //= require app-theme
+//= require multiple-select
 //= require_tree .
 
 

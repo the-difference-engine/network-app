@@ -19,7 +19,7 @@ class Student < ActiveRecord::Base
 
   def current_location
     if current_city == nil || current_city == ""
-      "#{city}"
+      ""
     else
       unless current_state == nil || current_state == ""
         "#{current_city}, #{current_state}"

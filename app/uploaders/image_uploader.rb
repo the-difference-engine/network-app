@@ -57,7 +57,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   version :large_square, :from_version => :large do
-    process resize_to_fit: [1000,1000]
+    process resize_to_fill: [1000,1000]
   end
 
   version :index_square, :from_version => :large do

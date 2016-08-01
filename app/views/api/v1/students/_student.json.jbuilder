@@ -6,6 +6,7 @@ json.email student.email
 json.city student.city
 json.current_city student.current_city
 json.current_state student.current_state
+json.current_location student.current_location
 json.grad_date student.grad_date
 json.current_industry student.current_industry
 json.skill_1 student.skill_1
@@ -25,6 +26,12 @@ json.seeking_employment student.seeking_employment
 json.active student.active
 json.about_me student.about_me
 json.role student.class.name
+json.avatar student.avatar
+json.skills? student.skills?
+
+json.technologies student.technologies
+json.positions student.positions
+json.industries student.industries
 
 
 
