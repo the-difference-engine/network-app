@@ -7,25 +7,19 @@
     </div>
   </section><!--page-tree end here-->
   <div class="space-70"></div>
-  <div class="container-fluid student-index">
+  <div class="container student-index">
     <div class="row">
-       <div class="col-md-2">
-        <div class="sidebar-box">
-          <div class="row">
-            <div class="col-md-12">
-              <h4 class="sidebar-heading">Filter By Technology</h4>
-              <!-- <input ng-model='skillFilter' class="form-control"></p> --> 
-              <multiple-autocomplete ng-model="selectedList"
-                 object-property="name"
-                 suggestions-arr="technologies">
-              </multiple-autocomplete>
-            </div>
-            </div>
-          </div><hr>
-      </div><!--sideabr blog end -->
-
-      <div class="col-md-9">
-      
+      <div class="col-md-12">
+        <h4 class="heading-mini filter-heading">Filter By Technology</h4>
+        <!-- <input ng-model='skillFilter' class="form-control"></p> --> 
+        <multiple-autocomplete ng-model="selectedList"
+           object-property="name"
+           suggestions-arr="technologies">
+        </multiple-autocomplete><br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
         <div id="grid" class="row">  
           <div class=" mix col-md-4 col-sm-6 col-xs-12 margin-btm-40" ng-repeat="student in generateList() | unique: 'id' | orderBy: 'last_name'">
             <div class="portfolio-sec">
