@@ -41,9 +41,9 @@
               if(students.length > 0){
                 for(var j = 0; j < students.length; j++){
                   var student = students[j];
-                  // if(student.active){
+                  if(student.active){
                     $scope.results.push(student);
-                  // }
+                  }
                 }
               } 
             }
