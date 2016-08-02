@@ -18,3 +18,7 @@
     border-radius: 4px;
     padding: 4px;
 }
+
+.autocomplete-list ul li.autocomplete-active {
+  background-color: $green;
+ }
