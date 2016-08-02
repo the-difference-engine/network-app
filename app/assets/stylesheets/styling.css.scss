@@ -12,3 +12,9 @@
 .forgot-pw-btn {
   float: left;
 }
+
+.form-item-container .list-inline li span {
+    border: 1px solid $green;
+    border-radius: 4px;
+    padding: 4px;
+}
