@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   
   get '/sign_in' => 'pages#sign_in', as: :home_sign_in
   get '/students/invitations/batch' => 'students#batch', as: :student_batch_invite
+  get '/employers/invitations/batch' => 'employers#batch', as: :employer_batch_invite
+  get '/admins/invitations/batch' => 'admin#batch', as: :admin_batch_invite
 
   namespace :api do
     namespace :v1 do

@@ -23,6 +23,10 @@ class EmployersController < ApplicationController
     end
   end
 
+  def batch
+    render 'employers/invitations/batch'
+  end
+
   def show
     @employer = Employer.find(params[:id])
     
