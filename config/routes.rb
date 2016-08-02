@@ -50,11 +50,7 @@ Rails.application.routes.draw do
     get '/admin/employers/new' => 'employers#new', as: :new_admin_employer
     post '/admin/employers' => 'employers#create', as: :admin_employers
   
-  resources :students do
-    collection do
-      post 'batch_invite'
-    end
-  end
+  resources :students 
   
   resources :employers
   resources :projects
