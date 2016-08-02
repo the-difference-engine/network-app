@@ -8,6 +8,7 @@
         $scope.students = response.data;
         $scope.activeStudents = [];
         $scope.pendingStudents = [];
+        $scope.results = $scope.activeStudents;
 
         for(var i = 0; i < $scope.students.length; i++){
           var student = $scope.students[i];
@@ -17,17 +18,38 @@
           } else  {
             $scope.pendingStudents.push(student);
           }
-
-          // $scope.chunkedStudentData = chunk($scope.activeStudents, 3);
         }
 
-        // function chunk(arr, size) {
-        //     var newArray = [];
-        //     for (var i=0; i<arr.length; i+=size) {
-        //       newArray.push(arr.slice(i, i+size));
-        //     }
-        //     return newArray;
+        // $scope.generateList = function(){
+        //   if($scope.selectedList.length === 0){
+        //     return $scope.results;
+        //   } else {
+        //     $scope.results = $scope.selectedList;
+        //     return $scope.selectedList;
         //   }
+        // };
+        $scope.generateList = function(){
+          if($scope.selectedList.length === 0){
+            return $scope.results;
+          } else {
+            $scope.results = [];
+
+            for(var i = 0; i < $scope.selectedList.length; i++){
+              var tech = $scope.selectedList[i];
+              var students = tech.students;
+
+              if(students.length > 0){
+                for(var j = 0; j < students.length; j++){
+                  var student = students[j];
+                  // if(student.active){
+                    $scope.results.push(student);
+                  // }
+                }
+              } 
+            }
+            return $scope.results;
+          }
+        };
       });
 
       $scope.skillOneExists = function(student){
@@ -66,21 +88,20 @@
           };
         }
 
+      $http.get("/technologies.json").then(function(response){
+        $scope.technologies = response.data;
+        // $scope.results = $scope.technologies;
 
+        // $scope.generateList = function(){
+        //   if($scope.selectedList.length === 0){
+        //     return $scope.results;
+        //   } else {
+        //     $scope.results = $scope.selectedList;
+        //     return $scope.selectedList;
+        //   }
+        // };
+      }); 
 
-      // $http.get("/technologies.json").then(function(response){
-      //   $scope.technologies = response.data;
-      //   $scope.results = $scope.technologies;
-
-      //   $scope.generateList = function(){
-      //     if($scope.selectedList.length === 0){
-      //       return $scope.results;
-      //     } else {
-      //       $scope.results = $scope.selectedList;
-      //       return $scope.selectedList;
-      //     }
-      //   };
-      // }); 
     };
 
     window.scope = $scope;

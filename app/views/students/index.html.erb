@@ -14,7 +14,11 @@
           <div class="row">
             <div class="col-md-12">
               <h4 class="sidebar-heading">Filter Profiles</h4>
-              <input ng-model='skillFilter' class="form-control"></p> 
+              <!-- <input ng-model='skillFilter' class="form-control"></p> --> 
+              <multiple-autocomplete ng-model="selectedList"
+                 object-property="name"
+                 suggestions-arr="technologies">
+              </multiple-autocomplete>
             </div>
             </div>
           </div><hr>
@@ -23,7 +27,7 @@
       <div class="col-md-9">
       
         <div id="grid" class="row">  
-          <div class=" mix col-md-4 col-sm-6 col-xs-12 margin-btm-40" ng-repeat="student in activeStudents | filter: skillFilter | orderBy: 'last_name'">
+          <div class=" mix col-md-4 col-sm-6 col-xs-12 margin-btm-40" ng-repeat="student in generateList() | filter: skillFilter | orderBy: 'last_name'">
             <div class="portfolio-sec">
               <div class="portfolio-thumnail">
                 <a href="/students/{{ student.id}}"><img ng-src="{{student.avatar.avatar.index_square.url}}" class="img-responsive" data-toggle="modal" /></a>
