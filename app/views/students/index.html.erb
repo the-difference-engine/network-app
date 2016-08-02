@@ -23,7 +23,7 @@
       <div class="col-md-9">
       
         <div id="grid" class="row">  
-          <div class=" mix col-md-4 col-sm-6 col-xs-12 margin-btm-40" ng-repeat="student in activeStudents | filter: skillFilter">
+          <div class=" mix col-md-4 col-sm-6 col-xs-12 margin-btm-40" ng-repeat="student in activeStudents | filter: skillFilter | orderBy: 'last_name'">
             <div class="portfolio-sec">
               <div class="portfolio-thumnail">
                 <a href="/students/{{ student.id}}"><img ng-src="{{student.avatar.avatar.index_square.url}}" class="img-responsive" data-toggle="modal" /></a>
@@ -31,9 +31,10 @@
               <div class="portfolio-desc text-center"> 
                 <h4 class="portfolio-post-title">{{ student.full_name }}</h4>
                 <span class="portfolio-post-cat">{{ student.current_location }}</span>
-                <span ng-show="skillExists(student)" class="portfolio-post-cat skill">{{ student.skill_1 }}</span>
-                <span ng-show="skillExists(student)" class="portfolio-post-cat skill">{{ student.skill_2 }}</span>
-                <span ng-show="skillExists(student)" class="portfolio-post-cat skill">{{ student.skill_3 }}</span>
+                <span ng-show="skillOneExists(student)" class="portfolio-post-cat skill">{{ student.skill_1 }}</span>
+                <span ng-show="skillTwoExists(student)" class="portfolio-post-cat skill">{{ student.skill_2 }}</span>
+                <span ng-show="skillThreeExists(student)" class="portfolio-post-cat skill">{{ student.skill_3 }}</span>
+                <span ng-hide="skillCheck(student)" class="portfolio-post-cat skill">Skills Coming Soon</span>
                 <h4><a href="/students/{{ student.id }}" class="btn theme-btn-default btn-lg">More Details</a></h4>
               </div>
             </div>
