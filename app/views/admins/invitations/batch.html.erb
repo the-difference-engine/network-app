@@ -1,0 +1,9 @@
+<h2><%= t "devise.invitations.new.header" %></h2>
+
+<%= form_tag batch_invitations_path, :method => :post do %>
+  <%= label_tag "Enter admin email addresses you'd like to invite." %><br>
+  <textarea style="width:400px; height:200px;" <%= text_area_tag :email_addresses %></textarea><br>
+  <%= hidden_field_tag 'type', 'admin' %>
+  <%= submit_tag "Send admin invitation(s)" %>
+<% end %>
+

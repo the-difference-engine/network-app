@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   get '/sign_in' => 'pages#sign_in', as: :home_sign_in
   get '/students/invitations/batch' => 'students#batch', as: :student_batch_invite
   get '/employers/invitations/batch' => 'employers#batch', as: :employer_batch_invite
-  get '/admins/invitations/batch' => 'admin#batch', as: :admin_batch_invite
+  get '/admins/invitations/batch' => 'admins#batch', as: :admin_batch_invite
 
   namespace :api do
     namespace :v1 do
@@ -52,8 +52,7 @@ Rails.application.routes.draw do
     get '/admin/employers/new' => 'employers#new', as: :new_admin_employer
     post '/admin/employers' => 'employers#create', as: :admin_employers
   
-  resources :students 
-  
+  resources :students
   resources :employers
   resources :projects
   resources :positions
