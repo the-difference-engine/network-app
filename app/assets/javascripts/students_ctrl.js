@@ -28,15 +28,43 @@
         //     }
         //     return newArray;
         //   }
+      });
 
-        $scope.skillExists = function(student){
+      $scope.skillOneExists = function(student){
           if(student.skill_1 == ""){
             return false;
           } else {
             return true;
           }
         };
-      });
+
+        $scope.skillTwoExists = function(student){
+          if(student.skill_2 == ""){
+            return false;
+          } else {
+            return true;
+          }
+        };
+
+        $scope.skillThreeExists = function(student){
+          if(student.skill_3 == ""){
+            return false;
+          } else {
+            return true;
+          }
+        };
+
+        $scope.skillCheck = function(student){
+          if($scope.skillOneExists(student)){
+            return true;
+          } else if($scope.skillTwoExists(student)){
+            return true;
+          } else if($scope.skillThreeExists(student)){
+            return true;
+          } else {
+            return false;
+          };
+        }
 
 
 
