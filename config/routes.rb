@@ -59,6 +59,7 @@ Rails.application.routes.draw do
   resources :employers
   resources :projects
   resources :positions
+  resources :batch_invitations
 
 
   # The priority is based upon order of creation: first created -> highest priority.

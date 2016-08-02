@@ -113,15 +113,15 @@ class StudentsController < ApplicationController
         @invite_send_errors << unparsed_email
       end
       
-      if @invite_send_success
+      if @invite_send_success.length > 0
         flash[:success] = "Invitation(s) successfully sent to #{@invite_send_success.to_sentence}"
       end
 
-      if @invite_send_errors
+      if @invite_send_errors.length > 0
         flash[:warning] = "Invitation(s) not sent to #{@invite_send_errors.to_sentence}"
       end
 
-      if @invite_send_duplicate
+      if @invite_send_duplicate.length > 0
         flash[:warning] = "Invitation(s) not sent to #{@invite_send_duplicate.to_sentence}"
       end
     end

@@ -1,0 +1,2 @@
+module BatchInvitationsHelper
+end
