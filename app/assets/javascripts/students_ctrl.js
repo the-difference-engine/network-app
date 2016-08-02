@@ -20,14 +20,6 @@
           }
         }
 
-        // $scope.generateList = function(){
-        //   if($scope.selectedList.length === 0){
-        //     return $scope.results;
-        //   } else {
-        //     $scope.results = $scope.selectedList;
-        //     return $scope.selectedList;
-        //   }
-        // };
         $scope.generateList = function(){
           if($scope.selectedList.length === 0){
             return $scope.results;
@@ -53,53 +45,43 @@
       });
 
       $scope.skillOneExists = function(student){
-          if(student.skill_1 == ""){
-            return false;
-          } else {
-            return true;
-          }
-        };
-
-        $scope.skillTwoExists = function(student){
-          if(student.skill_2 == ""){
-            return false;
-          } else {
-            return true;
-          }
-        };
-
-        $scope.skillThreeExists = function(student){
-          if(student.skill_3 == ""){
-            return false;
-          } else {
-            return true;
-          }
-        };
-
-        $scope.skillCheck = function(student){
-          if($scope.skillOneExists(student)){
-            return true;
-          } else if($scope.skillTwoExists(student)){
-            return true;
-          } else if($scope.skillThreeExists(student)){
-            return true;
-          } else {
-            return false;
-          };
+        if(student.skill_1 == ""){
+          return false;
+        } else {
+          return true;
         }
+      };
+
+      $scope.skillTwoExists = function(student){
+        if(student.skill_2 == ""){
+          return false;
+        } else {
+          return true;
+        }
+      };
+
+      $scope.skillThreeExists = function(student){
+        if(student.skill_3 == ""){
+          return false;
+        } else {
+          return true;
+        }
+      };
+
+      $scope.skillCheck = function(student){
+        if($scope.skillOneExists(student)){
+          return true;
+        } else if($scope.skillTwoExists(student)){
+          return true;
+        } else if($scope.skillThreeExists(student)){
+          return true;
+        } else {
+          return false;
+        };
+      }
 
       $http.get("/technologies.json").then(function(response){
         $scope.technologies = response.data;
-        // $scope.results = $scope.technologies;
-
-        // $scope.generateList = function(){
-        //   if($scope.selectedList.length === 0){
-        //     return $scope.results;
-        //   } else {
-        //     $scope.results = $scope.selectedList;
-        //     return $scope.selectedList;
-        //   }
-        // };
       }); 
 
     };
