@@ -1,16 +1,24 @@
 class BatchInvitationsController < ApplicationController
+  
   def create
     @invite_send_success = Array.new
     @invite_send_errors = Array.new
     @invite_send_duplicate = Array.new
     if params[:type] == 'student'
       user_type = Student
-    params[:student_emails].split(",").each do |unparsed_email|
+    elsif
+      params[:type] == 'employer'
+      user_type = Employer
+    else
+      user_type = Admin
+    end
+
+    params[:email_addresses].split(",").each do |unparsed_email|
       if parsed_email = EmailAddress.new(unparsed_email).parse_email
-        if Student.find_by(email: parsed_email.to_s)
+        if user_type.find_by(email: parsed_email.to_s)
           @invite_send_duplicate << unparsed_email
         else
-        Student.create(:email => parsed_email, :invited_by_id => current_user.id, :invited_by_type => current_user.class).invite!
+        user_type.create(:email => parsed_email, :invited_by_id => current_user.id, :invited_by_type => current_user.class).invite!
         @invite_send_success << parsed_email
         end
       else
