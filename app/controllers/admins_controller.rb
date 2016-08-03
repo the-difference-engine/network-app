@@ -23,6 +23,10 @@ class AdminsController < ApplicationController
     end
   end
 
+  def batch
+    render 'admins/invitations/batch'
+  end
+
   def show
     redirect_to admin_center_path
   end

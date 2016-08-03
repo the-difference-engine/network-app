@@ -97,18 +97,6 @@ class StudentsController < ApplicationController
     render 'students/invitations/batch'
   end
 
-  def batch_invite
-    @student_array = Array.new
-    params[:student_emails].split(",").each do |unparsed_email|
-      if parsed_email = EmailAddress.new(unparsed_email).parse_email
-        Student.create(:email => parsed_email, :invited_by_id => current_user.id, :invited_by_type => current_user.class).invite!
-      @student_array << parsed_email
-      end
-    flash[:success] = "Invitations sent to #{@student_array.to_sentence}!"
-    end
-    redirect_to "/"
-  end
-
   private
 
     def student_params
