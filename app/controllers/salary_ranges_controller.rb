@@ -1,6 +1,6 @@
 class SalaryRangesController < ApplicationController
   before_action :set_salary_range, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, except: [:index]
 
   # GET /salary_ranges
   # GET /salary_ranges.json
