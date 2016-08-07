@@ -22,6 +22,9 @@
             <% if @employer.technologies.any? %>
               <li class=""><a href="#tech" data-toggle="tab"><h4 class="heading-mini tab-name">Technologies</h4></a></li>
             <% end %>
+            <% if employer_signed_in? %>
+              <li class=""><a href="#follow-up" data-toggle="tab"><h4 class="heading-mini tab-name">Follow Up List</h4></a></li>
+            <% end %>
           </ul>
 
           <!-- Tab panes -->
@@ -159,9 +162,49 @@
                 </div> 
               </div>
             <% end %>
+            <% if employer_signed_in? %>
+              <div class="tab-pane description-pane" id="follow-up">  
+                <div class="tab-desc animated fadeIn">
+                  
+                      <% if @follow_up_students %>
+          
+                        <table class="table table-hover table-responsive">
+                          <thead>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Remove From List</th>
+                          </thead>
+                          <tbody>
+                          <% @follow_up_students.each do |follow_up_student|%>
+                            <tr class="hover-list">
+                              <td>
+                                <a href="/students/<%= follow_up_student.student.id %>" class="user-name"><%= follow_up_student.student.full_name %></a>
+                              </td>
+                              <td class="user-entries is-breakable">                              
+                                <p><%= follow_up_student.student.email %></p>                    
+                              </td>
+                              <td></td>
+  
+                            
+                            </tr>
+                          <% end %>
+                          </tbody>
+                        </table>
+                      <% else %>
+                        <div class="no-accounts"><h5><em>There are no students on your list</em></h5></div>
+                      <% end %>
+                  
+                </div> 
+              </div>
+
+            <% end %>
           </div>
         </div><!--tabs end-->
       </div>
+
+
+
+
 
       <div class="col-md-4"><hr>
         <div class="portfolio-side-bar">

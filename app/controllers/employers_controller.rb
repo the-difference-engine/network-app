@@ -36,6 +36,7 @@ class EmployersController < ApplicationController
     @industries = @employer.industries.order(:name) if @employer.industries.any?
     @technologies = @employer.technologies.order(:name) if @employer.technologies.any?
     @salary_ranges = @employer.salary_ranges if @employer.salary_ranges.any?
+    @follow_up_students = @follow_up_list.follow_up_students if @follow_up_list.follow_up_students.any?
   end
 
   def edit
