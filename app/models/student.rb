@@ -11,7 +11,8 @@ class Student < ActiveRecord::Base
   has_and_belongs_to_many :technologies
   has_and_belongs_to_many :industries
   has_and_belongs_to_many :positions
-  has_and_belongs_to_many :follow_up_lists
+  has_many :follow_up_students
+  has_many :follow_up_lists, through: :follow_up_students
 
   def full_name
     "#{first_name} #{last_name}"
