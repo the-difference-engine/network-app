@@ -1,6 +1,6 @@
 class FollowUpList < ActiveRecord::Base
   belongs_to :employer
-  has_many :students
+  has_and_belongs_to_many :students, dependent: :destroy
 
   validates :name, presence: true
 end

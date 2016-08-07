@@ -7,11 +7,11 @@ class Student < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   mount_uploader :resume, ResumeUploader
   
-  belongs_to :follow_up_list
   has_many :projects, dependent: :destroy
   has_and_belongs_to_many :technologies
   has_and_belongs_to_many :industries
   has_and_belongs_to_many :positions
+  has_and_belongs_to_many :follow_up_lists
 
   def full_name
     "#{first_name} #{last_name}"
