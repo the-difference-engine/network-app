@@ -22,3 +22,7 @@
 .autocomplete-list ul li.autocomplete-active {
   background-color: $green;
  }
+
+ .is-breakable {
+    word-break: break-word;
+  }
