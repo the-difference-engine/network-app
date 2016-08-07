@@ -54,7 +54,7 @@ Rails.application.routes.draw do
   resources :industries
   resources :position_types
   resources :positions
-  resources :follow_up_lists
+  resources :follow_up_students
   resources :batch_invitations
 
 

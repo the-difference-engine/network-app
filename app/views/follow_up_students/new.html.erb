@@ -1,0 +1,5 @@
+<%= form_for(@follow_up_student, url: "/follow_up_students", html: { :multipart => true }) do |f| %>
+  <%= f.text_field :student_id, value: 9 %>
+  <%= f.text_field :follow_up_list_id, value: current_employer.id %>
+  <%= f.submit "Add To List", class: "btn btn-lg theme-btn-color" %>
+<% end %>
