@@ -159,8 +159,8 @@
             <% unless @student.resume.url == "" || @student.resume.url == nil %>
               <a href="<%= @student.resume.url %>" class="btn btn-lg theme-btn-color"><i class="ion-document-text"></i> &nbsp;Resume</a>
             <% end %>
-            <%= form_for(@student, url: admin_students_path, html: { :multipart => true }) do |f| %>
-              <%= f.hidden_field :follow_up_list_ids, value: current_employer.id %>
+            <%= form_for(@student, url: student_path(@student), html: { :multipart => true }) do |f| %>
+              <%= f.collection_select :follow_up_list_ids, FollowUpList.all, :id, :name %>
               <%= f.submit "Add To List", class: "btn btn-lg theme-btn-color" %>
             <% end %>
             <a href="#" class="btn btn-lg theme-btn-color"><i class="ion-email"></i> &nbsp;Contact</a>

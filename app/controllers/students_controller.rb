@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController  
   before_action :authenticate_user!
   before_action :authenticate_admin!, :only => [:new, :create, :destroy, :batch, :batch_invite]
-  before_action :authenticate_admin_student!, :only => [:edit, :update]
+  # before_action :authenticate_admin_student!, :only => [:edit, :update]
 
   def index
     @students = Student.where(active: true).order(:last_name)
@@ -30,6 +30,8 @@ class StudentsController < ApplicationController
     @technologies = @student.technologies if @student.technologies.any?
     @positions = @student.positions if @student.positions.any?
     @industries = @student.industries if @student.industries.any?
+    @employer = current_employer if current_employer
+    @follow_up_list = @employer.follow_up_list if current_employer
 
     if @student.capstone_project
       @capstone = @student.capstone_project
@@ -39,7 +41,7 @@ class StudentsController < ApplicationController
   def edit
     @student = Student.find(params[:id])
     
-    unless admin_signed_in? || student_signed_in? && @student.id == current_student.id
+    unless admin_signed_in? || student_signed_in? && @student.id == current_student.id || employer_signed_in?
       redirect_to students_path
       flash[:warning] = "You do not have access to that page!"
     end
@@ -49,7 +51,7 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
 
     # Allow student account update without password
-    if admin_signed_in? || student_signed_in? && @student.id == current_student.id
+    if admin_signed_in? || student_signed_in? && @student.id == current_student.id || employer_signed_in?
       if student_params[:password].blank?
         student_params.delete(:password)
         student_params.delete(:password_confirmation)
@@ -132,10 +134,10 @@ class StudentsController < ApplicationController
         :email,
         :password,
         :password_confirmation,
+        follow_up_list_ids: [],
         technology_ids: [],
         industry_ids: [],
-        position_ids: [],
-        follow_up_list_ids: []
+        position_ids: []
       )
     end
 

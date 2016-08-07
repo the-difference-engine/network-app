@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-
-  resources :technologies
-  resources :salary_ranges
-  resources :industries
-  resources :position_types
-  resources :positions
   devise_for :admins, :skip => [:registrations], controllers: { 
     sessions: 'admins/sessions',
     # registrations: 'admins/registrations'
@@ -55,7 +49,12 @@ Rails.application.routes.draw do
   resources :students
   resources :employers
   resources :projects
+  resources :technologies
+  resources :salary_ranges
+  resources :industries
+  resources :position_types
   resources :positions
+  resources :follow_up_lists
   resources :batch_invitations
 
 

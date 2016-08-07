@@ -3,14 +3,14 @@ class FollowUpListsController < ApplicationController
 
   def edit
     @follow_up_list = FollowUpList.find(params[:id])
-    @employer = FollowUpList.employer
+    @employer = @follow_up_list.employer
   end
 
   def update
     @follow_up_list = FollowUpList.find(params[:id])
     @employer = @follow_up_list.employer
 
-    if @follow_up_list.update
+    if @follow_up_list.update(follow_up_list_params)
       flash[:success] = "Follow-Up list successfully updated!"
       redirect_to employer_path(@employer)
     else
@@ -18,4 +18,10 @@ class FollowUpListsController < ApplicationController
       render :edit
     end
   end
+
+  private
+
+    def follow_up_list_params
+      params.require(:follow_up_list).permit(:employer_id, :name)
+    end
 end

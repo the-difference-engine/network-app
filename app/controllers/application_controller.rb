@@ -107,6 +107,7 @@ protected
       :remove_resume,
       :remove_image,
       :remove_project_image,
+      :employer_id,
       :password,
       :password_confirmation,
       :invited_by_id, 
@@ -116,7 +117,7 @@ protected
       industry_ids: [],
       salary_range_ids: [],
       technology_ids: [],
-      follow_up_list_ids: []
+      student_ids: []
     ]
   end
 
