@@ -183,7 +183,7 @@
                               <td class="user-entries is-breakable">                              
                                 <p><%= follow_up_student.student.email %></p>                    
                               </td>
-                              <td></td>
+                              <td><a href="/follow_up_students/<%= follow_up_student.id %>" data-method="delete" data-confirm="Are you sure you want to remove <%= follow_up_student.student.full_name %> from the list?" class="btn btn-xs btn-default"><i class="ion-trash-a"></i></td>
   
                             
                             </tr>

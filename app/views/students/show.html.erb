@@ -159,16 +159,14 @@
             <% unless @student.resume.url == "" || @student.resume.url == nil %>
               <a href="<%= @student.resume.url %>" class="btn btn-lg theme-btn-color"><i class="ion-document-text"></i> &nbsp;Resume</a>
             <% end %>
-            
-  
             <a href="#" class="btn btn-lg theme-btn-color" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Send Student An Email" data-container="body"><i class="ion-email"></i></a>
             <button class="btn btn-lg theme-btn-color" form="follow-up-form" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Add To Follow Up List"  ><i class="ion-plus"></i> &nbsp;Add To List</button>
-          <% end %>
-          <%= form_for(@follow_up_student, url: follow_up_students_path, html: { id: "follow-up-form"}) do |f| %>
-            <%= f.hidden_field :student_id, value: @student.id %>
-            <%= f.hidden_field :follow_up_list_id, value: @follow_up_list.id %>
-            <%= f.hidden_field :employer_id, value: @employer.id %>
-          
+            
+            <%= form_for(@follow_up_student, url: follow_up_students_path, html: { id: "follow-up-form"}) do |f| %>
+              <%= f.hidden_field :student_id, value: @student.id %>
+              <%= f.hidden_field :follow_up_list_id, value: @follow_up_list.id %>
+              <%= f.hidden_field :employer_id, value: @employer.id %>
+            <% end %>
           <% end %>
         </div>
         <% unless employer_signed_in? %><hr><% end %>

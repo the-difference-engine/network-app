@@ -20,6 +20,16 @@ class FollowUpStudentsController < ApplicationController
   end
 
   def destroy
+    @follow_up_student = FollowUpStudent.find(params[:id])
+    @employer = @follow_up_student.follow_up_list.employer
+
+    if @follow_up_student.destroy 
+      flash[:success] = "The student was successfully removed from the list"
+      redirect_to employer_path(@employer)
+    else
+      flash[:warning] = "Unable to remove the student from the list"
+      redirect_to employer_path(@employer)
+    end
   end
 
   private
