@@ -58,6 +58,46 @@
     background-color: $green;
     border-color: $green; 
   }
+
+  .table {
+    tr.hoverlist {
+      text-decoration: none;
+      list-style-type: none;
+    }
+
+    a.user-name {
+      color: #6d6d6d;
+      transition: none;
+    }
+
+    a.btn {
+      color: #6d6d6d;
+      transition: none;
+    }
+
+    tr:hover td {
+      background: rgba(15, 175, 151, 0.6);
+
+      a.user-name { 
+        color: #fff;
+        transition: none;
+      }
+
+      a.btn:hover {
+        color: $green;
+        transition: none;
+      }
+
+      p {
+        color: #fff;
+        transition: none;
+      }
+    }
+
+    .remove-follow-up {
+      text-align: center;
+    }
+  }
 }
 
 .employer-new-admin {
