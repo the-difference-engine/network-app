@@ -22,7 +22,7 @@
             <% if @employer.technologies.any? %>
               <li class=""><a href="#tech" data-toggle="tab"><h4 class="heading-mini tab-name">Technologies</h4></a></li>
             <% end %>
-            <% if employer_signed_in? %>
+            <% if employer_signed_in? || admin_signed_in? %>
               <li class=""><a href="#follow-up" data-toggle="tab"><h4 class="heading-mini tab-name">Follow Up List</h4></a></li>
             <% end %>
           </ul>
@@ -162,7 +162,7 @@
                 </div> 
               </div>
             <% end %>
-            <% if employer_signed_in? %>
+            <% if employer_signed_in? || admin_signed_in? %>
               <div class="tab-pane description-pane" id="follow-up">  
                 <div class="tab-desc animated fadeIn">
                   <% if @follow_up_students %>
