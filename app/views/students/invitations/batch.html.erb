@@ -1,9 +1,42 @@
-<h2><%= t "devise.invitations.new.header" %></h2>
+<div class="login-page">
+  <section id="content-region-3" class="padding-40 page-tree-bg">
+    <div class="container">
+      <h3 class="page-tree-text"><%= t "devise.invitations.new.header" %></h3>
+    </div>
+  </section><!--page-tree end here-->
 
-<%= form_tag batch_invitations_path, :method => :post do %>
-  <%= label_tag "Enter student email addresses you'd like to invite." %><br>
-  <textarea style="width:400px; height:200px;" <%= text_area_tag :email_addresses %></textarea><br>
-  <%= hidden_field_tag 'type', 'student' %>
-  <%= submit_tag "Send student invitation(s)" %>
-<% end %>
+  <div class="space-70"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="my-login-form">
+          <%= form_tag batch_invitations_path, :method => :post do %>
+            <h4 class="heading-mini">Enter student email addresses you'd like to invite</h4><hr>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <%= text_area_tag :email_addresses, nil, class: "text-emails" %>
+                <%= hidden_field_tag 'type', 'student' %>
+              </div>
+            </div>            
+            <div class="row">
+              <div class="text-right submit-btn col-md-12">
+                <%= submit_tag "Send student invitation(s)", class: "btn theme-btn-color" %>           
+              </div>
+            </div>    
+          <% end -%>
+        </div>
+      </div>
+    </div>
+  </div><!--login page container end-->
+</div>
+
+
+
+
+
+
+
+
+
+
 

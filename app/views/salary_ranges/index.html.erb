@@ -1,27 +1,45 @@
-<p id="notice"><%= notice %></p>
+<div id="salary-range-index">
+  <div ng-app="app">
+    <div ng-controller="salaryRangesCtrl" ng-init="setupSalaryRangeIndex()">
 
-<h1>Listing Salary Ranges</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Salary range</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @salary_ranges.each do |salary_range| %>
-      <tr>
-        <td><%= salary_range.salary_range %></td>
-        <td><%= link_to 'Show', salary_range %></td>
-        <td><%= link_to 'Edit', edit_salary_range_path(salary_range) %></td>
-        <td><%= link_to 'Destroy', salary_range, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Salary range', new_salary_range_path %>
+      <section id="content-region-3" class="padding-40 page-tree-bg">
+        <div class="container">
+          <h3 class="page-tree-text">
+              Manage Salary Ranges
+          </h3>
+        </div>
+      </section><!--page-tree end here-->
+      <div class="space-70"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="heading-mini">Add A Salary Range</h4>
+          </div>
+          <div>
+            <%= render 'form' %>
+          </div>
+        </div>
+        <div class="row">
+ 
+          <div class="col-md-12">
+            <h4 class="heading-mini">Current Salary Ranges</h4>
+            <div class="admin-center-search">
+              <div class="form-group">
+                <input type="text" ng-model="searchSalaryRange" class="form-control admin-center-search-bar" placeholder="Search current salary ranges">
+              </div>
+            </div>
+            <table class="table table-hover table-responsive">
+              <tbody>
+                <tr class="hover-list" ng-repeat="salary in salaryRanges | filter: { salary_range: searchSalaryRange } | orderBy: 'id'">
+                  <td class="user-entries is-breakable"><p>{{ salary.salary_range }}</p></td>
+                  <td><a href="/salary_ranges/{{ salary.id }}/edit" class="btn btn-xs btn-default"><i class="ion-edit"></i></a></td>
+                  <td><a href="/salary_ranges/{{ salary.id }}" class="btn btn-xs btn-default" data-method="delete" data-confirm="Are you sure you want to delete '{{ salary.salary_range }}'?"><i class="ion-trash-a"></i></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div> 
+        </div>
+      </div><!--right sidebar page end-->
+    </div>
+  </div>
+</div>

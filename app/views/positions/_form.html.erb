@@ -1,21 +1,11 @@
-<%= form_for(@position) do |f| %>
-  <% if @position.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@position.errors.count, "error") %> prohibited this position from being saved:</h2>
-
-      <ul>
-      <% @position.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for(@position) do |f| %> 
+  <div class="col-md-4 margin-btm-20">
+    <div>
+      <%= f.text_field :name, class: "form-control", placeholder: "Position name" %>
+    </div><br>
+    <div>
+      <%= f.submit "Submit", class: "btn theme-btn-color" %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
   </div>
 <% end %>
+

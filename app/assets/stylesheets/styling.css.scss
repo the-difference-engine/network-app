@@ -14,11 +14,20 @@
 }
 
 .form-item-container .list-inline li span {
-    border: 1px solid $green;
-    border-radius: 4px;
-    padding: 4px;
+  border: 1px solid $green;
+  border-radius: 4px;
+  padding: 4px;
 }
 
 .autocomplete-list ul li.autocomplete-active {
   background-color: $green;
- }
+}
+
+.is-breakable {
+  word-break: break-word;
+}
+
+.text-emails {
+  width: 100%;
+  height: 8em;
+}
