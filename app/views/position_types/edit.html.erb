@@ -1,6 +1,20 @@
-<h1>Editing Position Type</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @position_type %> |
-<%= link_to 'Back', position_types_path %>
+<div id="position-type-index">
+  <section id="content-region-3" class="padding-40 page-tree-bg">
+    <div class="container">
+      <h3 class="page-tree-text">
+          Edit <em><%= @position_type.name %></em>
+      </h3>
+    </div>
+  </section><!--page-tree end here-->
+  <div class="space-70"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="heading-mini">Update Position Type Name</h4>
+      </div>
+      <div>
+        <%= render 'form' %>
+      </div>
+    </div>
+  </div><!--right sidebar page end-->
+</div>

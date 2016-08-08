@@ -1,6 +1,20 @@
-<h1>Editing Salary Range</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @salary_range %> |
-<%= link_to 'Back', salary_ranges_path %>
+<div id="salary-range-index">
+  <section id="content-region-3" class="padding-40 page-tree-bg">
+    <div class="container">
+      <h3 class="page-tree-text">
+          Edit Salary Range: <em><%= @salary_range.salary_range %></em>
+      </h3>
+    </div>
+  </section><!--page-tree end here-->
+  <div class="space-70"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="heading-mini">Update Salary Range</h4>
+      </div>
+      <div>
+        <%= render 'form' %>
+      </div>
+    </div>
+  </div><!--right sidebar page end-->
+</div>
