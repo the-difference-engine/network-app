@@ -6,6 +6,7 @@ class SalaryRangesController < ApplicationController
   # GET /salary_ranges.json
   def index
     @salary_ranges = SalaryRange.all
+    @salary_range = SalaryRange.new
   end
 
   # GET /salary_ranges/1
@@ -29,10 +30,12 @@ class SalaryRangesController < ApplicationController
 
     respond_to do |format|
       if @salary_range.save
-        format.html { redirect_to @salary_range, notice: 'Salary range was successfully created.' }
+        flash[:success] = 'The new salary range/skill was successfully created.'
+        format.html { redirect_to salary_ranges_path }
         format.json { render :show, status: :created, location: @salary_range }
       else
-        format.html { render :new }
+        flash[:warning] = 'Unable to add new salary range.'
+        format.html { render :index }
         format.json { render json: @salary_range.errors, status: :unprocessable_entity }
       end
     end
@@ -43,9 +46,11 @@ class SalaryRangesController < ApplicationController
   def update
     respond_to do |format|
       if @salary_range.update(salary_range_params)
-        format.html { redirect_to @salary_range, notice: 'Salary range was successfully updated.' }
+        flash[:success] = 'The salary range was successfully updated.'
+        format.html { redirect_to salary_ranges_path }
         format.json { render :show, status: :ok, location: @salary_range }
       else
+        flash[:warning] = 'Unable to update salary range.'
         format.html { render :edit }
         format.json { render json: @salary_range.errors, status: :unprocessable_entity }
       end
@@ -57,7 +62,8 @@ class SalaryRangesController < ApplicationController
   def destroy
     @salary_range.destroy
     respond_to do |format|
-      format.html { redirect_to salary_ranges_url, notice: 'Salary range was successfully destroyed.' }
+      flash[:success] = 'Salary range successfully deleted.'
+      format.html { redirect_to salary_ranges_path }
       format.json { head :no_content }
     end
   end
