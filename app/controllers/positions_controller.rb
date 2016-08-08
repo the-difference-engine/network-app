@@ -6,6 +6,7 @@ class PositionsController < ApplicationController
   # GET /positions.json
   def index
     @positions = Position.all
+    @position = Position.new
   end
 
   # GET /positions/1
@@ -29,10 +30,12 @@ class PositionsController < ApplicationController
 
     respond_to do |format|
       if @position.save
-        format.html { redirect_to @position, notice: 'Position was successfully created.' }
+        flash[:success] = 'The new position was successfully created.'
+        format.html { redirect_to positions_path }
         format.json { render :show, status: :created, location: @position }
       else
-        format.html { render :new }
+        flash[:warning] = 'Unable to add new position.'
+        format.html { render :index }
         format.json { render json: @position.errors, status: :unprocessable_entity }
       end
     end
@@ -43,9 +46,11 @@ class PositionsController < ApplicationController
   def update
     respond_to do |format|
       if @position.update(position_params)
-        format.html { redirect_to @position, notice: 'Position was successfully updated.' }
+        flash[:success] = 'The position was successfully updated.'
+        format.html { redirect_to positions_path }
         format.json { render :show, status: :ok, location: @position }
       else
+        flash[:warning] = 'Unable to update position.'
         format.html { render :edit }
         format.json { render json: @position.errors, status: :unprocessable_entity }
       end
@@ -57,7 +62,8 @@ class PositionsController < ApplicationController
   def destroy
     @position.destroy
     respond_to do |format|
-      format.html { redirect_to positions_url, notice: 'Position was successfully destroyed.' }
+      flash[:success] = 'Position successfully deleted.'
+      format.html { redirect_to positions_path }
       format.json { head :no_content }
     end
   end

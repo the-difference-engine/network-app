@@ -1,27 +1,45 @@
-<p id="notice"><%= notice %></p>
+<div id="position-index">
+  <div ng-app="app">
+    <div ng-controller="positionsCtrl" ng-init="setupPositionIndex()">
 
-<h1>Listing Positions</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @positions.each do |position| %>
-      <tr>
-        <td><%= position.name %></td>
-        <td><%= link_to 'Show', position %></td>
-        <td><%= link_to 'Edit', edit_position_path(position) %></td>
-        <td><%= link_to 'Destroy', position, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Position', new_position_path %>
+      <section id="content-region-3" class="padding-40 page-tree-bg">
+        <div class="container">
+          <h3 class="page-tree-text">
+              Manage Positions
+          </h3>
+        </div>
+      </section><!--page-tree end here-->
+      <div class="space-70"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="heading-mini">Add A Position</h4>
+          </div>
+          <div>
+            <%= render 'form' %>
+          </div>
+        </div>
+        <div class="row">
+ 
+          <div class="col-md-12">
+            <h4 class="heading-mini">Current Positions</h4>
+            <div class="admin-center-search">
+              <div class="form-group">
+                <input type="text" ng-model="searchPositionName" class="form-control admin-center-search-bar" placeholder="Search current positions">
+              </div>
+            </div>
+            <table class="table table-hover table-responsive">
+              <tbody>
+                <tr class="hover-list" ng-repeat="position in positions | filter: { name: searchPositionName } | orderBy: 'name'">
+                  <td class="user-entries is-breakable"><p>{{ position.name }}</p></td>
+                  <td><a href="/positions/{{ position.id }}/edit" class="btn btn-xs btn-default"><i class="ion-edit"></i></a></td>
+                  <td><a href="/positions/{{ position.id }}" class="btn btn-xs btn-default" data-method="delete" data-confirm="Are you sure you want to delete '{{ position.name }}'?"><i class="ion-trash-a"></i></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div> 
+        </div>
+      </div><!--right sidebar page end-->
+    </div>
+  </div>
+</div>
