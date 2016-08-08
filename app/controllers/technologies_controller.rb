@@ -6,6 +6,7 @@ class TechnologiesController < ApplicationController
   # GET /technologies.json
   def index
     @technologies = Technology.all.order(:name)
+    @technology = Technology.new
   end
 
   # GET /technologies/1
@@ -29,10 +30,12 @@ class TechnologiesController < ApplicationController
 
     respond_to do |format|
       if @technology.save
-        format.html { redirect_to @technology, notice: 'Technology was successfully created.' }
+        flash[:success] = 'The new technology/skill was successfully created.'
+        format.html { redirect_to technologies_path }
         format.json { render :show, status: :created, location: @technology }
       else
-        format.html { render :new }
+        flash[:warning] = 'Unable to add new technology.'
+        format.html { render :index }
         format.json { render json: @technology.errors, status: :unprocessable_entity }
       end
     end
@@ -43,9 +46,11 @@ class TechnologiesController < ApplicationController
   def update
     respond_to do |format|
       if @technology.update(technology_params)
-        format.html { redirect_to @technology, notice: 'Technology was successfully updated.' }
+        flash[:success] = 'The technology/skill was successfully updated.'
+        format.html { redirect_to technologies_path }
         format.json { render :show, status: :ok, location: @technology }
       else
+        flash[:warning] = 'Unable to update technology.'
         format.html { render :edit }
         format.json { render json: @technology.errors, status: :unprocessable_entity }
       end
@@ -57,7 +62,8 @@ class TechnologiesController < ApplicationController
   def destroy
     @technology.destroy
     respond_to do |format|
-      format.html { redirect_to technologies_url, notice: 'Technology was successfully destroyed.' }
+      flash[:success] = 'Technology/skill successfully deleted.'
+      format.html { redirect_to technologies_path }
       format.json { head :no_content }
     end
   end
