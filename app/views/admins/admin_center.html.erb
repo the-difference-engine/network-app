@@ -68,7 +68,7 @@
                         </div>
                         <table class="table table-hover table-responsive">
                           <tbody>
-                            <tr class="hover-list"ng-repeat="employer in employers | filter: { name: searchEmployerName } | orderBy: 'name'">
+                            <tr class="hover-list"ng-repeat="employer in activeEmployers | filter: { name: searchEmployerName } | orderBy: 'name'">
                               <td class="user-entries">
                                 <a href="/employers/{{ employer.id }}" class="user-name">{{ employer.name }}</a>
                               </td>
@@ -100,7 +100,7 @@
                           </div>
                           <table class="table table-hover table-responsive">
                             <tbody>
-                              <tr class="hover-list"ng-repeat="admin in admins | filter: { full_name: searchAdminName } | orderBy: 'last_name'">
+                              <tr class="hover-list"ng-repeat="admin in activeAdmins | filter: { full_name: searchAdminName } | orderBy: 'last_name'">
                                 <td class="user-entries">                                
                                   <p>{{ admin.full_name }}</p>                          
                                 </td>
