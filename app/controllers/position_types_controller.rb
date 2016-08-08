@@ -6,6 +6,7 @@ class PositionTypesController < ApplicationController
   # GET /position_types.json
   def index
     @position_types = PositionType.all
+    @position_type = PositionType.new
   end
 
   # GET /position_types/1
@@ -29,35 +30,40 @@ class PositionTypesController < ApplicationController
 
     respond_to do |format|
       if @position_type.save
-        format.html { redirect_to @position_type, notice: 'Position type was successfully created.' }
+        flash[:success] = 'The new position type was successfully created.'
+        format.html { redirect_to position_types_path }
         format.json { render :show, status: :created, location: @position_type }
       else
-        format.html { render :new }
+        flash[:warning] = 'Unable to add new position type.'
+        format.html { render :index }
         format.json { render json: @position_type.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /position_types/1
-  # PATCH/PUT /position_types/1.json
+  # PATCH/PUT /position_type/1
+  # PATCH/PUT /position_type/1.json
   def update
     respond_to do |format|
       if @position_type.update(position_type_params)
-        format.html { redirect_to @position_type, notice: 'Position type was successfully updated.' }
+        flash[:success] = 'The position type was successfully updated.'
+        format.html { redirect_to position_types_path }
         format.json { render :show, status: :ok, location: @position_type }
       else
+        flash[:warning] = 'Unable to update position type.'
         format.html { render :edit }
         format.json { render json: @position_type.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /position_types/1
-  # DELETE /position_types/1.json
+  # DELETE /position_type/1
+  # DELETE /position_type/1.json
   def destroy
     @position_type.destroy
     respond_to do |format|
-      format.html { redirect_to position_types_url, notice: 'Position type was successfully destroyed.' }
+      flash[:success] = 'Position type successfully deleted.'
+      format.html { redirect_to position_types_path }
       format.json { head :no_content }
     end
   end
