@@ -6,6 +6,7 @@ class IndustriesController < ApplicationController
   # GET /industries.json
   def index
     @industries = Industry.all
+    @industry = Industry.new
   end
 
   # GET /industries/1
@@ -29,10 +30,12 @@ class IndustriesController < ApplicationController
 
     respond_to do |format|
       if @industry.save
-        format.html { redirect_to @industry, notice: 'Industry was successfully created.' }
+        flash[:success] = 'The new industry was successfully created.'
+        format.html { redirect_to industries_path }
         format.json { render :show, status: :created, location: @industry }
       else
-        format.html { render :new }
+        flash[:warning] = 'Unable to add new industry.'
+        format.html { render :index }
         format.json { render json: @industry.errors, status: :unprocessable_entity }
       end
     end
@@ -43,9 +46,11 @@ class IndustriesController < ApplicationController
   def update
     respond_to do |format|
       if @industry.update(industry_params)
-        format.html { redirect_to @industry, notice: 'Industry was successfully updated.' }
+        flash[:success] = 'The industry was successfully updated.'
+        format.html { redirect_to industries_path }
         format.json { render :show, status: :ok, location: @industry }
       else
+        flash[:warning] = 'Unable to update industry.'
         format.html { render :edit }
         format.json { render json: @industry.errors, status: :unprocessable_entity }
       end
@@ -57,7 +62,8 @@ class IndustriesController < ApplicationController
   def destroy
     @industry.destroy
     respond_to do |format|
-      format.html { redirect_to industries_url, notice: 'Industry was successfully destroyed.' }
+      flash[:success] = 'Industry successfully deleted.'
+      format.html { redirect_to industries_path }
       format.json { head :no_content }
     end
   end
