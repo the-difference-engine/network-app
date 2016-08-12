@@ -25,6 +25,7 @@ class BatchInvitationsController < ApplicationController
       else
         invite_send_errors << unparsed_email
       end
+    end
       
       if invite_send_success.length > 0
         flash[:success] = "Invitation(s) successfully sent to #{invite_send_success.to_sentence}"
@@ -37,7 +38,7 @@ class BatchInvitationsController < ApplicationController
       if invite_send_duplicate.length > 0
         flash[:warning] = "Invitation(s) not sent to #{invite_send_duplicate.to_sentence}"
       end
-    end
+    
     redirect_to "/"
   end
 end
