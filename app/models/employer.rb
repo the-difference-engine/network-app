@@ -49,18 +49,18 @@ class Employer < ActiveRecord::Base
     fields = false
 
     if number_of_positions == nil || number_of_positions == ""
-      number_of_positions = false
+      number_of_positions_entered = false
     else
-      number_of_positions = true
+      number_of_positions_entered = true
     end
 
     if hiring_timeline == nil || hiring_timeline == ""
-      hiring_timeline = false
+      hiring_timeline_entered = false
      else
-      hiring_timeline = true
+      hiring_timeline_entered = true
     end
 
-    if number_of_positions || hiring_timeline
+    if number_of_positions_entered || hiring_timeline_entered
       fields = true
     end
 
