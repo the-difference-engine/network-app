@@ -26,6 +26,12 @@ RSpec.describe Student, :type => :model do
       expect(student.normalized_blog).to eq("http://m.cubs.mlb.com/player/453562/jake-arrieta")
     end
 
+    it 'returns normalized student personal_website link as a string' do
+      student = build(:student, 
+        personal_website: "m.cubs.mlb.com/player/453562/jake-arrieta")
+      expect(student.normalized_personal_website).to eq("http://m.cubs.mlb.com/player/453562/jake-arrieta")
+    end
+
     it 'returns normalized student linked_in link as a string' do
       student = build(:student, 
         linked_in: "linkedin.com/in/jake-arrieta-2853944a")
@@ -132,6 +138,38 @@ RSpec.describe Student, :type => :model do
       expect(student.interview_answers?).to eq(false)
     end
 
+    it 'returns true if student has at least one non-nil interview question entered' do
+      student = create(:student,
+        interview_q1: nil,
+        interview_q2: nil,
+        interview_q3: "Why do you like to code?")
+      expect(student.interview_questions?).to eq(true)
+    end
+
+    it 'returns false if student has all nil interview questions' do
+      student = create(:student,
+        interview_q1: nil,
+        interview_q2: nil,
+        interview_q3: nil)
+      expect(student.interview_questions?).to eq(false)
+    end
+
+    it 'returns true if student has at least one non-empty-string interview questions' do
+      student = create(:student,
+        interview_q1: "",
+        interview_q2: "",
+        interview_q3: "Why do you like to code?")
+      expect(student.interview_questions?).to eq(true)
+    end
+
+    it 'returns false if student has all empty-string interview questions' do
+      student = create(:student,
+        interview_q1: "",
+        interview_q2: "",
+        interview_q3: "")
+      expect(student.interview_questions?).to eq(false)
+    end
+
     it 'returns true if student has at least one non-nil interest answer' do
       student = create(:student,
         interest_1: nil,
@@ -170,34 +208,38 @@ RSpec.describe Student, :type => :model do
       expect(student.friendly_grad_date).to eq("March 2016")
     end
 
-    it 'returns true if student has at least one non-empty-string social link (github, blog, linked_in) answer' do
+    it 'returns true if student has at least one non-empty-string social link (github, blog, personal_website, linked_in) answer' do
       student = create(:student,
         github: "",
         blog: "",
+        personal_website: "",
         linked_in: "if you look hot, wear it")
       expect(student.social_links?).to eq(true)
     end
 
-    it 'returns false if student has all empty-string social link (github, blog, linked_in) answers' do
+    it 'returns false if student has all empty-string social link (github, blog, personal_website, linked_in) answers' do
       student = create(:student,
         github: "",
         blog: "",
+        personal_website: "",
         linked_in: "")
       expect(student.social_links?).to eq(false)
     end
 
-    it 'returns true if student has at least one non-nil social link (github, blog, linked_in) answer' do
+    it 'returns true if student has at least one non-nil social link (github, blog, personal_website, linked_in) answer' do
       student = create(:student,
         github: nil,
         blog: nil,
+        personal_website: nil,
         linked_in: "if you look hot, wear it")
       expect(student.social_links?).to eq(true)
     end
 
-    it 'returns false if student has all nil social link (github, blog, linked_in) answers' do
+    it 'returns false if student has all nil social link (github, blog, personal_website, linked_in) answers' do
       student = create(:student,
         github: nil,
         blog: nil,
+        personal_website: nil,
         linked_in: nil)
       expect(student.social_links?).to eq(false)
     end

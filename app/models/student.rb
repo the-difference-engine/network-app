@@ -48,7 +48,7 @@ class Student < ActiveRecord::Base
     blog && PostRank::URI.normalize(blog).to_s
   end
 
-  def normalized_website
+  def normalized_personal_website
     personal_website && PostRank::URI.normalize(personal_website).to_s
   end
 
@@ -124,6 +124,34 @@ class Student < ActiveRecord::Base
     end
 
     return questions_answered
+  end
+
+  def interview_questions?
+    questions_entered = false
+
+    if interview_q1 == nil || interview_q1 == ""
+      question_1_entered = false
+    else
+      question_1_entered = true
+    end
+
+    if interview_q2 == nil || interview_q2 == ""
+      question_2_entered = false
+     else
+      question_2_entered = true
+    end
+
+    if interview_q3 == nil || interview_q3 == ""
+      question_3_entered = false
+    else
+      question_3_entered = true
+    end
+
+    if question_1_entered || question_2_entered || question_3_entered
+      questions_entered = true
+    end
+
+    return questions_entered
   end
 
   def interests?
