@@ -84,63 +84,63 @@
           </div>
         </div><!--blog post section end-->
 
-        <div class="blog-post-section student-section-three">
-          <% if @student.interview_answers? %>
+        <% if @student.interview_answers? && @student.interview_questions? || @student.quote != "" && @student.quote == nil %>
+          <div class="blog-post-section student-section-three">
             <h4 class="heading-mini section-heading">Interview Responses</h4>
-            <% unless @student.interview_1 == "" || @student.interview_1 == nil %>
+            <% unless @student.interview_1 == "" || @student.interview_1 == nil || @student.interview_q1 == "" || @student.interview_q1 == nil %>
               <div class="student-interview">
                 <div class="row">
                   <div class="col-md-3 services-icon">
                     <i class="ion-help"></i>
                   </div><!--services icon-->
                   <div class="col-md-6 services-text">
-                    <h4 class="heading-mini question-heading">What is a closure, and how/why would you use one?</h4> 
+                    <h4 class="heading-mini question-heading"><%= @student.interview_q1 %></h4> 
                     <p><em>"<%= @student.interview_1.capitalize %>"</em></p> 
                   </div><!--services 1 text-->
                 </div><!--services 1 row-->
               </div>
             <% end %>
-            <% unless @student.interview_2 == "" || @student.interview_2 == nil %>
+            <% unless @student.interview_q2 == "" || @student.interview_q2 == nil || @student.interview_2 == "" || @student.interview_2 == nil %>
               <div class="student-interview">
                 <div class="row">
                   <div class="col-md-3 services-icon">
                     <i class="ion-help"></i>
                   </div><!--services icon-->
                   <div class="col-md-6 services-text">
-                    <h4 class="heading-mini question-heading">What does CORS stand for and what issue does it address?</h4> 
+                    <h4 class="heading-mini question-heading"><%= @student.interview_q2 %></h4> 
                     <p><em>"<%= @student.interview_2.capitalize %>"</em></p> 
                   </div><!--services 1 text-->
                 </div><!--services 1 row-->
               </div>
             <% end %>
-            <% unless @student.interview_3 == "" || @student.interview_3 == nil %>
+            <% unless @student.interview_3 == "" || @student.interview_3 == nil || @student.interview_q3 == "" || @student.interview_q3 == nil %>
               <div class="student-interview">
                 <div class="row">
                   <div class="col-md-3 services-icon">
                     <i class="ion-help"></i>
                   </div><!--services icon-->
                   <div class="col-md-6 services-text">
-                    <h4 class="heading-mini question-heading">What is a recent technical challenge you experienced and how did you solve it?</h4> 
+                    <h4 class="heading-mini question-heading"><%= @student.interview_q3 %></h4> 
                     <p><em>"<%= @student.interview_3.capitalize %>"</em></p> 
                   </div><!--services 1 text-->
                 </div><!--services 1 row-->
               </div>
             <% end %>
-          <% end %>
-          <% unless @student.quote == "" || @student.quote == nil %>
-            <h4 class="heading-mini section-heading">Quote</h4>
-            <div class="student-quote">
-              <div class="row">
-                <div class="col-md-3 services-icon">
-                  <i class="ion-chatbox"></i>
-                </div><!--services icon-->
-                <div class="col-md-6 services-text">
-                  <h4 class="heading-mini quote-heading"><em>"<%= @student.quote %>"</em></h4> 
-                </div><!--services 1 text-->
-              </div><!--services 1 row-->
-            </div>
-          <% end %>
-        </div><!--blog post section end-->
+            <% unless @student.quote == "" || @student.quote == nil %>
+              <h4 class="heading-mini section-heading">Quote</h4>
+              <div class="student-quote">
+                <div class="row">
+                  <div class="col-md-3 services-icon">
+                    <i class="ion-chatbox"></i>
+                  </div><!--services icon-->
+                  <div class="col-md-6 services-text">
+                    <h4 class="heading-mini quote-heading"><em>"<%= @student.quote %>"</em></h4> 
+                  </div><!--services 1 text-->
+                </div><!--services 1 row-->
+              </div>
+            <% end %>
+          </div><!--blog post section end-->
+        <% end %>
       </div><!--blog content--> 
 
       <div class="col-md-4">

@@ -137,16 +137,27 @@
           <h4 class="heading-mini">Interview Questions</h4><hr>
           <div class="row">
             <div class="col-md-12 margin-btm-20">
-              <%= f.label :interview_1 %><br />
+              <%= f.label :interview_q1, "Interview Q1: Enter an interview question you'd like to answer" %><br />
+              <%= f.text_field :interview_q1, class: "form-control" %>
+            </div>
+            <div class="col-md-12 margin-btm-20">
+              <%= f.label :interview_1, "Q1 Response" %><br />
               <%= f.text_area :interview_1, class: "form-control" %>
             </div>
             <div class="col-md-12 margin-btm-20">
-              <%= f.label :interview_2 %><br />
+              <%= f.label :interview_q2, "Interview Q2: Enter an interview question you'd like to answer" %><br />
+              <%= f.text_field :interview_q2, class: "form-control" %>
+            </div>
+            <div class="col-md-12 margin-btm-20">
+              <%= f.label :interview_2, "Q2 Response" %><br />
               <%= f.text_area :interview_2, class: "form-control" %>
             </div>
-          
-             <div class="col-md-12 margin-btm-20">
-              <%= f.label :interview_3 %><br />
+            <div class="col-md-12 margin-btm-20">
+              <%= f.label :interview_q3, "Interview Q3: Enter an interview question you'd like to answer" %><br />
+              <%= f.text_field :interview_q3, class: "form-control" %>
+            </div>
+            <div class="col-md-12 margin-btm-20">
+              <%= f.label :interview_3, "Q3 Response" %><br />
               <%= f.text_area :interview_3, class: "form-control" %>
             </div>
           </div>
