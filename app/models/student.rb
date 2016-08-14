@@ -48,6 +48,10 @@ class Student < ActiveRecord::Base
     blog && PostRank::URI.normalize(blog).to_s
   end
 
+  def normalized_personal_website
+    personal_website && PostRank::URI.normalize(personal_website).to_s
+  end
+
   def normalized_linked_in
     linked_in && PostRank::URI.normalize(linked_in).to_s
   end
@@ -70,24 +74,24 @@ class Student < ActiveRecord::Base
     skills_answered = false
 
     if skill_1 == nil || skill_1 == ""
-      skill_1 = false
+      skill_1_entered = false
     else
-      skill_1 = true
+      skill_1_entered = true
     end
 
     if skill_2 == nil || skill_2 == ""
-      skill_2 = false
+      skill_2_entered = false
      else
-      skill_2 = true
+      skill_2_entered = true
     end
 
     if skill_3 == nil || skill_3 == ""
-      skill_3 = false
+      skill_3_entered = false
     else
-      skill_3 = true
+      skill_3_entered = true
     end
 
-    if skill_1 || skill_2 || skill_3
+    if skill_1_entered || skill_2_entered || skill_3_entered
       skills_answered = true
     end
 
@@ -98,52 +102,80 @@ class Student < ActiveRecord::Base
     questions_answered = false
 
     if interview_1 == nil || interview_1 == ""
-      question_1 = false
+      question_1_entered = false
     else
-      question_1 = true
+      question_1_entered = true
     end
 
     if interview_2 == nil || interview_2 == ""
-      question_2 = false
+      question_2_entered = false
      else
-      question_2 = true
+      question_2_entered = true
     end
 
     if interview_3 == nil || interview_3 == ""
-      question_3 = false
+      question_3_entered = false
     else
-      question_3 = true
+      question_3_entered = true
     end
 
-    if question_1 || question_2 || question_3
+    if question_1_entered || question_2_entered || question_3_entered
       questions_answered = true
     end
 
     return questions_answered
   end
 
+  def interview_questions?
+    questions_entered = false
+
+    if interview_q1 == nil || interview_q1 == ""
+      question_1_entered = false
+    else
+      question_1_entered = true
+    end
+
+    if interview_q2 == nil || interview_q2 == ""
+      question_2_entered = false
+     else
+      question_2_entered = true
+    end
+
+    if interview_q3 == nil || interview_q3 == ""
+      question_3_entered = false
+    else
+      question_3_entered = true
+    end
+
+    if question_1_entered || question_2_entered || question_3_entered
+      questions_entered = true
+    end
+
+    return questions_entered
+  end
+
   def interests?
     interests_answered = false
 
     if interest_1 == nil || interest_1 == ""
-      interest_1 = false
+      interest_1_entered = false
     else
-      interest_1 = true
+      interest_1_entered = true
     end
 
     if interest_2 == nil || interest_2 == ""
-      interest_2 = false
+      interest_2_entered = false
      else
-      interest_2 = true
+      interest_2_entered = true
     end
 
     if interest_3 == nil || interest_3 == ""
-      interest_3 = false
+      interest_3_entered = false
     else
-      interest_3 = true
+      interest_3_entered = true
     end
 
-    if interest_1 || interest_2 || interest_3
+    if interest_1_entered || interest_2_entered || interest_3_entered
       interests_answered = true
     end
 
@@ -154,24 +186,30 @@ class Student < ActiveRecord::Base
     social_links = false
 
     if github == nil || github == ""
-      github = false
+      github_entered = false
     else
-      github = true
+      github_entered = true
     end
 
     if blog == nil || blog == ""
-      blog = false
+      blog_entered = false
      else
-      blog = true
+      blog_entered = true
     end
 
     if linked_in == nil || linked_in == ""
-      linked_in = false
+      linked_in_entered = false
     else
-      linked_in = true
+      linked_in_entered = true
     end
 
-    if github || blog || linked_in
+    if personal_website == nil || personal_website == ""
+      personal_website_entered = false
+    else
+      personal_website_entered = true
+    end
+
+    if github_entered || blog_entered || linked_in_entered || personal_website_entered
       social_links = true
     end
 

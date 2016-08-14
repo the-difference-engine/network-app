@@ -14,11 +14,15 @@ FactoryGirl.define do
     interest_1 Faker::Hacker.ingverb
     interest_2 Faker::Hacker.ingverb
     interest_3 Faker::Hacker.ingverb
+    interview_q1 Faker::Hacker.say_something_smart
+    interview_q2 Faker::Hacker.say_something_smart
+    interview_q3 Faker::Hacker.say_something_smart
     interview_1 Faker::Hacker.say_something_smart
     interview_2 Faker::Hacker.say_something_smart
     interview_3 Faker::Hacker.say_something_smart
     github Faker::Internet.url
     blog Faker::Internet.url
+    personal_website Faker::Internet.url
     linked_in Faker::Internet.url
     quote Faker::Hacker.say_something_smart
     seeking_employment true

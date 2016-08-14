@@ -43,24 +43,24 @@ class Project < ActiveRecord::Base
     project_links = false
 
     if github == nil || github == ""
-      github = false
+      github_entered = false
     else
-      github = true
+      github_entered = true
     end
 
     if website == nil || website == ""
-      website = false
+      website_entered = false
      else
-      website = true
+      website_entered = true
     end
 
     if screencast == nil || screencast == ""
-      screencast = false
+      screencast_entered = false
     else
-      screencast = true
+      screencast_entered = true
     end
 
-    if github || website || screencast
+    if github_entered || website_entered || screencast_entered
       project_links = true
     end
 

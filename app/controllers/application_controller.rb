@@ -24,7 +24,6 @@ class ApplicationController < ActionController::Base
       :authenticate_employer!
     else 
       redirect_to "/sign_in"
-      # flash[:warning] = "Access restricted! Please sign in or sign up."
     end
   end
 
@@ -77,11 +76,15 @@ protected
       :interest_1,
       :interest_2,
       :interest_3,
+      :interview_q1,
+      :interview_q2,
+      :interview_q3,
       :interview_1,
       :interview_2,
       :interview_3,
       :github,
       :blog,
+      :personal_website,
       :linked_in,
       :quote,
       :seeking_employment,
