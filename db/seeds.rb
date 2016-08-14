@@ -41,7 +41,7 @@ Technology.create!([
   {name: "Cordova"},
   {name: "Flask"},
   {name: "Cucumber"},
-  {name: "Pearl"},
+  {name: "Perl"},
   {name: "ASP.net"},
   {name: "iOS"},
   {name: "Android"},
