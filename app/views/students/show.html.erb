@@ -176,16 +176,16 @@
             <h4>Find Me Online</h4>
             <ul class=" list-inline social-btn">
               <% unless @student.github == "" || @student.github == nil %> 
-                <li><a href="<%= @student.normalized_github %>" target="_blank"><i class="ion-social-github" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Check Out My GitHub"></i></a></li>
+                <li><a href="<%= @student.normalized_github %>" target="_blank"><i class="ion-social-github" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="My GitHub"></i></a></li>
               <% end %>
               <% unless @student.blog == "" || @student.blog == nil %>  
-                <li><a href="<%= @student.normalized_blog %>" target="_blank"><i class="ion-android-hangout" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Check Out My Blog"></i></a></li>
+                <li><a href="<%= @student.normalized_blog %>" target="_blank"><i class="ion-android-hangout" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="My Blog"></i></a></li>
               <% end %>
               <% unless @student.personal_website == "" || @student.personal_website == nil %>  
-                <li><a href="<%= @student.normalized_personal_website %>" target="_blank"><i class="ion-android-desktop" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Check Out My Website"></i></a></li>
+                <li><a href="<%= @student.normalized_personal_website %>" target="_blank"><i class="ion-android-desktop" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="My Website"></i></a></li>
               <% end %>
               <% unless @student.linked_in == "" || @student.linked_in == nil %> 
-                <li><a href="<%= @student.normalized_linked_in %>" target="_blank"><i class="ion-social-linkedin-outline" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Connect on LinkedIn"></i></a></li>
+                <li><a href="<%= @student.normalized_linked_in %>" target="_blank"><i class="ion-social-linkedin-outline" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="My LinkedIn"></i></a></li>
               <% end %>
             </ul>
           </div><hr>
