@@ -11,7 +11,8 @@
       <div class="col-md-6 col-md-offset-3">
         <div class="my-login-form">
           <%= form_tag batch_invitations_path, :method => :post do %>
-            <h4 class="heading-mini">Enter admin email addresses you'd like to invite</h4><hr>
+            <h4 class="heading-mini">Enter admin email addresses you'd like to invite</h4>
+            <div>Addresses must be separated by a comma to create invitations</div><hr>
             <div class="row">
               <div class="form-group col-md-12">
                 <%= text_area_tag :email_addresses, nil, class: "text-emails" %>
