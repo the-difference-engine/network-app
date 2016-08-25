@@ -31,6 +31,7 @@ gem 'postrank-uri'
 gem 'jquery-ui-rails'
 gem "font-ionicons-rails"
 gem 'seed_dump'
+gem 'mail_form'
 
 gem 'figaro'
 gem 'carrierwave'

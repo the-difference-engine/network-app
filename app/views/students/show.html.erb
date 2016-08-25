@@ -167,7 +167,27 @@
               <%= f.hidden_field :follow_up_list_id, value: @follow_up_list.id %>
               <%= f.hidden_field :employer_id, value: @employer.id %>
             <% end %>
-            
+
+
+            <%= form_for(@employer_email, html: {:class => "wpcf7-form" }) do |f| %>
+              <%= f.hidden_field :nickname %>
+              <div class="field">
+                <!--<label for="name">Name:</label>-->
+                <%= f.text_field :name, required: true, placeholder: "Your Name" %>
+              </div>
+              <div class="field">
+                <!--<label for="name">Name:</label>-->
+                <%= f.email_field :email, required: true, placeholder: "Your Email" %>
+              </div>
+              <div class="field">
+                <!--<label for="name">Name:</label>-->
+                <%= f.text_area :message, as: :text, placeholder: "Your message!" %>
+              </div>
+              <div class="field text-center">
+                <%= button_tag "Send Message", class: "btn btn-lg btn-darker" %>
+                <%= link_to "Cancel", "/", class: "btn btn-lg btn-darker" %>
+              </div>
+            <% end %>
           <% end %>
         </div>
         <% unless employer_signed_in? %><hr><% end %>
