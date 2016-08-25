@@ -1,9 +1,16 @@
 <h4 style="text-decoration:underline"><%= message.subject %></h4>
+<p>You have a message from an employer on the ACLTC Network!</p>
 
 <% @resource.mail_form_attributes.each do |attribute, value|
   next if value.blank? || attribute == "student_email" || attribute == "student_id" || attribute == "employer_id" %>
+  <% if attribute == "name" %>
+    <p><b>Company <%= @resource.class.human_attribute_name(attribute) %>:</b>
+  <% elsif attribute == "email" %>
+    <p><b>Sent from <%= @resource.class.human_attribute_name(attribute) %>:</b>
+  <% else %>
+    <p><b><%= @resource.class.human_attribute_name(attribute) %>:</b>
+  <% end %>
 
-  <p><b><%= @resource.class.human_attribute_name(attribute) %>:</b>
   <%= case value
     when /\n/
       raw(simple_format(h(value)))
@@ -29,9 +36,9 @@
       value.inspect
     end
   %>
-
     <p><b><%= I18n.t attribute, :scope => [ :mail_form, :request ], :default => attribute.to_s.humanize %>:</b>
     <%= value.include?("\n") ? simple_format(value) : value %></p>
   <% end %>
   <br />
 <% end %>
+
