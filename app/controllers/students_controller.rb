@@ -33,6 +33,7 @@ class StudentsController < ApplicationController
     @employer = current_employer if current_employer
     @follow_up_list = @employer.follow_up_list if current_employer
     @follow_up_student = FollowUpStudent.new
+    @employer_email = EmployerEmail.new
 
     if @student.capstone_project
       @capstone = @student.capstone_project

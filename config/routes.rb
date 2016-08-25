@@ -57,6 +57,8 @@ Rails.application.routes.draw do
   resources :follow_up_students
   resources :batch_invitations
 
+  post '/employer_emails' => 'employer_emails#create'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
