@@ -13,6 +13,7 @@ class Student < ActiveRecord::Base
   has_and_belongs_to_many :positions
   has_many :follow_up_students
   has_many :follow_up_lists, through: :follow_up_students
+  has_many :employer_email_records
 
   def full_name
     "#{first_name} #{last_name}"

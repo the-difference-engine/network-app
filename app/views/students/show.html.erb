@@ -159,7 +159,7 @@
             <% unless @student.resume.url == "" || @student.resume.url == nil %>
               <a href="<%= @student.resume.url %>" class="btn btn-lg theme-btn-color"><i class="ion-document-text"></i> &nbsp;Resume</a>
             <% end %>
-            <a href="#" class="btn btn-lg theme-btn-color" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Send Student An Email" data-container="body"><i class="ion-email"></i></a>
+            <div class="modal-tooltip" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Send Student An Email" data-container="body"><button type="button" class="btn btn-lg theme-btn-color" data-toggle="modal" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Send Student An Email" data-container="body" data-target="#exampleModal" data-whatever=" <%= @student.full_name %>"><i class="ion-email"></i></button></div>
             <button class="btn btn-lg theme-btn-color" form="follow-up-form" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Add To Follow Up List"  ><i class="ion-plus"></i> &nbsp;Add To List</button>
             
             <%= form_for(@follow_up_student, url: follow_up_students_path, html: { id: "follow-up-form"}) do |f| %>
@@ -167,6 +167,51 @@
               <%= f.hidden_field :follow_up_list_id, value: @follow_up_list.id %>
               <%= f.hidden_field :employer_id, value: @employer.id %>
             <% end %>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close btn btn-lg theme-btn-color" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+                    <p>Clicking send will deliver an email to <%= @student.first_name %> from <%= current_employer.email %></p>
+                  </div>
+                  <div class="modal-body">
+                    <%= form_for(@employer_email, html: {:class => "wpcf7-form", id: "employer-email-form" }) do |f| %>
+                      <%= f.hidden_field :nickname %>
+                      <div class="field">
+                        <!--<label for="name">Name:</label>-->
+                        <%= f.hidden_field :name, required: true, value: current_employer.name %>
+                      </div>
+                      <div class="field">
+                        <!--<label for="name">Name:</label>-->
+                        <%= f.hidden_field :email, required: true, value: current_employer.email %>
+                      </div>
+                      <div class="field">
+                        <!--<label for="name">Name:</label>-->
+                        <%= f.hidden_field :student_email, required: true, value: @student.email %>
+                      </div>
+                      <div class="field">
+                        <!--<label for="name">Name:</label>-->
+                        <%= f.hidden_field :student_id, required: true, value: @student.id %>
+                      </div>
+                      <div class="field">
+                        <!--<label for="name">Name:</label>-->
+                        <%= f.hidden_field :employer_id, required: true, value: current_employer.id %>
+                      </div>
+                      <div class="form-group">
+                        <!--<label for="name">Name:</label>-->
+                        <%= f.text_area :message, as: :text, placeholder: "Your message!", class: "form-control", size: "20x10" %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-lg theme-btn-color" data-dismiss="modal">Close</button>
+                    <button class="btn btn-lg theme-btn-color" form="employer-email-form">Send Email</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           <% end %>
         </div>
         <% unless employer_signed_in? %><hr><% end %>
@@ -295,3 +340,14 @@
   <% end %>
 </div>
 
+<script>
+  $('#exampleModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var recipient = button.data('whatever') // Extract info from data-* attributes
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var modal = $(this)
+    modal.find('.modal-title').text('Send email message to ' + recipient)
+    // modal.find('.modal-body input').val(recipient)
+  })
+</script>
