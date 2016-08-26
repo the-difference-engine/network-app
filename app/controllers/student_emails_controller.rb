@@ -13,7 +13,7 @@ class StudentEmailsController < ApplicationController
       redirect_to "/"
     else
       flash[:warning] = "Message cannot be sent"
-      render "students/show"
+      render "employers/show"
     end
   end
 end
