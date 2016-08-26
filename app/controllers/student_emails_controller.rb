@@ -1,4 +1,6 @@
 class StudentEmailsController < ApplicationController
+  before_action :authenticate_admin_student!
+  
   def create
     @student_email = StudentEmail.new(params[:student_email])
     @student_email.request = request

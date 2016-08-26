@@ -3,11 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "colors";
 
-#employer-index {
-
-  
-}
-
 .employer-show {
  .img-responsive {
     margin: auto;
@@ -96,6 +91,15 @@
 
     .remove-follow-up {
       text-align: center;
+    }
+  }
+
+  .contact-employer-info {
+    text-align: left;
+
+    h4 {
+      margin-left: 0px;
+      margin-bottom: 15px;
     }
   }
 }
