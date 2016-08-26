@@ -6,7 +6,7 @@
   <% if attribute == "name" %>
     <p><b>Company <%= @resource.class.human_attribute_name(attribute) %>:</b>
   <% elsif attribute == "email" %>
-    <p><b>Sent from <%= @resource.class.human_attribute_name(attribute) %>:</b>
+    <p><b>Sent From:</b>
   <% else %>
     <p><b><%= @resource.class.human_attribute_name(attribute) %>:</b>
   <% end %>
