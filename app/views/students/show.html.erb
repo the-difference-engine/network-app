@@ -175,6 +175,8 @@
                     <button type="button" class="close btn btn-lg theme-btn-color" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="exampleModalLabel">New message</h4>
                     <p>Clicking send will deliver an email to <%= @student.first_name %> from <%= current_employer.email %></p>
+                    <p>Send the default email as show below or add your own message</p>
+                    
                   </div>
                   <div class="modal-body">
                     <%= form_for(@employer_email, html: {:class => "wpcf7-form", id: "employer-email-form" }) do |f| %>
@@ -201,7 +203,7 @@
                       </div>
                       <div class="form-group">
                         <!--<label for="name">Name:</label>-->
-                        <%= f.text_area :message, as: :text, placeholder: "Your message!", class: "form-control", size: "20x10" %>
+                        <%= f.text_area :message, as: :text, value: @default_message, class: "form-control", size: "20x10" %>
                       </div>
                     <% end %>
                   </div>
