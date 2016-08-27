@@ -116,6 +116,7 @@ class EmployersController < ApplicationController
         :number_of_positions,
         :company_size,
         :active,
+        :allow_emails,
         :password,
         :password_confirmation,
         :email,

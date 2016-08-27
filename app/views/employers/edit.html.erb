@@ -228,9 +228,16 @@
       </div>
       <div class="my-login-form col-md-6">
         <div class="login-info-box">
+          <h4 class="heading-mini">Allow Students to Contact Company Rep by Email?</h4><hr>
+          <div class="row">
+            <div class="col-md-12 margin-btm-20">
+              <%= f.radio_button :allow_emails, "1", checked: @employer.allow_emails %> &nbsp;<%= f.label :allow_emails, " Yes" %> &nbsp; &nbsp;
+              <%= f.radio_button :allow_emails, "0", checked: !@employer.allow_emails %> &nbsp;<%= f.label :allow_emails, " No" %><br />
+            </div>
+          </div>
           <div class="row">
             <div class="col-md-12 text-right">
-              <%= f.submit "Update", class: "btn theme-btn-color" %>
+              <%= f.submit "Update All Preferences", class: "btn theme-btn-color" %>
             </div>
             <% end %>
           </div>
