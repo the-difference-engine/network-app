@@ -56,7 +56,7 @@ Technology.create!([
   {name: "Hive"},
   {name: "Spark"},
   {name: "Language Agnostic"},
-  {name: "Objecive-C"},
+  {name: "Objective-C"},
   {name: "CoffeeScript"},
   {name: "JavaScript"},
   {name: "HTML"},
