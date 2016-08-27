@@ -234,27 +234,21 @@
                       <%= form_for(@student_email, html: {:class => "wpcf7-form", id: "student-email-form" }) do |f| %>
                         <%= f.hidden_field :nickname %>
                         <div class="field">
-                          <!--<label for="name">Name:</label>-->
                           <%= f.hidden_field :name, required: true, value: current_student.full_name %>
                         </div>
                         <div class="field">
-                          <!--<label for="name">Name:</label>-->
                           <%= f.hidden_field :email, required: true, value: current_student.email %>
                         </div>
                         <div class="field">
-                          <!--<label for="name">Name:</label>-->
                           <%= f.hidden_field :employer_email, required: true, value: @employer.rep_email %>
                         </div>
                         <div class="field">
-                          <!--<label for="name">Name:</label>-->
                           <%= f.hidden_field :student_id, required: true, value: current_student.id %>
                         </div>
                         <div class="field">
-                          <!--<label for="name">Name:</label>-->
                           <%= f.hidden_field :employer_id, required: true, value: @employer.id %>
                         </div>
                         <div class="form-group">
-                          <!--<label for="name">Name:</label>-->
                           <%= f.text_area :message, as: :text, required: true, placeholder: "Your message!", class: "form-control", size: "20x10" %>
                         </div>
                       <% end %>
