@@ -13,17 +13,22 @@ $(function () {
       }
 
       for(var i = 0; i < activeStudents.length; i++){
-        chartEmailData.push(
-          {
-            name: activeStudents[i].full_name,
-            data: [ activeStudents[i].employer_emails.length ]
-          }
-        );
+        if(activeStudents[i].employer_emails.length > 0){
+          chartEmailData.push(
+            {
+              name: activeStudents[i].full_name,
+              data: [ activeStudents[i].employer_emails.length ]
+            }
+          );
+        }
       }
 
       $('#email-stat-chart').highcharts({
         chart: {
           type: 'bar'
+        },
+        legend: {
+            enabled: false
         },
         title: {
           text: 'Employer Emails Received By Students'
