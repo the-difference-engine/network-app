@@ -26,7 +26,7 @@ $(function () {
             type: 'bar'
         },
         title: {
-            text: 'Employer Emails Received'
+            text: 'Employer Emails Received By Students'
         },
         xAxis: {
             categories: ['Students']

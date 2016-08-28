@@ -23,6 +23,7 @@
                   <li class=""><a href="#employers" data-toggle="tab">Employers</a></li>
                   <li class=""><a href="#admins" data-toggle="tab">Admins</a></li>
                   <li class=""><a href="#pending" data-toggle="tab">Pending Invites ( {{ pendingUsers.length || 0 }} )</a></li>
+                  <li class=""><a href="#emails" data-toggle="tab">Email Stats</a></li>
                 </ul>
 
                 <!-- Tab panes -->
@@ -155,6 +156,11 @@
                       </div> 
                     </div>
                   </div>
+                  <div class="tab-pane" id="emails">
+                    <div class="tab-desc animated fadeIn">
+                      <div id="email-stat-chart"></div>
+                    </div> 
+                  </div>
                 </div>
               </div>
               <!--tabs end-->
@@ -186,4 +192,4 @@
   </div>
 </div>
 
-<div id="email-stat-chart" style="width:50%; height:400px;"></div>
+
