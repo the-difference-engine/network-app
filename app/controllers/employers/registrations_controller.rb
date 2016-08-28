@@ -41,8 +41,9 @@ class Employers::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
     def configure_sign_up_params
       devise_parameter_sanitizer.for(:sign_up) <<
-        [ :name, 
+        [ :name,
           :image,
+          :remove_image,
           :description,
           :rep_first_name,
           :rep_last_name,
@@ -51,17 +52,29 @@ class Employers::RegistrationsController < Devise::RegistrationsController
           :website,
           :city,
           :state,
+          :currently_hiring,
+          :hiring_timeline,
+          :number_of_positions,
+          :company_size,
+          :active,
+          :allow_emails,
           :password,
           :password_confirmation,
-          :email
+          :email,
+          position_ids: [],
+          position_type_ids: [],
+          industry_ids: [],
+          salary_range_ids: [],
+          technology_ids: []
         ]
     end
 
     # If you have extra params to permit, append them to the sanitizer.
     def configure_account_update_params
       devise_parameter_sanitizer.for(:account_update) << 
-        [ :name, 
+        [ :name,
           :image,
+          :remove_image,
           :description,
           :rep_first_name,
           :rep_last_name,
@@ -70,10 +83,21 @@ class Employers::RegistrationsController < Devise::RegistrationsController
           :website,
           :city,
           :state,
+          :currently_hiring,
+          :hiring_timeline,
+          :number_of_positions,
+          :company_size,
+          :active,
+          :allow_emails,
           :password,
           :password_confirmation,
           :current_password,
-          :email
+          :email,
+          position_ids: [],
+          position_type_ids: [],
+          industry_ids: [],
+          salary_range_ids: [],
+          technology_ids: []
         ]
     end
 
