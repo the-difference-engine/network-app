@@ -3,7 +3,7 @@
 
   angular.module("app").controller("adminsCtrl", ['$scope', '$http', function($scope, $http){
 
-    $scope.setupUserSearch = function(){
+    $scope.setupDash = function(){
       $scope.pendingUsers = [];
 
       $http.get('/api/v1/employers.json').then(function(response){
@@ -52,7 +52,7 @@
             $scope.pendingUsers.push(admin);
           }
         }
-      });
+      });      
     };
 
     window.scope = $scope;

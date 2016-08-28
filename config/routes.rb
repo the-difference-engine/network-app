@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       resources :admins
       resources :students
       resources :employers
+      resources :employer_email_records
     end
   end
 

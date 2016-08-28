@@ -33,6 +33,7 @@
 //= require wow.min
 //= require app-theme
 //= require multiple-select
+//= require highcharts
 //= require_tree .
 
 

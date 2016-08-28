@@ -1,0 +1,1 @@
+json.array! @employer_email_records, partial: 'employer_email_record', as: :employer_email_record

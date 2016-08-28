@@ -32,6 +32,7 @@ gem 'jquery-ui-rails'
 gem "font-ionicons-rails"
 gem 'seed_dump'
 gem 'mail_form'
+gem 'highcharts-rails'
 
 gem 'figaro'
 gem 'carrierwave'
