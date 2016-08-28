@@ -1,12 +1,12 @@
 <h4 style="text-decoration:underline"><%= message.subject %></h4>
-<p>You have a message from an employer on the ACLTC Network!</p>
+<p>You have a message on the ACLTC Network!</p>
 
 <% @resource.mail_form_attributes.each do |attribute, value|
-  next if value.blank? || attribute == "student_email" || attribute == "student_id" || attribute == "employer_id" %>
+  next if value.blank? || attribute == "student_email" || attribute == "employer_email" || attribute == "student_id" || attribute == "employer_id" %>
   <% if attribute == "name" %>
-    <p><b>Company <%= @resource.class.human_attribute_name(attribute) %>:</b>
+    <p><b>Sent From: </b>
   <% elsif attribute == "email" %>
-    <p><b>Sent From:</b>
+    <p><b>Email: </b>
   <% else %>
     <p><b><%= @resource.class.human_attribute_name(attribute) %>:</b>
   <% end %>
