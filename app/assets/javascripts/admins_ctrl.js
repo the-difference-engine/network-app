@@ -3,7 +3,7 @@
 
   angular.module("app").controller("adminsCtrl", ['$scope', '$http', function($scope, $http){
 
-    $scope.setupUserSearch = function(){
+    $scope.setupDash = function(){
       $scope.pendingUsers = [];
 
       $http.get('/api/v1/employers.json').then(function(response){
@@ -26,6 +26,7 @@
         $scope.students = response.data;
         $scope.activeStudents = [];
         $scope.pendingStudents = [];
+        $scope.topEmailStudents = [];
 
         for(var i = 0; i < $scope.students.length; i++){
           var student = $scope.students[i];
@@ -35,6 +36,15 @@
             $scope.pendingStudents.push(student);
             $scope.pendingUsers.push(student);
           }
+        }
+
+        for(var i = 0; i < $scope.activeStudents.length; i++){
+          var student = {
+            id: $scope.activeStudents[i].id,
+            name: $scope.activeStudents[i].full_name,
+            emails: $scope.activeStudents[i].employer_emails.length
+          }
+          $scope.topEmailStudents.push(student);
         }
       });
 
@@ -52,7 +62,7 @@
             $scope.pendingUsers.push(admin);
           }
         }
-      });
+      });      
     };
 
     window.scope = $scope;

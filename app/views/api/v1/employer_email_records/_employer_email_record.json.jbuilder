@@ -1,0 +1,5 @@
+json.id employer_email_record.id
+json.employer_id employer_email_record.employer_id
+json.student_id employer_email_record.student_id
+json.employer_name employer_email_record.employer.name
+json.student_name employer_email_record.student.full_name
