@@ -18,4 +18,10 @@ json.role employer.class.name
 
 json.follow_up_list employer.follow_up_list
 json.students employer.follow_up_list.students
-
+json.student_emails employer.student_email_records.each do |student_email_record|
+  json.id student_email_record.id
+  json.employer_id student_email_record.employer_id
+  json.student_id student_email_record.student_id
+  json.employer_name student_email_record.employer.name
+  json.student_name student_email_record.student.full_name
+end
