@@ -23,18 +23,18 @@ $(function () {
 
       $('#email-stat-chart').highcharts({
         chart: {
-            type: 'bar'
+          type: 'bar'
         },
         title: {
-            text: 'Employer Emails Received By Students'
+          text: 'Employer Emails Received By Students'
         },
         xAxis: {
-            categories: ['Students']
+          categories: ['Students']
         },
         yAxis: {
-            title: {
-                text: 'Emails Received'
-            }
+          title: {
+            text: 'Emails Received'
+          }
         },
         series: chartEmailData       
       });

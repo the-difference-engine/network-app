@@ -18,3 +18,4 @@ json.role employer.class.name
 
 json.follow_up_list employer.follow_up_list
 json.students employer.follow_up_list.students
+
