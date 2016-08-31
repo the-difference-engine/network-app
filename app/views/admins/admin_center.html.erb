@@ -164,7 +164,8 @@
                       <% if @student_emails.any? %>
                         <div id="student-email-stat-chart"></div>
                       <% end %>
-                      <% unless @employer_emails.any? && @student_emails.any? %>
+               
+                      <% if !@student_emails.any? && !@employer_emails.any?%>
                         <div class="no-accounts"><h5><em>There are no email records to display</em></h5></div>
                       <% end %>
                     </div> 
