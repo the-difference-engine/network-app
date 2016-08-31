@@ -81,6 +81,8 @@ class AdminsController < ApplicationController
     @employers = Employer.where(active: true).order(:name)
     @admins = Admin.where(active: true).order(:first_name)
     @pending_invites = Employer.where(active: false) + Student.where(active: false) + Admin.where(active: false)
+    @employer_emails = EmployerEmailRecord.all
+    @student_emails = StudentEmailRecord.all
   end
 
   private

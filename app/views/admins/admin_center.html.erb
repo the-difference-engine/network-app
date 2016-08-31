@@ -158,8 +158,15 @@
                   </div>
                   <div class="tab-pane" id="emails">
                     <div class="tab-desc animated fadeIn">
-                      <div id="employer-email-stat-chart"></div><br>
-                      <div id="student-email-stat-chart"></div>
+                      <% if @employer_emails.any? %>
+                        <div id="employer-email-stat-chart"></div><br>
+                      <% end %>
+                      <% if @student_emails.any? %>
+                        <div id="student-email-stat-chart"></div>
+                      <% end %>
+                      <% unless @employer_emails.any? && @student_emails.any? %>
+                        <div class="no-accounts"><h5><em>There are no email records to display</em></h5></div>
+                      <% end %>
                     </div> 
                   </div>
                 </div>
