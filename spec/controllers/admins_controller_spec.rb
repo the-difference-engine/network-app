@@ -129,4 +129,38 @@ RSpec.describe AdminsController, :type => :controller do
       end
     end
   end
+
+  describe 'DELETE #destroy' do
+    context "when admin is signed in" do
+      sign_in_admin
+
+      before :each do        
+        @delete_admin = create(:admin)
+      end
+
+      it "should allow admin to delete the admin account" do   
+        expect{ delete :destroy, id: @delete_admin}.to change(Admin, :count).by(-1)
+      end
+
+      it "should redirect to admin dash after delete" do   
+        delete :destroy, id: @delete_admin
+        expect(response).to redirect_to admin_center_path
+      end
+    end
+
+    context "when admin is not signed in" do
+      before :each do        
+        @delete_admin = create(:admin)
+      end
+
+      it "should not allow user to delete the admin account" do   
+        expect{ delete :destroy, id: @delete_admin}.to change(Admin, :count).by(0)
+      end
+
+      it "should redirect to /sign_in" do   
+        delete :destroy, id: @delete_admin
+        expect(response).to redirect_to admin_center_path
+      end
+    end
+  end 
 end
