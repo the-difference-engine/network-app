@@ -212,7 +212,7 @@ RSpec.describe EmployersController, :type => :controller do
         expect{ delete :destroy, id: @delete_employer}.to change(Employer, :count).by(0)
       end
 
-      it "should redirect to students root path" do   
+      it "should redirect to students path" do   
         delete :destroy, id: @delete_employer
         expect(response).to redirect_to students_path
       end
