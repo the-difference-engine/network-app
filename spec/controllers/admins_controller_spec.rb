@@ -1,101 +1,48 @@
 require 'rails_helper'
-require 'support/controller_helpers'
 
 RSpec.describe AdminsController, :type => :controller do
-  describe 'POST #create' do
-    before :each do        
-      admin = create(:login_admin)
-      sign_in_admin(admin)
+  # describe "anonymous user" do
+  #   before :each do
+  #     # This simulates an anonymous user
+  #     login_with nil
+  #   end
+
+  #   it "should be redirected to sign in" do
+  #     get :new
+  #     expect( response ).to redirect_to( home_sign_in_path )
+  #   end
+  # end
+
+  # describe "logged in admin" do
+  #   before :each do
+  #     # This simulates an anonymous user
+  #     login_with
+  #   end
+
+  #   it "should render admin new, status success" do
+  #     get :new
+  #     expect( response ).to be_success
+  #   end
+
+  #   it "should render admin dash, status success" do
+  #     get :admin_center
+  #     expect( response ).to be_success
+  #   end
+  # end
+
+  describe AdminsController do
+    login_admin
+
+    it "should have a current_user" do
+      # note the fact that you should remove the "validate_session" parameter if this was a scaffold-generated controller
+      expect(subject.current_user).to_not eq(nil)
     end
 
-    context "with valid attributes" do
-      it "saves the new admin in the database" do   
-        expect {
-          post :create, admin: attributes_for(:admin)
-        }.to change(Admin, :count).by(1)
-      end
-
-      it "redirects to admins#show" do
-        post :create, admin: attributes_for(:admin)
-        expect(response).to redirect_to admin_path(assigns[:admin])
-      end
-    end
-
-    context "with invalid attributes" do
-      it "does not save the admin in the database" do   
-        expect {
-          post :create, admin: attributes_for(:invalid_admin)
-        }.not_to change(Admin, :count)
-      end
-
-      it "re-renders admin :new template" do 
-        post :create, admin: attributes_for(:invalid_admin)
-        expect(response).to render_template :new
-      end
-    end
-  end
-
-  describe 'PATCH #update' do
-    before :each do        
-      @admin = create(:login_admin, 
-        first_name: "Joe",
-        last_name: "Maddon")
-      sign_in_admin(@admin)
-    end
-
-    context "with valid attributes" do
-      it "locates the requested @admin" do   
-        patch :update, id: @admin, admin: attributes_for(:admin)
-        expect(assigns(:admin)).to eq(@admin)
-      end
-
-      it "changes @admin's attributes" do
-        patch :update, id: @admin, admin: attributes_for(:admin,
-          first_name: "Joseph",
-          last_name: "Maddon"
-        )
-        @admin.reload
-        expect(@admin.first_name).to eq("Joseph")
-        expect(@admin.last_name).to eq("Maddon")
-      end
-
-      it "redirects to the updated @admin" do
-        patch :update, id: @admin, admin: attributes_for(:admin)
-        expect(response).to redirect_to admin_center_path
-      end
-    end
-
-    context "with invalid attributes" do
-      it "does not change @admin's attributes" do
-        patch :update, id: @admin, admin: attributes_for(:admin,
-          first_name: "Joseph",
-          last_name: nil)
-        @admin.reload
-        expect(@admin.first_name).not_to eq("Joseph")
-        expect(@admin.last_name).to eq("Maddon")
-      end
-
-      it "re-renders the admin :edit template " do
-        patch :update, id: @admin, admin: attributes_for(:invalid_admin)
-        expect(response).to render_template :edit
-      end
-    end
-  end
-
-  describe 'DELETE #destroy' do
-    before :each do        
-      admin = create(:login_admin)
-      sign_in_admin(admin)
-      @delete_admin = create(:admin)
-    end
-
-    it "deletes the admin account" do   
-      expect{ delete :destroy, id: @delete_admin}.to change(Admin, :count).by(-1)
-    end
-
-    it "redirects to admin dash after delete" do   
-      delete :destroy, id: @delete_admin
-      expect(response).to redirect_to admin_center_path
+    it "should get new admin page" do
+      # Note, rails 3.x scaffolding may add lines like get :index, {}, valid_session
+      # the valid_session overrides the devise login. Remove the valid_session from your specs
+      get 'new'
+      response.should be_success
     end
   end
 end
