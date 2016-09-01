@@ -82,17 +82,23 @@ class EmployersController < ApplicationController
     end
   end
 
-  def destroy  
+  def destroy
     @employer = Employer.find(params[:id])
-    @employer.remove_image!
-    @employer.save
 
-    if @employer.destroy
-      flash[:success] = "Employer account successfully deleted!"
-      redirect_to admin_center_path
+    if admin_signed_in? || employer_signed_in? && @employer.id == current_employer.id 
+      @employer.remove_image!
+      @employer.save
+
+      if @employer.destroy
+        flash[:success] = "Employer account successfully deleted!"
+        redirect_to admin_center_path
+      else
+        flash[:warning] = "Unable to delete the employer account."
+        Rails.logger.info @employer.errors.messages
+      end 
     else
-      flash[:warning] = "Unable to delete the employer account."
-      Rails.logger.info @employer.errors.messages
+      redirect_to employers_path
+      flash[:warning] = "You do not have access to that page!"
     end 
   end
 
