@@ -87,4 +87,46 @@ RSpec.describe AdminsController, :type => :controller do
       end
     end
   end
+
+  describe 'PATCH #update' do  
+    sign_in_admin
+
+    it "should locate the signed in @admin" do   
+      get :update, id: @admin, admin: attributes_for(:admin)
+      expect(assigns(:admin)).to eq(@admin)
+    end
+
+    context "when admin is signed in with valid @admin attributes" do
+      it "should change @admin's attributes" do
+        patch :update, id: @admin, admin: attributes_for(:admin,
+          first_name: "Jacob",
+          last_name: "Arrieta"
+        )
+        @admin.reload
+        expect(@admin.first_name).to eq("Jacob")
+        expect(@admin.last_name).to eq("Arrieta")
+      end
+
+      it "should redirect to the updated @admin" do
+        patch :update, id: @admin, admin: attributes_for(:admin)
+        expect(response).to redirect_to admin_center_path
+      end
+    end
+
+    context "when admin is signed in with invalid @admin attributes" do
+      it "should not change @admin's attributes" do
+        patch :update, id: @admin, admin: attributes_for(:admin,
+          first_name: "Jacob",
+          email: nil)
+        @admin.reload
+        expect(@admin.first_name).not_to eq("Jacob")
+        expect(@admin.email).to eq("admin_login@gmail.com")
+      end
+
+      it "should re-render the admin :edit template " do
+        patch :update, id: @admin, admin: attributes_for(:invalid_admin)
+        expect(response).to render_template :edit
+      end
+    end
+  end
 end
