@@ -97,7 +97,7 @@ class EmployersController < ApplicationController
         Rails.logger.info @employer.errors.messages
       end 
     else
-      redirect_to employers_path
+      redirect_to root_path
       flash[:warning] = "You do not have access to that page!"
     end 
   end
