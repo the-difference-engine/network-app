@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe StudentsController, :type => :controller do
-  describe 'student signed in' do
+  context "when student is signed in " do
     sign_in_student
 
     it "should have a current_student" do
@@ -18,7 +18,7 @@ RSpec.describe StudentsController, :type => :controller do
     end
   end
 
-  describe 'student not signed in' do
+  context "when student is not signed in " do
     it "should not have a current_student" do
       expect(subject.current_student).to eq(nil)
     end
@@ -30,7 +30,7 @@ RSpec.describe StudentsController, :type => :controller do
   end
 
   describe 'POST #create' do
-    context "with signed in admin and valid student attributes" do
+    context "when admin is signed in and valid student attributes" do
       sign_in_admin
 
       it "should save the new student in the database" do   
@@ -45,7 +45,7 @@ RSpec.describe StudentsController, :type => :controller do
       end
     end
 
-    context "with signed in admin and invalid student attributes" do 
+    context "when admin is signed in and invalid student attributes" do 
       sign_in_admin
 
       it "should not save the student in the database" do   
@@ -60,7 +60,7 @@ RSpec.describe StudentsController, :type => :controller do
       end
     end
 
-    context "with no signed in admin and valid student attributes" do
+    context "when admin is not signed in" do
       it "should not save the new student in the database" do   
         expect {
           post :create, student: attributes_for(:student)
@@ -82,7 +82,7 @@ RSpec.describe StudentsController, :type => :controller do
       expect(assigns(:student)).to eq(@student)
     end
 
-    context "with valid @student attributes" do
+    context "when student is signed in with valid @student attributes" do
       it "should change @student's attributes" do
         patch :update, id: @student, student: attributes_for(:student,
           first_name: "Jacob",
@@ -99,7 +99,7 @@ RSpec.describe StudentsController, :type => :controller do
       end
     end
 
-    context "with invalid @student attributes" do
+    context "when student is signed in with invalid @student attributes" do
       it "should not change @student's attributes" do
         patch :update, id: @student, student: attributes_for(:student,
           first_name: "Jacob",
@@ -124,11 +124,11 @@ RSpec.describe StudentsController, :type => :controller do
         @delete_student = create(:student)
       end
 
-      it "deletes the student account" do   
+      it "should allow admin to delete the student account" do   
         expect{ delete :destroy, id: @delete_student}.to change(Student, :count).by(-1)
       end
 
-      it "redirects to admin dash after delete" do   
+      it "should redirect to admin dash after delete" do   
         delete :destroy, id: @delete_student
         expect(response).to redirect_to admin_center_path
       end
@@ -139,13 +139,47 @@ RSpec.describe StudentsController, :type => :controller do
         @delete_student = create(:student)
       end
 
-      it "deletes the student account" do   
+      it "should not allow user to delete the student account" do   
         expect{ delete :destroy, id: @delete_student}.to change(Student, :count).by(0)
       end
 
-      it "redirects to /sign_in" do   
+      it "should redirect to /sign_in" do   
         delete :destroy, id: @delete_student
         expect(response).to redirect_to home_sign_in_path
+      end
+    end
+
+    context "when student is signed in" do
+      sign_in_student
+
+      before :each do        
+        @delete_student = create(:student)
+      end
+
+      it "should not allow student to delete a student account" do   
+        expect{ delete :destroy, id: @delete_student}.to change(Student, :count).by(0)
+      end
+
+      it "should redirect to /sign_in" do   
+        delete :destroy, id: @delete_student
+        expect(response).to redirect_to students_path
+      end
+    end
+
+    context "when employer is signed in" do
+      sign_in_employer
+
+      before :each do        
+        @delete_student = create(:student)
+      end
+
+      it "should not allow employer to delete a student account" do   
+        expect{ delete :destroy, id: @delete_student}.to change(Student, :count).by(0)
+      end
+
+      it "should redirect to /sign_in" do   
+        delete :destroy, id: @delete_student
+        expect(response).to redirect_to students_path
       end
     end
   end

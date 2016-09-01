@@ -14,4 +14,12 @@ module ControllerMacros
       sign_in @student
     end
   end 
+
+  def sign_in_employer
+    before(:each) do
+      @request.env["devise.mapping"] = Devise.mappings[:employer] 
+      @employer = FactoryGirl.create(:login_employer) # Using factory girl as an example
+      sign_in @employer
+    end
+  end 
 end
