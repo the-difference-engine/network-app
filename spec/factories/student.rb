@@ -6,7 +6,7 @@ FactoryGirl.define do
     current_city Faker::Address.city
     current_state Faker::Address.state_abbr
     current_industry Faker::Internet.domain_word
-    grad_date "2015-03-25"
+    grad_date "2016-03-25"
     about_me Faker::Hacker.say_something_smart
     skill_1 Faker::Hacker.abbreviation
     skill_2 Faker::Hacker.abbreviation

@@ -10,6 +10,7 @@ FactoryGirl.define do
     city Faker::Address.city
     state Faker::Address.state_abbr
     active true
+    allow_emails true
     email Faker::Internet.email
     password "password"
 
