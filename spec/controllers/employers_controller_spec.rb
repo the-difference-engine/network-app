@@ -133,8 +133,9 @@ RSpec.describe EmployersController, :type => :controller do
   end
 
   describe 'DELETE #destroy' do
+    sign_in_admin
+    
     context "when admin is signed in" do
-      sign_in_admin
 
       before :each do        
         @delete_employer = create(:employer)
@@ -144,12 +145,14 @@ RSpec.describe EmployersController, :type => :controller do
         expect{ delete :destroy, id: @delete_employer}.to change(Employer, :count).by(-1)
       end
 
-      it "should redirect to admin dash after delete" do   
+      it "should redirect to root path" do   
         delete :destroy, id: @delete_employer
-        expect(response).to redirect_to admin_center_path
+        expect(response).to redirect_to root_path
       end
     end
+  end
 
+  describe 'DELETE #destroy' do
     context "when admin is not signed in" do
       before :each do        
         @delete_employer = create(:employer)
@@ -164,39 +167,55 @@ RSpec.describe EmployersController, :type => :controller do
         expect(response).to redirect_to home_sign_in_path
       end
     end
+  end
 
-    # context "when employer is signed in" do
-    #   sign_in_employer
+  describe 'DELETE #destroy' do
+    sign_in_employer
 
-    #   before :each do        
-    #     @delete_employer = create(:employer)
-    #   end
+    context "when employer is signed in to delete own account" do
 
-    #   it "should not allow employer to delete an employer account" do   
-    #     expect{ delete :destroy, id: @delete_employer}.to change(Employer, :count).by(0)
-    #   end
+      it "should allow employer to delete own account" do   
+        expect{ delete :destroy, id: @employer}.to change(Employer, :count).by(-1)
+      end
 
-    #   it "should redirect to employers#index" do   
-    #     delete :destroy, id: @delete_employer
-    #     expect(response).to redirect_to employers_path
-    #   end
-    # end
+      it "should redirect to root path" do   
+        delete :destroy, id: @employer
+        expect(response).to redirect_to root_path
+      end
+    end
 
-  #   context "when employer is signed in" do
-  #     sign_in_employer
+    context "when employer is signed in to delete another's account" do
+      before :each do        
+        @delete_employer = create(:employer)
+      end
 
-  #     before :each do        
-  #       @delete_student = create(:student)
-  #     end
+      it "should not allow employer to delete another's employer account" do   
+        expect{ delete :destroy, id: @delete_employer}.to change(Employer, :count).by(0)
+      end
 
-  #     it "should not allow employer to delete a student account" do   
-  #       expect{ delete :destroy, id: @delete_student}.to change(Student, :count).by(0)
-  #     end
+      it "should redirect to root path" do   
+        delete :destroy, id: @delete_employer
+        expect(response).to redirect_to root_path
+      end
+    end
+  end
 
-  #     it "should redirect to /sign_in" do   
-  #       delete :destroy, id: @delete_student
-  #       expect(response).to redirect_to students_path
-  #     end
-  #   end
+  describe 'DELETE #destroy' do
+    sign_in_student
+
+    context "when student is signed in" do
+      before :each do        
+        @delete_employer = create(:employer)
+      end
+
+      it "should not allow student to delete an employer account" do   
+        expect{ delete :destroy, id: @delete_employer}.to change(Employer, :count).by(0)
+      end
+
+      it "should redirect to students root path" do   
+        delete :destroy, id: @delete_employer
+        expect(response).to redirect_to students_path
+      end
+    end
   end
 end
