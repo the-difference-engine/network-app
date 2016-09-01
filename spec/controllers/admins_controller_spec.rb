@@ -59,32 +59,32 @@ RSpec.describe AdminsController, :type => :controller do
       end
     end
 
-    # context "when admin is signed in and invalid student attributes" do 
-    #   sign_in_admin
+    context "when admin is signed in and invalid admin attributes" do 
+      sign_in_admin
 
-    #   it "should not save the student in the database" do   
-    #     expect {
-    #       post :create, student: attributes_for(:invalid_student)
-    #     }.not_to change(Student, :count)
-    #   end
+      it "should not save the admin in the database" do   
+        expect {
+          post :create, admin: attributes_for(:invalid_admin)
+        }.not_to change(Admin, :count)
+      end
 
-    #   it "should re-render student :new template" do 
-    #     post :create, student: attributes_for(:invalid_student)
-    #     expect(response).to render_template :new
-    #   end
-    # end
+      it "should re-render admin :new template" do 
+        post :create, admin: attributes_for(:invalid_admin)
+        expect(response).to render_template :new
+      end
+    end
 
-    # context "when admin is not signed in" do
-    #   it "should not save the new student in the database" do   
-    #     expect {
-    #       post :create, student: attributes_for(:student)
-    #     }.to change(Student, :count).by(0)
-    #   end
+    context "when admin is not signed in" do
+      it "should not save the new admin in the database" do   
+        expect {
+          post :create, admin: attributes_for(:admin)
+        }.to change(Admin, :count).by(0)
+      end
 
-    #   it "should redirect to /sign_in" do
-    #     post :create, student: attributes_for(:student)
-    #     expect(response).to redirect_to home_sign_in_path
-    #   end
-    # end
+      it "should redirect to /sign_in" do
+        post :create, admin: attributes_for(:admin)
+        expect(response).to redirect_to home_sign_in_path
+      end
+    end
   end
 end
