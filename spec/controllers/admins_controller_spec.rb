@@ -34,7 +34,7 @@ RSpec.describe AdminsController, :type => :controller do
     end
   end
 
-  context "when student is signed in " do
+  context "when employer is signed in " do
     sign_in_employer
 
     it "should redirect to /sign_in" do
