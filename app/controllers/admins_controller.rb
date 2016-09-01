@@ -27,10 +27,6 @@ class AdminsController < ApplicationController
     render 'admins/invitations/batch'
   end
 
-  def show
-    redirect_to admin_center_path
-  end
-
   def edit
     @admin = Admin.find(params[:id])
   end
