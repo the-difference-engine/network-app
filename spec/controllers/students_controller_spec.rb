@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe StudentsController, :type => :controller do
-  describe 'signed in student' do
+  describe 'student signed in' do
     sign_in_student
 
     it "should have a current_student" do
@@ -10,6 +10,22 @@ RSpec.describe StudentsController, :type => :controller do
 
     it "should have @student = current_student" do
       expect(subject.current_student).to eq(@student)
+    end
+
+    it "should go to /students, success status" do
+      get :index
+      expect(response).to be_success
+    end
+  end
+
+  describe 'student not signed in' do
+    it "should not have a current_student" do
+      expect(subject.current_student).to eq(nil)
+    end
+
+    it "should redirect to /sign_in" do
+      get :index
+      expect(response).to redirect_to home_sign_in_path
     end
   end
 
@@ -51,7 +67,7 @@ RSpec.describe StudentsController, :type => :controller do
         }.to change(Student, :count).by(0)
       end
 
-      it "should redirect to sign in page" do
+      it "should redirect to /sign_in" do
         post :create, student: attributes_for(:student)
         expect(response).to redirect_to home_sign_in_path
       end
@@ -127,7 +143,7 @@ RSpec.describe StudentsController, :type => :controller do
         expect{ delete :destroy, id: @delete_student}.to change(Student, :count).by(0)
       end
 
-      it "redirects to sign in page" do   
+      it "redirects to /sign_in" do   
         delete :destroy, id: @delete_student
         expect(response).to redirect_to home_sign_in_path
       end
