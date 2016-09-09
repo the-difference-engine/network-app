@@ -2,7 +2,6 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admin_student!, only: [:new, :create, :edit, :update, :destroy]
 
-
   def new
     @project = Project.new
   end
