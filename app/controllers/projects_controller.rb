@@ -38,7 +38,7 @@ class ProjectsController < ApplicationController
     if admin_signed_in? || student_signed_in? && @project.student_id == current_student.id
       if @project.update(project_params)
         flash[:success] = "Project successfully updated!"
-        redirect_to student_path(@project.student)
+        redirect_to project_path(@project)
       else 
         flash[:warning] = "Unable to update project."
         render :edit
