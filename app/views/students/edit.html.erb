@@ -45,7 +45,7 @@
           <h4 class="heading-mini">About Me</h4><hr>
           <div class="row">
             <div class="col-md-12 margin-btm-20">
-              <%= f.text_area :about_me, placeholder: "Enter a short description of yourself and your goals", class: "form-control" %>
+              <%= f.text_area :about_me, placeholder: "Enter a short description of yourself and your goals", size: "20x10", class: "form-control" %>
             </div>
           </div>
         </div>
@@ -238,13 +238,7 @@
               <%= f.label "Check all relevant technical skills" %><br /><br />
                 <%= f.collection_select( :technology_ids, Technology.all.order(:name), :id, :name, {}, {:prompt => 'Select Fields', class: "form-control chosen-select", multiple: true} )%>
             </div>
-          </div>      
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="my-login-form col-md-6">
-        <div class="login-info-box">
+          </div><br>
           <h4 class="heading-mini">Top 3 Skills</h4><hr>
           <div class="row">
             <div class="col-md-4 margin-btm-20">
@@ -275,20 +269,17 @@
               <%= f.label :interest_3 %><br />
               <%= f.text_field :interest_3, class: "form-control" %>
             </div>  
-          </div>   
-        </div>
-      </div>
-      <div class="my-login-form col-md-6">
-        <div class="login-info-box">
+          </div><br><br>
           <div class="row">
             <div class="col-md-12 text-right">
               <%= f.submit "Update", class: "btn theme-btn-color" %>
             </div>
             <% end %>
-          </div>
+          </div>      
         </div>
       </div>
     </div>
+    
   </div>
 </div>
 
