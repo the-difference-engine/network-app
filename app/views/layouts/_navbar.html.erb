@@ -16,7 +16,7 @@
           <% elsif employer_signed_in? %>
             <li><a href="/employers/<%= current_user.id %>" class="hover-color"><i class="ion-android-person"></i> &nbsp;<%= current_user.email.upcase %> &nbsp;|&nbsp; <%= current_user.class.name.upcase %></a></li>
           <% else %>
-            <li><a href="/#" class="hover-color"></i> Welcome to ACLTC Student-Employer Portal</a></li>
+            <li><a href="/#" class="hover-color"></i>Powered by Actualize</a></li>
           <% end %>
        </ul>
        </div>
