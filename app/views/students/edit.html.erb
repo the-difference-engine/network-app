@@ -13,97 +13,97 @@
     <%= form_for(@student, url: student_path(@student), html: { :multipart => true }) do |f| %>
     <%= f.hidden_field :active, value: true %>
     <div class="row">
-      <div class="my-login-form col-md-6">
-        <div class="login-info-box">
+      <div class="my-login-form col-lg-6">
+        <div class="login-info-box edit-login-info">
           <h4 class="heading-mini">Log In Information</h4><hr>
           <div class="row">
-            <div class="col-md-6 margin-btm-20">
+            <div class="col-lg-6 margin-btm-20">
               <%= f.label :first_name %><br />
               <%= f.text_field :first_name, class: "form-control" %>
             </div>
-            <div class="col-md-6 margin-btm-20">
+            <div class="col-lg-6 margin-btm-20">
               <%= f.label :last_name %><br />
               <%= f.text_field :last_name, class: "form-control" %>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-12 margin-btm-20">
+            <div class="col-lg-12 margin-btm-20">
               <%= f.label :email %><br />
               <%= f.email_field :email, class: "form-control" %>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 margin-btm-20">
+            <div class="col-lg-6 margin-btm-20">
               <%= f.label :password %><br />
               <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
             </div>
-            <div class="col-md-6 margin-btm-20">
+            <div class="col-lg-6 margin-btm-20">
               <%= f.label :password_confirmation %><br />
               <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
             </div>
           </div><br>
           <h4 class="heading-mini">About Me</h4><hr>
           <div class="row">
-            <div class="col-md-12 margin-btm-20">
+            <div class="col-lg-12 margin-btm-20">
               <%= f.text_area :about_me, placeholder: "Enter a short description of yourself and your goals", size: "20x10", class: "form-control" %>
             </div>
           </div>
         </div>
       </div>
-      <div class="my-login-form col-md-6">
-        <div class="login-info-box">
+      <div class="my-login-form col-lg-6">
+        <div class="login-info-box edit-cohort-details">
           <h4 class="heading-mini">ACLTC Cohort Details</h4><hr>
           <div class="row">
-            <div class="col-md-6 margin-btm-20">
+            <div class="col-lg-6 margin-btm-20">
               <%= f.label :city %><br />
               <%= f.text_field :city, class: "form-control" %>
             </div>
-             <div class="col-md-6 margin-btm-20">
+             <div class="col-lg-6 margin-btm-20">
               <%= f.label :grad_date %><br />
               <%= f.date_select :grad_date, discard_day: true, autofocus: true, class: "form-control" %>
             </div>
           </div><br>
           <h4 class="heading-mini">Current Location & Employment Details</h4><hr>
           <div class="row">
-            <div class="col-md-6 margin-btm-20">
+            <div class="col-lg-6 margin-btm-20">
               <%= f.label :current_city %><br />
               <%= f.text_field :current_city, class: "form-control" %>
             </div>
-            <div class="col-md-6 margin-btm-20">
+            <div class="col-lg-6 margin-btm-20">
               <%= f.label :current_state %><br />
               <%= f.select(:current_state, options_for_select(us_states, @student.current_state), :prompt => "Select State", class: "form-control" ) %>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-12 margin-btm-20">
+            <div class="col-lg-12 margin-btm-20">
               <%= f.label :current_industry %><br />
               <%= f.text_field :current_industry, class: "form-control" %>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-12 margin-btm-20">
+            <div class="col-lg-12 margin-btm-20">
               <%= f.check_box :seeking_employment %>&nbsp;
               <%= f.label :seeking_employment, "I'm currently seeking employment!" %>
             </div>
           </div>
           <% if @student.resume.url && @student.resume.url.include?("aws") %>
             <div class="row">
-              <div class="form-group col-md-12">     
+              <div class="form-group col-lg-12">     
                 <%= link_to "View Current Resume", @student.resume.url, target: "_blank", class: "btn theme-btn-color" %>
               </div>
-              <div class="form-group col-md-12">
+              <div class="form-group col-lg-12">
                 <%= f.check_box :remove_resume %> &nbsp;<%= f.label :remove_resume, "Remove current resume" %>
               </div>
             </div>
             <div class="row">
-              <div class="form-group col-md-12">
+              <div class="form-group col-lg-12">
                 <%= f.label :resume, "Change Resume (pdf)" %><br />
                 <%= f.file_field :resume, class: "form-control", id: "control" %>
               </div>
             </div>
           <% else %>
             <div class="row">
-              <div class="form-group col-md-12">
+              <div class="form-group col-lg-12">
                 <%= f.label :resume, "Upload Resume (pdf)" %><br />
                 <%= f.file_field :resume, class: "form-control", id: "control" %>
               </div>
@@ -113,54 +113,54 @@
       </div>
     </div>
     <div class="row">
-      <div class="my-login-form col-md-6">
-        <div class="login-info-box">
+      <div class="my-login-form col-lg-6">
+        <div class="login-info-box edit-social-media">
           <h4 class="heading-mini">Social / Media </h4><hr>
           <div class="row">
-            <div class="col-md-6 margin-btm-20">
+            <div class="col-lg-6 margin-btm-20">
               <%= f.label :github %><br />
               <%= f.text_field :github, class: "form-control" %>
             </div>
-            <div class="col-md-6 margin-btm-20">
+            <div class="col-lg-6 margin-btm-20">
               <%= f.label :blog %><br />
               <%= f.text_field :blog, class: "form-control" %>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 margin-btm-20">
+            <div class="col-lg-6 margin-btm-20">
               <%= f.label :linked_in, "LinkedIn" %><br />
               <%= f.text_field :linked_in, class: "form-control" %>
             </div>
-            <div class="col-md-6 margin-btm-20">
+            <div class="col-lg-6 margin-btm-20">
               <%= f.label :personal_website %><br />
               <%= f.text_field :personal_website, class: "form-control" %>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-12 margin-btm-20">
+            <div class="col-lg-12 margin-btm-20">
               <%= f.label :quote %><br />
               <%= f.text_field :quote, class: "form-control" %>
             </div>
           </div>
           <% if @student.avatar.url && @student.avatar.url.include?("aws") %>
             <div class="row">
-              <div class="form-group col-md-12">
+              <div class="form-group col-lg-12">
                 <%= f.label :current_avatar, "Current Avatar" %><br />
                 <%= image_tag @student.avatar.thumb.url, class: "form-img-preview" %>
               </div>
-              <div class="form-group col-md-12">
+              <div class="form-group col-lg-12">
                 <%= f.check_box :remove_avatar %> &nbsp;<%= f.label :remove_avatar, "Remove Avatar" %>
               </div>
             </div>
             <div class="row">
-              <div class="form-group col-md-12">
+              <div class="form-group col-lg-12">
                 <%= f.label :avatar, "Change Avatar" %><br />
                 <%= f.file_field :avatar, class: "form-control", id: "control" %>
               </div>
             </div>
           <% else %>
             <div class="row">
-              <div class="form-group col-md-12">
+              <div class="form-group col-lg-12">
                 <%= f.label :avatar, "Upload Avatar" %><br />
                 <%= f.file_field :avatar, class: "form-control", id: "control" %>
               </div>
@@ -168,31 +168,31 @@
           <% end %>
         </div>
       </div>
-      <div class="my-login-form col-md-6">
-        <div class="login-info-box">
+      <div class="my-login-form col-lg-6">
+        <div class="login-info-box edit-interview">
           <h4 class="heading-mini">Interview Questions</h4><hr>
           <div class="row">
-            <div class="col-md-12 margin-btm-20">
+            <div class="col-lg-12 margin-btm-20">
               <%= f.label :interview_q1, "Interview Q1: Enter an interview question you'd like to answer" %><br />
               <%= f.text_field :interview_q1, class: "form-control" %>
             </div>
-            <div class="col-md-12 margin-btm-20">
+            <div class="col-lg-12 margin-btm-20">
               <%= f.label :interview_1, "Q1 Response" %><br />
               <%= f.text_area :interview_1, class: "form-control" %>
             </div>
-            <div class="col-md-12 margin-btm-20">
+            <div class="col-lg-12 margin-btm-20">
               <%= f.label :interview_q2, "Interview Q2: Enter an interview question you'd like to answer" %><br />
               <%= f.text_field :interview_q2, class: "form-control" %>
             </div>
-            <div class="col-md-12 margin-btm-20">
+            <div class="col-lg-12 margin-btm-20">
               <%= f.label :interview_2, "Q2 Response" %><br />
               <%= f.text_area :interview_2, class: "form-control" %>
             </div>
-            <div class="col-md-12 margin-btm-20">
+            <div class="col-lg-12 margin-btm-20">
               <%= f.label :interview_q3, "Interview Q3: Enter an interview question you'd like to answer" %><br />
               <%= f.text_field :interview_q3, class: "form-control" %>
             </div>
-            <div class="col-md-12 margin-btm-20">
+            <div class="col-lg-12 margin-btm-20">
               <%= f.label :interview_3, "Q3 Response" %><br />
               <%= f.text_area :interview_3, class: "form-control" %>
             </div>
@@ -201,14 +201,14 @@
       </div>
     </div>
     <div class="row">
-      <div class="my-login-form col-md-6">
-        <div class="login-info-box">
+      <div class="my-login-form col-lg-6">
+        <div class="login-info-box edit-preferred">
           <h4 class="heading-mini">Preferred Industries</h4><hr>
           <div class="row">
-            <div class="col-md-12 margin-btm-20">
+            <div class="col-lg-12 margin-btm-20">
               <%= f.label "Check all industries you are interested in" %><br /><br />
               <%= f.collection_check_boxes :industry_ids, Industry.all.order(:name), :id, :name do |b| %>
-                <div class="col-md-6 col-sm-6 collection-check-box">
+                <div class="col-lg-6 col-sm-6 collection-check-box">
                   <%= b.check_box %>
                   <%= b.label %>
                 </div>
@@ -217,10 +217,10 @@
           </div><br>
           <h4 class="heading-mini">Preferred Positions</h4><hr>
           <div class="row">
-            <div class="col-md-12 margin-btm-20">
+            <div class="col-lg-12 margin-btm-20">
               <%= f.label "Check all positions you are interested in" %><br /><br />
               <%= f.collection_check_boxes :position_ids, Position.all.order(:name), :id, :name do |b| %>
-                <div class="col-md-6 col-sm-6 collection-check-box">
+                <div class="col-lg-6 col-sm-6 collection-check-box">
                   <%= b.check_box %>
                   <%= b.label %>
                 </div>
@@ -229,49 +229,49 @@
           </div><br>
         </div>
       </div>
-      <div class="my-login-form col-md-6">
-        <div class="login-info-box">
+      <div class="my-login-form col-lg-6">
+        <div class="login-info-box edit-technical">
           <h4 class="heading-mini">Technical Skills</h4>
           <hr>
           <div class="row">
-            <div class="col-md-12 margin-btm-20">
+            <div class="col-lg-12 margin-btm-20">
               <%= f.label "Check all relevant technical skills" %><br /><br />
                 <%= f.collection_select( :technology_ids, Technology.all.order(:name), :id, :name, {}, {:prompt => 'Select Fields', class: "form-control chosen-select", multiple: true} )%>
             </div>
           </div><br>
           <h4 class="heading-mini">Top 3 Skills</h4><hr>
           <div class="row">
-            <div class="col-md-4 margin-btm-20">
+            <div class="col-lg-4 margin-btm-20">
               <%= f.label :skill_1 %><br />
               <%= f.text_field :skill_1, class: "form-control" %>
             </div>
-            <div class="col-md-4 margin-btm-20">
+            <div class="col-lg-4 margin-btm-20">
               <%= f.label :skill_2 %><br />
               <%= f.text_field :skill_2, class: "form-control" %>
             </div>
           
-             <div class="col-md-4 margin-btm-20">
+             <div class="col-lg-4 margin-btm-20">
               <%= f.label :skill_3 %><br />
               <%= f.text_field :skill_3, class: "form-control" %>
             </div>
           </div><br>
           <h4 class="heading-mini">Top 3 Interests</h4><hr>
           <div class="row">
-            <div class="col-md-4 margin-btm-20">
+            <div class="col-lg-4 margin-btm-20">
               <%= f.label :interest_1 %><br />
               <%= f.text_field :interest_1, class: "form-control" %>
             </div>
-            <div class="col-md-4 margin-btm-20">
+            <div class="col-lg-4 margin-btm-20">
               <%= f.label :interest_2 %><br />
               <%= f.text_field :interest_2, class: "form-control" %>
             </div>  
-             <div class="col-md-4 margin-btm-20">
+             <div class="col-lg-4 margin-btm-20">
               <%= f.label :interest_3 %><br />
               <%= f.text_field :interest_3, class: "form-control" %>
             </div>  
-          </div><br><br>
+          </div><br>
           <div class="row">
-            <div class="col-md-12 text-right">
+            <div class="col-lg-12 text-right">
               <%= f.submit "Update", class: "btn theme-btn-color" %>
             </div>
             <% end %>
@@ -285,12 +285,3 @@
 
 <%= render "shared/alerts_checkbox_radio_scripts" %>
 
-<script>
-  $(function(){
-      $(".chosen-select").chosen();
-  });
-
-  $(document).ready(function(){
-    $(".chosen-select").css("width", "100%");
-  });
-</script>

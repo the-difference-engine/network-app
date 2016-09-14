@@ -34,5 +34,14 @@
     <%= yield %>
 
     <div class="space-70"></div>
+    <script>
+      $(function(){
+          $(".chosen-select").chosen();
+      });
+
+      $(document).ready(function(){
+        $(".chosen-select").css("width", "100%");
+      });
+    </script>
   </body>
 </html>
