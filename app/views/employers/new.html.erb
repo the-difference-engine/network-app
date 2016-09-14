@@ -66,7 +66,7 @@
     </div>
     <div class="row">
       <div class="my-login-form col-md-6">
-        <div class="login-info-box">
+        <div class="login-info-box edit-company-info">
           <h4 class="heading-mini">Company Info</h4><hr>
           <div class="row">
             <div class="col-md-6 margin-btm-20">
@@ -125,7 +125,7 @@
         </div>
       </div>
       <div class="my-login-form col-md-6">
-        <div class="login-info-box">
+        <div class="login-info-box edit-hiring">
           <h4 class="heading-mini">Hiring Needs</h4><hr>
           <div class="row">
             <div class="col-md-12 margin-btm-20">
@@ -189,24 +189,19 @@
     </div>
     <div class="row">
       <div class="my-login-form col-md-6">
-        <div class="login-info-box">
+        <div class="login-info-box edit-company-tech">
           <h4 class="heading-mini">Technologies</h4>
           <hr>
           <div class="row">
             <div class="col-md-12 margin-btm-20">
               <%= f.label "What technologies/languages are you hiring for?" %><br /><br />
-                <%= f.collection_check_boxes :technology_ids, Technology.all.order(:name), :id, :name do |b| %>
-                  <div class="col-md-4 col-sm-4 collection-check-box">
-                    <%= b.check_box %>
-                    <%= b.label %>
-                  </div>
-                <% end %>
+              <%= f.collection_select( :technology_ids, Technology.all.order(:name), :id, :name, {}, {:prompt => 'Select Fields', class: "form-control chosen-select", multiple: true} )%>
             </div>
           </div>      
         </div>
       </div>
       <div class="my-login-form col-md-6">
-        <div class="login-info-box">
+        <div class="login-info-box edit-company-submit">
           <h4 class="heading-mini">Allow Students to Contact Company Rep by Email?</h4><hr>
           <div class="row">
             <div class="col-md-12 margin-btm-20">

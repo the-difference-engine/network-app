@@ -34,6 +34,8 @@
 //= require app-theme
 //= require multiple-select
 //= require highcharts
+//= require chosen.jquery.min
+//= require chosen.proto.min
 //= require_tree .
 
 

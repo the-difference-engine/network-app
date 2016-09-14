@@ -71,7 +71,7 @@ class ProjectImageUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    ['no_project_768x1024', 'no_project_768x576', 'no_project_768x1156'].sample
+    'no_project_768x576'
   end
 
   # Override the filename of the uploaded files:

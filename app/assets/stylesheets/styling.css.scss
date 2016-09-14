@@ -36,3 +36,27 @@
   display: inline-block;
   height: 50px;
 }
+
+.chosen-container-multi {
+  width: 100% !important; 
+}
+
+.edit-login-info, .edit-cohort-details {
+  min-height: 713px;
+}
+
+.edit-social-media, .edit-interview {
+  min-height: 692px;
+}
+
+.edit-preferred, .edit-technical {
+  min-height: 744px;
+}
+
+.edit-company-info, .edit-hiring {
+  min-height: 876px;
+}
+
+.edit-company-tech, .edit-company-submit {
+  min-height: 264px;
+}
