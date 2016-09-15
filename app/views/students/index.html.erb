@@ -11,12 +11,21 @@
       <div class="col-md-12">
         <h4 class="heading-mini filter-heading">Filter By Technology</h4>
         <!-- <input ng-model='skillFilter' class="form-control"></p> --> 
-        <multiple-autocomplete ng-model="selectedList"
-           object-property="name"
-           suggestions-arr="technologies">
-        </multiple-autocomplete><br>
+        <div class="row">
+          <%= search_form_for @search do |f| %>
+            <div class="col-sm-10">
+              <%= f.collection_select( :technologies_id_in_any, Technology.all.order(:name), :id, :name, {}, {:prompt => 'Select Fields', class: "form-control chosen-select", multiple: true} )%>
+            </div>
+            <div class="col-sm-2">
+              <%= f.submit "Search", class: "btn theme-btn-color" %>
+            </div>
+          <% end %>
+        </div><br>
       </div>
     </div>
+
+    
+
     <div class="row">
       <div class="col-md-12">
         <div id="grid" class="row">  

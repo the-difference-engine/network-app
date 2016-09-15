@@ -33,6 +33,7 @@ gem "font-ionicons-rails"
 gem 'seed_dump'
 gem 'mail_form'
 gem 'highcharts-rails'
+gem 'ransack'
 
 gem 'figaro'
 gem 'carrierwave'

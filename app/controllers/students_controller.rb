@@ -4,8 +4,10 @@ class StudentsController < ApplicationController
   before_action :authenticate_admin_student!, :only => [:edit, :update]
 
   def index
-    @students = Student.where(active: true).order(:last_name)
+    # @students = Student.where(active: true).order(:last_name)
     @projects = Project.all
+    @search = Student.search(params[:q])
+    @students = @search.result(distinct: true)
   end
 
   def new
