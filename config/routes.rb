@@ -17,10 +17,14 @@ Rails.application.routes.draw do
     patch 'students' => 'devise/registrations#update', :as => 'student_registration'            
   end
 
-  devise_for :employers, controllers: { 
+  devise_for :employers, :skip => [:registrations], controllers: { 
     sessions: 'employers/sessions',
-    registrations: 'employers/registrations'
+    # registrations: 'employers/registrations'
   }
+  as :employer do
+    get 'employers/edit' => 'devise/registrations#edit', :as => 'edit_employer_registration'    
+    patch 'employers' => 'devise/registrations#update', :as => 'employer_registration'            
+  end
 
   root 'pages#setup_root'
   

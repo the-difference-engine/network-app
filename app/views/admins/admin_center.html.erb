@@ -37,6 +37,14 @@
                           </div>
                         </div>
                         <table class="table table-hover table-responsive">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Email</th>
+                              <th></th>
+                              <th></th>
+                            </tr>
+                          </thead>
                           <tbody>
                             <tr class="hover-list"ng-repeat="student in activeStudents | filter: { full_name: searchStudentName } | orderBy: 'last_name'">
                               <td class="user-entries">
@@ -68,6 +76,14 @@
                           </div>
                         </div>
                         <table class="table table-hover table-responsive">
+                          <thead>
+                            <tr>
+                              <th>Company</th>
+                              <th>Email</th>
+                              <th></th>
+                              <th></th>
+                            </tr>
+                          </thead>
                           <tbody>
                             <tr class="hover-list"ng-repeat="employer in activeEmployers | filter: { name: searchEmployerName } | orderBy: 'name'">
                               <td class="user-entries">
@@ -100,6 +116,14 @@
                             </div>
                           </div>
                           <table class="table table-hover table-responsive">
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th></th>
+                                <th></th>
+                              </tr>
+                            </thead>
                             <tbody>
                               <tr class="hover-list"ng-repeat="admin in activeAdmins | filter: { full_name: searchAdminName } | orderBy: 'last_name'">
                                 <td class="user-entries">                                
@@ -133,6 +157,14 @@
                           </div>
                         </div>
                         <table class="table table-hover table-responsive">
+                          <thead>
+                            <tr>
+                              <th>Email</th>
+                              <th>Role</th>
+                              <th></th>
+                              <th></th>
+                            </tr>
+                          </thead>
                           <tbody>
                             <tr class="hover-list"ng-repeat="user in pendingUsers | filter: { email: searchUserEmail } | orderBy: 'role'">
                               <td class="user-entries is-breakable">                              
@@ -164,9 +196,34 @@
                       <% if @student_emails.any? %>
                         <div id="student-email-stat-chart"></div>
                       <% end %>
-               
                       <% if !@student_emails.any? && !@employer_emails.any?%>
-                        <div class="no-accounts"><h5><em>There are no email records to display</em></h5></div>
+                        <div class="no-accounts"><h5><em>There is no email data to display</em></h5></div>
+                      <% end %>
+                      <br>
+                      <% if @students.any? %>
+                        <div class="admin-center-search">
+                          <div class="form-group">
+                            <input type="text" ng-model="searchEmailStudentName" class="form-control admin-center-search-bar" placeholder="Search students">
+                          </div>
+                        </div>
+                        <table class="table table-hover table-responsive">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th class="text-center">Emails Received</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="hover-list"ng-repeat="student in topEmailStudents | filter: searchEmailStudentName | orderBy: 'emails':true | limitTo: 5">
+                              <td class="user-entries">
+                                <a href="/students/{{ student.id }}" class="user-name">{{ student.name }}</a>
+                              </td>
+                              <td class="user-entries is-breakable">
+                                <p class="text-center">{{ student.emails }}</p>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       <% end %>
                     </div> 
                   </div>
@@ -197,7 +254,7 @@
             <div class="sidebar-box">
               <div class="row">
                 <div class="col-md-12">
-                  <h4 class="sidebar-heading">Leaders: Emails Received</h4>
+                  <h4 class="sidebar-heading">Top 5: Emails Received</h4>
                   <% if @students.any? %>
                     <div class="admin-center-search">
                       <div class="form-group">

@@ -67,6 +67,7 @@ class EmployersController < ApplicationController
 
       respond_to do |format|
         if successfully_updated
+          sign_in(@employer, :bypass => true)
           format.html { redirect_to @employer }
           flash[:success] = "Your account was successfully updated!"
           format.json { head :no_content }

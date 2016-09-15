@@ -216,7 +216,7 @@
           <div class="row">
             <div class="col-lg-12 margin-btm-20">
               <%= f.label "Select all relevant technical skills" %><br /><br />
-                <%= f.collection_select( :technology_ids, Technology.all.order(:name), :id, :name, {}, {:prompt => 'Select Fields', class: "form-control chosen-select", multiple: true} )%>
+              <%= f.collection_select( :technology_ids, Technology.all.order(:name), :id, :name, {}, {:prompt => 'Select Fields', class: "form-control chosen-select", multiple: true} )%>
             </div>
           </div><br>
           <h4 class="heading-mini">Top 3 Skills</h4><hr>
