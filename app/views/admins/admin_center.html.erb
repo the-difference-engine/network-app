@@ -199,8 +199,8 @@
                       <% if !@student_emails.any? && !@employer_emails.any?%>
                         <div class="no-accounts"><h5><em>There is no email data to display</em></h5></div>
                       <% end %>
-                      <br>
                       <% if @students.any? %>
+                        <br>
                         <div class="admin-center-search">
                           <div class="form-group">
                             <input type="text" ng-model="searchEmailStudentName" class="form-control admin-center-search-bar" placeholder="Search students">
