@@ -17,11 +17,6 @@ Rails.application.routes.draw do
     patch 'students' => 'devise/registrations#update', :as => 'student_registration'            
   end
 
-  # devise_for :employers, controllers: { 
-  #   sessions: 'employers/sessions',
-  #   registrations: 'employers/registrations'
-  # }
-
   devise_for :employers, :skip => [:registrations], controllers: { 
     sessions: 'employers/sessions',
     # registrations: 'employers/registrations'
