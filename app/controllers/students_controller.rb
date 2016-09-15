@@ -68,6 +68,7 @@ class StudentsController < ApplicationController
 
       respond_to do |format|
         if successfully_updated
+          sign_in(@student, :bypass => true)
           format.html { redirect_to @student }
           flash[:success] = "Your account was successfully updated!"
           format.json { head :no_content }

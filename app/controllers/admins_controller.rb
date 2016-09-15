@@ -47,6 +47,7 @@ class AdminsController < ApplicationController
                            end
     respond_to do |format|
       if successfully_updated
+        sign_in(@admin, :bypass => true)
         format.html { redirect_to admin_center_path }
         flash[:success] = "The account was successfully updated!"
         format.json { head :no_content }
