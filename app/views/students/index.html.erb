@@ -28,43 +28,45 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div id="grid" class="row">  
-          <% if @students.any? %>
-            <% @students.each_slice(3) do |three_students| %>
-              <% three_students.each do |student| %>
-                <div class=" mix col-md-4 col-sm-6 col-xs-12 margin-btm-40">
-                  <div class="portfolio-sec">
-                    <div class="portfolio-thumnail">
-                      <a href="/students/<%= student.id %>"><img src="<%=student.avatar.index_square.url %>" class="img-responsive" /></a>
-                    </div>
-                    <div class="portfolio-desc text-center"> 
-                      <h4 class="portfolio-post-title"><%= student.full_name %></h4>
-                      <span class="portfolio-post-cat"><%= student.current_location %></span>
-                    <% if student.skills? %>
-                      <% unless student.skill_1 == "" || student.skill_1 == nil %>
-                        <span class="portfolio-post-cat skill"><%= student.skill_1 %></span>
-                      <% end %>
-                      <% unless student.skill_2 == "" || student.skill_2 == nil %>
-                        <span class="portfolio-post-cat skill"><%= student.skill_2 %></span>
-                      <% end %>
-                      <% unless student.skill_3 == "" || student.skill_3 == nil %>
-                        <span class="portfolio-post-cat skill"><%= student.skill_3 %></span>
-                      <% end %>
-                    <% else %>
-                      <span class="portfolio-post-cat skill">Skills Coming Soon</span>
-                    <% end %>
-                      <h4><a href="/students/<%= student.id %>" class="btn theme-btn-default btn-lg">More Details</a></h4>
-                    </div>
+        <% if @students.any? %>
+          <div id="grid" class="row">  
+          <% @students.each_slice(3) do |three_students| %>
+            <% three_students.each do |student| %>
+              <div class=" mix col-md-4 col-sm-6 col-xs-12 margin-btm-40">
+                <div class="portfolio-sec">
+                  <div class="portfolio-thumnail">
+                    <a href="/students/<%= student.id %>"><img src="<%=student.avatar.index_square.url %>" class="img-responsive" /></a>
                   </div>
-                </div><!--portfolio item -->
-              <% end %>
+                  <div class="portfolio-desc text-center"> 
+                    <h4 class="portfolio-post-title"><%= student.full_name %></h4>
+                    <span class="portfolio-post-cat"><%= student.current_location %></span>
+                  <% if student.skills? %>
+                    <% unless student.skill_1 == "" || student.skill_1 == nil %>
+                      <span class="portfolio-post-cat skill"><%= student.skill_1 %></span>
+                    <% end %>
+                    <% unless student.skill_2 == "" || student.skill_2 == nil %>
+                      <span class="portfolio-post-cat skill"><%= student.skill_2 %></span>
+                    <% end %>
+                    <% unless student.skill_3 == "" || student.skill_3 == nil %>
+                      <span class="portfolio-post-cat skill"><%= student.skill_3 %></span>
+                    <% end %>
+                  <% else %>
+                    <span class="portfolio-post-cat skill">Skills Coming Soon</span>
+                  <% end %>
+                    <h4><a href="/students/<%= student.id %>" class="btn theme-btn-default btn-lg">More Details</a></h4>
+                  </div>
+                </div>
+              </div><!--portfolio item -->
             <% end %>
-          <% else %>
+          <% end %>
+          </div>
+        <% else %>
+          <div id="grid" class="row">  
             <div class="col-sm-12">
               <h3><em>No students matching your search criteria</em></h3>
             </div>
-          <% end %>
-        </div><!--grid-->
+          </div>
+        <% end %>
       </div>
     </div><!--row-->
   </div><!--portfolio container end-->
