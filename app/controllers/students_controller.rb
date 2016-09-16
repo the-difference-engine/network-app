@@ -6,7 +6,20 @@ class StudentsController < ApplicationController
   def index
     @search = Student.search(params[:q])
     @students = @search.result(distinct: true)
-    @students = @students.where(active: true).shuffle
+    @students = @students.where(active: true).shufflemodule StudentsController
+      module ClassMethods
+        
+      end
+      
+      module InstanceMethods
+        
+      end
+      
+      def self.included(receiver)
+        receiver.extend         ClassMethods
+        receiver.send :include, InstanceMethods
+      end
+    end
   end
 
   def new
