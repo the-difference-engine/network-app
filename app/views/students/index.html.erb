@@ -23,14 +23,12 @@
         </div><br>
       </div>
     </div>
-
     
-
     <div class="row">
       <div class="col-md-12">
-        <div id="grid" class="row">  
-          <% if @students.any? %>
-            <% @students.each_slice(3) do |three_students| %>
+        <% if @students.any? %>
+          <% @students.each_slice(3) do |three_students| %>
+            <div id="grid" class="row">  
               <% three_students.each do |student| %>
                 <div class=" mix col-md-4 col-sm-6 col-xs-12 margin-btm-40">
                   <div class="portfolio-sec">
@@ -58,13 +56,15 @@
                   </div>
                 </div><!--portfolio item -->
               <% end %>
-            <% end %>
-          <% else %>
+            </div>
+          <% end %>
+        <% else %>
+          <div id="grid" class="row">  
             <div class="col-sm-12">
               <h3><em>No students matching your search criteria</em></h3>
             </div>
-          <% end %>
-        </div><!--grid-->
+          </div>
+        <% end %>
       </div>
     </div><!--row-->
   </div><!--portfolio container end-->
