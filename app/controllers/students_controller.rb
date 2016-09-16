@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
   def index
     @search = Student.search(params[:q])
     @students = @search.result(distinct: true)
-    @students = @students.where(active: true).order(:last_name)
+    @students = @students.where(active: true).shuffle
   end
 
   def new
