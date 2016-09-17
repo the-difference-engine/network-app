@@ -18,7 +18,7 @@ class AdminsController < ApplicationController
       redirect_to admin_center_path
     else
       Rails.logger.info @admin.attributes
-      flash[:warning] = "Unable to add new admin."
+      # flash[:warning] = "Unable to add new admin."
       render :new
     end
   end
@@ -53,7 +53,7 @@ class AdminsController < ApplicationController
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        flash[:warning] = "Unable to update the account."
+        # flash[:warning] = "Unable to update the account."
         format.json { render json: @admins.errors, status: :unprocessable_entity }
       end
     end
