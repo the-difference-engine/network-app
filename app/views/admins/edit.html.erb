@@ -12,6 +12,19 @@
         <div class="my-login-form">
           <%= form_for(@admin, url: admin_path(@admin), html: { :multipart => true }) do |f| %>
           <%= f.hidden_field :active, value: true %>
+            <% if @admin.errors.any? %>
+              <div class="alert alert-dismissible alert-warning center-warning">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <h3>You forgot to fill out
+                  <%= pluralize(@admin.errors.count, "field") %>:
+                </h3>
+                <ul>
+                  <% @admin.errors.full_messages.each do |msg| %>
+                    <h5><%= msg %></h5>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
             <h4 class="heading-mini">Update Account Details</h4><hr>
             <div class="row">
               <div class="form-group col-md-6">
@@ -25,7 +38,7 @@
             </div>
             <div class="row">
               <div class="form-group col-md-12">
-                <%= f.label :email %><br />
+                <%= f.label :email %><span class="required-form-field"> *</span><br />
                 <%= f.email_field :email, class: "form-control" %>
               </div>
             </div>
@@ -46,9 +59,6 @@
                 <div class="form-group col-md-12">
                   <%= f.label "Current Avatar" %><br />
                   <%= image_tag @admin.avatar.thumb.url, class: "form-img-preview" %>
-                </div>
-                <div class="form-group col-md-12">
-                  <%= f.check_box :remove_avatar %> &nbsp;<%= f.label :remove_avatar %>
                 </div>
               </div>
               <div class="row">

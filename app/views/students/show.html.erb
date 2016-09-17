@@ -15,11 +15,11 @@
           </div>
           <% if @student.seeking_employment %>
             <div class="blog-post-info employment-btn-div">
-              <button class="btn btn-lg theme-btn-color employment-btn"> Seeking Employment!</button>
+              <button class="btn btn-lg theme-btn-color employment-btn no-click-button"> Seeking Employment!</button>
             </div>
           <% end %>
           <div class="blog-post-header city-header">
-              <h3><a href="" class="student-city"><%= @student.current_location %></a></h3>
+            <h3><a href="" class="student-city"><%= @student.current_location %></a></h3>
           </div>
         </div>
 
@@ -29,7 +29,6 @@
               <h4 class="heading-mini section-heading">About Me</h4>
               <div class="acltc-info">
                 <div class="row">
-                
                   <div class="col-md-12 services-text about-me">
                     <p><em>"<%= @student.about_me %>"</em></p>
                   </div><!--services 1 text-->
@@ -230,6 +229,15 @@
             </ul>
           </div><hr>
         <% end %>
+
+        <% unless @student.current_industry == "" || @student.current_industry == nil %>
+          <div class="sidebar-box">
+            <h4>Current Industry</h4>
+            <ul class="cat-list">
+              <li><a href="#" class="hover-color"><%= @student.current_industry %></a></li>
+            </ul>
+          </div><hr>
+        <% end %>
         
         <div class="sidebar-box">
           <h4>Top 3 Skills</h4>
@@ -254,9 +262,43 @@
           <div class="sidebar-box">
             <h4>Tech Skills</h4>
             <ul class="cat-list">
-              <% @technologies.each do |tech| %>
-                <li><a href="#" class="hover-color"><%= tech.name %></a></li>
-              <% end %>
+              <div class="row">
+                <% @technologies.each do |tech| %>
+                  <div class="col-sm-6">
+                    <li><a href="#" class="hover-color"><%= tech.name %></a></li>
+                  </div>
+                <% end %>
+              </div>
+            </ul>
+          </div><hr>
+        <% end %>
+
+        <% if @student.positions.any? %>
+          <div class="sidebar-box">
+            <h4>Preferred Positions</h4>
+            <ul class="cat-list">
+              <div class="row">
+                <% @positions.each do |position| %>
+                  <div class="col-sm-6">
+                    <li><a href="#" class="hover-color"><%= position.name %></a></li>
+                  </div>
+                <% end %>
+              </div>
+            </ul>
+          </div><hr>
+        <% end %>
+
+        <% if @student.industries.any? %>
+          <div class="sidebar-box">
+            <h4>Preferred Industries</h4>
+            <ul class="cat-list">
+              <div class="row">
+                <% @industries.each do |industry| %>
+                  <div class="col-sm-6">
+                    <li><a href="#" class="hover-color"><%= industry.name %></a></li>
+                  </div>
+                <% end %>
+              </div>
             </ul>
           </div><hr>
         <% end %>
@@ -279,28 +321,6 @@
             <% end %>
           </ul>
         </div><hr>
-
-        <% if @student.positions.any? %>
-          <div class="sidebar-box">
-            <h4>Preferred Positions</h4>
-            <ul class="cat-list">
-              <% @positions.each do |position| %>
-                <li><a href="#" class="hover-color"><%= position.name %></a></li>
-              <% end %>
-            </ul>
-          </div><hr>
-        <% end %>
-
-        <% if @student.industries.any? %>
-          <div class="sidebar-box">
-            <h4>Preferred Industries</h4>
-            <ul class="cat-list">
-              <% @industries.each do |industry| %>
-                <li><a href="#" class="hover-color"><%= industry.name %></a></li>
-              <% end %>
-            </ul>
-          </div><hr>
-        <% end %>
       </div><!--sideabr blog end -->
     </div>
   </div><!--blog post page content end here-->

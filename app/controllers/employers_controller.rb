@@ -18,7 +18,7 @@ class EmployersController < ApplicationController
       flash[:success] = "Employer account successfully created!"
       redirect_to employer_path(@employer)
     else
-      flash[:warning] = "Unable to add new employer."
+      # flash[:warning] = "Unable to add new employer."
       render :new
     end
   end
@@ -73,7 +73,7 @@ class EmployersController < ApplicationController
           format.json { head :no_content }
         else
           format.html { render action: 'edit' }
-          flash[:warning] = "Unable to update your account."
+          # flash[:warning] = "Unable to update your account."
           format.json { render json: @employer.errors, status: :unprocessable_entity }
         end
       end

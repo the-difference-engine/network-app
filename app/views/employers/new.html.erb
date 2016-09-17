@@ -12,27 +12,40 @@
   <div class="container">
     <%= form_for(@employer, url: admin_employers_path, html: { :multipart => true }) do |f| %>
     <%= f.hidden_field :active, value: true %>
+    <% if @employer.errors.any? %>
+      <div class="alert alert-dismissible alert-warning center-warning">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <h3>You forgot to fill out
+          <%= pluralize(@employer.errors.count, "field") %>:
+        </h3>
+        <ul>
+          <% @employer.errors.full_messages.each do |msg| %>
+            <h5><%= msg %></h5>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <div class="row">
       <div class="my-login-form col-md-6">
         <div class="login-info-box">
           <h4 class="heading-mini">Log In Information</h4><hr>
           <div class="row">
             <div class="col-md-6 margin-btm-20">
-              <%= f.label :name, "Company Name" %><br />
+              <%= f.label :name, "Company Name" %><span class="required-form-field"> *</span><br />
               <%= f.text_field :name, class: "form-control" %>
             </div>
             <div class="col-md-6 margin-btm-20">
-              <%= f.label :email %><br />
+              <%= f.label :email %><span class="required-form-field"> *</span><br />
               <%= f.email_field :email, class: "form-control" %>
             </div>
           </div>
           <div class="row">
             <div class="col-md-6 margin-btm-20">
-              <%= f.label :password %><br />
+              <%= f.label :password %><span class="required-form-field"> *</span><br />
               <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
             </div>
             <div class="col-md-6 margin-btm-20">
-              <%= f.label :password_confirmation %><br />
+              <%= f.label :password_confirmation %><span class="required-form-field"> *</span><br />
               <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
             </div>
           </div>
@@ -43,17 +56,17 @@
           <h4 class="heading-mini">Company Representative Details</h4><hr>
           <div class="row">
             <div class="col-md-6 margin-btm-20">
-              <%= f.label :rep_first_name %><br />
+              <%= f.label :rep_first_name %><span class="required-form-field"> *</span><br />
               <%= f.text_field :rep_first_name, class: "form-control" %>
             </div>
              <div class="col-md-6 margin-btm-20">
-              <%= f.label :rep_last_name %><br />
+              <%= f.label :rep_last_name %><span class="required-form-field"> *</span><br />
               <%= f.text_field :rep_last_name, class: "form-control" %>
             </div>
           </div>
           <div class="row">
             <div class="col-md-6 margin-btm-20">
-              <%= f.label :rep_email %><br />
+              <%= f.label :rep_email %><span class="required-form-field"> *</span><br />
               <%= f.email_field :rep_email, class: "form-control" %>
             </div>
             <div class="col-md-6 margin-btm-20">
@@ -70,11 +83,11 @@
           <h4 class="heading-mini">Company Info</h4><hr>
           <div class="row">
             <div class="col-md-6 margin-btm-20">
-              <%= f.label :city %><br />
+              <%= f.label :city %><span class="required-form-field"> *</span><br />
               <%= f.text_field :city, class: "form-control" %>
             </div>
              <div class="col-md-6 margin-btm-20">
-              <%= f.label :state %><br />
+              <%= f.label :state %><span class="required-form-field"> *</span><br />
               <%= f.select(:state, options_for_select(us_states, @employer.state), :prompt => "Select State", class: "form-control" ) %>
             </div>
           </div>
@@ -101,7 +114,7 @@
           </div>
           <div class="row">
             <div class="col-md-12 margin-btm-20">
-              <%= f.label :description, "Company Description" %><br />
+              <%= f.label :description, "Company Description" %><span class="required-form-field"> *</span><br />
               <%= f.text_area :description, class: "form-control" %>
             </div>
           </div>

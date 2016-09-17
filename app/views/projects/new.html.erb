@@ -12,12 +12,12 @@
         <%= form_for(@project, url: projects_path) do |f| %>
           <h4 class="heading-mini">Enter Project Information</h4><hr>
           <div class="form-group">
-            <%= f.label :name, "Name" %><br />
+            <%= f.label :name, "Name" %><span class="required-form-field"> *</span><br />
             <%= f.text_field :name, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :description, "Description" %><br />
-            <%= f.text_field :description, class: "form-control" %>
+            <%= f.label :description, "Description" %><span class="required-form-field"> *</span><br />
+            <%= f.text_area :description, size: "20x5", class: "form-control" %>
           </div>
           <div class="form-group">
             <%= f.check_box :capstone %>&nbsp;
@@ -44,7 +44,7 @@
             <%= f.text_field :website, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :screencast, "Screencast Video Link (if available)" %><br />
+            <%= f.label :screencast, "Screencast/Youtube Video Link (if available)" %><br />
             <%= f.text_field :screencast, class: "form-control" %>
           </div>
           <div class="form-group">

@@ -195,11 +195,7 @@
           </div>
         </div><!--tabs end-->
       </div>
-
-
-
-
-
+      
       <div class="col-md-4"><hr>
         <div class="portfolio-side-bar">
           <% if admin_signed_in? || employer_signed_in? && @employer.id == current_employer.id %>
@@ -212,9 +208,9 @@
 
           <div class="sidebar-box">
             <% if @employer.currently_hiring %>
-              <button class="btn btn-lg theme-btn-color employment-btn">We're Hiring!</button> 
+              <button class="btn btn-lg theme-btn-color employment-btn no-click-button">We're Hiring!</button> 
             <% else %>
-              <button class="btn btn-lg theme-btn-color employment-btn">Not Currently Hiring</button> 
+              <button class="btn btn-lg theme-btn-color employment-btn no-click-button">Not Currently Hiring</button> 
             <% end %>
 
             <% if student_signed_in? && @employer.allow_emails %>

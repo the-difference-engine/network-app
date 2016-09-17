@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
   def index
     @search = Student.search(params[:q])
     @students = @search.result(distinct: true)
-    @students = @students.where(active: true).order(:last_name)
+    @students = @students.where(active: true).shuffle
   end
 
   def new
@@ -20,7 +20,7 @@ class StudentsController < ApplicationController
       flash[:success] = "Student account successfully created!"
       redirect_to student_path(@student)
     else
-      flash[:warning] = "Unable to add new student."
+      # flash[:warning] = "Unable to add new student."
       render :new
     end
   end
@@ -35,7 +35,9 @@ class StudentsController < ApplicationController
     @follow_up_list = @employer.follow_up_list if current_employer
     @follow_up_student = FollowUpStudent.new
     @employer_email = EmployerEmail.new
+
     @default_message = "Greetings #{@student.full_name}!\n\n#{@employer.rep_full_name} from #{@employer.name } viewed your profile on DevHero and would like to connect!\n\nView their employer profile http://network-app-staging.com/employers/#{@employer.id} or reply to this email to start a conversation." if current_employer
+    # @default_message = "Greetings #{@student.full_name}!\n\n#{@employer.rep_full_name} from #{@employer.name } viewed your profile on DevHero and would like to connect!\n\nView their employer profile http://devhero.io/employers/#{@employer.id} or reply to this email to start a conversation." if current_employer
 
     if @student.capstone_project
       @capstone = @student.capstone_project
@@ -75,7 +77,7 @@ class StudentsController < ApplicationController
           format.json { head :no_content }
         else
           format.html { render action: 'edit' }
-          flash[:warning] = "Unable to update your account."
+          # flash[:warning] = "Unable to update your account."
           format.json { render json: @student.errors, status: :unprocessable_entity }
         end
       end

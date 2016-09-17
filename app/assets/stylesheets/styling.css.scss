@@ -61,6 +61,26 @@
   min-height: 264px;
 }
 
+.reg-login-info, .reg-cohort-details {
+  min-height: 625px;
+}
+
+.reg-social-media, .reg-interview {
+  min-height: 692px;
+}
+
+.reg-preferred, .reg-technical {
+  min-height: 744px;
+}
+
+.reg-company-info, .reg-hiring {
+  min-height: 876px;
+}
+
+.reg-company-tech, .reg-company-submit {
+  min-height: 264px;
+}
+
 .actualize-logo {
   max-height: 28px;
 }
@@ -78,4 +98,28 @@
 
 .student-index-filter-search {
   float: right;
+}
+
+.no-click-button {
+  cursor: default;
+}
+
+.current-industry {
+  text-transform: none;
+  font-weight: 500;
+  color: #777;
+}
+
+.required-form-field {
+  color: red;
+}
+
+.alert-warning {
+  background-image: -webkit-linear-gradient(top, #fcf8e3 0%, #f8efc0 100%);
+  background-image:      -o-linear-gradient(top, #fcf8e3 0%, #f8efc0 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fcf8e3), to(#f8efc0));
+  background-image:         linear-gradient(to bottom, #fcf8e3 0%, #f8efc0 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffcf8e3', endColorstr='#fff8efc0', GradientType=0);
+  background-repeat: repeat-x;
+  border-color: #f5e79e;
 }
