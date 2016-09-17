@@ -20,7 +20,7 @@ class StudentsController < ApplicationController
       flash[:success] = "Student account successfully created!"
       redirect_to student_path(@student)
     else
-      flash[:warning] = "Unable to add new student."
+      # flash[:warning] = "Unable to add new student."
       render :new
     end
   end
@@ -75,7 +75,7 @@ class StudentsController < ApplicationController
           format.json { head :no_content }
         else
           format.html { render action: 'edit' }
-          flash[:warning] = "Unable to update your account."
+          # flash[:warning] = "Unable to update your account."
           format.json { render json: @student.errors, status: :unprocessable_entity }
         end
       end
