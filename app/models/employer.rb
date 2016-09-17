@@ -17,7 +17,7 @@ class Employer < ActiveRecord::Base
   has_many :employer_email_records
   has_many :student_email_records
 
-  validates :name, :rep_first_name, :rep_last_name, :rep_phone, :rep_email, presence: true
+  validates :name, :rep_first_name, :rep_last_name, :rep_email, presence: true
   validates :rep_email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :city, :state, presence: true
   validates :description, presence: true
