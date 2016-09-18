@@ -1,0 +1,45 @@
+<div id="cohort-city-index">
+  <div ng-app="app">
+    <div ng-controller="cohortCitiesCtrl" ng-init="setupCohortCityIndex()">
+
+      <section id="content-region-3" class="padding-40 page-tree-bg">
+        <div class="container">
+          <h3 class="page-tree-text">
+              Manage Cohort Cities
+          </h3>
+        </div>
+      </section><!--page-tree end here-->
+      <div class="space-70"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="heading-mini">Add A Cohort City</h4>
+          </div>
+          <div>
+            <%= render 'form' %>
+          </div>
+        </div>
+        <div class="row">
+ 
+          <div class="col-md-12">
+            <h4 class="heading-mini">Current Cities</h4>
+            <div class="admin-center-search">
+              <div class="form-group">
+                <input type="text" ng-model="searchCohortCityName" class="form-control admin-center-search-bar" placeholder="Search current cities">
+              </div>
+            </div>
+            <table class="table table-hover table-responsive">
+              <tbody>
+                <tr class="hover-list" ng-repeat="city in cohortCities | filter: { name: searchCohortCityName } | orderBy: 'name'">
+                  <td class="user-entries is-breakable"><p>{{ city.name }}</p></td>
+                  <td><a href="/cohort_cities/{{ city.id }}/edit" class="btn btn-xs btn-default"><i class="ion-edit"></i></a></td>
+                  <td><a href="/cohort_cities/{{ city.id }}" class="btn btn-xs btn-default" data-method="delete" data-confirm="Are you sure you want to delete '{{ city.name }}'?"><i class="ion-trash-a"></i></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div> 
+        </div>
+      </div><!--right sidebar page end-->
+    </div>
+  </div>
+</div>
