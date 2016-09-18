@@ -19,9 +19,9 @@
             <!--tabs start-->
             <div class="tabs">
               <ul class="nav nav-tabs">
-                <li class="active"><a href="#students" data-toggle="tab">Students</a></li>
-                <li class=""><a href="#employers" data-toggle="tab">Employers</a></li>
-                <li class=""><a href="#admins" data-toggle="tab">Admins</a></li>
+                <li class="active"><a href="#students" data-toggle="tab">Students ( {{ activeStudents.length || 0 }} )</a></li>
+                <li class=""><a href="#employers" data-toggle="tab">Employers ( {{ activeEmployers.length || 0 }} )</a></li>
+                <li class=""><a href="#admins" data-toggle="tab">Admins ( {{ activeAdmins.length || 0 }} )</a></li>
                 <li class=""><a href="#pending" data-toggle="tab">Pending Invites ( {{ pendingUsers.length || 0 }} )</a></li>
                 <li class=""><a href="#emails" data-toggle="tab">Email Stats</a></li>
               </ul>
