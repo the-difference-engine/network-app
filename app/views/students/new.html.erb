@@ -69,7 +69,7 @@
           <div class="row">
             <div class="col-lg-6 margin-btm-20">
               <%= f.label :city %><span class="required-form-field"> *</span><br />
-              <%= f.text_field :city, class: "form-control" %>
+              <%= f.collection_select(:city, CohortCity.all, :name, :name, :prompt => 'Select City', class: "form-control") %>
             </div>
              <div class="col-lg-6 margin-btm-20">
               <%= f.label :grad_date %><span class="required-form-field"> *</span><br />
