@@ -93,9 +93,13 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-12 margin-btm-20">
+            <div class="col-md-6 margin-btm-20">
               <%= f.label :website %><br />
               <%= f.text_field :website, class: "form-control" %>
+            </div>
+            <div class="col-md-6 margin-btm-20">
+              <%= f.label :image, "Company Logo" %><br />
+              <%= f.file_field :image, class: "form-control" %>
             </div>
           </div>
           <div class="row">

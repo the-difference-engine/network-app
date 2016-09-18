@@ -16,6 +16,8 @@ class Student < ActiveRecord::Base
   has_many :employer_email_records
   has_many :student_email_records
 
+  validates :first_name, :last_name, :city, :grad_date, presence: true
+
   def full_name
     "#{first_name} #{last_name}"
   end
