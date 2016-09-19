@@ -3,6 +3,9 @@ Rails.application.routes.draw do
     sessions: 'admins/sessions',
     # registrations: 'admins/registrations'
   }
+  authenticate :admin do 
+    mount Resque::Server.new, :at => "/dashboard/jobs"
+  end  
   as :admin do
     get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'    
     patch 'admins' => 'devise/registrations#update', :as => 'admin_registration'            
@@ -121,5 +124,4 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  mount Resque::Server, :at => '/resque'
 end
