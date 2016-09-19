@@ -40,6 +40,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
 
+gem 'resque', require: "resque/server"
+
 gem 'rails-assets-angular', source: 'https://rails-assets.org'
 gem 'rails_12factor', group: :production
 
