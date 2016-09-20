@@ -15,6 +15,7 @@ class StudentsController < ApplicationController
       skill_3: nil, skill_3: "", 
       active: false
     )
+    @students = @students.joins(:technologies, :positions)
   end
 
   def new
