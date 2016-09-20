@@ -6,7 +6,15 @@ class StudentsController < ApplicationController
   def index
     @search = Student.search(params[:q])
     @students = @search.result(distinct: true)
-    @students = @students.where.not(resume: nil, resume: "", about_me: nil, about_me: "", avatar: nil, avatar: "", skill_1: nil, skill_1: "", skill_2: nil, skill_2: "", skill_3: nil, skill_3: "", active: false)
+    @students = @students.where.not(
+      resume: nil, resume: "", 
+      about_me: nil, about_me: "", 
+      avatar: nil, avatar: "", 
+      skill_1: nil, skill_1: "", 
+      skill_2: nil, skill_2: "", 
+      skill_3: nil, skill_3: "", 
+      active: false
+    )
   end
 
   def new
