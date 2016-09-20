@@ -15,10 +15,28 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title reminder-modal-heading" id="myModalLabel">Reminder: Complete Your Profile</h4>
+                  <h4 class="modal-title reminder-modal-heading" id="myModalLabel">Reminder: Complete Your Profile</h4><br>
+                  <p><em>Your profile will not be viewable to employers on the student index unless all required sections are completed.</em></p>
                 </div>
                 <div class="modal-body">
-                  Your profile is incomplete. Profiles without a resume will not be displayed in the student index.
+                  <% unless @student.about_me? %>
+                    <p>Your "About Me" section is incomplete.</p>
+                  <% end %>
+                  <% unless @student.uploaded_resume? %>
+                    <p>You have not uploaded your resume (pdf).</p>
+                  <% end %>
+                  <% unless @student.uploaded_avatar? %>
+                    <p>You have not uploaded an avatar.</p>
+                  <% end %>
+                  <% unless @student.skills? %>
+                    <p>At least one of your top 3 skills is incomplete.</p>
+                  <% end %>
+                  <% unless @student.technologies.any? %>
+                    <p>You have not selected any tech skills.</p>
+                  <% end %>
+                  <% unless @student.positions.any? %>
+                    <p>You have not selected any preferred positions.</p>
+                  <% end %>
                 </div>
                 <div class="modal-footer">
                   <%= link_to "Edit Profile Now", edit_student_path(@student), class: "btn btn-default theme-btn-color" %>
