@@ -14,8 +14,8 @@ class Employer < ActiveRecord::Base
   has_and_belongs_to_many :industries
   has_and_belongs_to_many :salary_ranges
   has_and_belongs_to_many :technologies
-  has_many :employer_email_records
-  has_many :student_email_records
+  has_many :employer_email_records, dependent: :destroy
+  has_many :student_email_records, dependent: :destroy
 
   validates :name, :rep_first_name, :rep_last_name, :rep_email, presence: true
   validates :rep_email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }

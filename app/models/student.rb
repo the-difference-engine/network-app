@@ -13,8 +13,8 @@ class Student < ActiveRecord::Base
   has_and_belongs_to_many :positions
   has_many :follow_up_students
   has_many :follow_up_lists, through: :follow_up_students
-  has_many :employer_email_records
-  has_many :student_email_records
+  has_many :employer_email_records, dependent: :destroy
+  has_many :student_email_records, dependent: :destroy
 
   validates :first_name, :last_name, :city, :grad_date, presence: true
 
