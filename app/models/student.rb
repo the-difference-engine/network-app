@@ -246,9 +246,9 @@ class Student < ActiveRecord::Base
 
   def reminder_modal
     if skills? && about_me? && uploaded_avatar? && uploaded_resume? && technologies.any? && positions.any?
-      true
-    else
       false
+    else
+      true
     end
   end
 end
