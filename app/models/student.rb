@@ -259,7 +259,6 @@ class Student < ActiveRecord::Base
 
     fields.each do |field|
       if self[field] != "" && self[field] != nil 
-        p self[field]
         fields_completed += 1
       end
     end

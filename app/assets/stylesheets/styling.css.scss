@@ -133,3 +133,18 @@
   font-weight: bold;
   color: #000;
 }
+
+.student-progress-bar {
+  height: 30px;
+  
+  .progress-bar {
+    line-height: 30px;
+    font-size: 20px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .profile-status-text {
+      display: none;
+    }
+  }
+}

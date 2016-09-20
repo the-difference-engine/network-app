@@ -7,16 +7,18 @@
   <div class="space-70"></div>
   <div class="container student-show">
     <div class="row">
-      <div class="col-md-12">
-        <div class="progress">
-          <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="<%= @student.standout_score %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @student.standout_score %>%">
-            <span class="sr-only">40% Complete (success)</span>
+       <% if current_admin || current_student && current_student.id == @student.id %>
+        <div class="col-md-12">
+          <div class="progress student-progress-bar">
+            <div class="progress-bar" role="progressbar" aria-valuenow="<%= @student.standout_score %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @student.standout_score %>%;">
+              <span class="profile-status-text">Profile Status: </span>&nbsp;<%= @student.standout_score.round %>% <span class="profile-status-text">Complete</span>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
    
       <div class="col-md-8">
-        <% if current_student && @student.reminder_modal %>
+        <% if @student.reminder_modal && current_student && current_student.id == @student.id %>
           <!-- Resume Reminder Modal -->
           <div class="modal fade" id="reminder-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
