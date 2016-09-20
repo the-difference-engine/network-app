@@ -270,8 +270,11 @@ class Student < ActiveRecord::Base
         fields_completed += 1
       end
     end
-
     fields_completed.to_f / field_total * 100
+  end
+
+  def self.sort_by_standout_score
+    Student.all.sort_by(&:standout_score)
   end
 end
 

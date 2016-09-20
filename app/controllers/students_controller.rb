@@ -15,7 +15,7 @@ class StudentsController < ApplicationController
       skill_3: nil, skill_3: "", 
       active: false
     )
-    @students = @students.joins(:technologies, :positions)
+    @students = @students.joins(:technologies, :positions).sort_by_standout_score.reverse
   end
 
   def new
