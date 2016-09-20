@@ -16,7 +16,7 @@ class Student < ActiveRecord::Base
   has_many :employer_email_records, dependent: :destroy
   has_many :student_email_records, dependent: :destroy
 
-  validates :first_name, :last_name, :city, :grad_date, :skill_1, :skill_2, :skill_3, presence: true
+  validates :first_name, :last_name, :city, :grad_date, :skill_1, :skill_2, :skill_3, :technologies, :positions, presence: true
 
   def full_name
     "#{first_name} #{last_name}"
