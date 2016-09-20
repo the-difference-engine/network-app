@@ -8,7 +8,28 @@
   <div class="container student-show">
     <div class="row">
       <div class="col-md-8">
+        <% if @student.resume.url == "" || @student.resume.url == nil %>
 
+          <!-- Resume Reminder Modal -->
+          <div class="modal fade" id="reminder-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title reminder-modal-heading" id="myModalLabel">Reminder: Complete Your Profile</h4>
+                </div>
+                <div class="modal-body">
+                  Your profile is incomplete. Profiles without a resume will not be displayed in the student index.
+                </div>
+                <div class="modal-footer">
+                  <%= link_to "Edit Profile Now", edit_student_path(@student), class: "btn btn-default" %>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <% end %>
         <div class="blog-post-section student-section-one">
           <div class="blog-post-img">
               <%= image_tag "#{@student.avatar.index_square.url}", alt: "", class: "img-responsive show-image" %>
@@ -365,4 +386,6 @@
     modal.find('.modal-title').text('Send email message to ' + recipient)
     // modal.find('.modal-body input').val(recipient)
   })
+
+  $('#reminder-modal').modal('show')
 </script>
