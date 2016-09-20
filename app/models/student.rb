@@ -251,5 +251,19 @@ class Student < ActiveRecord::Base
       true
     end
   end
+
+  def standout_score
+    fields = [:email, :first_name, :last_name, :avatar, :city, :current_industry, :grad_date, :skill_1, :skill_2, :skill_3, :interest_1, :interest_2, :interest_3, :interview_1, :interview_2, :interview_3, :github, :blog, :quote, :seeking_employment, :resume, :linked_in, :current_city, :current_state, :about_me, :interview_q1, :interview_q2, :interview_q3, :personal_website]
+    field_total = fields.count
+    fields_completed = 0
+
+    fields.each do |field|
+      if self[field] != "" && self[field] != nil 
+        p self[field]
+        fields_completed += 1
+      end
+    end
+    fields_completed.to_f / field_total * 100
+  end
 end
 
