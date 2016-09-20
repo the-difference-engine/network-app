@@ -9,7 +9,6 @@
     <div class="row">
       <div class="col-md-8">
         <% if @student.resume.url == "" || @student.resume.url == nil %>
-
           <!-- Resume Reminder Modal -->
           <div class="modal fade" id="reminder-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
@@ -22,14 +21,14 @@
                   Your profile is incomplete. Profiles without a resume will not be displayed in the student index.
                 </div>
                 <div class="modal-footer">
-                  <%= link_to "Edit Profile Now", edit_student_path(@student), class: "btn btn-default" %>
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <%= link_to "Edit Profile Now", edit_student_path(@student), class: "btn btn-default theme-btn-color" %>
+                  <button type="button" class="btn btn-default theme-btn-color" data-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>
           </div>
-
         <% end %>
+
         <div class="blog-post-section student-section-one">
           <div class="blog-post-img">
               <%= image_tag "#{@student.avatar.index_square.url}", alt: "", class: "img-responsive show-image" %>
