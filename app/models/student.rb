@@ -227,5 +227,29 @@ class Student < ActiveRecord::Base
       true
     end
   end
+
+  def uploaded_avatar?
+    if avatar.url.include?("aws")
+      true
+    else
+      false
+    end
+  end
+
+  def uploaded_resume?
+    if resume.url && resume.url.include?("aws")
+      true
+    else
+      false
+    end
+  end
+
+  def reminder_modal
+    if skills? && about_me? && uploaded_avatar? && uploaded_resume? && technologies.any? && positions.any?
+      true
+    else
+      false
+    end
+  end
 end
 
