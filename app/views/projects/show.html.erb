@@ -48,10 +48,10 @@
             <% end %>
             <a href="/students/<%= @project.student_id %>" class="btn btn-lg theme-btn-color" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Back to Student"><i class="ion-person"></i></a> 
           </div>
+          <hr>
 
           <% if @project.project_links? %>
             <div class="sidebar-box">
-              <hr>
               <h4 class="project-checkout">Check It Out</h4>
               <ul class=" list-inline social-btn">
                 <% unless @project.github == "" || @project.github == nil %> 
@@ -65,21 +65,20 @@
                 <% end %>
               </ul>
             </div>
+            <hr>
           <% end %>
 
-          <div class="sidebar-box">
-            <hr>
-            <h4>Technologies</h4>
-            <ul class="cat-list">  
-              <% if @project.technologies.any? %>
+          <% if @project.technologies.any? %>
+            <div class="sidebar-box">
+              <h4>Technologies</h4>
+              <ul class="cat-list">  
                 <% @technologies.each do |tech| %>
                     <li><a href="#" class="hover-color"><%= tech.name %></a></li>
                 <% end %>
-              <% else %>
-                <li><a href="#" class="hover-color">Coming Soon</a></li>
-              <% end %>
-            </ul>
-          </div><hr>
+              </ul>
+            </div>
+            <hr>
+          <% end %>
         </div>
       </div>
     </div>
