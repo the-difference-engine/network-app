@@ -81,7 +81,7 @@
                   <div class="student-interview capstone-info">
                     <h4 class="heading-mini question-heading capstone-description-heading">Description</h4> 
                     <p class="capstone-description"><em>" <%= @capstone.description.capitalize %> "</em></p> 
-                    <% if @capstone.github || @capstone.website || @capstone.screencast %>
+                    <% if @capstone.project_links? %>
                       <h4 class="heading-mini question-heading checkout-icon-header">Check It Out</h4>
                       <div class="sidebar-box">            
                         <ul class=" list-inline social-btn">
@@ -163,12 +163,11 @@
       </div><!--blog content--> 
 
       <div class="col-md-4">
-        
         <div class="sidebar-box control-buttons">
           <% if admin_signed_in? || student_signed_in? && current_student.id == @student.id %>
             <hr>
             <a href="/projects/new" class="btn btn-lg theme-btn-color"><i class="ion-plus"></i> &nbsp;Add Project</a> 
-            <% unless @student.resume.url == "" || @student.resume.url == nil%>
+            <% unless @student.resume.url == "" || @student.resume.url == nil %>
               <a href="<%= @student.resume.url %>" class="btn btn-lg theme-btn-color"><i class="ion-document-text"></i> &nbsp;Resume</a>
             <% end %>
           <% end %> 
