@@ -68,7 +68,7 @@
           <% if admin_signed_in? %>
             <div class="form-group">
               <%= f.label :student_id, "Student" %><br />
-              <%= f.collection_select(:student_id, Student.all, :id, :first_name, :prompt => 'Select Student', class: "form-control") %>
+              <%= f.collection_select(:student_id, Student.all, :id, :full_name, :prompt => 'Select Student', class: "form-control") %>
             </div>
           <% elsif student_signed_in? %>
             <div class="form-group">

@@ -66,10 +66,10 @@
       </div>
       <div class="my-login-form col-lg-6">
         <div class="login-info-box reg-cohort-details">
-          <h4 class="heading-mini">ACLTC Cohort Details</h4><hr>
+          <h4 class="heading-mini">Actualize Cohort Details</h4><hr>
           <div class="row">
             <div class="col-lg-6 margin-btm-20">
-              <%= f.label :city %><span class="required-form-field"> *</span><br />
+              <%= f.label :city, "Actualize Location/City" %><span class="required-form-field"> *</span><br />
               <%= f.collection_select(:city, CohortCity.all, :name, :name, :prompt => 'Select City', class: "form-control") %>
             </div>
              <div class="col-lg-6 margin-btm-20">
