@@ -78,6 +78,11 @@
           <br>
           <div class="text-right submit-btn">
             <%= f.submit "Create Project", class: "btn theme-btn-color" %>
+            <% if current_student %>
+              <%= link_to "Cancel", student_path(current_student), class: "btn theme-btn-color" %>
+            <% elsif current_admin %>
+              <%= link_to "Cancel", students_path, class: "btn theme-btn-color" %>
+            <% end %>
           </div>
         <% end %><!--login form end-->
       </div>
