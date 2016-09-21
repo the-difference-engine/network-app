@@ -103,10 +103,10 @@
           </div>
         </div><!--blog post section end-->
 
-        <% if @student.interview_answers? && @student.interview_questions? || @student.quote != "" && @student.quote == nil %>
+        <% if @student.interview_answers? && @student.interview_questions? || @student.quote != "" && @student.quote != nil %>
           <div class="blog-post-section student-section-three">
-            <h4 class="heading-mini section-heading">Interview Responses</h4>
             <% unless @student.interview_1 == "" || @student.interview_1 == nil || @student.interview_q1 == "" || @student.interview_q1 == nil %>
+              <h4 class="heading-mini section-heading">Interview Responses</h4>
               <div class="student-interview">
                 <div class="row">
                   <div class="col-md-3 services-icon">
@@ -260,10 +260,10 @@
           </div><hr>
         <% end %>
         
-        <div class="sidebar-box">
-          <h4>Top 3 Skills</h4>
-          <ul class="cat-list">
-            <% if @student.skills? %>
+        <% if @student.skills? %>
+          <div class="sidebar-box">
+            <h4>Top 3 Skills</h4>
+            <ul class="cat-list">
               <% unless @student.skill_1 == "" || @student.skill_1 == nil %>
                 <li><a href="#" class="hover-color"><%= @student.skill_1 %></a></li>
               <% end %>
@@ -273,11 +273,9 @@
               <% unless @student.skill_3 == "" || @student.skill_3 == nil %>
                 <li><a href="#" class="hover-color"><%= @student.skill_3 %></a></li>
               <% end %>
-            <% else %>
-              <li><a href="#" class="hover-color">Coming Soon</a></li>
-            <% end %>
-          </ul>
-        </div><hr>
+            </ul>
+          </div><hr>
+        <% end %>
 
         <% if @student.technologies.any? %>
           <div class="sidebar-box">
@@ -324,10 +322,10 @@
           </div><hr>
         <% end %>
 
-        <div class="sidebar-box">
-          <h4>Interests</h4>
-          <ul class="cat-list">
-            <% if @student.interests? %>
+        <% if @student.interests? %>
+          <div class="sidebar-box">
+            <h4>Interests</h4>
+            <ul class="cat-list">
               <% unless @student.interest_1 == "" || @student.interest_1 == nil %>
                 <li><a href="#" class="hover-color"><%= @student.interest_1 %></a></li>
               <% end %>
@@ -337,11 +335,9 @@
               <% unless @student.interest_3 == "" || @student.interest_3 == nil %>
                 <li><a href="#" class="hover-color"><%= @student.interest_3 %></a></li>
               <% end %>
-            <% else %>
-              <li><a href="#" class="hover-color">Coming Soon</a></li>
-            <% end %>
-          </ul>
-        </div><hr>
+            </ul>
+          </div><hr>
+        <% end %>
       </div><!--sideabr blog end -->
     </div>
   </div><!--blog post page content end here-->
