@@ -13,7 +13,6 @@ class ProjectsController < ApplicationController
       flash[:success] = "Project successfully created!"
       redirect_to student_path(@project.student)
     else
-      flash[:warning] = "Unable to create project."
       render :new
     end
   end
@@ -40,7 +39,6 @@ class ProjectsController < ApplicationController
         flash[:success] = "Project successfully updated!"
         redirect_to project_path(@project)
       else 
-        flash[:warning] = "Unable to update project."
         render :edit
       end
     else 

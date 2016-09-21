@@ -10,6 +10,19 @@
     <div class="col-md-6 col-md-offset-3">
       <div class="my-login-form">
         <%= form_for(@project, url: projects_path) do |f| %>
+          <% if @project.errors.any? %>
+            <div class="alert alert-dismissible alert-warning center-warning">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              <h3>You forgot to fill out
+                <%= pluralize(@project.errors.count, "field") %>:
+              </h3>
+              <ul>
+                <% @project.errors.full_messages.each do |msg| %>
+                  <h5><%= msg %></h5>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
           <h4 class="heading-mini">Enter Project Information</h4><hr>
           <div class="form-group">
             <%= f.label :name, "Project Title" %><span class="required-form-field"> *</span><br />
@@ -30,7 +43,7 @@
           <div class="form-group">
             <div class="row">
               <div class="col-md-12 margin-btm-20">
-                <%= f.label "Select technologies used in this project" %><br /><br />
+                <%= f.label "Select technologies used in this project" %><span class="required-form-field"> *</span><br /><br />
                 <%= f.collection_select( :technology_ids, Technology.all.order(:name), :id, :name, {}, {:prompt => 'Select Fields', class: "form-control chosen-select", multiple: true} )%>
               </div>
             </div>
