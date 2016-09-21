@@ -6,7 +6,7 @@ class Employer < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
-  before_update :capitalize_params
+  # before_update :capitalize_params
   after_create :create_list
   has_one :follow_up_list, dependent: :destroy
   has_and_belongs_to_many :positions
@@ -35,13 +35,13 @@ class Employer < ActiveRecord::Base
     FollowUpList.create(name: "#{self.name}-List", employer_id: self.id)
   end
 
-  def capitalize_params
-    self.description = self.description.capitalize
-    self.rep_first_name = self.rep_first_name.downcase.titleize if self.rep_first_name
-    self.rep_last_name = self.rep_last_name.downcase.titleize if self.rep_last_name
-    self.city = self.city.downcase.titleize if self.city
-    # self.state = self.state.downcase.capitalize if self.state
-  end 
+  # def capitalize_params
+  #   self.description = self.description.capitalize
+  #   self.rep_first_name = self.rep_first_name.downcase.titleize if self.rep_first_name
+  #   self.rep_last_name = self.rep_last_name.downcase.titleize if self.rep_last_name
+  #   self.city = self.city.downcase.titleize if self.city
+  #   # self.state = self.state.downcase.capitalize if self.state
+  # end 
 
   def location
     "#{city}, #{state}"
