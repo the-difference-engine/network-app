@@ -40,15 +40,17 @@
       </div>
       <div class="col-md-4">
         <div class="portfolio-side-bar">
-          <% if admin_signed_in? || student_signed_in? %>
+          <% if admin_signed_in? || student_signed_in? && current_student.id == @project.student_id %>
+            <hr>
             <div class="sidebar-box control-buttons">
               <a href="/projects/<%= @project.id %>/edit" class="btn btn-lg theme-btn-color"><i class="ion-edit"></i></a> 
               <a href="/projects/<%= @project.id %>" data-method="delete" data-confirm="Are you sure you want to delete '<%= @project.name %>'?" class="btn btn-lg theme-btn-color"><i class="ion-trash-a"></i></a> 
-            </div><hr>
+            </div>
           <% end %>
 
           <% if @project.project_links? %>
             <div class="sidebar-box">
+              <hr>
               <h4 class="project-checkout">Check It Out</h4>
               <ul class=" list-inline social-btn">
                 <% unless @project.github == "" || @project.github == nil %> 

@@ -4,7 +4,7 @@ class Project < ActiveRecord::Base
   belongs_to :student
   has_and_belongs_to_many :technologies
 
-  validates :name, :description, presence: true
+  validates :name, :description, :technologies, presence: true
 
   def normalized_github
     github && PostRank::URI.normalize(github).to_s
