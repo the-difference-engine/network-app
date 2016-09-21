@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
   def index
     @search = Student.search(params[:q])
     @students = @search.result(distinct: true)
-    @students = @students.where.not(resume: nil, resume: "", active: false)
+    @students = @students.where.not(resume: nil, resume: "", active: false).shuffle
   end
 
   def new
