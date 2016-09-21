@@ -40,13 +40,14 @@
       </div>
       <div class="col-md-4">
         <div class="portfolio-side-bar">
-          <% if admin_signed_in? || student_signed_in? && current_student.id == @project.student_id %>
-            <hr>
-            <div class="sidebar-box control-buttons">
-              <a href="/projects/<%= @project.id %>/edit" class="btn btn-lg theme-btn-color"><i class="ion-edit"></i></a> 
-              <a href="/projects/<%= @project.id %>" data-method="delete" data-confirm="Are you sure you want to delete '<%= @project.name %>'?" class="btn btn-lg theme-btn-color"><i class="ion-trash-a"></i></a> 
-            </div>
-          <% end %>
+          <hr>
+          <div class="sidebar-box control-buttons">
+            <% if admin_signed_in? || student_signed_in? && current_student.id == @project.student_id %>
+              <a href="/projects/<%= @project.id %>/edit" class="btn btn-lg theme-btn-color" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit Project"><i class="ion-edit"></i></a> 
+              <a href="/projects/<%= @project.id %>" data-method="delete" data-confirm="Are you sure you want to delete '<%= @project.name %>'?" class="btn btn-lg theme-btn-color" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete Project"><i class="ion-trash-a"></i></a> 
+            <% end %>
+            <a href="/students/<%= @project.student_id %>" class="btn btn-lg theme-btn-color" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Back to Student"><i class="ion-person"></i></a> 
+          </div>
 
           <% if @project.project_links? %>
             <div class="sidebar-box">

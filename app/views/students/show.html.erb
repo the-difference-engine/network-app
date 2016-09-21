@@ -80,7 +80,7 @@
                 <% unless @capstone.description == "" || @capstone.description == nil %>
                   <div class="student-interview capstone-info">
                     <h4 class="heading-mini question-heading capstone-description-heading">Description</h4> 
-                    <p class="capstone-description"><em>" <%= @capstone.description.html_safe %> "</em></p> 
+                    <div class="capstone-description"><em><%= @capstone.description.html_safe %></em></div> 
                     <% if @capstone.project_links? %>
                       <h4 class="heading-mini question-heading checkout-icon-header">Check It Out</h4>
                       <div class="sidebar-box">            
