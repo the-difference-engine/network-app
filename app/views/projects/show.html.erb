@@ -72,9 +72,13 @@
             <div class="sidebar-box">
               <h4>Technologies</h4>
               <ul class="cat-list">  
-                <% @technologies.each do |tech| %>
-                    <li><a href="#" class="hover-color"><%= tech.name %></a></li>
-                <% end %>
+                <div class="row">
+                  <% @technologies.each do |tech| %>
+                    <div class="col-sm-6">
+                      <li><a href="#" class="hover-color"><%= tech.name %></a></li>
+                    </div>
+                  <% end %>
+                </div>
               </ul>
             </div>
             <hr>
