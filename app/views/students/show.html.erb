@@ -50,7 +50,7 @@
               <div class="acltc-info">
                 <div class="row">
                   <div class="col-md-12 services-text about-me">
-                    <p><em>"<%= @student.about_me %>"</em></p>
+                    <p style="white-space: pre-line;"><em>"<%= @student.about_me %>"</em></p>
                   </div><!--services 1 text-->
                 </div><!--services 1 row-->
               </div>
@@ -80,7 +80,7 @@
                 <% unless @capstone.description == "" || @capstone.description == nil %>
                   <div class="student-interview capstone-info">
                     <h4 class="heading-mini question-heading capstone-description-heading">Description</h4> 
-                    <div class="capstone-description"><em><%= @capstone.description.html_safe %></em></div> 
+                    <div class="capstone-description" style="white-space: pre-line;"><em><%= @capstone.description %></em></div> 
                     <% if @capstone.project_links? %>
                       <h4 class="heading-mini question-heading checkout-icon-header">Check It Out</h4>
                       <div class="sidebar-box">            

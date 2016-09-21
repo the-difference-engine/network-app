@@ -25,7 +25,7 @@
           <div class="tab-content">
             <div class="tab-pane description-pane active" id="description">
               <div class="tab-desc animated fadeInDown">
-                <p><%= @project.description.html_safe %></p>
+                <p style="white-space: pre-line;"><%= @project.description %></p>
               </div> 
             </div>
             <% if @project.embed_youtube_screencast %>
