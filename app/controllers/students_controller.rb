@@ -15,6 +15,11 @@ class StudentsController < ApplicationController
       skill_3: nil, skill_3: "", 
       active: false
     )
+
+    if params[:current_city_cont]
+      @students = @students.where("current_city LIKE ?", "%#{params[:current_city_cont]}")
+    end 
+    
     @students = @students.joins(:technologies, :positions).sort_by_standout_score.reverse
   end
 
