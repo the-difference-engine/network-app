@@ -254,7 +254,8 @@ class Student < ActiveRecord::Base
 
   def standout_score
     fields = [:email, :first_name, :last_name, :avatar, :city, :current_industry, :grad_date, :skill_1, :skill_2, :skill_3, :interest_1, :interest_2, :interest_3, :interview_1, :interview_2, :interview_3, :github, :blog, :quote, :seeking_employment, :resume, :linked_in, :current_city, :current_state, :about_me, :interview_q1, :interview_q2, :interview_q3, :personal_website]
-    field_total = fields.count + 2 # has a capstone project + capstone screencast
+    associated_table_fields = ["Technologies/Skills", "Preferred Industries", "Preferred Positions", "Capstone Project", "Capstone Project Screencast"]
+    field_total = fields.count + associated_table_fields.count
     fields_completed = 0
 
     fields.each do |field|
@@ -263,6 +264,10 @@ class Student < ActiveRecord::Base
       end
     end
 
+    fields_completed += 1 if technologies.any?
+    fields_completed += 1 if positions.any?
+    fields_completed += 1 if industries.any?
+
     if capstone_project
       fields_completed += 1
 
@@ -270,6 +275,7 @@ class Student < ActiveRecord::Base
         fields_completed += 1
       end
     end
+
     fields_completed.to_f / field_total * 100
   end
 
@@ -323,6 +329,11 @@ class Student < ActiveRecord::Base
         missing_fields << "Capstone Project Screencast Video"
       end
     end
+
+    missing_fields << "Technologies/Skills" unless technologies.any?
+    missing_fields << "Preferred Positions" unless positions.any?
+    missing_fields << "Preferred Industries" unless industries.any?
+
     missing_fields
   end
 
