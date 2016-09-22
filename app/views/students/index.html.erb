@@ -4,6 +4,7 @@
       <h3 class="page-tree-text">Actualize Alumni</h3>
     </div>
   </section><!--page-tree end here-->
+
   <div class="space-70"></div>
   <div class="container student-index">
     <div class="row">
@@ -19,7 +20,7 @@
                 </div>
                 <div class="col-md-6">
                   <h4 class="heading-mini filter-heading">Filter By City</h4>
-                  <%= f.search_field :current_city_cont, class: "search-city" %>
+                  <%= f.search_field :current_city_cont, autocomplete: "off", class: "search-city" %>
                 </div>
               </div>
               <div class="row">

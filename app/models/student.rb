@@ -7,6 +7,7 @@ class Student < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   mount_uploader :resume, ResumeUploader
   
+  before_save :capitalize_current_city
   has_many :projects, dependent: :destroy
   has_and_belongs_to_many :technologies
   has_and_belongs_to_many :industries
@@ -20,6 +21,10 @@ class Student < ActiveRecord::Base
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def capitalize_current_city
+    current_city.titleize
   end
 
   def current_location
@@ -253,8 +258,45 @@ class Student < ActiveRecord::Base
   end
 
   def standout_score
-    fields = [:email, :first_name, :last_name, :avatar, :city, :current_industry, :grad_date, :skill_1, :skill_2, :skill_3, :interest_1, :interest_2, :interest_3, :interview_1, :interview_2, :interview_3, :github, :blog, :quote, :seeking_employment, :resume, :linked_in, :current_city, :current_state, :about_me, :interview_q1, :interview_q2, :interview_q3, :personal_website]
-    associated_table_fields = ["Technologies/Skills", "Preferred Industries", "Preferred Positions", "Capstone Project", "Capstone Project Screencast"]
+    fields = [
+      :email, 
+      :first_name, 
+      :last_name, 
+      :avatar, 
+      :city, 
+      :current_industry, 
+      :grad_date, 
+      :skill_1, 
+      :skill_2, 
+      :skill_3, 
+      :interest_1, 
+      :interest_2, 
+      :interest_3, 
+      :interview_1, 
+      :interview_2, 
+      :interview_3, 
+      :github, 
+      :blog, 
+      :quote, 
+      :seeking_employment, 
+      :resume, :linked_in, 
+      :current_city, 
+      :current_state, 
+      :about_me, 
+      :interview_q1, 
+      :interview_q2, 
+      :interview_q3, 
+      :personal_website
+    ]
+
+    associated_table_fields = [
+      "Technologies/Skills", 
+      "Preferred Industries", 
+      "Preferred Positions", 
+      "Capstone Project", 
+      "Capstone Project Screencast"
+    ]
+
     field_total = fields.count + associated_table_fields.count
     fields_completed = 0
 
@@ -275,7 +317,7 @@ class Student < ActiveRecord::Base
         fields_completed += 1
       end
     end
-
+    
     fields_completed.to_f / field_total * 100
   end
 
@@ -318,21 +360,19 @@ class Student < ActiveRecord::Base
         missing_fields << field_value
       end
     end
-
-    unless capstone_project
-      missing_fields << "Capstone Project"
-      missing_fields << "Capstone Project Screencast Video"
-    end
+    
+    missing_fields << "Technologies/Skills *" unless technologies.any?
+    missing_fields << "Preferred Positions *" unless positions.any?
+    missing_fields << "Preferred Industries" unless industries.any?
 
     if capstone_project 
       unless capstone_project.screencast?
         missing_fields << "Capstone Project Screencast Video"
       end
+    else 
+      missing_fields << "Capstone Project"
+      missing_fields << "Capstone Project Screencast Video"
     end
-
-    missing_fields << "Technologies/Skills *" unless technologies.any?
-    missing_fields << "Preferred Positions *" unless positions.any?
-    missing_fields << "Preferred Industries" unless industries.any?
 
     missing_fields
   end

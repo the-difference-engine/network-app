@@ -7,17 +7,24 @@ class StudentsController < ApplicationController
     @search = Student.search(params[:q])
     @students = @search.result(distinct: true)
     @students = @students.where.not(
-      resume: nil, resume: "", 
-      about_me: nil, about_me: "", 
-      avatar: nil, avatar: "", 
-      skill_1: nil, skill_1: "", 
-      skill_2: nil, skill_2: "", 
-      skill_3: nil, skill_3: "", 
+      resume: [nil, ""], 
+      about_me: [nil, ""], 
+      avatar: [nil, ""], 
+      skill_1: [nil, ""], 
+      skill_2: [nil, ""], 
+      skill_3: [nil, ""], 
       active: false
     )
 
     if params[:current_city_cont]
-      @students = @students.where("current_city LIKE ?", "%#{params[:current_city_cont]}")
+      @students = @students.where("current_city LIKE ?", "%#{params[:current_city_cont].titleize}")
+      puts "******* city params **********"
+      p params[:current_city_cont]
+      puts "*****************"
+      puts "******* city params titelized **********"
+      p params[:current_city_cont].titleize
+      puts "*****************"
+
     end 
     
     @students = @students.joins(:technologies, :positions).sort_by_standout_score.reverse
