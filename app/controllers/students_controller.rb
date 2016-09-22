@@ -16,9 +16,13 @@ class StudentsController < ApplicationController
       active: false
     )
 
-    if params[:current_city_cont]
-      @students = @students.where("current_city LIKE ?", "%#{params[:current_city_cont]}")
-    end 
+    # if params[:current_city_cont]
+    #   @students = @students.where("current_city LIKE ?", "%#{params[:current_city_cont]}")
+    # end 
+
+    # if params[:current_state_cont]
+    #   @students = @students.where("current_state LIKE ?", "%#{params[:current_state_cont]}")
+    # end 
     
     @students = @students.joins(:technologies, :positions).sort_by_standout_score.reverse
   end

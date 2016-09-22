@@ -14,13 +14,17 @@
           <%= search_form_for @search do |f| %>
             <div class="col-md-12">
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <h4 class="heading-mini filter-heading">Filter By Technology</h4>
                   <%= f.collection_select( :technologies_id_in_any, Technology.all.order(:name), :id, :name, {}, {:prompt => 'Select Fields', class: "form-control chosen-select", multiple: true} )%>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <h4 class="heading-mini filter-heading">Filter By City</h4>
                   <%= f.search_field :current_city_cont, autocomplete: "off", class: "search-city form-control" %>
+                </div>
+                <div class="col-md-4">
+                  <h4 class="heading-mini filter-heading">Filter By State</h4>
+                  <%= f.select(:current_state_cont, options_for_select(us_states), { :include_blank => true }, class: "form-control search-state" ) %>
                 </div>
               </div>
               <div class="row">
