@@ -21,6 +21,7 @@
               <% end %>
             </div>
             <div class="modal-footer">
+              <%= link_to "Update Profile Now", edit_student_path(@student), class: "btn btn-default theme-btn-color" %>
               <button type="button" class="btn btn-default theme-btn-color" data-dismiss="modal">Close</button>
             </div>
           </div>
@@ -69,7 +70,7 @@
                   <% end %>
                 </div>
                 <div class="modal-footer">
-                  <%= link_to "Edit Profile Now", edit_student_path(@student), class: "btn btn-default theme-btn-color" %>
+                  <%= link_to "Update Profile Now", edit_student_path(@student), class: "btn btn-default theme-btn-color" %>
                   <button type="button" class="btn btn-default theme-btn-color" data-dismiss="modal">Close</button>
                 </div>
               </div>
