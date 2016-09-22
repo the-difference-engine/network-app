@@ -7,7 +7,6 @@ class Student < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   mount_uploader :resume, ResumeUploader
   
-  before_save :capitalize_current_city
   has_many :projects, dependent: :destroy
   has_and_belongs_to_many :technologies
   has_and_belongs_to_many :industries
@@ -21,10 +20,6 @@ class Student < ActiveRecord::Base
 
   def full_name
     "#{first_name} #{last_name}"
-  end
-
-  def capitalize_current_city
-    current_city.titleize
   end
 
   def current_location
@@ -317,7 +312,7 @@ class Student < ActiveRecord::Base
         fields_completed += 1
       end
     end
-    
+
     fields_completed.to_f / field_total * 100
   end
 
