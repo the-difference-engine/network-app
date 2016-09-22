@@ -16,9 +16,13 @@
               <p><em>* Fields marked with an asterisk are required for profile to be viewable on the student index</em></p>
             </div>
             <div class="modal-body">
+            <% if @student.missing_student_fields.any? %>
               <% @student.missing_student_fields.each do |missing_field| %>
                 <p><%= missing_field %></p>
               <% end %>
+            <% else %>
+              <p>Your profile is complete!</p>
+            <% end %>
             </div>
             <div class="modal-footer">
               <%= link_to "Update Profile Now", edit_student_path(@student), class: "btn btn-default theme-btn-color" %>
