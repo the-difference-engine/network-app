@@ -43,7 +43,7 @@
       <% end %>
 
       <div class="col-md-8">
-        <% if @student.reminder_modal && current_admin || current_student && current_student.id == @student.id %>
+        <% if @student.reminder_modal && current_student && current_student.id == @student.id %>
           <!-- Resume Reminder Modal -->
           <div class="modal fade" id="reminder-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
@@ -63,14 +63,8 @@
                   <% unless @student.uploaded_avatar? %>
                     <p>You have not uploaded an avatar.</p>
                   <% end %>
-                  <% unless @student.skills? %>
-                    <p>At least one of your top 3 skills is incomplete.</p>
-                  <% end %>
                   <% unless @student.technologies.any? %>
                     <p>You have not selected any tech skills.</p>
-                  <% end %>
-                  <% unless @student.positions.any? %>
-                    <p>You have not selected any preferred positions.</p>
                   <% end %>
                 </div>
                 <div class="modal-footer">

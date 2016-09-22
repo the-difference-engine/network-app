@@ -18,13 +18,6 @@ class StudentsController < ApplicationController
 
     if params[:current_city_cont]
       @students = @students.where("current_city LIKE ?", "%#{params[:current_city_cont]}")
-      puts "******* city params **********"
-      p params[:current_city_cont]
-      puts "*****************"
-      puts "******* city params titelized **********"
-      p params[:current_city_cont].titleize
-      puts "*****************"
-
     end 
     
     @students = @students.joins(:technologies, :positions).sort_by_standout_score.reverse

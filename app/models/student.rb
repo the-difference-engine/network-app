@@ -16,7 +16,7 @@ class Student < ActiveRecord::Base
   has_many :employer_email_records, dependent: :destroy
   has_many :student_email_records, dependent: :destroy
 
-  validates :first_name, :last_name, :city, :grad_date, :skill_1, :skill_2, :skill_3, :technologies, :positions, presence: true
+  validates :first_name, :last_name, :city, :grad_date, :technologies, presence: true
 
   def full_name
     "#{first_name} #{last_name}"
@@ -245,7 +245,7 @@ class Student < ActiveRecord::Base
   end
 
   def reminder_modal
-    if skills? && about_me? && uploaded_avatar? && uploaded_resume? && technologies.any? && positions.any?
+    if about_me? && uploaded_avatar? && uploaded_resume? && technologies.any?
       false
     else
       true
@@ -334,9 +334,9 @@ class Student < ActiveRecord::Base
       personal_website: "Personal Website Link",
       blog: "Personal Blog Link", 
       quote: "Personal Quote", 
-      skill_1: "Top Skill One *", 
-      skill_2: "Top Skill Two *" , 
-      skill_3: "Top Skill Three *", 
+      skill_1: "Top Skill One", 
+      skill_2: "Top Skill Two" , 
+      skill_3: "Top Skill Three", 
       interest_1: "Interest One", 
       interest_2: "Interest Two", 
       interest_3: "Interest Three", 
@@ -357,7 +357,7 @@ class Student < ActiveRecord::Base
     end
     
     missing_fields << "Technologies/Skills *" unless technologies.any?
-    missing_fields << "Preferred Positions *" unless positions.any?
+    missing_fields << "Preferred Positions" unless positions.any?
     missing_fields << "Preferred Industries" unless industries.any?
 
     if capstone_project 

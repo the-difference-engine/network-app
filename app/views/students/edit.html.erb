@@ -11,7 +11,7 @@
 
   <div class="container">
     <%= form_for(@student, url: student_path(@student), html: { :multipart => true }) do |f| %>
-    <%= f.hidden_field :active, value: true %>
+    <%#= f.hidden_field :active, value: true %>
     <% if @student.errors.any? %>
       <div class="alert alert-dismissible alert-warning center-warning">
         <button type="button" class="close" data-dismiss="alert">×</button>
@@ -226,7 +226,7 @@
               <% end %>
             </div>
           </div><br>
-          <h4 class="heading-mini">Preferred Positions <span class="required-form-field"> *</span></h4><hr>
+          <h4 class="heading-mini">Preferred Positions</h4><hr>
           <div class="row">
             <div class="col-lg-12 margin-btm-20">
               <%= f.label "Check all positions you are interested in" %><br /><br />
@@ -253,16 +253,16 @@
           <h4 class="heading-mini">Top 3 Skills</h4><hr>
           <div class="row">
             <div class="col-lg-4 margin-btm-20">
-              <%= f.label :skill_1 %><span class="required-form-field"> *</span><br />
+              <%= f.label :skill_1 %><br />
               <%= f.text_field :skill_1, class: "form-control" %>
             </div>
             <div class="col-lg-4 margin-btm-20">
-              <%= f.label :skill_2 %><span class="required-form-field"> *</span><br />
+              <%= f.label :skill_2 %><br />
               <%= f.text_field :skill_2, class: "form-control" %>
             </div>
           
              <div class="col-lg-4 margin-btm-20">
-              <%= f.label :skill_3 %><span class="required-form-field"> *</span><br />
+              <%= f.label :skill_3 %><br />
               <%= f.text_field :skill_3, class: "form-control" %>
             </div>
           </div><br>
