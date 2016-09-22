@@ -289,17 +289,17 @@ class Student < ActiveRecord::Base
       current_city: "Current City (City of Residence)", 
       current_state: "Current State (State of Residence)",
       current_industry: "Current Industry", 
-      avatar: "Avatar", 
-      resume: "Resume On File", 
-      about_me: "About Me",
+      avatar: "Avatar *", 
+      resume: "Resume On File *", 
+      about_me: "About Me *",
       github: "GitHub Link", 
       linked_in: "LinkedIn Profile Link", 
       personal_website: "Personal Website Link",
       blog: "Personal Blog Link", 
       quote: "Personal Quote", 
-      skill_1: "Top Skill One", 
-      skill_2: "Top Skill Two" , 
-      skill_3: "Top Skill Three", 
+      skill_1: "Top Skill One *", 
+      skill_2: "Top Skill Two *" , 
+      skill_3: "Top Skill Three *", 
       interest_1: "Interest One", 
       interest_2: "Interest Two", 
       interest_3: "Interest Three", 
@@ -330,8 +330,8 @@ class Student < ActiveRecord::Base
       end
     end
 
-    missing_fields << "Technologies/Skills" unless technologies.any?
-    missing_fields << "Preferred Positions" unless positions.any?
+    missing_fields << "Technologies/Skills *" unless technologies.any?
+    missing_fields << "Preferred Positions *" unless positions.any?
     missing_fields << "Preferred Industries" unless industries.any?
 
     missing_fields
