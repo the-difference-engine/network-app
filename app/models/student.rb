@@ -16,7 +16,7 @@ class Student < ActiveRecord::Base
   has_many :employer_email_records, dependent: :destroy
   has_many :student_email_records, dependent: :destroy
 
-  validates :first_name, :last_name, :city, :grad_date, :skill_1, :skill_2, :skill_3, presence: true
+  validates :first_name, :last_name, :city, :grad_date, :skill_1, :skill_2, :skill_3, :technologies, :positions, presence: true
 
   def full_name
     "#{first_name} #{last_name}"
@@ -226,6 +226,119 @@ class Student < ActiveRecord::Base
     else
       true
     end
+  end
+
+  def uploaded_avatar?
+    if avatar.url.include?("aws")
+      true
+    else
+      false
+    end
+  end
+
+  def uploaded_resume?
+    if resume.url && resume.url.include?("aws")
+      true
+    else
+      false
+    end
+  end
+
+  def reminder_modal
+    if skills? && about_me? && uploaded_avatar? && uploaded_resume? && technologies.any? && positions.any?
+      false
+    else
+      true
+    end
+  end
+
+  def standout_score
+    fields = [:email, :first_name, :last_name, :avatar, :city, :current_industry, :grad_date, :skill_1, :skill_2, :skill_3, :interest_1, :interest_2, :interest_3, :interview_1, :interview_2, :interview_3, :github, :blog, :quote, :seeking_employment, :resume, :linked_in, :current_city, :current_state, :about_me, :interview_q1, :interview_q2, :interview_q3, :personal_website]
+    associated_table_fields = ["Technologies/Skills", "Preferred Industries", "Preferred Positions", "Capstone Project", "Capstone Project Screencast"]
+    field_total = fields.count + associated_table_fields.count
+    fields_completed = 0
+
+    fields.each do |field|
+      if self[field] != "" && self[field] != nil 
+        fields_completed += 1
+      end
+    end
+
+    fields_completed += 1 if technologies.any?
+    fields_completed += 1 if positions.any?
+    fields_completed += 1 if industries.any?
+
+    if capstone_project
+      fields_completed += 1
+
+      if capstone_project.screencast?
+        fields_completed += 1
+      end
+    end
+
+    fields_completed.to_f / field_total * 100
+  end
+
+  def missing_student_fields
+    fields = { 
+      email: "Email Address", 
+      first_name: "First Name", 
+      last_name: "Last Name", 
+      city: "City (Actualize Bootcamp Location)", 
+      grad_date: "Graduation Date", 
+      current_city: "Current City (City of Residence)", 
+      current_state: "Current State (State of Residence)",
+      current_industry: "Current Industry", 
+      about_me: "About Me",
+      github: "GitHub Link", 
+      linked_in: "LinkedIn Profile Link", 
+      personal_website: "Personal Website Link",
+      blog: "Personal Blog Link", 
+      quote: "Personal Quote", 
+      avatar: "Avatar", 
+      resume: "Resume On File", 
+      skill_1: "Top Skill One", 
+      skill_2: "Top Skill Two" , 
+      skill_3: "Top Skill Three", 
+      interest_1: "Interest One", 
+      interest_2: "Interest Two", 
+      interest_3: "Interest Three", 
+      interview_q1: "Interview Question One", 
+      interview_q2: "Interview Question Two", 
+      interview_q3: "Interview Question Three", 
+      interview_1: "Interview Question One Response", 
+      interview_2: "Interview Question Two Response", 
+      interview_3: "Interview Question Three Response"
+    }
+    
+    missing_fields = []
+    
+    fields.each do |field_key, field_value|
+      unless self[field_key] != "" && self[field_key] != nil
+        missing_fields << field_value
+      end
+    end
+
+    unless capstone_project
+      missing_fields << "Capstone Project"
+      missing_fields << "Capstone Project Screencast Video"
+    end
+
+    if capstone_project 
+      unless capstone_project.screencast?
+        missing_fields << "Capstone Project Screencast Video"
+      end
+    end
+
+    missing_fields << "Technologies/Skills" unless technologies.any?
+    missing_fields << "Preferred Positions" unless positions.any?
+    missing_fields << "Preferred Industries" unless industries.any?
+
+    missing_fields
+  end
+
+  def self.sort_by_standout_score
+    Student.all.sort_by(&:standout_score)
   end
 end
 

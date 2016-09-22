@@ -28,6 +28,14 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def screencast?
+    if screencast != "" && screencast != nil 
+      true
+    else
+      false
+    end
+  end
+
   def embed_youtube_screencast
     if normalized_screencast.include?("youtube") && normalized_screencast.include?("watch?v=")
       link = normalized_screencast

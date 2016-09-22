@@ -6,7 +6,21 @@ class StudentsController < ApplicationController
   def index
     @search = Student.search(params[:q])
     @students = @search.result(distinct: true)
-    @students = @students.where.not(resume: nil, resume: "", active: false).shuffle
+    @students = @students.where.not(
+      resume: nil, resume: "", 
+      about_me: nil, about_me: "", 
+      avatar: nil, avatar: "", 
+      skill_1: nil, skill_1: "", 
+      skill_2: nil, skill_2: "", 
+      skill_3: nil, skill_3: "", 
+      active: false
+    )
+
+    if params[:current_city_cont]
+      @students = @students.where("current_city LIKE ?", "%#{params[:current_city_cont]}")
+    end 
+    
+    @students = @students.joins(:technologies, :positions).sort_by_standout_score.reverse
   end
 
   def new

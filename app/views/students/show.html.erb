@@ -7,18 +7,65 @@
   <div class="space-70"></div>
   <div class="container student-show">
     <div class="row">
+      <div class="modal fade" id="missing-field-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="reminder-modal-heading">Incomplete Fields</h4>
+            </div>
+            <div class="modal-body">
+              <% @student.missing_student_fields.each do |missing_field| %>
+                <p><%= missing_field %></p>
+              <% end %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default theme-btn-color" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <% if current_admin || current_student && current_student.id == @student.id %>
+        <div class="col-md-12">
+          <div class="progress student-progress-bar" data-toggle="modal" data-target="#missing-field-modal">
+            <div class="progress-bar" role="progressbar" aria-valuenow="<%= @student.standout_score %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @student.standout_score %>%;">
+              <span class="profile-status-text">Profile Status: </span>&nbsp;<%= @student.standout_score.round %>% <span class="profile-status-text">Complete</span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
       <div class="col-md-8">
-        <% if @student.resume.url == "" || @student.resume.url == nil && current_student && current_student.id == @student.id %>
+        <% if @student.reminder_modal && current_student && current_student.id == @student.id %>
           <!-- Resume Reminder Modal -->
           <div class="modal fade" id="reminder-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title reminder-modal-heading" id="myModalLabel">Reminder: Complete Your Profile</h4>
+                  <h4 class="modal-title reminder-modal-heading" id="myModalLabel">Reminder: Complete Your Profile</h4><br>
+                  <p><em>Your profile will not be viewable to employers on the student index until the following required sections are completed.</em></p>
                 </div>
                 <div class="modal-body">
-                  Your profile is incomplete. Profiles without a resume will not be displayed on the student index.
+                  <% unless @student.about_me? %>
+                    <p>Your "About Me" section is incomplete.</p>
+                  <% end %>
+                  <% unless @student.uploaded_resume? %>
+                    <p>You have not uploaded your resume (pdf).</p>
+                  <% end %>
+                  <% unless @student.uploaded_avatar? %>
+                    <p>You have not uploaded an avatar.</p>
+                  <% end %>
+                  <% unless @student.skills? %>
+                    <p>At least one of your top 3 skills is incomplete.</p>
+                  <% end %>
+                  <% unless @student.technologies.any? %>
+                    <p>You have not selected any tech skills.</p>
+                  <% end %>
+                  <% unless @student.positions.any? %>
+                    <p>You have not selected any preferred positions.</p>
+                  <% end %>
                 </div>
                 <div class="modal-footer">
                   <%= link_to "Edit Profile Now", edit_student_path(@student), class: "btn btn-default theme-btn-color" %>
@@ -35,7 +82,7 @@
           </div>
           <% if @student.seeking_employment %>
             <div class="blog-post-info employment-btn-div">
-              <button class="btn btn-lg theme-btn-color employment-btn no-click-button"> Seeking Employment!</button>
+              <button class="btn btn-lg theme-btn-color employment-btn no-click-button"> Open to New Opportunities</button>
             </div>
           <% end %>
           <div class="blog-post-header city-header">
@@ -373,7 +420,7 @@
 </div>
 
 <script>
-  $('#exampleModal').on('show.bs.modal', function (event) {
+  $('#exampleModal, #missing-field-modal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
     var recipient = button.data('whatever') // Extract info from data-* attributes
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
