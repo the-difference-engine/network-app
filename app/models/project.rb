@@ -36,12 +36,24 @@ class Project < ActiveRecord::Base
     end
   end
 
+  
+
   def embed_youtube_screencast
-    if normalized_screencast.include?("youtube") && normalized_screencast.include?("watch?v=")
+    if normalized_screencast.include?("youtube") && normalized_screencast.include?("watch?v=") && !normalized_screencast.include?("&feature=")
       link = normalized_screencast
+      link_for_embed = link.gsub!("watch?v=", "embed/")
+    elsif normalized_screencast.include?("&feature=")
+      match_index = /&feature=/ =~ normalized_screencast
+      link_end_index = match_index - 1
+      remove_feature_link = normalized_screencast[0..link_end_index]
+      link = remove_feature_link
       link_for_embed = link.gsub!("watch?v=", "embed/")
     elsif normalized_screencast.include?("youtube") && normalized_screencast.include?("/embed/")
       normalized_screencast
+    elsif normalized_screencast.include?("youtu.be/")
+      split_sections = normalized_screencast.split("/")
+      video_id = split_sections.last
+      link_for_embed = "https://www.youtube.com/embed/#{video_id}"
     else 
       false
     end
