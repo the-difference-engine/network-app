@@ -13,7 +13,8 @@ class StudentsController < ApplicationController
       skill_1: [nil, ""], 
       skill_2: [nil, ""], 
       skill_3: [nil, ""], 
-      active: false
+      active: false,
+      hide_profile: true
     )
 
     @students = @students.joins(:technologies, :positions).sort_by_standout_score.reverse
@@ -37,7 +38,7 @@ class StudentsController < ApplicationController
   def show
     @student = Student.find(params[:id])
     
-    if @student.active || current_admin || current_student && current_student.id == @student.id
+    if !@student.hide_profile || current_admin || current_student && current_student.id == @student.id
       @projects = @student.projects
       @technologies = @student.technologies if @student.technologies.any?
       @positions = @student.positions if @student.positions.any?
@@ -154,6 +155,7 @@ class StudentsController < ApplicationController
         :remove_resume,
         :about_me,
         :active,
+        :hide_profile,
         :follow_up_list_id,
         :email,
         :password,

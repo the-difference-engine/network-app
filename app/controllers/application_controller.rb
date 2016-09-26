@@ -106,6 +106,7 @@ protected
       :company_size,
       :about_me,
       :active,
+      :hide_profile,
       :allow_emails,
       :remove_avatar,
       :remove_resume,

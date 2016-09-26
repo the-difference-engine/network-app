@@ -89,6 +89,7 @@ class AdminsController < ApplicationController
         :avatar,
         :remove_avatar,
         :active,
+        :hide_profile,
         :email,
         :password,
         :password_confirmation

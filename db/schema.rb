@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160919011926) do
+ActiveRecord::Schema.define(version: 20160926183031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20160919011926) do
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
     t.boolean  "active",                 default: false
+    t.boolean  "hide_profile",           default: false
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
@@ -108,6 +109,7 @@ ActiveRecord::Schema.define(version: 20160919011926) do
     t.string   "company_size"
     t.boolean  "active",                 default: false
     t.boolean  "allow_emails",           default: false
+    t.boolean  "hide_profile",           default: false
   end
 
   add_index "employers", ["email"], name: "index_employers_on_email", unique: true, using: :btree
@@ -265,6 +267,7 @@ ActiveRecord::Schema.define(version: 20160919011926) do
     t.string   "interview_q2"
     t.string   "interview_q3"
     t.string   "personal_website"
+    t.boolean  "hide_profile",           default: false
   end
 
   add_index "students", ["email"], name: "index_students_on_email", unique: true, using: :btree
