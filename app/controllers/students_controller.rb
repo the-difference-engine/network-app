@@ -36,20 +36,25 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find(params[:id])
-    @projects = @student.projects
-    @technologies = @student.technologies if @student.technologies.any?
-    @positions = @student.positions if @student.positions.any?
-    @industries = @student.industries if @student.industries.any?
-    @employer = current_employer if current_employer
-    @follow_up_list = @employer.follow_up_list if current_employer
-    @follow_up_student = FollowUpStudent.new
-    @employer_email = EmployerEmail.new
+    
+    if @student.active || current_admin || current_student && current_student.id == @student.id
+      @projects = @student.projects
+      @technologies = @student.technologies if @student.technologies.any?
+      @positions = @student.positions if @student.positions.any?
+      @industries = @student.industries if @student.industries.any?
+      @employer = current_employer if current_employer
+      @follow_up_list = @employer.follow_up_list if current_employer
+      @follow_up_student = FollowUpStudent.new
+      @employer_email = EmployerEmail.new
 
-    @default_message = "Greetings #{@student.full_name}!\n\n#{@employer.rep_full_name} from #{@employer.name } viewed your profile on DevHero and would like to connect!\n\nView their employer profile http://network-app-staging.com/employers/#{@employer.id} or reply to this email to start a conversation." if current_employer
-    # @default_message = "Greetings #{@student.full_name}!\n\n#{@employer.rep_full_name} from #{@employer.name } viewed your profile on DevHero and would like to connect!\n\nView their employer profile http://devhero.io/employers/#{@employer.id} or reply to this email to start a conversation." if current_employer
+      @default_message = "Greetings #{@student.full_name}!\n\n#{@employer.rep_full_name} from #{@employer.name } viewed your profile on DevHero and would like to connect!\n\nView their employer profile http://network-app-staging.com/employers/#{@employer.id} or reply to this email to start a conversation." if current_employer
+      # @default_message = "Greetings #{@student.full_name}!\n\n#{@employer.rep_full_name} from #{@employer.name } viewed your profile on DevHero and would like to connect!\n\nView their employer profile http://devhero.io/employers/#{@employer.id} or reply to this email to start a conversation." if current_employer
 
-    if @student.capstone_project
-      @capstone = @student.capstone_project
+      if @student.capstone_project
+        @capstone = @student.capstone_project
+      end
+    else
+      redirect_to students_path
     end
   end
 
