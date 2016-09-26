@@ -16,14 +16,6 @@ class StudentsController < ApplicationController
       active: false
     )
 
-    # if params[:current_city_cont]
-    #   @students = @students.where("current_city LIKE ?", "%#{params[:current_city_cont]}")
-    # end 
-
-    # if params[:current_state_cont]
-    #   @students = @students.where("current_state LIKE ?", "%#{params[:current_state_cont]}")
-    # end 
-    
     @students = @students.joins(:technologies, :positions).sort_by_standout_score.reverse
   end
 
@@ -38,7 +30,6 @@ class StudentsController < ApplicationController
       flash[:success] = "Student account successfully created!"
       redirect_to student_path(@student)
     else
-      # flash[:warning] = "Unable to add new student."
       render :new
     end
   end
@@ -95,7 +86,6 @@ class StudentsController < ApplicationController
           format.json { head :no_content }
         else
           format.html { render action: 'edit' }
-          # flash[:warning] = "Unable to update your account."
           format.json { render json: @student.errors, status: :unprocessable_entity }
         end
       end
