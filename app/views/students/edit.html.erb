@@ -26,6 +26,22 @@
       </div>
     <% end %>
     <div class="row">
+      <div class="my-login-form col-lg-12">
+        <div class="login-info-box">
+          <h4 class="heading-mini text-center">Deactivate Account?</h4><hr>
+          <div class="text-center">
+            <%= f.label :active, "Inactive status will remove your profile from the student index" %>
+          </div><br>
+          <div class="row">
+            <div class="col-md-12 margin-btm-20 text-center">
+              <%= f.radio_button :active, "1", checked: @student.active %> &nbsp;<%= f.label :active, " Active" %> &nbsp; &nbsp;
+              <%= f.radio_button :active, "0", checked: !@student.active %> &nbsp;<%= f.label :active, " Inactive" %><br />
+            </div>
+          </div><br>
+        </div>
+      </div>
+    </div>
+    <div class="row">
       <div class="my-login-form col-lg-6">
         <div class="login-info-box edit-login-info">
           <h4 class="heading-mini">Log In Information</h4><hr>
