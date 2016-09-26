@@ -30,12 +30,12 @@
         <div class="login-info-box">
           <h4 class="heading-mini text-center">Profile Visibility</h4><hr>
           <div class="text-center">
-            <%= f.label :hide_profile, "If inactive, users will not be able to view your profile. You can still log in and make changes to your account." %>
+            <%= f.label :hide_profile, "If hidden, users will not be able to view your profile. You can still log in and make changes to your account." %>
           </div><br>
           <div class="row">
             <div class="col-md-12 margin-btm-20 text-center">
-              <%= f.radio_button :hide_profile, "0", checked: !@student.hide_profile %> &nbsp;<%= f.label :hide_profile, " Active" %> &nbsp; &nbsp;
-              <%= f.radio_button :hide_profile, "1", checked: @student.hide_profile %> &nbsp;<%= f.label :hide_profile, " Inactive" %><br />
+              <%= f.radio_button :hide_profile, "0", checked: !@student.hide_profile %> &nbsp;<%= f.label :hide_profile, " Visible" %> &nbsp; &nbsp;
+              <%= f.radio_button :hide_profile, "1", checked: @student.hide_profile %> &nbsp;<%= f.label :hide_profile, " Hidden" %><br />
             </div>
           </div>
         </div>
