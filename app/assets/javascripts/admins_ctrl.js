@@ -70,9 +70,8 @@
         $scope.searchUserRole = "";
       } else {
         $scope.searchUserRole = userRole;
-        console.log($scope.searchUserRole);
       }
-    }
+    };
 
     window.scope = $scope;
   }]);

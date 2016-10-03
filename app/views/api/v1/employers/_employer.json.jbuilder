@@ -15,6 +15,7 @@ json.number_of_positions employer.number_of_positions
 json.company_size employer.company_size
 json.active employer.active
 json.role employer.class.name
+json.created_at employer.created_at
 
 json.follow_up_list employer.follow_up_list
 json.students employer.follow_up_list.students
