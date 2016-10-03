@@ -65,6 +65,15 @@
       });      
     };
 
+    $scope.filterByRole = function(userRole) {
+      if (userRole == "Reset") {
+        $scope.searchUserRole = "";
+      } else {
+        $scope.searchUserRole = userRole;
+        console.log($scope.searchUserRole);
+      }
+    }
+
     window.scope = $scope;
   }]);
 
