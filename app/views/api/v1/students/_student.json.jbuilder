@@ -28,6 +28,7 @@ json.about_me student.about_me
 json.role student.class.name
 json.avatar student.avatar
 json.skills? student.skills?
+json.created_at student.created_at
 
 json.technologies student.technologies
 json.positions student.positions

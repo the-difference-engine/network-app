@@ -155,7 +155,11 @@
                         <div class="form-group">
                           <input type="text" ng-model="searchUserEmail" class="form-control admin-center-search-bar" placeholder="Search pending invites">
                         </div>
-                      </div>
+                        <button ng-click="filterByRole('Student')" class="btn btn-xs theme-btn-color">Students</button>
+                        <button ng-click="filterByRole('Employer')" class="btn btn-xs theme-btn-color">Employers</button>
+                        <button ng-click="filterByRole('Admin')" class="btn btn-xs theme-btn-color">Admins</button>
+                        <button ng-click="filterByRole('Reset')" class="btn btn-xs theme-btn-color">All Users</button>
+                      </div><br>
                       <table class="table table-hover table-responsive">
                         <thead>
                           <tr>
@@ -166,7 +170,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr class="hover-list"ng-repeat="user in pendingUsers | filter: { email: searchUserEmail } | orderBy: 'role'">
+                          <tr class="hover-list"ng-repeat="user in pendingUsers | filter: { email: searchUserEmail, role: searchUserRole } | orderBy: 'created_at':true">
                             <td class="user-entries is-breakable">                              
                               <p>{{ user.email }}</p>                           
                             </td>

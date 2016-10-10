@@ -9,7 +9,7 @@ class EmployerEmail < MailForm::Base
 
   def headers
     {
-      :subject => "ACLTC Network: Message from Employer",
+      :subject => "DevHero: Message from Employer",
       :to => "#{student_email}",
       :from => %("#{name}" <#{email}>)
     }
