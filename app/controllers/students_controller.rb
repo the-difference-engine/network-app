@@ -48,8 +48,8 @@ class StudentsController < ApplicationController
       @follow_up_student = FollowUpStudent.new
       @employer_email = EmployerEmail.new
 
-      # @default_message = "Greetings #{@student.full_name}!\n\n#{@employer.rep_full_name} from #{@employer.name } viewed your profile on DevHero and would like to connect!\n\nView their employer profile http://network-app-staging.com/employers/#{@employer.id} or reply to this email to start a conversation." if current_employer
-      @default_message = "Greetings #{@student.full_name}!\n\n#{@employer.rep_full_name} from #{@employer.name } viewed your profile on DevHero and would like to connect!\n\nView their employer profile http://devhero.io/employers/#{@employer.id} or reply to this email to start a conversation." if current_employer
+      @default_message = "Greetings #{@student.full_name}!\n\n#{@employer.rep_full_name} from #{@employer.name } viewed your profile on DevHero and would like to connect!\n\nView their employer profile http://network-app-staging.com/employers/#{@employer.id} or reply to this email to start a conversation." if current_employer
+      # @default_message = "Greetings #{@student.full_name}!\n\n#{@employer.rep_full_name} from #{@employer.name } viewed your profile on DevHero and would like to connect!\n\nView their employer profile http://devhero.io/employers/#{@employer.id} or reply to this email to start a conversation." if current_employer
 
       if @student.capstone_project
         @capstone = @student.capstone_project
