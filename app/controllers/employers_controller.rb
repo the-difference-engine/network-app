@@ -123,6 +123,7 @@ class EmployersController < ApplicationController
         :active,
         :hide_profile,
         :allow_emails,
+        :sign_up_code,
         :password,
         :password_confirmation,
         :email,

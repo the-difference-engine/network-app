@@ -3,7 +3,7 @@ class Employer < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+  attr_accessor :sign_up_code
   mount_uploader :image, ImageUploader
 
   # before_update :capitalize_params
@@ -22,7 +22,8 @@ class Employer < ActiveRecord::Base
   validates :city, :state, presence: true
   validates :description, presence: true
   validates :number_of_positions, numericality: { only_integer: true, allow_nil: true }
-  
+  validates :sign_up_code, on: :create, presence: true, inclusion: { in: [ ENV["sign_up_code_one"], ENV["sign_up_code_two"] ]}, allow_nil: true
+
   def rep_full_name
     "#{rep_first_name} #{rep_last_name}"
   end
@@ -34,14 +35,6 @@ class Employer < ActiveRecord::Base
   def create_list
     FollowUpList.create(name: "#{self.name}-List", employer_id: self.id)
   end
-
-  # def capitalize_params
-  #   self.description = self.description.capitalize
-  #   self.rep_first_name = self.rep_first_name.downcase.titleize if self.rep_first_name
-  #   self.rep_last_name = self.rep_last_name.downcase.titleize if self.rep_last_name
-  #   self.city = self.city.downcase.titleize if self.city
-  #   # self.state = self.state.downcase.capitalize if self.state
-  # end 
 
   def location
     "#{city}, #{state}"
