@@ -108,6 +108,7 @@ protected
       :active,
       :hide_profile,
       :allow_emails,
+      :sign_up_code,
       :remove_avatar,
       :remove_resume,
       :remove_image,
