@@ -8,23 +8,26 @@
   <div class="container student-index">
     <div class="row">
       <div class="col-md-12">
-        <div id="grid" class="row">  
-        <% @employers.each do |employer| %>
-          <div class=" mix col-md-3 col-sm-4 col-xs-12 margin-btm-40">
-            <div class="portfolio-sec">
-              <div class="portfolio-thumnail">
-                <a href="/employers/<%= employer.id %>"><img src="<%= employer.image.large_square.url %>" class="img-responsive"/></a>
-              </div>
-              <div class="portfolio-desc text-center"> 
-                <h4 class="portfolio-post-title"><%= employer.name %></h4>
-                <span class="portfolio-post-cat"><%= employer.location %></span>
-                <h4><a href="/employers/<%= employer.id %>" class="btn theme-btn-default btn-lg">More Details</a></h4>
-              </div>
-            </div>
-          </div><!--portfolio item -->
+        <% @employers.each_slice(4) do |three_employers| %>
+          <div id="grid" class="row"> 
+            <% three_employers.each do |employer| %>
+              <div class=" mix col-md-3 col-sm-4 col-xs-12 margin-btm-40">
+                <div class="portfolio-sec">
+                  <div class="portfolio-thumnail">
+                    <a href="/employers/<%= employer.id %>"><img src="<%= employer.image.large_square.url %>" class="img-responsive"/></a>
+                  </div>
+                  <div class="portfolio-desc text-center"> 
+                    <h4 class="portfolio-post-title"><%= employer.name %></h4>
+                    <span class="portfolio-post-cat"><%= employer.location %></span>
+                    <h4><a href="/employers/<%= employer.id %>" class="btn theme-btn-default btn-lg">More Details</a></h4>
+                  </div>
+                </div>
+              </div><!--portfolio item -->
+            <% end %>
+          </div><!--grid-->
         <% end %>
-        </div><!--grid-->
       </div>
     </div><!--row-->
   </div><!--portfolio container end-->
 </div>
+
